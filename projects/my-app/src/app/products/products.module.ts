@@ -16,6 +16,12 @@ import { ViewAllProductsComponent } from './components/view-all-products/view-al
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    ProductsDetailComponent,
+    ShoppingcartComponent,
+    SingleProducteSelftComponent,
+    ViewAllProductsComponent
   ]
 })
 export class ProductsModule { }
