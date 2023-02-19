@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "Authentication-start":"ng serve --project=\"authentication\" --port 4200",
+    "Ecommerce-start":"ng serve --project=\"my-app\" --port 4201"
   },
   "private": true,
   "dependencies": {
