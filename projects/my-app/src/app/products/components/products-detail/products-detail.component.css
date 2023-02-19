@@ -1,0 +1,267 @@
+hr{
+  width: 80%;
+}
+.breadcrumb {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: .1rem 0rem !important;
+  margin-bottom: 0rem;
+  list-style: none;
+  background-color: #ffffff;
+  border-radius: .25rem
+}
+
+.single_product {
+  padding-top: 66px;
+  padding-bottom: 140px;
+  background-color: #e5e5e5;
+  margin-top: 0px;
+  padding: 17px;
+  background-color: #fff;
+}
+.Main-products{
+  display: flex;
+  max-width: 0 0 0 0;
+}
+.right{
+  margin: 0 0 0 -12rem;
+
+}
+.product_description {
+  padding-left: 0px
+}
+
+.image_selected {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% + 15px);
+  height: 525px;
+  -webkit-transform: translateX(-15px);
+  -moz-transform: translateX(-15px);
+  -ms-transform: translateX(-15px);
+  -o-transform: translateX(-15px);
+  transform: translateX(-15px);
+  border: solid 1px #e8e8e8;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 15px
+}
+.image_selected .img-prodcuts{
+  display: block;
+
+  max-width: 100%;
+  height: auto;    object-fit: cover;
+
+  width:23rem; height:16rem;
+}
+
+.image_list li {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 165px;
+  border: solid 1px #e8e8e8;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1) !important;
+  margin-bottom: 15px;
+  cursor: pointer;
+  padding: 15px;
+  -webkit-transition: all 200ms ease;
+  -moz-transition: all 200ms ease;
+  -ms-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
+  overflow: hidden
+}
+.product_name {
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.product_price {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 2rem;
+}
+
+
+.product_discount {
+  display: inline-block;
+  font-size: 15px;
+  margin-left: 10px;
+  color: black;
+ }
+ del {
+  text-decoration: line-through;
+  color: red;
+}
+.offers{
+  width: 100%;
+  margin-top: 2rem;
+
+}
+.offers .item-offers{
+  border: 1px dashed yellow;
+}
+
+.product_quantity {
+  width: 104px;
+  height: 47px;
+  border: solid 1px #e5e5e5;
+  border-radius: 3px;
+  overflow: hidden;
+  padding-left: 8px;
+  padding-top: -4px;
+  padding-bottom: 44px;
+  float: left;
+  margin-right: 22px;
+  margin-bottom: 11px
+}
+.pr-info {
+  margin-top: 2px;
+  padding-left: 2px;
+  margin-left: -14px;
+  width: 150%;
+ }
+
+.break-all {
+  color: #5e5e5e
+}
+.counter{
+  width: 22%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ }
+ .btn-cont{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-family: ‘Open Sans’;
+  font-weight: 900;
+  color: #202020;
+  cursor: pointer;
+  border: 1px solid gray;
+
+ }
+ .btn-cont:hover{
+  background-color: #d9d9d9;
+
+ }
+ .count{
+  font-size: 20px;
+  font-family: ‘Open Sans’;
+  font-weight: 900;
+  color: #202020;
+ }
+ .total-price{
+  margin-top: 1.5rem;
+  display: inline-block;
+ }
+ .total-price .product-total-price{
+  padding: 15px;
+  font-size: 15px;
+  font-weight: 700;
+ }
+ .total-price .price{
+  font-size: 15px;
+  font-weight: 700;
+ }
+ .go-to-add{
+  margin-top: 15px;
+ }
+ .btn{
+  padding: 0.6rem;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  background: #5fb139;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+ }
+ .btn:hover{
+  background: #58a335;
+
+ }
+ .form-check{
+  margin-top: 1rem;
+  font-size: 14px;
+}
+.form-check .form-check-label:after{
+  content:"";
+  display: block;
+  height: 1px;
+  background-color: blue;
+  transition: width 0.5s;
+  margin-top: 0;
+}
+.form-check .form-check-label:after{
+  width:0 ;
+}
+.form-check .form-check-label:hover:after{
+width: 100%;
+}
+.form-check .form-check-label:hover{
+  color: blue;
+}
+.Bay-now{
+  margin-top: 1rem;
+}
+.Bay-now .btn-bay{
+  padding: 0.6rem;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  background: #f7f7f7;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* media  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

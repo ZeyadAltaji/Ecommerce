@@ -1,0 +1,11 @@
+.image-payments{
+  align-items: center;
+}
+.btn-pay{
+  justify-content: space-between;
+  display: flex;
+
+}
+.btn-remove:hover{
+background: crimson;
+}
