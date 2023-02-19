@@ -65,7 +65,7 @@ export class NavbarComponent implements OnInit {
     }
   }
   onNavigate(){
-    this.router.navigateByUrl('/New-User')
+    this.router.navigateByUrl('/New-User').then();
   }
 
 }
