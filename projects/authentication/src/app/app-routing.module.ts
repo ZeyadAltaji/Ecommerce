@@ -1,7 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BusinessAccountComponent } from './Areas/components/BusinessAccount/BusinessAccount.component';
+import { LoginComponent } from './Areas/components/Login/Login.component';
+import { PaymentPageComponent } from './Areas/components/Payment-page/Payment-page.component';
+import { UserAccountComponent } from './Areas/components/UserAccount/UserAccount.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path:"shoppingCartPage/Payment",
+    component:PaymentPageComponent
+  },
+  {
+      path:"New-User",
+      component:UserAccountComponent
+  },
+  {
+    path:"Login",
+    component:LoginComponent
+  },
+  {
+    path:"BusinessAccount",
+    component:BusinessAccountComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
