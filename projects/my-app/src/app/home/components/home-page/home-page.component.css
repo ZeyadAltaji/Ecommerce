@@ -1,0 +1,247 @@
+
+.section-header {
+  text-align: center;
+  margin-bottom: -2rem;
+}
+.section-header #section-title {
+  font-size: 35px;
+   padding-top:35px;
+  margin-bottom: 15px;
+}
+.section-header .line {
+  display: block;
+  width: 70px;
+  height: 5px;
+  background-color: crimson;
+  margin: 0 auto 70px auto;
+}
+ .main-brand{
+  margin-bottom: 3rem;
+  padding: 3rem;
+
+}
+ .item{
+  justify-content: center;
+  width: 123px;
+
+}
+ .item .image-brand{
+  width: 100%;
+  display: inline-block;
+   transform: translateX(50px);
+
+}
+ .owl-brand{
+  margin: 1rem;
+}
+.owl-wrapper {
+position: relative;
+}
+.owl-controls {
+position: absolute;
+bottom: 10px;
+left: 0;
+right: 0;
+margin-left: auto;
+margin-right: auto;
+}
+.owl-theme .owl-controls .owl-page span {
+background: #fff !important;
+}
+.owl-img {
+width: 100%;
+image-rendering: high-quality;
+object-fit: cover;
+border-radius: 5px;
+}
+.owl-stage-outer{
+  border-radius: 5px;
+}
+.owl-text-overlay {
+position: absolute;
+text-align: center;
+width: 60%;
+top: 50%;
+transform: translateY(-50%);
+left: 0;
+right: 0;
+margin-left: auto;
+margin-right: auto;
+color: #fff;
+background-color: rgba(0, 0, 0, 0.4);
+background: rgba(0, 0, 0, 0.4);
+padding-bottom: 20px;
+font-family: "Open Sans", sans-serif;
+border-radius: 15px 50px 30px 5px;
+}
+h2.owl-title {
+font-size: 48px;
+font-weight: bold;
+margin-bottom: 20px;
+
+}
+.owl-theme .owl-controls .owl-page span:active {
+background: #fff !important;
+}
+.owl-buttons {
+visibility: hidden;
+display: none;
+}
+.main{
+padding: 1rem;
+}
+.contents h1{
+font-size: 22px;
+font-weight: bold;
+margin: 20px;
+}
+.contents p{
+font-size: 18px;
+width: 70%;
+}
+.animation-text{
+-webkit-animation-name:animation-text;
+-webkit-animation-duration: 1.5s;
+animation-name: animation-text;
+animation-duration: 1.5s;
+}
+@-webkit-keyframes animation-text{
+from{
+opacity: 0.8;
+}
+to{
+opacity: 1;
+}
+}
+@keyframes animation-text{
+from{
+opacity: 0.8;
+}
+to{
+opacity: 1;
+}
+}
+.contents{
+position: absolute; color: #fff;
+line-height: 35px; top: 16%; left: 12%;
+-webkit-animation-name: posi;
+-webkit-animation-duration: 2s;
+animation-name: posi;
+animation-duration: 2s;
+z-index: 1;
+transform: translateX(-3rem);
+
+}
+@-webkit-keyframes posi{
+from{
+  transform: translateX(-10rem);
+
+}to{
+  transform: translateX(-3rem);
+}
+}
+@keyframes posi{
+from{
+  transform: translateX(-10rem);
+}to{
+  transform: translateX(-3rem);
+
+}
+}
+.btn-go {
+  display: inline-flex;
+  height: 50px;
+  padding: 0;
+  background: rgb(169, 13, 13);
+  border: none; outline: none; border-radius: 5px;
+  overflow: hidden;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.5;
+  text-decoration: none;
+  color: black;
+  padding: 7px 25px;
+
+}
+.btn-go:hover{
+background: rgb(167, 29, 29);
+opacity: 1;
+text-decoration: none;
+color: black;
+}
+.btn-go .icon-add{
+display: inline-flex; align-items: center;
+padding-left: 30px;
+height: 100%;
+}
+.due-date{
+  text-align: center;
+}
+
+
+
+
+
+/* test */
+.notify-badge:before {
+  content: "";
+  z-index: -1;
+  overflow: hidden;
+  transform: rotate(-135deg);
+  width: 120px;
+  display: block;
+  background: crimson;
+  background: linear-gradient(#9BC90D 0%, #79A70A 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 34px;
+  right: -16px;
+  clip-path: polygon(120px 20px, 90px -10px, 30px -10px, 0px 20px, 10px 30px,  110px 30px);
+  height: 20px;
+  width: 120px;
+}
+.notify-badge:after {
+  content: "NEW";
+  z-index: 1;
+  overflow: hidden;
+  font-size: 10px;
+  font-weight: bold;
+  color: black;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  width: 120px;
+  display: block;
+  background: crimson;
+  /* background: linear-gradient(crimson); */
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 20px; right: -30px;
+  clip-path: polygon(120px 20px, 90px -10px, 30px -10px, 0px 20px, 10px 30px,  110px 30px)
+}
+
+
+
+.effect-1 {
+  position: relative;
+}
+.effect-1::before, .effect-1::after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width: 300px;
+  background: #aaa;
+  box-shadow: 0 15px 10px #aaa;
+  transform: rotate(-3deg);
+}
+.effect-1::after {
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
