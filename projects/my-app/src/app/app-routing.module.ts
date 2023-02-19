@@ -12,15 +12,18 @@ import { SingleProducteSelftComponent } from './products/components/single-produ
 import { ViewAllProductsComponent } from './products/components/view-all-products/view-all-products.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    children: [
       {
         path: '',
-        component: SectionHomeComponent ,
-      },
-      {
-        path: '', component: HomePageComponent ,outlet:'secondary'
+        children: [
+          {
+            path: '',
+            component: SectionHomeComponent ,
+          },
+          {
+            path: '', component: HomePageComponent ,outlet:'secondary'
+          }
+
+        ]
       },
       {
         path: 'View-All-Products',
@@ -40,8 +43,6 @@ const routes: Routes = [
       },
       
 
-    ]
-    }
 ];
 
 @NgModule({

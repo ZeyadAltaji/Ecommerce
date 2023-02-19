@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginComponent } from 'projects/authentication/src/app/Areas/components/Login/Login.component';
+import { environment } from 'projects/my-app/src/environments/environment.development';
 
 @Component({
   selector: 'app-navbar',
@@ -20,6 +22,7 @@ export class NavbarComponent implements OnInit {
       UserName:['',Validators.required],
       password :['',Validators.required]
     });
+
 }
 
   mycart() {
@@ -65,7 +68,9 @@ export class NavbarComponent implements OnInit {
     }
   }
   onNavigate(){
-    this.router.navigateByUrl('/New-User').then();
+    window.location.href=environment.authentication_URL;
+    // this.router.navigateByUrl(this.apiUrl)
+    // this.router.navigateByUrl('/New-User')
   }
 
 }
