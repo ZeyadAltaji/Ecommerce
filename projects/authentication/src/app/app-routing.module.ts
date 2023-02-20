@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ErrorComponent } from 'projects/my-app/src/app/Error/components/Error/Error.component';
 import { BusinessAccountComponent } from './Areas/components/BusinessAccount/BusinessAccount.component';
 import { LoginComponent } from './Areas/components/Login/Login.component';
 import { PaymentPageComponent } from './Areas/components/Payment-page/Payment-page.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path:"BusinessAccount",
     component:BusinessAccountComponent
+  },
+  {
+    path: '**', pathMatch: 'full',
+    component: ErrorComponent
   }
 ];
 
