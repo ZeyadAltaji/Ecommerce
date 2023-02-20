@@ -27,6 +27,19 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'Home-page',
+        children: [
+          {
+            path: '',
+            component: SectionHomeComponent ,
+          },
+          {
+            path: '', component: HomePageComponent ,outlet:'secondary'
+          }
+
+        ]
+      },
+      {
         path: 'View-All-Products',
          component: ViewAllProductsComponent
       },
