@@ -5,6 +5,7 @@ import { AreasModule } from 'projects/authentication/src/app/Areas/Areas.module'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ErrorModule } from './Error/Error.module';
 import { HomeModule } from './home/home.module';
 import { ProductsModule } from './products/products.module';
 import { SharedModule } from './shared/shared.module';
@@ -20,7 +21,9 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     HomeModule,
     ProductsModule,
-    AreasModule
+    AreasModule,
+    ErrorModule
+
 
   ],
   providers: [],
