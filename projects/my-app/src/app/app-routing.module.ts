@@ -4,6 +4,7 @@ import { BusinessAccountComponent } from 'projects/authentication/src/app/Areas/
 import { LoginComponent } from 'projects/authentication/src/app/Areas/components/Login/Login.component';
 import { PaymentPageComponent } from 'projects/authentication/src/app/Areas/components/Payment-page/Payment-page.component';
 import { UserAccountComponent } from 'projects/authentication/src/app/Areas/components/UserAccount/UserAccount.component';
+import { ErrorComponent } from './Error/components/Error/Error.component';
 import { HomePageComponent } from './home/components/home-page/home-page.component';
 import { SectionHomeComponent } from './home/components/section-home/section-home.component';
 import { ProductsDetailComponent } from './products/components/products-detail/products-detail.component';
@@ -41,7 +42,10 @@ const routes: Routes = [
         path:"shoppingCartPage",
         component:ShoppingcartComponent
       },
-      
+      {
+        path: '**', pathMatch: 'full',
+        component: ErrorComponent
+      }
 
 ];
 
