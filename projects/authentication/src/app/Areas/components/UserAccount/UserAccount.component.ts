@@ -33,6 +33,9 @@ export class UserAccountComponent implements OnInit {
     })
 
   }
+  // createBusinessAccount(){
+  //   this.router.navigateByUrl('/BusinessAccount')
+  // }
 
 
 

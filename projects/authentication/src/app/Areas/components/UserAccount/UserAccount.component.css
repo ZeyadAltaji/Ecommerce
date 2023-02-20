@@ -1,3 +1,11 @@
+.containerr{
+  position: relative;
+  max-width: 1180px;
+  width: 100%;
+   padding: 40px 30px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  perspective: 2700px;
+}
 .page-content {
 	width: 100%;
 	display: flex;

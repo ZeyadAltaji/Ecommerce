@@ -1,32 +1,54 @@
-<div class="form-v4">
-	<div class="page-content">
-		<div class="form-v4-content">
-        <div class="session">
-          <div class="left">
-
-          </div>
-          <form action="" class="log-in" autocomplete="off">
-
-            <p>Welcome back! Log in to your account to view today's clients:</p>
-            <div class="floating-label">
-              <input placeholder="Email" type="email" name="email" id="email" autocomplete="off">
-              <label for="email">Email:</label>
-
+ 
+<div class="containerr container-xxl">
+  <div class="container-fluid  ">
+    <div class="card card0 border-0">
+        <div class="row d-flex">
+            <div class="col-lg-6">
+                <div class="card1 pb-5">
+                    <div class="row">
+                        <img src="" alt="logo" class="logo">
+                    </div>
+                    <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
+                        <img src="https://i.imgur.com/uNGdWHi.png" class="image">
+                    </div>
+                </div>
             </div>
-            <div class="floating-label">
-              <input placeholder="Password" type="password" name="password" id="password" autocomplete="off">
-              <label for="password">Password:</label>
-            </div>
-            <button type="submit"(click)="gotodashbord()">Log in</button>
-            <hr>
-            <div class="floating-label">
-              <label>
-                <a></a>
-              </label>
-            </div>
-           </form>
 
+            <div class="col-lg-6">
+                <form class="row g-3" action="">
+                  <div class="card2 card border-0 px-4 py-5">
+
+                    <div class="row px-3">
+                        <label class="mb-1"><h6 class="mb-0 text-sm">Email Address</h6></label>
+                        <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address">
+                    </div>
+                    <div class="row px-3">
+                        <label class="mb-1"><h6 class="mb-0 text-sm">Password</h6></label>
+                        <input type="password" name="password" placeholder="Enter password">
+                    </div>
+                    <div class="row px-3">
+                      <div class="form-checkbox">
+                       <p>I agree to the <a href="#" class="text">Terms and Conditions</a>
+                      <input type="checkbox" name="checkbox">
+                            <span class="checkmark"></span>
+
+                      </div>
+                    </div>
+                    <div class="row px-3 mb-4 mt-3">
+                      <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a>
+
+                    </div>
+                    <div class="row mb-3 px-3">
+                        <button type="submit" class="btn btn-blue text-center">Login</button>
+                    </div>
+                    <div class="row mb-4 px-3">
+                        <small class="font-weight-bold">Don't have an account? <a class="text-dange" routerLink="['/New-User']">Register</a></small>
+                    </div>
+                </div>
+                </form>
+            </div>
         </div>
+
     </div>
   </div>
 </div>
