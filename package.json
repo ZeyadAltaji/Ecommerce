@@ -9,7 +9,7 @@
     "test": "ng test",
     "Ecommerce-start":"ng serve --project=\"my-app\" --port 4201",
     "Authentication-start":"ng serve --project=\"authentication\" --port 4202",
-    "dashboard-start":"ng serve --project=\"Dashboard\" --port 4203"
+    "dashboard-start":"ng serve --project=\"dashboard\" --port 4203"
   },
   "private": true,
   "dependencies": {
