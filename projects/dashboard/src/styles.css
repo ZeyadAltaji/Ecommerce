@@ -41,6 +41,7 @@ body{
   background: var(--color-background);
   user-select: none;
   overflow: hidden;
+  color: var(--color-dark);
 }
 a{
   color: var(--color-dark);
