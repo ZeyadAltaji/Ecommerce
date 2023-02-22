@@ -57,7 +57,7 @@ section.middle .header{
   height: 92px; border-radius: 50%;
 }
 .insights svg{
-  width: 7rem; height: 7rem;
+  width: 8rem; height: 8rem;
 }
 .insights svg circle{
   fill: none;
@@ -147,3 +147,12 @@ table tbody tr:last-child td{
   color: var(--color-primary);
 }
 
+/* canvas chart */
+
+canvas#chart{
+  background: var(--color-white);
+  max-width: 100%;
+  margin-top: 2rem;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+}
