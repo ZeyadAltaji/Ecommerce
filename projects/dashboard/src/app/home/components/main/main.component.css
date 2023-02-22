@@ -31,13 +31,13 @@
   color: var(--color-white);
   font-size: 2rem;
 }
-.insights >div.Expenses span{
+.insights > div.Expenses span{
   background: var(--color-danger);
 }
-.insights >div.income span{
+.insights > div.income span{
   background: var(--color-success);
 }
-.insights >div .middle{
+.insights > div .middle{
   display: flex; align-items: center;
   justify-content: space-between;
 }
@@ -138,3 +138,4 @@ table tbody tr:last-child td{
   margin: 1rem auto;
   color: var(--color-primary);
 }
+

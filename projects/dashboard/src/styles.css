@@ -39,6 +39,7 @@ body{
   width: 100vw;
   height: 100vw;
   font-family:poppins,sans-serif;
+  font-size: 0.88rem;
   background: var(--color-background);
   user-select: none;
   overflow: hidden;
@@ -70,14 +71,8 @@ h5{
 small{
   font-size: 0.75rem;
 }
-.profile-photo{
-  width: 2.8rem;
-  height: 2.8rem;
-  border-radius: 50%;
-  overflow: hidden;
-}
 .text-muted{
-  color: var(--color-info-light);
+  color: var(--color-info-dark);
 }
 p{
   color: var(--color-dark-variant);
