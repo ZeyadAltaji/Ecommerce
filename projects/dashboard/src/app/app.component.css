@@ -9,4 +9,10 @@
   background: gray;
  }
 
+ .container main{
+  margin-top: 1.4rem;
+}
 
+.container .rigth{
+  margin-top: 1.4rem;
+}
