@@ -1,3 +1,11 @@
+section.middle{
+  margin-left: 4rem;
+
+}
+section.middle .header{
+  display: flex;
+  align-items: center;
+}
 
 .date{
   display: inline-block;
