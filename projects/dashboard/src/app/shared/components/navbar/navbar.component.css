@@ -1,14 +1,14 @@
-aside .top{
+.top{
   background: white;
   display: flex;align-items: center;
   justify-content: space-around;
   margin-top: 1.4rem;
 }
-aside .logo{
+.logo{
   display: flex;
   gap:0.8rem;
 }
-aside .logo img{
+.logo img{
   width: 2rem;height: 2rem;
 }
  .close{
