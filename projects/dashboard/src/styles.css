@@ -24,6 +24,7 @@
   --padding-1:1.2rem;
 
   --box-shadow:0 2rem 3rem var(var(--color-light));
+  --transition: all ease 300ms;
 }
 *{
   margin: 0; padding: 0;

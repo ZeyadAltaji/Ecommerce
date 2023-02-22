@@ -1,3 +1,6 @@
+main{
+  margin-top: 1.4rem;
+}
 .date{
   display: inline-block;
   background: var(--color-light);
@@ -19,7 +22,7 @@
   padding: var(--card-padding);
   border-radius: var(--card-border-radius);
   margin-top: 1rem; box-shadow: var(--box-shadow);
-  transition: all ease 300ms;
+  transition: var(--transition);
 }
 .insights > div:hover{
   box-shadow: none;
@@ -80,4 +83,60 @@
   margin-top: 1.3rem;
   display: block;
   font-weight: 500;
+}
+
+
+/* ***********************  order list table  *********************** */
+
+.order{
+  margin-top: 2rem;
+}
+.order h2{
+  margin-bottom: 2rem;
+}
+.order table{
+  background: var(--color-white);
+  width: 100%;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+.order table:hover{
+  box-shadow: none;
+
+}
+table tbody {
+  display: block;
+  max-height: 300px;
+  border-radius: 5rem;
+  overflow-y: scroll;
+}
+table tbody::-webkit-scrollbar {
+  width: 10px;
+  background-color:var(--color-light);
+  border-radius: var(--border-radius-1);
+}
+table tbody::-webkit-scrollbar-thumb {
+  background-color:gray;
+  border-radius: var(--border-radius-1);
+}
+table thead, table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+table tbody td{
+  height: 2.8rem;
+  border-bottom: 1px solid var(--color-light);
+  color: var(--color-dark-variant);
+}
+table tbody tr:last-child td{
+  border: none;
+}
+.order a {
+  text-align: center; display: block;
+  margin: 1rem auto;
+  color: var(--color-primary);
 }

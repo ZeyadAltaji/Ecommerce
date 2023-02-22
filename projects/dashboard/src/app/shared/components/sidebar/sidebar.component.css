@@ -13,11 +13,11 @@ h3{
   gap:1rem;
   align-items: center;
   position: relative;height: 3.7rem;
-  transition: all 300ms ease;
+  transition: var(--transition);
 }
 .sidebar a span{
   font-size: 1.6rem;
-  transition: all 300ms ease;
+  transition: var(--transition);
 }
 .sidebar a:last-child{
   position: absolute;
