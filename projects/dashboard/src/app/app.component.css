@@ -1,17 +1,10 @@
-.container{
+main{
   display: grid;
-  width: 96%; margin: 0 auto;
-  gap:1.8rem; grid-template-columns: 14rem auto 23rem;
-
-}
-.container aside{
-  height: 100vh;
- }
-
- .container main{
-  margin-top: 1.4rem;
+  grid-template-columns: 16rem auto 30rem;
+  gap: 2rem; width: 96%;
+  margin: 1rem auto 4rem;
 }
 
-.container .rigth{
-  margin-top: 1.4rem;
-}
+
+
+
