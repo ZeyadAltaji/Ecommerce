@@ -94,13 +94,3 @@ b{
 .warning{
   color: var(--color-warning);
 }
-.container{
-  display: grid;
-  width: 96%; margin: 0 auto;
-  gap:1.8rem; grid-template-columns: 14rem auto 23rem;
-}
-aside{
-  height: 100vh;
-  background: gray;
- }
-
