@@ -65,9 +65,6 @@
   overflow: hidden;
 }
 /* sales-analytics */
-.sales-analytics .header{
-
-}
 .sales-analytics .sales{
   background: var(--color-white);
   border-radius: var(--card-border-radius);

@@ -142,9 +142,23 @@ table tbody tr:last-child td{
   border: none;
 }
 .order a {
-  text-align: center; display: block;
+  text-align: center; display: flex;
   margin: 1rem auto;
   color: var(--color-primary);
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+}
+.analytics{
+  display: block;
+}
+.analytics .Show{
+  text-align: center; display: flex;
+  margin: 1rem auto;
+  color: var(--color-primary);
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
 }
 canvas#doubleLineCanvas{
   background: var(--color-white);
