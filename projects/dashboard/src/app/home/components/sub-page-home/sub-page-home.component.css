@@ -108,9 +108,34 @@
   margin-top: 3rem;
   }
   .sales-analytics .sales{
-    width: 45rem;
+    width: 66vw;
   }
   .header{
     display: none;
+  }
+  .sales-analytics{
+    width: 66vw;
+    left: 50%;
+    margin: 2rem 0 0 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .updates{
+    display: none;
+  }
+  .sales-analytics {
+  margin-top: 3rem;
+  }
+  .sales-analytics .sales{
+    width: 120%;
+    margin: 0;
+  }
+  .header{
+    display: none;
+  }
+  .sales-analytics{
+    width: 100%;
+    left: 50%;
+    margin: 2rem 0 0 0;
   }
 }

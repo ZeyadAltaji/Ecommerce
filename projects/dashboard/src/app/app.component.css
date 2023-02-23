@@ -19,6 +19,7 @@ aside
   padding-top: 12px;
 
 }
+/* tab */
 @media screen and (max-width: 1024px) {
   main{
     display: block;
@@ -34,3 +35,4 @@ aside
     display: none;
   }
 }
+

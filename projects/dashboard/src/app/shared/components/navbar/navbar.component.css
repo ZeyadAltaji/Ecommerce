@@ -92,4 +92,12 @@
     color: var(--color-dark);
    }
  }
-
+ @media screen and (max-width: 600px) {
+  nav .profile-area{
+    gap:2.6rem;
+   }
+   nav .profile h5,
+   nav .profile span{
+    display: none;
+   }
+}

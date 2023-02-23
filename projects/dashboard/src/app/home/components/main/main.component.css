@@ -172,9 +172,66 @@ canvas#doubleLineCanvas{
 @media screen and (max-width: 1024px) {
   .middle .insights{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
+  .middle .order{
+    width: 100%;
+    left: 50%;
+    margin: 2rem 0 0 0;
+    display: block;
+
+    justify-content: center;
+   }
+   .order table{
+    width: 66vw;
+   }
+   .order table thead tr th:nth-child(3),.order table thead tr th:nth-child(6){
+     display: none;
+   }
+   .order table tbody tr td:nth-child(3),.order table tbody tr td:nth-child(6){
+
+     display: none;
+   }
+   .middle .analytics {
+    width: 66vw;
+
+   }
   .middle .analytics canvas{
+
     margin: 3rem 0 1rem;
   }
+
 }
+@media screen and (max-width: 600px) {
+  .middle .insights{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .middle .order{
+    width: 100%;
+      margin: 3rem 0 0 0;
+  }
+  .middle .order table{
+    width: 100%;
+       margin:0;
+  }
+  .order table thead tr th:nth-child(3),.order table thead tr th:nth-child(6),
+  .order table thead tr th:nth-child(7),.order table thead tr th:nth-child(8){
+    display: none;
+  }
+  .order table tbody tr td:nth-child(3),.order table tbody tr td:nth-child(6),
+  .order table tbody tr td:nth-child(7),.order table tbody tr td:nth-child(8){
+
+    display: none;
+  }
+  .middle .analytics {
+    width: 62vw;
+
+   }
+  .middle .analytics canvas{
+
+    margin: 3rem 0 1rem;
+  }
+  
+}
+
