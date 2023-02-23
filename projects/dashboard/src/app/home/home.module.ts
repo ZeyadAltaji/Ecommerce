@@ -11,8 +11,9 @@ import { SubPageHomeComponent } from './components/sub-page-home/sub-page-home.c
     SubPageHomeComponent
   ],
   imports: [
-    CommonModule
-  ],exports:[
+    CommonModule,
+    
+    ],exports:[
     MainComponent,
     SubPageHomeComponent
   ]
