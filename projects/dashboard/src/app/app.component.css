@@ -19,3 +19,18 @@ aside
   padding-top: 12px;
 
 }
+@media screen and (max-width: 1024px) {
+  main{
+    display: block;
+  }
+  aside{
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 3;
+    background: var(--color-white);
+    width: 22rem;
+    height: 100vh;
+    box-shadow: 2rem 0 2rem var(--color-primary-light);
+    display: none;
+  }
+}

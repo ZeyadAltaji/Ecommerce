@@ -75,3 +75,21 @@
   display: none;
  }
 
+
+
+
+ /*Responsive media Queries    */
+ @media screen and (max-width: 1024px) {
+  nav .search-bar{
+    display: none;
+  }
+  nav .profile-area{
+    gap:2rem;
+   }
+   nav .profile-area button#meun-btn{
+    display: inline;
+    background: transparent;
+    color: var(--color-dark);
+   }
+ }
+

@@ -65,3 +65,22 @@ border-radius: var(--border-radius-1);
 {
   font-weight: 500;
 }
+
+@media screen and (max-width: 1024px) {
+  aside button.close-btn{
+    display: inline-block;
+    width: 3rem;height: 3rem;
+    position: absolute;
+    top: 1rem;right: 1rem;
+    z-index: 4;
+    background: transparent;
+    color: var(--color-dark);
+  }
+  button:hover{
+    cursor: pointer;
+  }
+  .sidebar{
+    margin-top: 4rem;
+  }
+  
+}

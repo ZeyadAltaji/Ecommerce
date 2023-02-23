@@ -97,3 +97,20 @@
 .sales-analytics .sales .sale:hover{
   background: var(--color-light);
 }
+
+
+
+@media screen and (max-width: 1024px) {
+  .updates{
+    display: none;
+  }
+  .sales-analytics {
+  margin-top: 3rem;
+  }
+  .sales-analytics .sales{
+    width: 45rem;
+  }
+  .header{
+    display: none;
+  }
+}
