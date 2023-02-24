@@ -100,7 +100,7 @@ section.middle .header{
 .order h2{
   margin-bottom: 2rem;
 }
-.order table{
+.order .table{
   background: var(--color-white);
   width: 100%;
   border-radius: var(--card-border-radius);
@@ -109,36 +109,36 @@ section.middle .header{
   box-shadow: var(--box-shadow);
   transition: var(--transition);
 }
-.order table:hover{
+.order .table:hover{
   box-shadow: none;
 
 }
-table tbody {
+.table tbody {
   display: block;
   max-height: 300px;
   border-radius: 5rem;
   overflow-y: scroll;
 }
-table tbody::-webkit-scrollbar {
+.table tbody::-webkit-scrollbar {
   width: 10px;
   background-color:var(--color-light);
   border-radius: var(--border-radius-1);
 }
-table tbody::-webkit-scrollbar-thumb {
+.table tbody::-webkit-scrollbar-thumb {
   background-color:gray;
   border-radius: var(--border-radius-1);
 }
-table thead, table tbody tr {
+.table thead, .table tbody tr {
   display: table;
   width: 100%;
   table-layout: fixed;
 }
-table tbody td{
+.table tbody td{
   height: 2.8rem;
   border-bottom: 1px solid var(--color-light);
   color: var(--color-dark-variant);
 }
-table tbody tr:last-child td{
+.table tbody tr:last-child td{
   border: none;
 }
 .order a {
@@ -182,13 +182,13 @@ canvas#doubleLineCanvas{
 
     justify-content: center;
    }
-   .order table{
+   .order .table{
     width: 66vw;
    }
-   .order table thead tr th:nth-child(3),.order table thead tr th:nth-child(6){
+   .order .table thead tr th:nth-child(3),.order .table thead tr th:nth-child(6){
      display: none;
    }
-   .order table tbody tr td:nth-child(3),.order table tbody tr td:nth-child(6){
+   .order .table tbody tr td:nth-child(3),.order .table tbody tr td:nth-child(6){
 
      display: none;
    }
@@ -211,16 +211,16 @@ canvas#doubleLineCanvas{
     width: 100%;
       margin: 3rem 0 0 0;
   }
-  .middle .order table{
+  .middle .order .table{
     width: 100%;
        margin:0;
   }
-  .order table thead tr th:nth-child(3),.order table thead tr th:nth-child(6),
-  .order table thead tr th:nth-child(7),.order table thead tr th:nth-child(8){
+  .order .table thead tr th:nth-child(3),.order .table thead tr th:nth-child(6),
+  .order .table thead tr th:nth-child(7),.order .table thead tr th:nth-child(8){
     display: none;
   }
-  .order table tbody tr td:nth-child(3),.order table tbody tr td:nth-child(6),
-  .order table tbody tr td:nth-child(7),.order table tbody tr td:nth-child(8){
+  .order .table tbody tr td:nth-child(3),.order .table tbody tr td:nth-child(6),
+  .order .table tbody tr td:nth-child(7),.order .table tbody tr td:nth-child(8){
 
     display: none;
   }
@@ -232,6 +232,6 @@ canvas#doubleLineCanvas{
 
     margin: 3rem 0 1rem;
   }
-  
+
 }
 
