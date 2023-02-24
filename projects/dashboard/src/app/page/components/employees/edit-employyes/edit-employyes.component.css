@@ -31,6 +31,9 @@ hr{
   text-align: initial;
   border-right:1px solid gray ;
 }
+.right{
+  border-right:1px solid gray ;
+}
 .hr{
   width: auto;
   margin-top: 1rem;
