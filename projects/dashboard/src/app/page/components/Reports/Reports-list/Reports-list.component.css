@@ -1,4 +1,4 @@
-.Employyes-list{
+.Reports-list{
   width: 130%;
 }
 .top{
@@ -27,7 +27,14 @@
 hr{
   border-bottom: 1px solid gray;
   width: 130%;
-  }
+}
+.line{
+  border-bottom: 1px solid gray;
+  width: 57%;
+  justify-items: center;
+  margin: 19px 30px;
+
+}
 .list{
   margin-top: 2rem;
 }
@@ -47,7 +54,7 @@ hr{
 
 .table .tbody {
   display: block;
-  max-height: 600px;
+  max-height: 210px;
   border-radius: 5rem;
   overflow-y: scroll;
 }
@@ -82,12 +89,23 @@ hr{
   align-items: center;
 }
 .table .tbody tr .action span:nth-child(1){
-  color: var(--color-primary);
+  color: var(--bs-black);
 }
 .table .tbody tr .action span:nth-child(2){
-  color: var(--color-warning);
+  color: var(--bs-black);
 }
-.table .tbody tr .action span:nth-child(3){
+.table .tbody tr .action span:nth-child(1):hover{
+  color: var(--color-primary);
+}
+.table .tbody tr .action span:nth-child(2):hover{
   color: var(--color-danger);
+}
 
+
+canvas#doubleLineCanvas{
+  background: var(--color-white);
+  max-width: 100%;
+  margin-top: 2rem;
+  border-radius:var(--card-border-radius) ;
+  padding: var(--card-padding);
 }
