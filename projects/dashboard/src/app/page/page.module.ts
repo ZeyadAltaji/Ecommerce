@@ -11,6 +11,7 @@ import { ProductsEditComponent } from './components/products/components/Products
 import { OrderListComponent } from './components/orders/order-list/order-list.component';
 import { ReportsListComponent } from './components/Reports/Reports-list/Reports-list.component';
 import { MessagesListComponent } from './components/Messages/Messages-list/Messages-list.component';
+import { AnalyticsComponent } from './components/Analytics/Analytics.component';
 
 
 
@@ -29,7 +30,9 @@ import { MessagesListComponent } from './components/Messages/Messages-list/Messa
     //Reports
     ReportsListComponent,
     //Messages
-    MessagesListComponent
+    MessagesListComponent,
+    // Analytics
+    AnalyticsComponent
 
   ],
   imports: [
@@ -50,7 +53,9 @@ import { MessagesListComponent } from './components/Messages/Messages-list/Messa
     //Reports
     ReportsListComponent,
     //Messages
-    MessagesListComponent
+    MessagesListComponent,
+    // Analytics
+    AnalyticsComponent
   ]
 })
 export class PageModule { }

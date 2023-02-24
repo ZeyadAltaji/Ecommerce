@@ -12,6 +12,7 @@ import { ProductsEditComponent } from './page/components/products/components/Pro
 import { OrderListComponent } from './page/components/orders/order-list/order-list.component';
 import { ReportsListComponent } from './page/components/Reports/Reports-list/Reports-list.component';
 import { MessagesListComponent } from './page/components/Messages/Messages-list/Messages-list.component';
+import { AnalyticsComponent } from './page/components/Analytics/Analytics.component';
 
 const routes: Routes = [
   {
@@ -38,7 +39,7 @@ const routes: Routes = [
       }
     ]
   },
-  // emp
+  //emp
   {
     path:'Employyes',
     component:EmployeesListComponent
@@ -50,7 +51,7 @@ const routes: Routes = [
     path:'edit-employyes',
     component:EditEmployyesComponent
   },
-  // prodcuts
+  //prodcuts
   {
     path:'Prodcuts',
     component:ProductsListComponent
@@ -63,19 +64,25 @@ const routes: Routes = [
     path:'Edit-Products',
     component:ProductsEditComponent
   },
-  // order
+  //order
   {
     path:'Order-List',
     component:OrderListComponent
   },
-  //  Reports
+  //Reports
   {
     path:'Reports-list',
     component:ReportsListComponent
   },
+  //Messages
   {
     path:'Messages-list',
     component:MessagesListComponent
+  },
+  //Analytics
+  {
+    path:'Analytics',
+    component:AnalyticsComponent
   }
 
 
