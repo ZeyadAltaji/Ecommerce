@@ -18,4 +18,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     NavbarComponent,
    ]
 })
-export class SharedModule { }
+export class SharedModule {
+
+
+
+}

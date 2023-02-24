@@ -3,6 +3,15 @@
   background: var(--color-white);
   border-radius: var(--card-border-radius);
 }
+/* .right .recent-update .updates::-webkit-scrollbar {
+  width: 10px;
+  background-color:var(--color-light);
+  border-radius: var(--border-radius-1);
+}
+.right .recent-update .updates::-webkit-scrollbar-thumb {
+  background-color:gray;
+  border-radius: var(--border-radius-1);
+} */
 .right .recent-update img{
   width: 3.4rem;
 
