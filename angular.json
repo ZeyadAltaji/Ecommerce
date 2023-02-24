@@ -288,7 +288,8 @@
               "projects/dashboard/src/assets"
             ],
             "styles": [
-              "projects/dashboard/src/styles.css"
+              "projects/dashboard/src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           }

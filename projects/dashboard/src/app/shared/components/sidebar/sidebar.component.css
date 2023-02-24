@@ -24,6 +24,7 @@ h3{
   align-items: center;
   position: relative;
   transition: var(--transition);
+  text-decoration: none;
 }
 .sidebar a span{
   font-size: 1.6rem;
@@ -82,5 +83,5 @@ border-radius: var(--border-radius-1);
   .sidebar{
     margin-top: 4rem;
   }
-  
+
 }
