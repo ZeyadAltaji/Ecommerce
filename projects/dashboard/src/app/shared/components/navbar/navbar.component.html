@@ -15,7 +15,15 @@
           <img src="../../../../assets/user/zeyad.jpg" alt="">
         </div>
         <h5>Zeyad</h5>
-        <span class="material-icons">expand_more</span>
+        <span class="material-icons" (click)="dropdown()">expand_more</span>
+      </div>
+      <div class="drop-down" [class.active-dropdown]="showdropdown">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+            My Profile
+          </a>
+           <a href="#" class="list-group-item list-group-item-action">Log Out</a>
+         </div>
       </div>
       <!-- <button id="meun-btn" (click)="sidebarToggle()"> -->
         <button id="meun-btn" (click)="sidebarToggle()">
@@ -24,4 +32,7 @@
       </button>
     </div>
   </div>
+
  </nav>
+
+
