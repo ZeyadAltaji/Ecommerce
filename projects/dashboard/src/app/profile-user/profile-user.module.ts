@@ -5,17 +5,20 @@ import { RouterModule } from '@angular/router';
 
 
 import { ProfilePageComponent } from './Components/Profile-page/Profile-page.component';
+import { EditUserProfileComponent } from './Components/edit-user-profile/edit-user-profile.component';
 
 @NgModule({
   declarations: [
-    ProfilePageComponent
+    ProfilePageComponent,
+    EditUserProfileComponent
   ],
   imports: [
     CommonModule,
      ReactiveFormsModule,
      RouterModule
     ],exports:[
-      ProfilePageComponent
+      ProfilePageComponent,
+      EditUserProfileComponent
 
   ]
 })
