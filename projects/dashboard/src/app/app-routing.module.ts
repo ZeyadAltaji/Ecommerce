@@ -13,9 +13,10 @@ import { OrderListComponent } from './page/components/orders/order-list/order-li
 import { ReportsListComponent } from './page/components/Reports/Reports-list/Reports-list.component';
 import { MessagesListComponent } from './page/components/Messages/Messages-list/Messages-list.component';
 import { AnalyticsComponent } from './page/components/Analytics/Analytics.component';
- import { CategoryListComponent } from './page/components/Category/Category-list/Category-list.component';
+import { CategoryListComponent } from './page/components/Category/Category-list/Category-list.component';
 import { CategoryNewComponent } from './page/components/Category/Category-new/Category-new.component';
 import { CategoryEditComponent } from './page/components/Category/Category-edit/Category-edit.component';
+import { ProfilePageComponent } from './profile-user/Components/Profile-page/Profile-page.component';
 
 const routes: Routes = [
   {
@@ -99,8 +100,12 @@ const routes: Routes = [
   {
     path:'Analytics',
     component:AnalyticsComponent
+  },
+  //profile user
+  {
+    path:'My-profile',
+    component:ProfilePageComponent
   }
-
 
 ];
 
