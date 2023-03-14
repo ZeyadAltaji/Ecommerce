@@ -13,6 +13,7 @@ import { OrderListComponent } from './page/components/orders/order-list/order-li
 import { ReportsListComponent } from './page/components/Reports/Reports-list/Reports-list.component';
 import { MessagesListComponent } from './page/components/Messages/Messages-list/Messages-list.component';
 import { AnalyticsComponent } from './page/components/Analytics/Analytics.component';
+import { CategoryComponent } from './page/components/Category/Category.component';
 
 const routes: Routes = [
   {
@@ -66,7 +67,8 @@ const routes: Routes = [
   },
   // category
   {
-
+    path:'category',
+    component:CategoryComponent
   },
   //order
   {
