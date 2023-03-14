@@ -64,6 +64,10 @@ const routes: Routes = [
     path:'Edit-Products',
     component:ProductsEditComponent
   },
+  // category
+  {
+
+  },
   //order
   {
     path:'Order-List',
