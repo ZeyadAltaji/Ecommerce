@@ -17,6 +17,7 @@ import { CategoryListComponent } from './page/components/Category/Category-list/
 import { CategoryNewComponent } from './page/components/Category/Category-new/Category-new.component';
 import { CategoryEditComponent } from './page/components/Category/Category-edit/Category-edit.component';
 import { ProfilePageComponent } from './profile-user/Components/Profile-page/Profile-page.component';
+import { EditUserProfileComponent } from './profile-user/Components/edit-user-profile/edit-user-profile.component';
 
 const routes: Routes = [
   {
@@ -105,6 +106,10 @@ const routes: Routes = [
   {
     path:'My-profile',
     component:ProfilePageComponent
+  },
+  {
+    path:'Edit-My-profile',
+    component:EditUserProfileComponent
   }
 
 ];
