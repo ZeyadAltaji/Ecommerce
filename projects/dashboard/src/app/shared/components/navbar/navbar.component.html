@@ -19,10 +19,10 @@
       </div>
       <div class="drop-down" [class.active-dropdown]="showdropdown">
         <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+          <a [routerLink]="['My-profile']" class="list-group-item list-group-item-action" [routerLinkActive]="'active'" aria-current="true">
             My Profile
           </a>
-           <a href="#" class="list-group-item list-group-item-action">Log Out</a>
+           <a href="#" class="list-group-item list-group-item-action" [routerLinkActive]="'active'">Log Out</a>
          </div>
       </div>
       <!-- <button id="meun-btn" (click)="sidebarToggle()"> -->
