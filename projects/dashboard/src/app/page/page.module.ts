@@ -14,6 +14,7 @@ import { MessagesListComponent } from './components/Messages/Messages-list/Messa
 import { AnalyticsComponent } from './components/Analytics/Analytics.component';
 import { CategoryListComponent } from './components/Category/Category-list/Category-list.component';
 import { CategoryNewComponent } from './components/Category/Category-new/Category-new.component';
+import { CategoryEditComponent } from './components/Category/Category-edit/Category-edit.component';
 
 
 
@@ -37,7 +38,8 @@ import { CategoryNewComponent } from './components/Category/Category-new/Categor
     AnalyticsComponent,
     // category
     CategoryListComponent,
-    CategoryNewComponent
+    CategoryNewComponent,
+    CategoryEditComponent
 
   ],
   imports: [
@@ -63,7 +65,8 @@ import { CategoryNewComponent } from './components/Category/Category-new/Categor
     AnalyticsComponent,
     // category
     CategoryListComponent,
-    CategoryNewComponent
+    CategoryNewComponent,
+    CategoryEditComponent
   ]
 })
 export class PageModule { }
