@@ -12,6 +12,7 @@ import { OrderListComponent } from './components/orders/order-list/order-list.co
 import { ReportsListComponent } from './components/Reports/Reports-list/Reports-list.component';
 import { MessagesListComponent } from './components/Messages/Messages-list/Messages-list.component';
 import { AnalyticsComponent } from './components/Analytics/Analytics.component';
+import { CategoryComponent } from './components/Category/Category.component';
 
 
 
@@ -32,7 +33,9 @@ import { AnalyticsComponent } from './components/Analytics/Analytics.component';
     //Messages
     MessagesListComponent,
     // Analytics
-    AnalyticsComponent
+    AnalyticsComponent,
+    // category
+    CategoryComponent
 
   ],
   imports: [
@@ -55,7 +58,9 @@ import { AnalyticsComponent } from './components/Analytics/Analytics.component';
     //Messages
     MessagesListComponent,
     // Analytics
-    AnalyticsComponent
+    AnalyticsComponent,
+    // category
+    CategoryComponent
   ]
 })
 export class PageModule { }
