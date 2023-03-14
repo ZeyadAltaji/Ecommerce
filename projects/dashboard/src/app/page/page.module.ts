@@ -13,6 +13,7 @@ import { ReportsListComponent } from './components/Reports/Reports-list/Reports-
 import { MessagesListComponent } from './components/Messages/Messages-list/Messages-list.component';
 import { AnalyticsComponent } from './components/Analytics/Analytics.component';
 import { CategoryListComponent } from './components/Category/Category-list/Category-list.component';
+import { CategoryNewComponent } from './components/Category/Category-new/Category-new.component';
 
 
 
@@ -35,7 +36,8 @@ import { CategoryListComponent } from './components/Category/Category-list/Categ
     // Analytics
     AnalyticsComponent,
     // category
-    CategoryListComponent
+    CategoryListComponent,
+    CategoryNewComponent
 
   ],
   imports: [
@@ -60,7 +62,8 @@ import { CategoryListComponent } from './components/Category/Category-list/Categ
     // Analytics
     AnalyticsComponent,
     // category
-    CategoryListComponent
+    CategoryListComponent,
+    CategoryNewComponent
   ]
 })
 export class PageModule { }
