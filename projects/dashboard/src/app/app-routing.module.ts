@@ -15,6 +15,7 @@ import { MessagesListComponent } from './page/components/Messages/Messages-list/
 import { AnalyticsComponent } from './page/components/Analytics/Analytics.component';
  import { CategoryListComponent } from './page/components/Category/Category-list/Category-list.component';
 import { CategoryNewComponent } from './page/components/Category/Category-new/Category-new.component';
+import { CategoryEditComponent } from './page/components/Category/Category-edit/Category-edit.component';
 
 const routes: Routes = [
   {
@@ -75,7 +76,10 @@ const routes: Routes = [
     path:'Category-new',
     component:CategoryNewComponent
   },
-
+  {
+    path:'Edit-Category',
+    component:CategoryEditComponent
+  },
   //order
   {
     path:'Order-List',
