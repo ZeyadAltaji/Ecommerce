@@ -60,11 +60,6 @@ h6{
   box-shadow: var(--box-shadow);
   transition: var(--transition);
 }
-.anaylsis-sup{
-  margin-top: 2rem;
-}
- 
-
 canvas#doubleLineCanvas{
   background: var(--color-white);
   max-width: 100%;
