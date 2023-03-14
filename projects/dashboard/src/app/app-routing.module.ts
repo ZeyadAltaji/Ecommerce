@@ -14,6 +14,7 @@ import { ReportsListComponent } from './page/components/Reports/Reports-list/Rep
 import { MessagesListComponent } from './page/components/Messages/Messages-list/Messages-list.component';
 import { AnalyticsComponent } from './page/components/Analytics/Analytics.component';
  import { CategoryListComponent } from './page/components/Category/Category-list/Category-list.component';
+import { CategoryNewComponent } from './page/components/Category/Category-new/Category-new.component';
 
 const routes: Routes = [
   {
@@ -70,6 +71,11 @@ const routes: Routes = [
     path:'category',
     component:CategoryListComponent
   },
+  {
+    path:'Category-new',
+    component:CategoryNewComponent
+  },
+
   //order
   {
     path:'Order-List',
