@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,8 +12,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-gotodashbord(){
-  this.router.navigate(["dashbord"]);
-}
+  OnLogin(loginForm:NgForm){
+    console.log(loginForm.value);
+    this.
+
+  }
+  gotodashbord(){
+    this.router.navigate(["dashbord"]);
+  }
 
 }
