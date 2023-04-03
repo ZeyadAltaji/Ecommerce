@@ -1,4 +1,4 @@
- 
+
 <div class="containerr container-xxl">
   <div class="container-fluid  ">
     <div class="card card0 border-0">
@@ -15,31 +15,37 @@
             </div>
 
             <div class="col-lg-6">
-                <form class="row g-3" action="">
+                <form  class="row g-3" [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm)" >
                   <div class="card2 card border-0 px-4 py-5">
 
                     <div class="row px-3">
-                        <label class="mb-1"><h6 class="mb-0 text-sm">Email Address</h6></label>
-                        <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address">
+                        <label for="validationUsername" class="mb-1 form-label"><h6 class="mb-0 text-sm">User Name</h6></label>
+                        <input class="mb-4" type="text" name="text" placeholder="Enter a valid User Name" formControlName="UserName">
+                        <div    id="validationUsername" class="invalid-feedback">
+                          required user name
+                        </div>
                     </div>
                     <div class="row px-3">
-                        <label class="mb-1"><h6 class="mb-0 text-sm">Password</h6></label>
-                        <input type="password" name="password" placeholder="Enter password">
+                        <label for="validationpassword" class="mb-1 form-label"><h6 class="mb-0 text-sm">Password</h6></label>
+                        <input type="password" name="password" placeholder="Enter password" formControlName="Password">
+                        <div   id="validationpassword" class="invalid-feedback">
+                          required user name
+                        </div>
                     </div>
-                    <div class="row px-3">
+                    <!-- <div class="row px-3">
                       <div class="form-checkbox">
                        <p>I agree to the <a href="#" class="text">Terms and Conditions</a>
                       <input type="checkbox" name="checkbox">
                             <span class="checkmark"></span>
 
                       </div>
-                    </div>
+                    </div> -->
                     <div class="row px-3 mb-4 mt-3">
                       <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a>
 
                     </div>
                     <div class="row mb-3 px-3">
-                        <button type="submit" class="btn btn-blue text-center">Login</button>
+                        <button type="submit"  class="btn btn-blue text-center">Login</button>
                     </div>
                     <div class="row mb-4 px-3">
                         <small class="font-weight-bold">Don't have an account? <a class="text-dange" routerLink="['/New-User']">Register</a></small>
