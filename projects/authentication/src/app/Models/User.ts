@@ -4,9 +4,16 @@ export  interface UserForLogin{
   token: string;
 }
 export interface UserForRegister {
-  FName: string;
-  LName:string;
+  Frist_Name: string;
+  Last_Name:string;
+  UserName:string;
   Email?: string;
-  password: string;
-  confirmpassword:string;
+  Password: string;
+  ComfirmPassword:string;
+ }
+ export interface BusinessAccount {
+  UserName:string;
+  Email?: string;
+  Password: string;
+  ComfirmPassword:string;
  }
