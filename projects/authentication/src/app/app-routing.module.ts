@@ -5,6 +5,7 @@ import { BusinessAccountComponent } from './Areas/components/BusinessAccount/Bus
 import { LoginComponent } from './Areas/components/Login/Login.component';
 import { PaymentPageComponent } from './Areas/components/Payment-page/Payment-page.component';
 import { UserAccountComponent } from './Areas/components/UserAccount/UserAccount.component';
+import { RestPasswordComponent } from './Areas/components/RestPassword/RestPassword.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path:"BusinessAccount",
     component:BusinessAccountComponent
+  },
+  {
+    path:"Rest_Password",
+    component:RestPasswordComponent
   },
   {
     path: '**', pathMatch: 'full',
