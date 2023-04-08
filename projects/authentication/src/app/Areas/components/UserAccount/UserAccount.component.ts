@@ -3,8 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { UserForRegister } from '../../../Models/User';
  import { AuthenticationService } from '../../../services/authentication.service';
-import ValidateForms from '../../../Helper/ValidateForms';
- 
+
 @Component({
   selector: 'app-UserAccount',
   templateUrl: './UserAccount.component.html',
@@ -12,82 +11,75 @@ import ValidateForms from '../../../Helper/ValidateForms';
 })
 export class UserAccountComponent implements OnInit {
 
-   RegisterForm!: FormGroup;
-   user: UserForRegister | undefined;
+  RegisterForm!: FormGroup;
+  user!: UserForRegister;
+  userSubmitted!: boolean;
+
+  constructor(private fb: FormBuilder, private authService: AuthenticationService,
+      private router:Router,) { }
 
 
-  constructor(private fb:FormBuilder,
-    private router:Router,
-    private authService:AuthenticationService    ) { }
 
-  ngOnInit() {
-    this.NewUserForm();
-      
-  }
-  NewUserForm() {
-    this.RegisterForm =this.fb.group({
-      FName: [null, Validators.required,Validators.pattern('[a-zA-Z]{1,10}')],
-      LName: [null, Validators.required,Validators.pattern('[a-zA-Z]{1,10}')],
-      Email: [null, [Validators.email, Validators.required],Validators.pattern('[^@]+@[^@]+.[a-zA-Z]{2,10}')],
-      password: [null, [Validators.required, Validators.minLength(2)],Validators.pattern('^((?!.*[s])(?=.*[A-Z])(?=.*d).{8,99})'),],
-      passwordComfirm: [null, Validators.required,Validators.pattern('^((?!.*[s])(?=.*[A-Z])(?=.*d).{8,99})'),],
-    },
-    // { Validators: this.passwordMatchingValidatior });
-    )
-    
-  }
-//   passwordMatchingValidatior(fg: FormGroup): Validators {
-//     return fg.get('password').value === fg.get('confirmPassword').value ? null :
-//         {notmatched: true};
-// }
+    ngOnInit() {
+      this.NewUserForm();
+    }
+    NewUserForm() {
+      this.RegisterForm = this.fb.group({
+        Frist_Name: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
+        Last_Name: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
+        UserName: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
+        Email: [null, [Validators.email, Validators.required, Validators.pattern('[^@]+@[^@]+.[a-zA-Z]{2,10}')]],
+        Password: [null, [Validators.required, Validators.minLength(2), Validators.pattern('^((?!.*[s])(?=.*[A-Z])(?=.*d).{8,99})')]],
+        ComfirmPassword: [null, [Validators.required, Validators.pattern('^((?!.*[s])(?=.*[A-Z])(?=.*d).{8,99})')]],
+      });
+    }
+    onRegister(RegisterForm:FormGroup){
 
-  onSubmit(){
-      if(this.RegisterForm.valid){
-        this.authService.RegisterUser(this.userData()).subscribe(() =>
-        {
-            this.onReset();
-            // this.alertify.success('Congrats, you are successfully registered');
-            console.log('Congrats, you are successfully registered');
-        });
-        console.log(this.RegisterForm.value);
-        
-      }else{
-          console.log("invalid data !!");
-          ValidateForms.validateAllFroms(this.RegisterForm);
+      console.log(this.RegisterForm.value);
+      this.userSubmitted = true;
+
+      if (this.RegisterForm.valid) {
+           this.authService.RegisterUser(this.userData()).subscribe(() =>
+          {
+              this.onReset();
+              console.log('Congrats, you are successfully registered');
+          });
       }
-  }
+    }
+    onReset() {
+        this.RegisterForm.reset();
+    }
+    userData(): UserForRegister {
+      return {
+        Frist_Name: this.Frist_Name.value,
+        Last_Name: this.Last_Name.value,
+        UserName:this.UserName.value,
+        Email: this.Email.value,
+        Password: this.Password.value,
+        ComfirmPassword: this.ComfirmPassword.value
+      };
+    }
 
-  onReset() {
-     this.RegisterForm.reset();
+      get Frist_Name() {
+        return this.RegisterForm.get('Frist_Name') as FormControl;
+      }
+      get Last_Name() {
+        return this.RegisterForm.get('Last_Name') as FormControl;
+      }
+      get UserName() {
+        return this.RegisterForm.get('UserName') as FormControl;
+      }
+      get Email() {
+        return this.RegisterForm.get('Email') as FormControl;
+      }
+      get Password() {
+        return this.RegisterForm.get('Password') as FormControl;
+      }
+      get ComfirmPassword() {
+        return this.RegisterForm.get('ComfirmPassword') as FormControl;
+      }
+
+
 }
 
-userData(): UserForRegister {
-  return this.user = {
-      FName: this._FName.value,
-      LName: this._FName.value,
-      Email: this._Email.value,
-      password: this._password.value,
-      confirmpassword: this._confirmpassword.value
-  };
-}
-
-  get _FName() {
-    return this.RegisterForm.get('first_name') as FormControl;
-  }
-  get _LName() {
-    return this.RegisterForm.get('last_name') as FormControl;
-  }
-  get _Email() {
-    return this.RegisterForm.get('Email') as FormControl;
-  }
-  get _password() {
-    return this.RegisterForm.get('password') as FormControl;
-  }
-  get _confirmpassword() {
-    return this.RegisterForm.get('comfirm_password') as FormControl;
-  }
-
-  
-}
- 
 

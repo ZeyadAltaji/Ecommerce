@@ -8,30 +8,36 @@
           <p class="text-2"><span>تكملة </span> ظظظظظ </p>
 
         </div>
-        <form class="form-detail"  id="myform" [formGroup]="RegisterForm" (ngSubmit)="onSubmit()" >
-          <h2>Welcome to our website</h2>
+        <form class="form-detail" id="myform" [formGroup]="RegisterForm" (ngSubmit)="onRegister(RegisterForm)">
+
+           <h2>Welcome to our website</h2>
           <div class="form-group">
+
             <div class="form-row form-row-1">
               <label for="first_name">First Name</label>
-              <input formControlName="first_name" type="text" name="first_name" id="first_name" class="input-text">
+              <input formControlName="Frist_Name" type="text"  class="input-text">
             </div>
             <div class="form-row form-row-1">
-              <label for="last_name">Last Name</label>
-              <input formControlName="last_name" type="text" name="last_name" id="last_name" class="input-text">
+              <label for="Last_Name">Last Name</label>
+              <input formControlName="Last_Name" type="text" class="input-text">
             </div>
           </div>
           <div class="form-row">
+            <label for="UserName">Your User Name</label>
+            <input formControlName="UserName" type="text"  class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+          </div>
+          <div class="form-row">
             <label for="your_email">Your Email</label>
-            <input formControlName="email" type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+            <input formControlName="Email" type="email"  class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
           </div>
           <div class="form-group">
             <div class="form-row form-row-1 ">
               <label for="password">Password</label>
-              <input formControlName="password" type="password" name="password" id="password" class="input-text" required>
+              <input formControlName="Password" type="password"   class="input-text" required>
             </div>
             <div class="form-row form-row-1">
-              <label for="comfirm-password">Comfirm Password</label>
-              <input formControlName="comfirm_password" type="password" name="comfirm_password" id="comfirm_password" class="input-text" required>
+              <label for="passwordConfirm">confirm Password</label>
+              <input  formControlName="ComfirmPassword" type="password"  class="input-text" required>
             </div>
           </div>
           <div class="form-checkbox">
@@ -41,7 +47,9 @@
             </label>
           </div>
           <div class="form-row-last">
-            <input type="submit" name="register" class="register" value="Register">
+            <!-- <input type="submit" name="register" class="register" value="Register"> -->
+            <button type="submit" class="btn btn-primary">Register</button>
+
           </div>
           <hr>
           <div class="form-checkbox">

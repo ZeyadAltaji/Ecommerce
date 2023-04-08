@@ -310,3 +310,13 @@
 		padding:  0;
 	}
 }
+
+
+
+.invalid-feedback{
+  color:red;
+}
+
+.ng-invalid.ng-touched{
+  border-color:red;
+}
