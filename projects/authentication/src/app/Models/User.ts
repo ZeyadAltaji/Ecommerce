@@ -17,3 +17,7 @@ export interface UserForRegister {
   Password: string;
   ComfirmPassword:string;
  }
+export interface RestPassword{
+  UserName:string;
+  Email?: string;
+}
