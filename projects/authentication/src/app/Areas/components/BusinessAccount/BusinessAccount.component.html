@@ -4,22 +4,26 @@
 
       <div class="signup-form">
         <div class="title">Let’s create your free name project Business account</div>
-      <form action="#">
+        <form  [formGroup]="BusinessAccountForm" (ngSubmit)="OnBusinessAccount(BusinessAccountForm)">
           <div class="input-boxes">
             <div class="input-box">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Enter your name" required>
+              <input formControlName="UserName" type="text" placeholder="Enter your name" required>
             </div>
             <div class="input-box">
               <i class="fas fa-envelope"></i>
-              <input type="text" placeholder="Enter the email you'd like to use for your business account" required>
+              <input formControlName="Email" type="email" placeholder="Enter the email you'd like to use for your business account" required>
             </div>
             <div class="input-box">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Enter your password" required>
+              <input formControlName="Password" type="password" placeholder="Enter your password" required>
+            </div>
+            <div class="input-box">
+              <i class="fas fa-lock"></i>
+              <input formControlName="ComfirmPassword" type="password" placeholder="Enter your Comfirm Password" required>
             </div>
             <div class="button input-box">
-              <input type="submit" value="Sumbit">
+              <input type="submit" value="Register">
             </div>
             <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
           </div>

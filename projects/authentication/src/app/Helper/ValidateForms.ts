@@ -1,6 +1,9 @@
 import { FormControl, FormGroup } from "@angular/forms";
 
 export default class ValidateForms{
+  static validateAllFromsFiled(RegisterForm: FormGroup<any>) {
+    throw new Error('Method not implemented.');
+  }
   static validateAllFroms(formGroup:FormGroup)
   {
     Object.keys(formGroup.controls).forEach(filed=>{
