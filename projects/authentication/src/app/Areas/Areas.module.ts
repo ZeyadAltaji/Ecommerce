@@ -8,6 +8,7 @@ import { PaymentPageComponent } from './components/Payment-page/Payment-page.com
 import { RouterModule } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RestPasswordComponent } from './components/RestPassword/RestPassword.component';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     LoginComponent,
     BusinessAccountComponent,
     PaymentPageComponent,
+    RestPasswordComponent
 
   ]
 })
