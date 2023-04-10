@@ -14,7 +14,7 @@ export class ProductService {
   constructor( private http: HttpClient) { }
 
   GetAllProducts():Observable<IProducts[]>{
-    return this.http.get<IProducts[]>(`${this.baseUrl}Product`).pipe()
+    return this.http.get<IProducts[]>(`${this.baseUrl}Product/AllProduct`).pipe()
 
   }
 }
