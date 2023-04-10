@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserForRegister } from '../../../Models/User';
  import { AuthenticationService } from '../../../services/authentication.service';
@@ -29,57 +29,71 @@ export class UserAccountComponent implements OnInit {
         Last_Name: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
         UserName: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
         Email: [null, [Validators.email, Validators.required, Validators.pattern('[^@]+@[^@]+.[a-zA-Z]{2,10}')]],
-        Password: [null, [Validators.required, Validators.minLength(2), Validators.pattern('^((?!.*[s])(?=.*[A-Z])(?=.*d).{8,99})')]],
-        ComfirmPassword: [null, [Validators.required, Validators.pattern('^((?!.*[s])(?=.*[A-Z])(?=.*d).{8,99})')]],
-      });
+        Password: [null, [Validators.required, Validators.minLength(2)]],
+        ComfirmPassword: [null, Validators.required],
+      },
+      { Validators: this.passwordMatchingValidator }
+      );
     }
+    passwordMatchingValidator(fc: AbstractControl): ValidationErrors | null {
+      return fc.get('Password')?.value === fc.get('ComfirmPassword')?.value ? null :
+        { notmatched: true }
+    };
+
     onRegister(RegisterForm:FormGroup){
 
-      console.log(this.RegisterForm.value);
-      this.userSubmitted = true;
+     console.log(this.RegisterForm);
+    this.userSubmitted = true;
+    if (this.RegisterForm.valid) {
+      this.authService.RegisterUser(this.userData()).subscribe(
+        (data) => {
+          this.onReset();
+          console.log('Registeration successfully !!')
 
-      if (this.RegisterForm.valid) {
-           this.authService.RegisterUser(this.userData()).subscribe(() =>
-          {
-              this.onReset();
-              console.log('Congrats, you are successfully registered');
-          });
-      }
+        },
+        (error) => {
+          console.log(error);
+
+        }
+      );
+
+    }
+
+
     }
     onReset() {
         this.RegisterForm.reset();
     }
     userData(): UserForRegister {
       return {
-        Frist_Name: this.Frist_Name.value,
-        Last_Name: this.Last_Name.value,
+        Frist_Name: this.FristName.value,
+        Last_Name: this.LastName.value,
         UserName:this.UserName.value,
-        Email: this.Email.value,
-        Password: this.Password.value,
-        ComfirmPassword: this.ComfirmPassword.value
+        Email: this._Email.value,
+        Password: this._Password.value,
+        ComfirmPassword: this._ComfirmPassword.value
       };
     }
 
-      get Frist_Name() {
+      get FristName() {
         return this.RegisterForm.get('Frist_Name') as FormControl;
       }
-      get Last_Name() {
+      get LastName() {
         return this.RegisterForm.get('Last_Name') as FormControl;
       }
       get UserName() {
         return this.RegisterForm.get('UserName') as FormControl;
       }
-      get Email() {
+      get _Email() {
         return this.RegisterForm.get('Email') as FormControl;
       }
-      get Password() {
+      get _Password() {
         return this.RegisterForm.get('Password') as FormControl;
       }
-      get ComfirmPassword() {
+      get _ComfirmPassword() {
         return this.RegisterForm.get('ComfirmPassword') as FormControl;
       }
 
 
 }
-
 
