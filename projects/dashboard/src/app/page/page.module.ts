@@ -15,6 +15,7 @@ import { AnalyticsComponent } from './components/Analytics/Analytics.component';
 import { CategoryListComponent } from './components/Category/Category-list/Category-list.component';
 import { CategoryNewComponent } from './components/Category/Category-new/Category-new.component';
 import { CategoryEditComponent } from './components/Category/Category-edit/Category-edit.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -45,7 +46,8 @@ import { CategoryEditComponent } from './components/Category/Category-edit/Categ
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],exports:[
     // Employees
     EmployeesListComponent,
