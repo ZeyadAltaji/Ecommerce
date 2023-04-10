@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { BusinessAccount } from '../../../Models/User';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { Router } from '@angular/router';
@@ -24,20 +24,34 @@ export class BusinessAccountComponent implements OnInit {
     this.BusinessAccountForm = this.fb.group({
       UserName: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
       Email: [null, [Validators.email, Validators.required, Validators.pattern('[^@]+@[^@]+.[a-zA-Z]{2,10}')]],
-      Password: [null, [Validators.required, Validators.minLength(2), Validators.pattern('^((?!.*[s])(?=.*[A-Z])(?=.*d).{8,99})')]],
-      ComfirmPassword: [null, [Validators.required, Validators.pattern('^((?!.*[s])(?=.*[A-Z])(?=.*d).{8,99})')]],
-    });
+      Password: [null, [Validators.required, Validators.minLength(2)]],
+      ComfirmPassword: [null, Validators.required]
+    },
+    { Validators: this.passwordMatchingValidator }
+    );
   }
-  OnBusinessAccount(BusinessAccountForm:FormGroup){
-    console.log(this.BusinessAccountForm.value);
-    this.userSubmitted = true;
+  passwordMatchingValidator(fc: AbstractControl): ValidationErrors | null {
+    return fc.get('Password')?.value === fc.get('ComfirmPassword')?.value ? null :
+      { notmatched: true }
+  };
 
+  OnBusinessAccount(BusinessAccountForm:FormGroup){
+
+    console.log(this.BusinessAccountForm);
+    this.userSubmitted = true;
     if (this.BusinessAccountForm.valid) {
-          this.authService.BusinessAccount(this.userData()).subscribe(() =>
-        {
-            this.onReset();
-            console.log('Congrats, you are successfully registered');
-        });
+      this.authService.BusinessAccount(this.userData()).subscribe(
+        (data) => {
+          this.onReset();
+          console.log('Registeration Business Account successfully !!')
+
+        },
+        (error) => {
+          console.log(error);
+
+        }
+      );
+
     }
   }
   onReset() {
