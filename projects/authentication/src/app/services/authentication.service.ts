@@ -13,9 +13,9 @@ export class AuthenticationService {
     return this.http.post<any>(`${this.baseUrl}Accounts/Login`,loginObj)
   }
   RegisterUser(Registerobj:UserForRegister){
-    return this.http.post<any>(`${this.baseUrl}Accounts/register`,Registerobj)
+    return this.http.post<UserForRegister>(`${this.baseUrl}Accounts/register`,Registerobj).pipe()
   }
   BusinessAccount(BusinessAccount:BusinessAccount){
-    return this.http.post<any>(`${this.baseUrl}Accounts/BusinessAccount`,BusinessAccount)
+    return this.http.post<BusinessAccount>(`${this.baseUrl}Accounts/BusinessAccount`,BusinessAccount).pipe()
   }
 }
