@@ -18,7 +18,7 @@
           <th>#</th>
           <th>Product Name</th>
           <th>Product Number</th>
-          <th>Payment</th>
+          <th>Price</th>
           <th>Status</th>
           <th>Shipping Address</th>
           <th>Billing Address</th>
@@ -31,15 +31,16 @@
         </tr>
       </thead>
       <tbody class="tbody">
-        <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
+        <tr *ngFor="let porducts of productsService.listProducts">
+          <td>{{porducts.id}}</td>
+          <td>{{porducts.title}}</td>
+          <td>{{porducts.price}}$</td>
+          <td>{{porducts.price}}</td>
+          <td>{{porducts.id_Brands}}</td>
           <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
+          <td>{{porducts.id_Car}}</td>
+          <td>{{porducts.category_Id}}</td>
+          <td>{{porducts.UserId}}</td>
           <td>
             <form>
               <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -47,153 +48,7 @@
           </td>
           <td class="primary action">
             <span class="material-icons"[routerLink]="['']">info</span>
-<span class="material-icons" [routerLink]="['/Edit-Products']">edit</span>            <span class="material-icons">delete</span>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td>
-            <form>
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            </form>
-          </td>
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-            <span class="material-icons" [routerLink]="['/Edit-Products']">edit</span>
-            <span class="material-icons">delete</span>
-          </td>
-        </tr> <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td>
-            <form>
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            </form>
-          </td>
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-<span class="material-icons" [routerLink]="['/Edit-Products']">edit</span>            <span class="material-icons">delete</span>
-          </td>
-        </tr> <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td>
-            <form>
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            </form>
-          </td>
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-<span class="material-icons" [routerLink]="['/Edit-Products']">edit</span>            <span class="material-icons">delete</span>
-          </td>
-        </tr> <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td>
-            <form>
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            </form>
-          </td>
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-<span class="material-icons" [routerLink]="['/Edit-Products']">edit</span>            <span class="material-icons">delete</span>
-          </td>
-        </tr> <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td>
-            <form>
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            </form>
-          </td>
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-<span class="material-icons" [routerLink]="['/Edit-Products']">edit</span>            <span class="material-icons">delete</span>
-          </td>
-        </tr> <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td>
-            <form>
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            </form>
-          </td>
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-<span class="material-icons" [routerLink]="['/Edit-Products']">edit</span>            <span class="material-icons">delete</span>
-          </td>
-        </tr> <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td>
-            <form>
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            </form>
-          </td>
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-<span class="material-icons" [routerLink]="['/Edit-Products']">edit</span>            <span class="material-icons">delete</span>
-          </td>
-        </tr> <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td>
-            <form>
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            </form>
-          </td>
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-<span class="material-icons" [routerLink]="['/Edit-Products']">edit</span>            <span class="material-icons">delete</span>
+            <span class="material-icons" [routerLink]="['/Edit-Products']">edit</span>            <span class="material-icons">delete</span>
           </td>
         </tr>
       </tbody>
