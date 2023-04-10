@@ -10,6 +10,7 @@ import { IProducts } from '../Models/Product';
 export class ProductService {
 
   baseUrl =Environment.baseUrl;
+  listProducts:IProducts[]=[];
   constructor( private http: HttpClient) { }
 
   GetAllProducts():Observable<IProducts[]>{
