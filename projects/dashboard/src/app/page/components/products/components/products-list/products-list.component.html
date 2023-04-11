@@ -35,7 +35,9 @@
           <td>{{porducts.id}}</td>
           <td>{{porducts.title}}</td>
           <td>{{porducts.price}}$</td>
-          <td>{{porducts.price}}</td>
+          <td>
+            <!-- <td *ngIf="{{porducts.isActive}}==0"></td> -->
+          </td>
           <td>{{porducts.id_Brands}}</td>
           <td class="warning">pending</td>
           <td>{{porducts.id_Car}}</td>
@@ -48,7 +50,7 @@
           </td>
           <td class="primary action">
             <span class="material-icons"[routerLink]="['']">info</span>
-            <span class="material-icons" [routerLink]="['/Edit-Products']">edit</span>            <span class="material-icons">delete</span>
+            <span class="material-icons" [routerLink]="['/Edit-Products/',porducts.id]">edit</span>            <span class="material-icons">delete</span>
           </td>
         </tr>
       </tbody>
