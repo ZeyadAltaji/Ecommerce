@@ -66,7 +66,7 @@ const routes: Routes = [
     component:ProductsNewComponent
   },
   {
-    path:'Edit-Products',
+    path:'Edit-Products/:id',
     component:ProductsEditComponent
   },
   // category
