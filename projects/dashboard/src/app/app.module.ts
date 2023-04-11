@@ -18,7 +18,8 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     HomeModule,
     PageModule,
-    ProfileUserModule
+    ProfileUserModule,
+    
 
   ],
   providers: [],
