@@ -13,11 +13,11 @@
         <div class="col-6 info">
             <div class="mb-3">
               <label for="NumberProducts" class="form-label">Number Products</label>
-              <input type="text" class="form-control" id="NumberProducts" aria-describedby="NumberProducts">
+              <input type="text" class="form-control" id="NumberProducts"  [value]="product.id"  aria-describedby="NumberProducts">
             </div>
             <div class="mb-3">
               <label for="NameProducts" class="form-label">Name Products</label>
-              <input type="text" class="form-control" id="NameProducts">
+              <input type="text" class="form-control"  [value]="product.title" id="NameProducts">
             </div>
             <div class="mb-3">
               <label for="TypeProducts" class="form-label">Type Products</label>
