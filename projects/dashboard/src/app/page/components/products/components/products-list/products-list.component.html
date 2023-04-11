@@ -49,11 +49,37 @@
             </form>
           </td>
           <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-            <span class="material-icons" [routerLink]="['/Edit-Products/',porducts.id]">edit</span>            <span class="material-icons">delete</span>
+            <!-- <span class="material-icons" (click)="openModal(porducts.id)">info</span> -->
+            <span class="material-icons" (click)="openModal(porducts.id)">info</span>
+            <!-- <button type="button" class="material-icons" (click)="openModal(porducts.id)">info</button> -->
+
+            <span class="material-icons" [routerLink]="['/Edit-Products/',porducts.id]">edit</span>
+            <span class="material-icons">delete</span>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
 </main>
+
+
+<!-- Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <h5>{{ product.title }}</h5>
+        <p>{{ product.description }}</p>
+        <p>Price: {{ product.price }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

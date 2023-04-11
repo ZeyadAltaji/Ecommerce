@@ -19,8 +19,11 @@ export class ProductService {
   }
   GetByIdProducts(id:string){
     return this.http.get<Product>(`${this.baseUrl}Product/Products/`+id.toString());
-
   }
+  GetByIdModal(id:number){
+    return this.http.get<Product>(`${this.baseUrl}Product/Products/${id}`.toString()).pipe()
+  }
+
   UpdateProducts(id: number){
     return this.http.get<Product>(`${this.baseUrl}Product/Products/update/`+id.toString());
   }
