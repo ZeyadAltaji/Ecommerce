@@ -54,7 +54,7 @@
             <!-- <button type="button" class="material-icons" (click)="openModal(porducts.id)">info</button> -->
 
             <span class="material-icons" [routerLink]="['/Edit-Products/',porducts.id]">edit</span>
-            <span class="material-icons">delete</span>
+            <span class="material-icons" (click)="DeleteMehtods(porducts.id)">delete</span>
           </td>
         </tr>
       </tbody>
