@@ -7,21 +7,25 @@
 <main class="Employyes-new">
  <div class="margin">
   <div class="location">
-    <form action="">
+    <form (ngSubmit)="OnSubmit()" [formGroup]="NewProductsForm">
     <div class="container text-center">
       <div class="row">
         <div class="col-6 info">
             <div class="mb-3">
-              <label for="NumberProducts" class="form-label">Number Products</label>
-              <input type="text" class="form-control" id="NumberProducts" aria-describedby="NumberProducts">
+              <label for="NumberProducts" class="form-label">Serial Number Products</label>
+              <input type="text" class="form-control" id="Serial_Id" aria-describedby="NumberProducts" formControlName="Serial_Id">
             </div>
             <div class="mb-3">
               <label for="NameProducts" class="form-label">Name Products</label>
-              <input type="text" class="form-control" id="NameProducts">
+              <input type="text" class="form-control" id="NameProducts" formControlName="NameProducts">
             </div>
             <div class="mb-3">
-              <label for="TypeProducts" class="form-label">Type Products</label>
-              <input type="text" class="form-control" id="TypeProducts">
+              <label for="TypeProducts" class="form-label">Price</label>
+              <input type="text" class="form-control" id="PriceProducts" formControlName="PriceProducts">
+            </div>
+            <div class="mb-3">
+              <label for="Password" class="form-label">Quantity Have</label>
+              <input type="text" class="form-control" id="-Quantity" formControlName="Quantity">
             </div>
             <div class="mb-3">
               <label for="Email" class="form-label">photo primary</label>
@@ -31,17 +35,37 @@
         </div>
         <div class="col-6 right">
           <div class="mb-3">
-            <label for="Email" class="form-label">Categorise</label>
-            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-              <option selected>Open this select menu</option>
+            <label class="form-label">Categorise</label>
+            <select #Category (change)="propertyView.category=Category.options[Category.options.selectedIndex].text" class="form-select" id="floatingSelect" formControlName="Categorise" aria-label="Floating label select example">
+              <option selected>Select Type Category</option>
               <option *ngFor="let categorise of categoriseList" value={{categorise.id}}>
                 {{categorise.name}}
               </option>
             </select>
-           </div>
+          </div>
           <div class="mb-3">
-            <label for="Password" class="form-label">Products</label>
-            <input type="text" class="form-control" id="Password">
+            <label class="form-label">Type Cars</label>
+            <select #Cars (change)="propertyView.cars=Cars.options[Cars.options.selectedIndex].text" class="form-select" id="floatingSelect" formControlName="Cars" aria-label="Floating label select example">
+              <option selected>Select Type Cars</option>
+              <option *ngFor="let car of CarsList" value={{car.id}}>
+                {{car.name}}
+              </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Name Brands</label>
+            <select #Brands (change)="propertyView.brands=Brands.options[Brands.options.selectedIndex].text" class="form-select" id="floatingSelect" formControlName="Brands" aria-label="Floating label select example">
+              <option selected>Select Type Brands</option>
+              <option *ngFor="let Brands of BrandList" value={{Brands.id}}>
+                {{Brands.name}}
+              </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="Description" class="form-label">Description</label>
+            <textarea type="text"
+            class="form-control"
+            rows="6" formControlName="Description"></textarea>
           </div>
           <div class="mb-3">
             <label for="ConfirmPassword" class="form-label">Products</label>
