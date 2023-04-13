@@ -10,7 +10,16 @@ export class CategoriseService {
 
   baseUrl =Environment.baseUrl;
   constructor( private http: HttpClient) { }
-  // getAllcategorise():Observable<[]>{
+  GetAllCategorise(){
 
-  // }
+  }
+  GetByIDCategorise(id:number){
+
+  }
+  UpdateCategorise(id:number){
+
+  }
+  DeleteCategorise(id:number){
+
+  }
 }
