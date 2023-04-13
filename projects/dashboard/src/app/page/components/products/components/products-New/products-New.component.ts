@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from 'projects/dashboard/src/app/services/Product.service';
-import { SweetAlertService } from 'projects/dashboard/src/app/services/SweetAlert.service';
 
 @Component({
   selector: 'app-products-New',
