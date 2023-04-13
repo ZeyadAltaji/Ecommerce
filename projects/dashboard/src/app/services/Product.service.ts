@@ -27,4 +27,12 @@ export class ProductService {
   UpdateProducts(id: number){
     return this.http.get<Product>(`${this.baseUrl}Product/Products/update/`+id.toString());
   }
+  getAllcategorise(): Observable<string[]> {
+     return this.http.get<string[]>(`${this.baseUrl}Category/categorise`);
+}
+  DeleteProducts(id: number){
+    return this.http.put<Product>(`${this.baseUrl}Product/Products/Delete/` + id.toString(), {});
+
+  }
+  // add()
 }
