@@ -7,6 +7,7 @@ import { HomeModule } from './home/home.module';
 import { PageModule } from './page/page.module';
 import { ProfileUserModule } from './profile-user/profile-user.module';
 import { SharedModule } from './shared/shared.module';
+import { SweetAlertService } from './services/SweetAlert.service';
 
 @NgModule({
   declarations: [
@@ -19,10 +20,11 @@ import { SharedModule } from './shared/shared.module';
     HomeModule,
     PageModule,
     ProfileUserModule,
-    
+
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,
+   ]
 })
 export class AppModule { }
