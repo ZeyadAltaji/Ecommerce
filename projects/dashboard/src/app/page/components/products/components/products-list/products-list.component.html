@@ -16,34 +16,22 @@
       <thead class="thead">
         <tr>
           <th>#</th>
+           <th>Serial Number</th>
           <th>Product Name</th>
-          <th>Product Number</th>
           <th>Price</th>
-          <th>Status</th>
-          <th>Shipping Address</th>
-          <th>Billing Address</th>
-          <th>Tracking Number</th>
-          <th>
-            Spectail products
-
-        </th>
+          <th>Quantity </th>
+          <th>Spectail products</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody class="tbody">
         <tr *ngFor="let porducts of productsService.listProducts">
           <td>{{porducts.id}}</td>
+          <td>{{porducts.serial_Id}}</td>
           <td>{{porducts.title}}</td>
           <td>{{porducts.price}}$</td>
-          <td>
-            <!-- <td *ngIf="{{porducts.isActive}}==0"></td> -->
-          </td>
-          <td>{{porducts.Brands_Id}}</td>
-          <td class="warning">pending</td>
-          <td>{{porducts.Car_Id}}</td>
-          <td>{{porducts.Category_Id}}</td>
-          <td>{{porducts.UserId}}</td>
-          <td>
+          <td>{{porducts.quantity}}</td>
+           <td>
             <form>
               <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
             </form>

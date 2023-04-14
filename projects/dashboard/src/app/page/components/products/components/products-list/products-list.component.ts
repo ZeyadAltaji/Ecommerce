@@ -30,7 +30,7 @@ export class ProductsListComponent implements OnInit {
   interval(1000).subscribe(() => {
     this.productsService.GetAllProducts().subscribe(listData=>{
       this.productsService.listProducts=listData;
-    },
+     },
     error => {
       console.log('httperror:');
       console.log(error);
