@@ -13,21 +13,12 @@ success(title:string,text:string){
     icon: "success",
    });
 }
-warning(title:string,text:string){
-  swal({
-    title: "Are you sure?",
-    text: "Once deleted, you will not be able to recover this imaginary file!",
+warning(title: string, text: string ){
+  return swal({
+    title: title,
+    text: text,
     icon: "warning",
-     dangerMode: true,
-  })
-  .then((willDelete) => {
-    if (willDelete) {
-      swal("Poof! Your imaginary file has been deleted!", {
-        icon: "success",
-      });
-    } else {
-      swal("Your imaginary file is safe!");
-    }
+    dangerMode: true,
   });
 }
 Delete( )
