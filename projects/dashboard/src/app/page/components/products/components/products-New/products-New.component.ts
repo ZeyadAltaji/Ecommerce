@@ -28,14 +28,15 @@ export class ProductsNewComponent implements OnInit {
   CarsList:any[]|undefined;
   BrandList:any[]|undefined;
   NewProductsForm!:FormGroup;
+  showInputs = false;
   propertyView: IProducts = {
     id: 0,
-    Serial_Id: '',
+    serial_Id: '',
     title: '',
     price: 0,
-    Quantity: 0,
+    quantity: 0,
     offers: 0,
-    new: 0,
+    New_price: 0,
     UserId: 0,
     admin_Id: 0,
     createDate: '',
@@ -72,6 +73,8 @@ export class ProductsNewComponent implements OnInit {
     this.productService.AddProducts(this.product).subscribe(
       (data)=>{
       this.sweetAlertService.success("Success", "Products added successfully.");
+      this.router.navigate(['/Prodcuts']);
+
       },(error)=>{
         console.log(error);
       }
@@ -86,7 +89,10 @@ export class ProductsNewComponent implements OnInit {
       Cars: [null, Validators.required],
       Brands: [null, Validators.required],
       Quantity:[null, Validators.required],
-      Description:[null,Validators.required]
+      Description:[null,Validators.required],
+      newprice: [null],
+      Offer: [null],
+      isActive: false,
     });
   }
   get _SerialId() {
@@ -111,19 +117,36 @@ export class ProductsNewComponent implements OnInit {
     return this.NewProductsForm.controls['Description'] as FormGroup;
   }
   get _Quantity(){
-        return this.NewProductsForm.controls['Quantity'] as FormGroup;
-
+    return this.NewProductsForm.controls['Quantity'] as FormGroup;
+  }
+  get _new_price() {
+    return this.NewProductsForm.controls['newprice']as FormGroup;
   }
 
+  get _offers() {
+    return this.NewProductsForm.controls['Offer']as FormGroup;
+  }
+
+  get _isActive() {
+    return this.NewProductsForm.controls['isActive']as FormGroup;
+  }
   MapProducts():void{
     this.product.title = this._NameProducts.value;
-    this.product.Serial_Id = this._SerialId.value;
+    this.product.serial_Id = this._SerialId.value;
     this.product.price = this._PriceProducts.value;
-    this.product.Quantity = this._Quantity.value;
+    this.product.quantity = this._Quantity.value;
     this.product.description = this._Description.value;
     this.product.Brands_Id = this._Brands.value;
     this.product.Car_Id = this._Cars.value;
     this.product.Category_Id = this._Categorise.value;
+    this.product.isActive = this._isActive.value;
+    if (this._new_price && this._offers) {
+      this.product.New_price = this._new_price.value;
+      this.product.offers = this._offers.value;
+    }
+  }
+  toggleInputs() {
+    this.showInputs = !this.showInputs;
   }
 }
 

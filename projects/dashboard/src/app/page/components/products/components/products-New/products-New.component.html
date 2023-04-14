@@ -31,7 +31,32 @@
               <label for="Email" class="form-label">photo primary</label>
               <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
             </div>
+            <div class="mb-3">
+              <a class="btn btn-primary mb-2"
+               data-bs-parent="#parentDiv"
+               role="button" aria-expanded="false"
+               (click)="toggleInputs()"><i class="material-icons"
+               style="vertical-align: middle;padding: 1px 1px 3px;"
+                >more_horiz</i>More Options
+              </a>
+              <div [class.show]="showInputs">
+                <div *ngIf="showInputs" data-bs-parent="#parentDiv">
+                  <label for="New_price" class="form-label">New Price</label>
+                  <input type="text" class="form-control" id="PriceProducts" formControlName="newprice">
+                </div>
+                 <div  *ngIf="showInputs" data-bs-parent="#parentDiv">
+                  <label for="Offer" class="form-label">Offers</label>
+                  <input type="text" class="form-control" id="offers"  formControlName="Offer">
+                 </div>
+                 <div class="form-check mt-2" *ngIf="showInputs" >
+                  <input class="form-check-input" type="checkbox" formControlName="isActive" id="defaultCheck1">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Active
+                  </label>
+                </div>
+              </div>
 
+            </div>
         </div>
         <div class="col-6 right">
           <div class="mb-3">
@@ -74,6 +99,7 @@
 
 
       </div>
+
       </div>
     </div>
     <hr class="hr">
