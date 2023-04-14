@@ -1,13 +1,13 @@
 export interface IProducts {
   id: number;
-  Serial_Id:string;
+  serial_Id:string;
   title:string;
   description?:string;
   // photos?: Photo[];
   price?:number;
-  offers:number;
-  new:number;
-  Quantity?:number;
+  offers?:number;
+  New_price?:number;
+  quantity?:number;
   UserId:number;
   admin_Id:number;
   createDate:string;
