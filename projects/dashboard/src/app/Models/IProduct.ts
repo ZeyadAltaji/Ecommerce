@@ -8,17 +8,18 @@ export interface IProducts {
   offers:number;
   new:number;
   Quantity?:number;
-  BrandsId:number;
-  CarId:number;
-  CategoryId:number;
   UserId:number;
   admin_Id:number;
   createDate:string;
   isActive:boolean;
   isDelete:boolean;
+  Brands_Id: number;
   brands:string;
+  Category_Id: number;
   category:string;
+  Car_Id: number;
   cars:string;
+
 }
 
 
