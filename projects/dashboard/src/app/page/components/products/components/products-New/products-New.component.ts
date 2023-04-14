@@ -23,7 +23,7 @@ export class ProductsNewComponent implements OnInit {
     private brandsService:BrandsService,
     private sweetAlertService :SweetAlertService
    ) { }
-   products =new Product();
+   product =new Product();
   categoriseList: any[] | undefined;
   CarsList:any[]|undefined;
   BrandList:any[]|undefined;
@@ -34,9 +34,6 @@ export class ProductsNewComponent implements OnInit {
     title: '',
     price: 0,
     Quantity: 0,
-    brands: '',
-    category: '',
-    cars: '',
     offers: 0,
     new: 0,
     UserId: 0,
@@ -44,9 +41,12 @@ export class ProductsNewComponent implements OnInit {
     createDate: '',
     isActive: false,
     isDelete: false,
-    BrandsId: 0,
-    CarId: 0,
-    CategoryId: 0
+    cars: '',
+    category: '',
+    brands: '',
+    Brands_Id: 0,
+    Category_Id: 0,
+    Car_Id: 0
   };
 
 
@@ -69,7 +69,7 @@ export class ProductsNewComponent implements OnInit {
 
   OnSubmit(){
     this.MapProducts();
-    this.productService.AddProducts(this.products).subscribe(
+    this.productService.AddProducts(this.product).subscribe(
       (data)=>{
       this.sweetAlertService.success("Success", "Products added successfully.");
       },(error)=>{
@@ -116,13 +116,14 @@ export class ProductsNewComponent implements OnInit {
   }
 
   MapProducts():void{
-    this.products.title = this._NameProducts.value;
-    this.products.Serial_Id = this._SerialId.value;
-    this.products.price=this._PriceProducts.value;
-    this.products.CategoryId = this._Categorise.value;
-    this.products.CarId=this._Cars.value;
-    this.products.BrandsId=this._Brands.value;
-    this.products.Quantity=this._Quantity.value;
-    this.products.description=this._Description.value;
+    this.product.title = this._NameProducts.value;
+    this.product.Serial_Id = this._SerialId.value;
+    this.product.price = this._PriceProducts.value;
+    this.product.Quantity = this._Quantity.value;
+    this.product.description = this._Description.value;
+    this.product.Brands_Id = this._Brands.value;
+    this.product.Car_Id = this._Cars.value;
+    this.product.Category_Id = this._Categorise.value;
   }
 }
+
