@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './home/components/main/main.component';
 import { SubPageHomeComponent } from './home/components/sub-page-home/sub-page-home.component';
-import { EmployeesListComponent } from './page/components/employees/employees-list/employees-list.component';
 import { NewEmployyesComponent } from './page/components/employees/New-employyes/New-employyes.component';
 import { EditEmployyesComponent } from './page/components/employees/edit-employyes/edit-employyes.component';
 import { ProductsListComponent } from './page/components/products/components/products-list/products-list.component';
@@ -18,6 +17,7 @@ import { CategoryNewComponent } from './page/components/Category/Category-new/Ca
 import { CategoryEditComponent } from './page/components/Category/Category-edit/Category-edit.component';
 import { ProfilePageComponent } from './profile-user/Components/Profile-page/Profile-page.component';
 import { EditUserProfileComponent } from './profile-user/Components/edit-user-profile/edit-user-profile.component';
+import { EmployeesListComponent } from './page/components/employees/employees-list/employees-list.component';
 
 const routes: Routes = [
   {
@@ -53,7 +53,7 @@ const routes: Routes = [
     component:NewEmployyesComponent
   },
   {
-    path:'edit-employyes',
+    path:'Edit-Employyes/:id',
     component:EditEmployyesComponent
   },
   //prodcuts
