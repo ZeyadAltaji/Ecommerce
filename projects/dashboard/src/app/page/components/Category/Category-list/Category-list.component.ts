@@ -32,7 +32,7 @@ export class CategoryListComponent implements OnInit {
     });
   }
   openModal(id: number) {
-    this.CategoryService.GetByIDCategorise(id)
+    this.CategoryService.GetByIdModal(id)
       .subscribe(response => {
         this.Category = response;
         const modal = document.getElementById('CategoryModal');
