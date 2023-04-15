@@ -20,6 +20,18 @@ export class CategoryEditComponent implements OnInit {
 
   ngOnInit() {
     this.EditCategoriseForm();
+    this.route.paramMap.subscribe({
+      next:(params)=>{
+        const id=params.get('id');
+        if(id){
+          this.CategoryService.GetByIDCategorise(id).subscribe({
+            next:(response)=>{
+              this.Category=response;
+            }
+          })
+        }
+      }
+    });
   }
   OnSubmit(){
     this.MapCategorise();

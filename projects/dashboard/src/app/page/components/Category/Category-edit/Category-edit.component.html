@@ -13,11 +13,11 @@
         <div class="col-6 info">
             <div class="mb-3">
               <label for="NumberCategory" class="form-label">Number Category</label>
-              <input type="text" class="form-control" id="NumberCategory" value="5465" aria-describedby="NumberCategory" disabled >
+              <input type="text" class="form-control" id="NumberCategory" [value]="Category.id" aria-describedby="NumberCategory" disabled >
             </div>
             <div class="mb-3">
               <label for="NameCategory" class="form-label">Name Category</label>
-              <input type="text" class="form-control" [value]="Category.name" id="NameCategory"ormControlName="NameCategory">
+              <input type="text" class="form-control" [value]="Category.name" id="NameCategory" formControlName="NameCategory">
             </div>
             <div class="mb-3">
               <label for="TypeCategory" class="form-label">Type Category</label>
