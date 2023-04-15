@@ -79,7 +79,7 @@ const routes: Routes = [
     component:CategoryNewComponent
   },
   {
-    path:'Edit-Category',
+    path:'Edit-Category/:id',
     component:CategoryEditComponent
   },
   //order
