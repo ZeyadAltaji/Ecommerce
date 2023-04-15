@@ -19,7 +19,6 @@ export class ProductsListComponent implements OnInit {
   @Input()
 
   listProducts: IProducts[] | undefined;
-  baseUrl='https://localhost:7241/api/'
   public ProductId: number | undefined;
   product = new Product();
   isAccordionOpen = false;

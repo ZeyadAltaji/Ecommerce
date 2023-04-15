@@ -17,24 +17,17 @@
         <tr>
           <th>#</th>
           <th>Category Name</th>
-          <th>Category Number</th>
-          <th>Status</th>
-          <th>Image</th>
-          <th>Action</th>
+           <th>Action</th>
         </tr>
       </thead>
       <tbody class="tbody">
-        <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>Yes display</td>
-          <td><img src="" alt="door.png"></td>
-
-
+        <tr  *ngFor="let Category of CategoryService.listCategory">
+          <td>{{Category.id}}</td>
+          <td>{{Category.name}}</td>
           <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-<span class="material-icons" [routerLink]="['/Edit-Category']">edit</span>            <span class="material-icons">delete</span>
+            <span class="material-icons" (click)="openModal(Category.id)">info</span>
+            <span class="material-icons" [routerLink]="['/Edit-Category/',Category.id]">edit</span>
+            <span class="material-icons" (click)="DeleteCategory(Category.id)">delete</span>
           </td>
         </tr>
 
@@ -42,3 +35,28 @@
     </table>
   </div>
 </main>
+<div class="modal fade" id="CategoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <h2 class="fw-bold mb-3">Category Number</h2>
+            <p class="mb-3">{{Category.id}}</p>
+          </li>
+          <li class="list-group-item">
+            <h2 class="fw-bold mb-3">Category Name</h2>
+            <p class="mb-3">{{Category.name}}</p>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+       </div>
+    </div>
+  </div>
+</div>
