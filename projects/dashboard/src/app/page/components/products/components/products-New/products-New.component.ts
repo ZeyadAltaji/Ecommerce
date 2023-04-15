@@ -47,7 +47,8 @@ export class ProductsNewComponent implements OnInit {
     brands: '',
     Brands_Id: 0,
     Category_Id: 0,
-    Car_Id: 0
+    Car_Id: 0,
+    description:''
   };
 
 

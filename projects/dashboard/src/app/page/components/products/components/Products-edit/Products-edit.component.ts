@@ -41,7 +41,8 @@ export class ProductsEditComponent implements OnInit {
     brands: '',
     Brands_Id: 0,
     Category_Id: 0,
-    Car_Id: 0
+    Car_Id: 0,
+    description:''
   };
 
   constructor(private route: ActivatedRoute,

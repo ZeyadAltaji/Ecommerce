@@ -37,9 +37,7 @@
             </form>
           </td>
           <td class="primary action">
-            <!-- <span class="material-icons" (click)="openModal(porducts.id)">info</span> -->
-            <span class="material-icons" (click)="openModal(porducts.id)">info</span>
-            <!-- <button type="button" class="material-icons" (click)="openModal(porducts.id)">info</button> -->
+             <span class="material-icons" (click)="openModal(porducts.id)">info</span>
 
             <span class="material-icons" [routerLink]="['/Edit-Products/',porducts.id]">edit</span>
             <span class="material-icons" (click)="DeleteMehtods(porducts.id)">delete</span>
@@ -50,24 +48,89 @@
   </div>
 </main>
 
-
 <!-- Modal -->
 <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5">{{product.title}}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
       </div>
       <div class="modal-body">
-        <h5>{{ product.title }}</h5>
-        <p>{{ product.description }}</p>
-        <p>Price: {{ product.price }}</p>
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-group list-group-flush">
+
+              <li class="list-group-item">
+                <h2 class="fw-bold mb-3">Serial Number</h2>
+                <p class="mb-3">{{product.serial_Id}}</p>
+              </li>
+              <li class="list-group-item">
+                <h2 class="fw-bold mb-3">Product Name</h2>
+                <p class="mb-3">{{product.title}}</p>
+              </li>
+              <li class="list-group-item">
+                <h2 class="fw-bold mb-3">Price</h2>
+                <p class="mb-3">{{product.price}}$</p>
+              </li>
+              <li class="list-group-item">
+                <h2 class="fw-bold mb-3">Quantity</h2>
+                <p class="mb-3">{{product.quantity}}</p>
+              </li>
+              <li class="list-group-item">
+                <h2 class="fw-bold mb-3">Offers</h2>
+                <p *ngIf="!product.offers">No offers available</p>
+                <p *ngIf="product.offers">{{product.offers}}</p>
+
+              </li>
+
+              <li class="list-group-item">
+                <ul class="list-unstyled">
+                  <li class="mb-2"><strong>Brand:</strong> {{product.brands}}</li>
+                  <li class="mb-2"><strong>Category:</strong> {{product.category}}</li>
+                 </ul>
+              </li>
+              <li class="list-group-item">
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                      <button class="accordion-button"
+                        type="button"
+                        [class.collapsed]="!isAccordionOpen"
+                        [class.expanded]="isAccordionOpen"
+                        (click)="toggleAccordion()"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#accordion-content"
+                        aria-controls="accordion-content">
+                        {{ isAccordionOpen ? 'Hide' : 'Show' }} Description
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" [class.show]="isAccordionOpen" aria-labelledby="panelsStayOpen-headingOne">
+                      <div class="accordion-body">
+                        <h2 class="fw-bold mb-3">Description</h2>
+                        <p class="mb-3">{{product.description}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <img src="../../../../../../../../my-app/src/assets/cars/10.avif" alt="{{product.title}}" class="img-fluid mb-3">
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+       </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+

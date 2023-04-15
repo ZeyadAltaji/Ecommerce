@@ -8,6 +8,8 @@ import swal from 'sweetalert';
 
 import 'bootstrap';
 import { interval } from 'rxjs';
+import { BrandsService } from 'projects/dashboard/src/app/services/Brands.service';
+import { CarService } from 'projects/dashboard/src/app/services/Car.service';
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
@@ -20,9 +22,35 @@ export class ProductsListComponent implements OnInit {
   baseUrl='https://localhost:7241/api/'
   public ProductId: number | undefined;
   product = new Product();
-
+  isAccordionOpen = false;
+  categoriseList: any[] | undefined;
+  CarsList:any[]|undefined;
+  BrandList:any[]|undefined;
+  propertyView: IProducts = {
+    id: 0,
+    serial_Id: '',
+    title: '',
+    price: 0,
+    quantity: 0,
+    offers: 0,
+    New_price:0,
+    UserId: 0,
+    admin_Id: 0,
+    createDate: '',
+    isActive: false,
+    isDelete: false,
+    cars: '',
+    category: '',
+    brands: '',
+    Brands_Id: 0,
+    Category_Id: 0,
+    Car_Id: 0,
+    description:''
+  };
   constructor(
     public productsService:ProductService,
+    private carService:CarService,
+    private brandsService:BrandsService,
     private router: Router
   ) { }
 
@@ -36,6 +64,18 @@ export class ProductsListComponent implements OnInit {
       console.log(error);
     });
   });
+  this.productsService.getAllcategorise().subscribe(data=>{
+    this.categoriseList=data;
+  console.log(data)
+});
+this.carService.GetAllCars().subscribe(data=>{
+  this.CarsList=data;
+  console.log(data)
+});
+this.brandsService.GetAllBrands().subscribe(data=>{
+  this.BrandList=data;
+  console.log(data);
+});
   }
   openModal(id: number) {
     this.productsService.GetByIdModal(id)
@@ -77,4 +117,15 @@ export class ProductsListComponent implements OnInit {
     });
   }
 
+  toggleAccordion(): void {
+    this.isAccordionOpen = !this.isAccordionOpen;
+  }
+
+  showAccordion(): void {
+    this.isAccordionOpen = true;
+  }
+
+  hideAccordion(): void {
+    this.isAccordionOpen = false;
+  }
 }
