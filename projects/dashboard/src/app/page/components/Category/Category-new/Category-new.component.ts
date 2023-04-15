@@ -14,7 +14,7 @@ export class CategoryNewComponent implements OnInit {
   NewCategoryForm!:FormGroup;
   Category=new Categorise;
 
-  constructor( private fb: FormBuilder,router: Router,
+  constructor( private fb: FormBuilder,private router: Router,
     private CategoryService:CategoriseService,
     private sweetAlertService :SweetAlertService
     ) { }
@@ -25,9 +25,9 @@ export class CategoryNewComponent implements OnInit {
   OnSubmit(){
     this.MapCategorise();
     this.CategoryService.AddCategory(this.Category).subscribe(
-      (data)=>{
+      (data) => {
         this.sweetAlertService.success("Success", "Category added successfully.");
-
+        this.router.navigate(['/category']);
       },(error)=>{
         console.log(error);
       }
