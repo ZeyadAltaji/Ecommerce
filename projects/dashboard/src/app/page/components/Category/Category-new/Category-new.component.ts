@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Categorise } from 'projects/dashboard/src/app/Classes/Categorise';
+import { SweetAlertService } from 'projects/dashboard/src/app/services/SweetAlert.service';
+import { CategoriseService } from 'projects/dashboard/src/app/services/categorise.service';
 
 @Component({
   selector: 'app-Category-new',
@@ -6,10 +11,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./Category-new.component.css']
 })
 export class CategoryNewComponent implements OnInit {
+  NewCategoryForm!:FormGroup;
+  Category=new Categorise;
 
-  constructor() { }
+  constructor( private fb: FormBuilder,router: Router,
+    private CategoryService:CategoriseService,
+    private sweetAlertService :SweetAlertService
+    ) { }
 
   ngOnInit() {
+    this.AddNewCategoriseForm();
   }
+  OnSubmit(){
+    this.MapCategorise();
+    this.CategoryService.AddCategory(this.Category).subscribe(
+      (data)=>{
+        this.sweetAlertService.success("Success", "Category added successfully.");
 
+      },(error)=>{
+        console.log(error);
+      }
+    )
+  }
+  AddNewCategoriseForm() {
+    this.NewCategoryForm = this.fb.group({
+      NameCategory: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
+
+    });
+  }
+  get _NameCategory() {
+    return this.NewCategoryForm.controls['NameCategory'] as FormGroup;
+  }
+  MapCategorise():void{
+    this.Category.name=this._NameCategory.value;
+  }
 }
