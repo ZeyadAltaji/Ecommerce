@@ -26,23 +26,71 @@
         </tr>
       </thead>
       <tbody class="tbody">
-        <tr *ngFor="let data of userService.ListUser">
-          <td>{{data.id}}</td>
-          <td>{{data.userName}}</td>
-          <td>{{ data.frist_Name + ' ' + data.last_Name }}</td>
-          <td>{{data.email}}</td>
-          <td>{{data.phone1}}</td>
-          <td>{{data.address}}</td>
+        <tr *ngFor="let dataUser of userService.ListUser">
+          <td>{{dataUser.id}}</td>
+          <td>{{dataUser.userName}}</td>
+          <td>{{ dataUser.frist_Name + ' ' + dataUser.last_Name }}</td>
+          <td>{{dataUser.email}}</td>
+          <td>{{dataUser.phone1}}</td>
+          <td>{{dataUser.address}}</td>
           <td>
-            {{ data.role === 1 ? 'Manager' : data.role === 2 ? 'Seller' : data.role === 3 ? 'Customer' : 'Unknown' }}
+            {{ dataUser.role === 1 ? 'Manager' : dataUser.role === 2 ? 'Seller' : dataUser.role === 3 ? 'Customer' : 'Unknown' }}
           </td>
           <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-            <span class="material-icons">edit</span>
-            <span class="material-icons">delete</span>
+            <span class="material-icons" (click)="openModal(dataUser.id)">info</span>
+            <span class="material-icons" [routerLink]="['/Edit-Employyes/',dataUser.id]">edit</span>
+            <span class="material-icons" (click)="DeleteMehtods(dataUser.id)">delete</span>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
 </main>
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="DataUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Info User {{ selectedEmployee?.userName }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-group list-group-flush">
+
+              <li class="list-group-item">
+                <h3>User Name: {{ selectedEmployee?.userName }}</h3>
+              </li>
+              <li class="list-group-item">
+                <h3>Full Name: {{ selectedEmployee?.frist_Name + ' ' + selectedEmployee?.last_Name }}</h3>
+              </li>
+              <li class="list-group-item">
+                <h3>Email: {{ selectedEmployee?.email }}</h3>
+              </li>
+              <li class="list-group-item">
+                <h3>Phone: {{ selectedEmployee?.phone1 }}</h3>
+              </li>
+              <li class="list-group-item">
+                <h3>Address: {{ selectedEmployee?.address }}</h3>
+              </li>
+              <li class="list-group-item">
+                <h3>Role: {{
+                  selectedEmployee?.role === 1 ? 'Manager' : selectedEmployee?.role === 2 ? 'Seller' : selectedEmployee?.role === 3 ? 'Customer' : 'Unknown'
+                }}</h3>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <div class="card" *ngFor="let data_User of userService.ListUser" >
+              <img [src]="data_User.image_userUrl"   class="card-img-top" alt="Your image description">
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="closeModal()" type="button" class="btn btn-secondary" dataUser-bs-dismiss="modal">Close</button>
+       </div>
+    </div>
+  </div>
+</div>
