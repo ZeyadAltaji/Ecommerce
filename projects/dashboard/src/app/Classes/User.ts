@@ -1,4 +1,4 @@
-import { IUser, IUserPhoto } from "../Models/IUser";
+import { IUser } from "../Models/IUser";
 
 export class User implements IUser {
   id!: number;
@@ -19,6 +19,8 @@ export class User implements IUser {
   updateDate!: Date;
   isDelete!: boolean;
   isActive!: boolean;
-  images?: IUserPhoto[];
+  image_userUrl?: string;
+  Public_id!: string;
 
 }
+

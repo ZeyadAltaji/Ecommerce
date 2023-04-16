@@ -17,11 +17,11 @@ export interface IUser {
   updateDate: Date;
   isDelete: boolean;
   isActive: boolean;
-  image?: string;
-
-}
-export interface IUserPhoto {
-  Image_userUrl: string;
+  image_userUrl?: string;
   Public_id: string;
-
 }
+// export interface IUserPhoto {
+//   Image_userUrl: string;
+//   Public_id: string;
+
+// }
