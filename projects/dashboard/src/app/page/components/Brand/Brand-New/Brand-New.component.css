@@ -1,0 +1,67 @@
+.Brand-new{
+  width: 202%;
+}
+hr{
+  width: 202%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid gray;
+}
+.margin{
+  margin-top: 2rem;
+}
+.margin .location{
+
+  background: var(--color-white);
+  width: 100%;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+.location:hover{
+  box-shadow: none;
+}
+.location .newuser{
+  display: flex;
+}
+.info{
+  text-align: initial;
+  border-right:1px solid gray ;
+}
+.right{
+  text-align: initial;
+
+}
+.hr{
+  width: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid gray;
+}
+.loc{
+  display: flex;
+  justify-content: space-around;
+  width: 13%;
+  align-items: center;
+  transform: translateX(37rem);
+}
+.btn-cancel,.btn-save{
+  border-radius: var(--card-border-radius);
+    border: 1px solid;
+     padding: 5px 10px;
+     background: transparent;
+
+}
+.btn-cancel:hover{
+  background: var(--color-danger);
+  color:var(--color-white) ;
+}
+.btn-save:hover{
+  background: var(--color-success);
+  color:var(--color-white) ;
+
+}
