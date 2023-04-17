@@ -48,8 +48,8 @@
       </a>
 
       <div class="dropdown-menu" aria-labelledby="productsDropdown" [class.show]="isDropdownOpen">
-        <a class="dropdown-item" href="#">Brand</a>
-        <a class="dropdown-item" href="#">Car</a>
+        <a class="dropdown-item"  [routerLink]="['/Brand']">Brand</a>
+        <a class="dropdown-item"  [routerLink]="['/Cars']">Car</a>
       </div>
     </div>
     <a [routerLink]="['#']" [routerLinkActive]="'active'">

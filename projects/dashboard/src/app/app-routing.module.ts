@@ -18,6 +18,11 @@ import { ProfilePageComponent } from './profile-user/Components/Profile-page/Pro
 import { EditUserProfileComponent } from './profile-user/Components/edit-user-profile/edit-user-profile.component';
 import { EmployeesListComponent } from './page/components/employees/employees-list/employees-list.component';
 import { NewEmployyesComponent } from './page/components/employees/New-employyes/New-employyes.component';
+import { CarsLsitComponent } from './page/components/Cars/Cars-lsit/Cars-lsit.component';
+import { CarsNewComponent } from './page/components/Cars/Cars-New/Cars-New.component';
+import { CarsEditComponent } from './page/components/Cars/Cars-edit/Cars-edit.component';
+import { BrandListComponent } from './page/components/Brand/Brand-list/Brand-list.component';
+import { BrandNewComponent } from './page/components/Brand/Brand-New/Brand-New.component';
 
 const routes: Routes = [
   {
@@ -110,6 +115,30 @@ const routes: Routes = [
   {
     path:'Edit-My-profile',
     component:EditUserProfileComponent
+  },
+  {
+    path:'Cars',
+    component:CarsLsitComponent
+  },
+  {
+    path:'Cars-new',
+    component:CarsNewComponent
+  },
+  {
+    path:'Edit-Cars/:id',
+    component:CarsEditComponent
+  },
+  {
+    path:'Brand',
+    component:BrandListComponent
+  },
+  {
+    path:'Brand-new',
+    component:BrandNewComponent
+  },
+  {
+    path:'Edit-Brand/:id',
+    component:BrandListComponent
   }
 
 ];
