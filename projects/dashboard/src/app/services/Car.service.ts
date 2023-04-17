@@ -11,6 +11,7 @@ import { ICars } from '../Models/ICars';
 export class CarService {
 
   baseUrl =Environment.baseUrl;
+  ListCars:ICars[]=[];
   constructor( private http: HttpClient) { }
   AddCars(car:Cars){
     return this.http.post(`${this.baseUrl}Car`,car);
@@ -19,17 +20,19 @@ export class CarService {
   GetAllCars():Observable<ICars[]>{
       return this.http.get<ICars[]>(`${this.baseUrl}Car/GetAllCar`).pipe()
   }
-  GetByIDCars(id:number){
+  GetByIDCars(id:string){
     return this.http.get<Cars>(`${this.baseUrl}Car/Cars/${id}`.toString()).pipe()
 
   }
-  UpdateCars(id:number){
-    return this.http.get<Cars>(`${this.baseUrl}Cars/update/`+id.toString());
+  UpdateCars(car:Cars){
+    return this.http.put<Cars>(`${this.baseUrl}Cars/update/`+car.id,car);
 
   }
   DeleteCars(id:number){
     return this.http.put<Cars>(`${this.baseUrl}Car/Cars/Delete/` + id.toString(), {});
   }
-
+  GetByIdModal(id:number){
+    return this.http.get<Cars>(`${this.baseUrl}Car/Cars/${id}`.toString()).pipe()
+  }
 
 }

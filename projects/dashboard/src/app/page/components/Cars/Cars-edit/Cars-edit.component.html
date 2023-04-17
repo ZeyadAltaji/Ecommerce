@@ -1,3 +1,65 @@
-<p>
-  Cars-edit works!
-</p>
+<section>
+  <div class="header">
+    <h1>Edit Cars</h1>
+  </div>
+</section>
+<hr>
+<main class="Cars-new">
+ <div class="margin">
+  <div class="location">
+    <form (ngSubmit)="OnSubmit()" [formGroup]="EditCarsForm">
+      <div class="container text-center">
+      <div class="row">
+        <div class="col-6 info">
+            <div class="mb-3">
+              <label for="NumberCar" class="form-label">Number Car</label>
+              <input type="text" class="form-control" id="NumberCar" [value]="cars.id" aria-describedby="NumberCar" disabled >
+            </div>
+            <div class="mb-3">
+              <label for="NameCar" class="form-label">Name Car</label>
+              <input type="text" class="form-control" [value]="cars.name" id="NameCar" formControlName="NameCar">
+            </div>
+            <div class="mb-3">
+              <label for="TypeCar" class="form-label">Type Car</label>
+              <input type="text" class="form-control" id="TypeCar">
+            </div>
+
+            <div class="mb-3">
+              <label for="Email" class="form-label">photo</label>
+              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+            </div>
+            <div class="mb-3">
+              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+            </div>
+            <div class="mb-3">
+              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+            </div>
+        </div>
+        <div class="col-6 right">
+          <div class="mb-3">
+            <label for="Email" class="form-label">Car</label>
+            <input type="email" class="form-control" id="Email" aria-describedby="Email">
+          </div>
+          <div class="mb-3">
+            <label for="Password" class="form-label">Car</label>
+            <input type="password" class="form-control" id="Password">
+          </div>
+          <div class="mb-3">
+            <label for="ConfirmPassword" class="form-label">Car</label>
+            <input type="password" class="form-control" id="ConfirmPassword">
+          </div>
+
+      </div>
+      </div>
+    </div>
+    <hr class="hr">
+    <div class="container text-center">
+    <div class="loc">
+      <button class="btn-save">save</button>
+      <button class="btn-cancel">cancel</button>
+    </div>
+    </div>
+    </form>
+  </div>
+ </div>
+</main>
