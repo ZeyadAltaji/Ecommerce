@@ -41,6 +41,17 @@
       <span class="material-icons">group</span>
       <h3>Employees</h3>
     </a>
+    <div class="dropdown">
+      <a class="dropdown-toggle" href="#" role="button" id="productsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown()">
+        <span class="material-icons">inventory</span>
+        <h3>Optional</h3>
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="productsDropdown" [class.show]="isDropdownOpen">
+        <a class="dropdown-item" href="#">Brand</a>
+        <a class="dropdown-item" href="#">Car</a>
+      </div>
+    </div>
     <a [routerLink]="['#']" [routerLinkActive]="'active'">
       <span class="material-icons">settings</span>
       <h3>Settings</h3>
@@ -53,5 +64,6 @@
       <span class="material-icons">logout</span>
       <h3>Logout</h3>
     </a>
+
   </div>
 </aside>
