@@ -1,3 +1,64 @@
-<p>
-  Cars-lsit works!
-</p>
+<section>
+  <div class="header">
+    <h1>Cars</h1>
+  </div>
+</section>
+<header class="top">
+  <button class="btn-add" [routerLink]="['/Cars-new']">
+    Add New Car
+    <span class="material-icons">add_circle</span>
+  </button>
+</header>
+<hr>
+<main class="Cars-list">
+  <div class="list">
+    <table class="table">
+      <thead class="thead">
+        <tr>
+          <th>#</th>
+          <th>Cars Name</th>
+          <th>Production Date</th>
+           <th>Action</th>
+        </tr>
+      </thead>
+      <tbody class="tbody">
+        <tr  *ngFor="let Car of carService.ListCars">
+          <td>{{Car.id}}</td>
+          <td>{{Car.name}}</td>
+          <td>{{Car.Production_Date}}</td>
+          <td class="primary action">
+            <span class="material-icons" (click)="openModal(Car.id)">info</span>
+            <span class="material-icons" [routerLink]="['/Edit-Cars/',Car.id]">edit</span>
+            <span class="material-icons" (click)="Deletecars(Car.id)">delete</span>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</main>
+<div class="modal fade" id="carsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <h2 class="fw-bold mb-3">Car Number</h2>
+            <p class="mb-3">{{Car.id}}</p>
+          </li>
+          <li class="list-group-item">
+            <h2 class="fw-bold mb-3">Car Name</h2>
+            <p class="mb-3">{{Car.name}}</p>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+       </div>
+    </div>
+  </div>
+</div>
