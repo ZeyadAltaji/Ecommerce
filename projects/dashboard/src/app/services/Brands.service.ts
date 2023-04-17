@@ -10,6 +10,8 @@ import { Brands } from '../Classes/Brands';
 export class BrandsService {
 
   baseUrl =Environment.baseUrl;
+  listBrands:IBrands[]=[];
+
   constructor( private http: HttpClient) { }
   AddProducts(Brand:Brands){
     return this.http.post(`${this.baseUrl}Brands`,Brand);
@@ -30,6 +32,8 @@ export class BrandsService {
     return this.http.put<Brands>(`${this.baseUrl}Brands/Brand/Delete/` + id.toString(), {});
 
   }
-
+  GetByIdModal(id:number){
+    return this.http.get<Brands>(`${this.baseUrl}Brands/Brand/${id}`.toString()).pipe()
+  }
 
 }

@@ -1,3 +1,63 @@
-<p>
-  Brand-list works!
-</p>
+<section>
+  <div class="header">
+    <h1>Brand</h1>
+  </div>
+</section>
+<header class="top">
+  <button class="btn-add" [routerLink]="['/Category-new']">
+    Add New Brand
+    <span class="material-icons">add_circle</span>
+  </button>
+</header>
+<hr>
+<main class="Brand-list">
+  <div class="list">
+    <table class="table">
+      <thead class="thead">
+        <tr>
+          <th>#</th>
+          <th>Brand Name</th>
+          <th>Brand Image</th>
+           <th>Action</th>
+        </tr>
+      </thead>
+      <tbody class="tbody">
+        <tr  *ngFor="let Brand of brandsService.listBrands">
+          <td>{{Brand.id}}</td>
+          <td>{{Brand.name}}</td>
+          <td class="primary action">
+            <span class="material-icons" (click)="openModal(Brand.id)">info</span>
+            <span class="material-icons" [routerLink]="['/Edit-Brand/',Brand.id]">edit</span>
+            <span class="material-icons" (click)="DeleteBrand(Brand.id)">delete</span>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</main>
+<div class="modal fade" id="BrandModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <h2 class="fw-bold mb-3">Brand Number</h2>
+            <p class="mb-3">{{Brand.name}</p>
+          </li>
+          <li class="list-group-item">
+            <h2 class="fw-bold mb-3">Brand Name</h2>
+            <p class="mb-3">{{Brand.name}</p>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+       </div>
+    </div>
+  </div>
+</div>
