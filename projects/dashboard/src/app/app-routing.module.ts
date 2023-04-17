@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './home/components/main/main.component';
 import { SubPageHomeComponent } from './home/components/sub-page-home/sub-page-home.component';
-import { NewEmployyesComponent } from './page/components/employees/New-employyes/New-employyes.component';
 import { EditEmployyesComponent } from './page/components/employees/edit-employyes/edit-employyes.component';
 import { ProductsListComponent } from './page/components/products/components/products-list/products-list.component';
 import { ProductsNewComponent } from './page/components/products/components/products-New/products-New.component';
@@ -18,6 +17,7 @@ import { CategoryEditComponent } from './page/components/Category/Category-edit/
 import { ProfilePageComponent } from './profile-user/Components/Profile-page/Profile-page.component';
 import { EditUserProfileComponent } from './profile-user/Components/edit-user-profile/edit-user-profile.component';
 import { EmployeesListComponent } from './page/components/employees/employees-list/employees-list.component';
+import { NewEmployyesComponent } from './page/components/employees/New-employyes/New-employyes.component';
 
 const routes: Routes = [
   {

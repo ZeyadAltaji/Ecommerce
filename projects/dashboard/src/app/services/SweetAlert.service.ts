@@ -38,6 +38,12 @@ Delete( )
       swal("Your imaginary file is safe!");
     }
   });
+} error(title: string, message: string) {
+  swal({
+    icon: 'error',
+    title: title,
+    text: message
+  });
 }
 
 
