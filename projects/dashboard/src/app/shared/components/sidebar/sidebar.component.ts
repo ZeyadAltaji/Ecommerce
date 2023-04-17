@@ -7,4 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class SidebarComponent {
 // @Input()sidenav:boolean=false;
+isDropdownOpen = false;
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
 }

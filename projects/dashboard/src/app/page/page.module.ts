@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { EmployeesListComponent } from './components/employees/employees-list/employees-list.component';
-import { NewEmployyesComponent } from './components/employees/New-employyes/New-employyes.component';
 import { ProductsListComponent } from './components/products/components/products-list/products-list.component';
 import { ProductsNewComponent } from './components/products/components/products-New/products-New.component';
 import { EditEmployyesComponent } from './components/employees/edit-employyes/edit-employyes.component';
@@ -16,6 +14,8 @@ import { CategoryListComponent } from './components/Category/Category-list/Categ
 import { CategoryNewComponent } from './components/Category/Category-new/Category-new.component';
 import { CategoryEditComponent } from './components/Category/Category-edit/Category-edit.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EmployeesListComponent } from './components/employees/employees-list/employees-list.component';
+import { NewEmployyesComponent } from './components/employees/New-employyes/New-employyes.component';
 
 
 
