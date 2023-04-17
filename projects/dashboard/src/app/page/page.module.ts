@@ -16,6 +16,12 @@ import { CategoryEditComponent } from './components/Category/Category-edit/Categ
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeesListComponent } from './components/employees/employees-list/employees-list.component';
 import { NewEmployyesComponent } from './components/employees/New-employyes/New-employyes.component';
+import { CarsNewComponent } from './components/Cars/Cars-New/Cars-New.component';
+import { CarsEditComponent } from './components/Cars/Cars-edit/Cars-edit.component';
+import { CarsLsitComponent } from './components/Cars/Cars-lsit/Cars-lsit.component';
+import { BrandEditComponent } from './components/Brand/Brand-edit/Brand-edit.component';
+import { BrandNewComponent } from './components/Brand/Brand-New/Brand-New.component';
+import { BrandListComponent } from './components/Brand/Brand-list/Brand-list.component';
 
 
 
@@ -40,7 +46,15 @@ import { NewEmployyesComponent } from './components/employees/New-employyes/New-
     // category
     CategoryListComponent,
     CategoryNewComponent,
-    CategoryEditComponent
+    CategoryEditComponent,
+    //cars
+    CarsNewComponent,
+    CarsEditComponent,
+    CarsLsitComponent,
+    // Brand
+    BrandEditComponent,
+    BrandNewComponent,
+    BrandListComponent
 
   ],
   imports: [
@@ -70,7 +84,16 @@ import { NewEmployyesComponent } from './components/employees/New-employyes/New-
     // category
     CategoryListComponent,
     CategoryNewComponent,
-    CategoryEditComponent
+    CategoryEditComponent,
+
+    //cars
+    CarsNewComponent,
+    CarsEditComponent,
+    CarsLsitComponent,
+    // Brand
+    BrandEditComponent,
+    BrandNewComponent,
+    BrandListComponent
   ]
 })
 export class PageModule { }
