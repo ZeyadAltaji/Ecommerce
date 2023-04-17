@@ -20,12 +20,12 @@ export class BrandsService {
     return this.http.get<IBrands[]>(`${this.baseUrl}Brands/GetAllBrand`).pipe()
 
   }
-  GetByIDBrands(id:number){
+  GetByIDBrands(id:string){
     return this.http.get<Brands>(`${this.baseUrl}Brands/Brand/${id}`.toString()).pipe()
 
   }
-  UpdateBrands(id:number){
-    return this.http.get<Brands>(`${this.baseUrl}Brands/Brand/update/`+id.toString());
+  UpdateBrand(Brand:Brands){
+    return this.http.put<Brands>(`${this.baseUrl}Brands/Brand/update/`+Brand.id,Brand);
 
   }
   DeleteBrands(id:number){
