@@ -36,4 +36,11 @@ export class AuthenticationService {
     return this.http.put<User>(`${this.baseUrl}Accounts/Users/update/`+user.id,user);
 
   }
+  registerUserNormal(userReg: User) {
+    return this.http.post<IUser>(`${this.baseUrl}Accounts/register`, userReg);
+  }
+
+  createBusinessAccountNormal(userBusin: User){
+    return this.http.post<IUser>(`${this.baseUrl}Accounts/BusinessAccount`, userBusin);
+  }
 }
