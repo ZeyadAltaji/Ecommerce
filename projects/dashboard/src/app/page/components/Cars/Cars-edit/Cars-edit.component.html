@@ -20,33 +20,24 @@
               <input type="text" class="form-control" [value]="cars.name" id="NameCar" formControlName="NameCar">
             </div>
             <div class="mb-3">
+              <label for="classCar" class="form-label">Class Car</label>
+              <input type="text" class="form-control" [value]="cars.class" id="classCar" formControlName="classCar">
+            </div>
+            <div class="mb-3">
               <label for="TypeCar" class="form-label">Type Car</label>
               <input type="text" class="form-control" id="TypeCar">
             </div>
-
             <div class="mb-3">
-              <label for="Email" class="form-label">photo</label>
-              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
-            </div>
-            <div class="mb-3">
-              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
-            </div>
-            <div class="mb-3">
+              <label for="photo" class="form-label">photo</label>
               <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
             </div>
         </div>
         <div class="col-6 right">
-          <div class="mb-3">
-            <label for="Email" class="form-label">Car</label>
-            <input type="email" class="form-control" id="Email" aria-describedby="Email">
-          </div>
-          <div class="mb-3">
-            <label for="Password" class="form-label">Car</label>
-            <input type="password" class="form-control" id="Password">
-          </div>
-          <div class="mb-3">
-            <label for="ConfirmPassword" class="form-label">Car</label>
-            <input type="password" class="form-control" id="ConfirmPassword">
+          <div class="form-check mt-2" *ngIf="showInputs" >
+            <input class="form-check-input" type="checkbox" formControlName="isActive" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+              Active
+            </label>
           </div>
 
       </div>
@@ -56,7 +47,7 @@
     <div class="container text-center">
     <div class="loc">
       <button class="btn-save">save</button>
-      <button class="btn-cancel">cancel</button>
+      <button class="btn-cancel" [routerLink]="['/Cars']">cancel</button>
     </div>
     </div>
     </form>

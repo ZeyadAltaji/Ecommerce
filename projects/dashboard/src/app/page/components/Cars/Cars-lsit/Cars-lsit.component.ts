@@ -16,8 +16,11 @@ export class CarsLsitComponent implements OnInit {
   Car=new Cars;
   Carlist:ICars={
     id: 0,
-    Production_Date:"",
-    name: ''
+    production_Date: 0,
+    name: '',
+    image_CarUrl: '',
+    class:'',
+    isActive: false
   }
   constructor(public carService:CarService ) { }
 

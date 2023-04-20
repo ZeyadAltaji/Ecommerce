@@ -11,43 +11,32 @@
       <div class="container text-center">
       <div class="row">
         <div class="col-6 info">
-            <div class="mb-3">
-              <label for="NumberCar" class="form-label">Number Car</label>
-              <input type="text" class="form-control" id="NumberCar" aria-describedby="NumberCar">
-            </div>
+
             <div class="mb-3">
               <label for="NameCar" class="form-label">Name Car</label>
               <input type="text" class="form-control" id="NameCar" formControlName="NameCar">
             </div>
             <div class="mb-3">
-              <label for="TypeCar" class="form-label">Type Car</label>
-              <input type="text" class="form-control" id="TypeCar">
+              <label for="classCar" class="form-label">Class Car</label>
+              <input type="text" class="form-control" id="classCar" formControlName="classCar">
             </div>
             <div class="mb-3">
-              <label for="Email" class="form-label">photo</label>
-              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+              <label for="TypeCar" class="form-label">Production Date</label>
+              <input type="number" class="form-control" id="ProductionDate" formControlName="ProductionDate" min="1900" max="2099" step="1" placeholder="YYYY">
             </div>
-            <div class="mb-3">
-              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
-            </div>
-            <div class="mb-3">
-              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
-            </div>
+
         </div>
         <div class="col-6 right">
           <div class="mb-3">
-            <label for="Email" class="form-label">Car</label>
-            <input type="email" class="form-control" id="Email" aria-describedby="Email">
+            <label for="Photo" class="form-label">Photo</label>
+            <input type="file" class="form-control" id="Photo" formControlName="Photo">
           </div>
-          <div class="mb-3">
-            <label for="Password" class="form-label">Car</label>
-            <input type="password" class="form-control" id="Password">
+          <div class="form-check mt-2" *ngIf="showInputs" >
+            <input class="form-check-input" type="checkbox" formControlName="isActive" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+              Active
+            </label>
           </div>
-          <div class="mb-3">
-            <label for="ConfirmPassword" class="form-label">Car</label>
-            <input type="password" class="form-control" id="ConfirmPassword">
-          </div>
-
       </div>
       </div>
     </div>
@@ -55,7 +44,7 @@
     <div class="container text-center">
     <div class="loc">
       <button class="btn-save">save</button>
-      <button class="btn-cancel">cancel</button>
+      <button class="btn-cancel" [routerLink]="['/Cars']">cancel</button>
     </div>
     </div>
     </form>

@@ -14,6 +14,7 @@ import swal from 'sweetalert';
 export class CarsEditComponent implements OnInit {
   EditCarsForm!:FormGroup;
   cars=new Cars();
+  showInputs=true;
   constructor(private router: Router,private route: ActivatedRoute, private carService:CarService,
     private sweetAlertService :SweetAlertService,private fb: FormBuilder) { }
 
@@ -60,13 +61,34 @@ export class CarsEditComponent implements OnInit {
     EditcarsForm(){
       this.EditCarsForm = this.fb.group({
         NameCar: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
+        classCar: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
+        ProductionDate: [null, [Validators.required, Validators.min(1900), Validators.max(2099)]],
+        Photo :[null, Validators.required],
+        isActive: false
       })
 
     }
     get _NameCar() {
       return this.EditCarsForm.controls['NameCar'] as FormGroup;
     }
+    get classCar() {
+      return this.EditCarsForm.controls['classCar'] as FormGroup;
+    }
+    get ProductionDate(){
+      return this.EditCarsForm.controls['ProductionDate']as FormGroup;
+    }
+    get photo(){
+      return this.EditCarsForm.controls['Photo']as FormGroup;
+    }
+    get _isActive() {
+      return this.EditCarsForm.controls['isActive']as FormGroup;
+    }
     Mapcars():void{
       this.cars.name=this._NameCar.value;
+      this.cars.class=this.classCar.value;
+      this.cars.production_Date=this.ProductionDate.value;
+      this.cars.image_CarUrl =this.photo.value;
+      this.cars.isActive = this._isActive.value;
+
     }
 }
