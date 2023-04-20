@@ -3,6 +3,7 @@ import { Environment } from '../Environments/Environments';
 import { HttpClient } from '@angular/common/http';
 import { IBrands } from '../Models/IBrands';
 import { Brands } from '../Classes/Brands';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class BrandsService {
   listBrands:IBrands[]=[];
 
   constructor( private http: HttpClient) { }
-  AddProducts(Brand:Brands){
-    return this.http.post(`${this.baseUrl}Brands`,Brand);
+  AddBrands(formData: FormData) {
+    return this.http.post(`${this.baseUrl}Brands`, formData);
   }
   GetAllBrands(){
     return this.http.get<IBrands[]>(`${this.baseUrl}Brands/GetAllBrand`).pipe()
