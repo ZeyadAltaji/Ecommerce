@@ -91,3 +91,7 @@ hr{
   color: var(--color-danger);
 
 }
+.brand-image{
+  max-width: 25px;
+  max-height: 25px;
+}

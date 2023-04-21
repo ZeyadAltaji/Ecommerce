@@ -25,6 +25,7 @@
         <tr  *ngFor="let Brand of brandsService.listBrands">
           <td>{{Brand.id}}</td>
           <td>{{Brand.name}}</td>
+          <td><img src="http://localhost:4203/assets/image/Brands/{{[Brand.public_id]}}" alt="" class="brand-image"></td>
           <td class="primary action">
             <span class="material-icons" (click)="openModal(Brand.id)">info</span>
             <span class="material-icons" [routerLink]="['/Edit-Brand/',Brand.id]">edit</span>
@@ -41,18 +42,18 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
             <h2 class="fw-bold mb-3">Brand Number</h2>
-            <p class="mb-3">{{Brand.name}</p>
+            <p class="mb-3">{{brands.name}}</p>
           </li>
           <li class="list-group-item">
-            <h2 class="fw-bold mb-3">Brand Name</h2>
-            <p class="mb-3">{{Brand.name}</p>
-          </li>
+            <h2 class="fw-bold mb-3">Brand Photo</h2>
+            <img src="{{[UrlImage]}}" class="img-fluid rounded border bg-light" id="image" alt="{{brands.public_id}}" width="50%" height="50%">
+           </li>
         </ul>
       </div>
       <div class="modal-footer">

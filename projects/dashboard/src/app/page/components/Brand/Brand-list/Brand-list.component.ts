@@ -14,10 +14,7 @@ export class BrandListComponent implements OnInit {
   BrandsList:IBrands[]|undefined;
   public BrandsId: number | undefined;
   brands=new Brands;
-  Brandslist:IBrands={
-    id: 0,
-    name: ''
-  }
+  UrlImage='';
   constructor(public brandsService:BrandsService) { }
 
     ngOnInit() {
@@ -31,20 +28,26 @@ export class BrandListComponent implements OnInit {
         });
       });
   }
-  openModal(id: number) {
-    this.brandsService.GetByIdModal(id)
-      .subscribe(response => {
-        this.brands = response;
-        const modal = document.getElementById('BrandsModal');
-        modal?.classList.add('show');
-        modal?.setAttribute('style', 'display: block; padding-right: 17px;');
+   openModal(id: number) {
+    this.brandsService.GetByIdModal(id).subscribe(response => {
+      this.brands = response;
+
+        this.UrlImage = `assets/image/Brands/${this.brands.public_id}`;
+
+
+      const modal = document.getElementById('BrandModal');
+      if (modal) {
+        modal.classList.add('show');
+        modal.setAttribute('style', 'display: block; padding-right: 17px;');
         const modalBackdrop = document.createElement('div');
         modalBackdrop.classList.add('modal-backdrop', 'fade', 'show');
         document.body.appendChild(modalBackdrop);
-      });
+      }
+    });
   }
+
   closeModal() {
-    const modal = document.getElementById('BrandsModal');
+    const modal = document.getElementById('BrandModal');
    modal?.classList.remove('show');
    modal?.setAttribute('style', 'display: none; padding-right: 0;');
    const modalBackdrop = document.querySelector('.modal-backdrop');
@@ -70,4 +73,5 @@ export class BrandListComponent implements OnInit {
       }
     });
   }
+
 }

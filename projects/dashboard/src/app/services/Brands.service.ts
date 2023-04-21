@@ -14,6 +14,8 @@ export class BrandsService {
   listBrands:IBrands[]=[];
 
   constructor( private http: HttpClient) { }
+
+
   AddBrands(formData: FormData) {
     return this.http.post(`${this.baseUrl}Brands`, formData);
   }
@@ -36,5 +38,4 @@ export class BrandsService {
   GetByIdModal(id:number){
     return this.http.get<Brands>(`${this.baseUrl}Brands/Brand/${id}`.toString()).pipe()
   }
-
 }

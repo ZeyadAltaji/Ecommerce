@@ -61,13 +61,13 @@ export class BrandNewComponent implements OnInit {
       return this.NewBrandForm.controls['NameBrand'] as FormGroup;
     }
     get iamgebr() {
-      return this.NewBrandForm.controls['Image'] as FormGroup;
+      return this.NewBrandForm.controls['Image_BrandUrl'] as FormGroup;
     }
 
     MapBrands() {
       this.formData = new FormData();
       this.formData.append('Name', this._NameBrand.value);
       let imageFile = this.imageInput?.nativeElement.files[0];
-      this.formData.append('Image', imageFile);
+      this.formData.append('Image_BrandUrl', imageFile);
     }
 }

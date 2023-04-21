@@ -23,6 +23,7 @@ import { CarsNewComponent } from './page/components/Cars/Cars-New/Cars-New.compo
 import { CarsEditComponent } from './page/components/Cars/Cars-edit/Cars-edit.component';
 import { BrandListComponent } from './page/components/Brand/Brand-list/Brand-list.component';
 import { BrandNewComponent } from './page/components/Brand/Brand-New/Brand-New.component';
+import { BrandEditComponent } from './page/components/Brand/Brand-edit/Brand-edit.component';
 
 const routes: Routes = [
   {
@@ -138,7 +139,7 @@ const routes: Routes = [
   },
   {
     path:'Edit-Brand/:id',
-    component:BrandListComponent
+    component:BrandEditComponent
   }
 
 ];
