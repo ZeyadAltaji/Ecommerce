@@ -1,0 +1,20 @@
+<aside>
+  <button class="close-btn">
+    <span class="material-icons">close</span>
+  </button>
+  <div class="sidebar">
+    <a [routerLink]="['/Prodcuts']" [routerLinkActive]="'active'">
+      <span class="material-icons">inventory</span>
+      <h3>Products</h3>
+    </a>
+    <a [routerLink]="['/Analytics']" [routerLinkActive]="'active'">
+      <span class="material-icons">insights</span>
+      <h3>Analytics</h3>
+    </a>
+    <a [routerLink]="['#']" [routerLinkActive]="'active'">
+      <span class="material-icons">logout</span>
+      <h3>Logout</h3>
+    </a>
+
+  </div>
+</aside>
