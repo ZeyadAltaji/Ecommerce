@@ -1,3 +1,106 @@
-<p>
-  Products-edit works!
-</p>
+<section>
+  <div class="header">
+    <h1>Edit products</h1>
+  </div>
+</section>
+<hr>
+<main class="products-edit">
+ <div class="margin">
+  <div class="location">
+    <form (ngSubmit)="OnSubmit()" [formGroup]="EditProductsForm">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-6 info">
+            <div class="mb-3">
+              <label for="NumberProducts" class="form-label">Serial Number Products</label>
+              <input type="text" class="form-control" id="NumberProducts"   formControlName="Serial_Id"  aria-describedby="NumberProducts">
+            </div>
+            <div class="mb-3">
+              <label for="NameProducts" class="form-label">Name Products</label>
+              <input type="text" class="form-control"   id="NameProducts" formControlName="NameProducts">
+            </div>
+            <div class="mb-3">
+              <label for="TypeProducts" class="form-label">Price</label>
+              <input type="text" class="form-control" id="PriceProducts"  formControlName="PriceProducts">
+            </div>
+            <div class="mb-3">
+              <label for="Password" class="form-label">Quantity Have</label>
+              <input type="text" class="form-control" id="-Quantity"  formControlName="Quantity">
+            </div>
+            <div class="mb-3">
+              <label for="Photo" class="form-label">photo primary</label>
+              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+            </div>
+            <div class="mb-3">
+              <a class="btn btn-primary mb-2"
+               data-bs-parent="#parentDiv"
+               role="button" aria-expanded="false"
+               (click)="toggleInputs()"><i class="material-icons"
+               style="vertical-align: middle;padding: 1px 1px 3px;"
+                >more_horiz</i>More Options
+              </a>
+              <div [class.show]="showInputs">
+                <div *ngIf="showInputs" data-bs-parent="#parentDiv">
+                  <label for="New_price" class="form-label">New Price</label>
+                  <input type="text" class="form-control" id="PriceProducts"   formControlName="newprice">
+                </div>
+                 <div  *ngIf="showInputs" data-bs-parent="#parentDiv">
+                  <label for="Offer" class="form-label">Offers</label>
+                  <input type="text" class="form-control" id="offers" formControlName="Offer">
+                 </div>
+                 <div class="form-check mt-2" *ngIf="showInputs" >
+                  <input class="form-check-input" id=""  type="checkbox" formControlName="Active" id="defaultCheck1">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Active
+                  </label>
+                </div>
+              </div>
+
+            </div>
+        </div>
+        <div class="col-6 right">
+          <div class="mb-3">
+            <label class="form-label">Categorise</label>
+            <select #Category   class="form-select" id="floatingSelect" formControlName="Categorise" aria-label="Floating label select example">
+              <option selected>Select Type Category</option>
+              <option  >
+               </option>
+            </select>
+           </div>
+           <div class="mb-3">
+            <label class="form-label">Type Cars</label>
+            <select  class="form-select" id="floatingSelect" formControlName="Cars" aria-label="Floating label select example">
+              <option selected>Select Type Cars</option>
+              <option  >
+1              </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Name Brands</label>
+            <select   class="form-select" id="floatingSelect" formControlName="Brands" aria-label="Floating label select example">
+              <option selected>Select Type Brands</option>
+              <option  >
+1              </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="Description" class="form-label">Description</label>
+            <textarea type="text"
+            class="form-control"
+            rows="6" formControlName="Description"></textarea>
+          </div>
+
+      </div>
+      </div>
+    </div>
+    <hr class="hr">
+    <div class="container text-center">
+    <div class="loc">
+      <button class="btn-save">save</button>
+      <button class="btn-cancel">cancel</button>
+    </div>
+    </div>
+    </form>
+  </div>
+ </div>
+</main>

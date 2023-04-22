@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-Products-edit',
@@ -8,8 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsEditComponent implements OnInit {
 
   constructor() { }
+  EditProductsForm!:FormGroup;
+  showInputs = false;
 
   ngOnInit() {
   }
-
+  OnSubmit(){
+  }
+  toggleInputs() {
+    this.showInputs = !this.showInputs;
+  }
 }

@@ -1,3 +1,136 @@
-<p>
-  products-list works!
-</p>
+<section>
+  <div class="header">
+    <h1>products</h1>
+  </div>
+</section>
+<header class="top">
+  <button class="btn-add" [routerLink]="['/New-products']">
+    Add New products
+    <span class="material-icons">add_circle</span>
+  </button>
+</header>
+<hr>
+<main class="products-list">
+  <div class="list">
+    <table class="table">
+      <thead class="thead">
+        <tr>
+          <th>#</th>
+           <th>Serial Number</th>
+          <th>Product Name</th>
+          <th>Price</th>
+          <th>Quantity </th>
+          <th>Spectail products</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody class="tbody">
+        <tr >
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+           <td>
+            <form>
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            </form>
+          </td>
+          <td class="primary action">
+             <span class="material-icons" (click)="openModal(1)">info</span>
+
+            <span class="material-icons" [routerLink]="['/Edit-Products/']">edit</span>
+            <span class="material-icons" (click)="DeleteMehtods(21)">delete</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">3221</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-group list-group-flush">
+
+              <li class="list-group-item">
+                <h2 class="fw-bold mb-3">Serial Number</h2>
+                <p class="mb-3">123</p>
+              </li>
+              <li class="list-group-item">
+                <h2 class="fw-bold mb-3">Product Name</h2>
+                <p class="mb-3"> 312</p>
+              </li>
+              <li class="list-group-item">
+                <h2 class="fw-bold mb-3">Price</h2>
+                <p class="mb-3"> 21$</p>
+              </li>
+              <li class="list-group-item">
+                <h2 class="fw-bold mb-3">Quantity</h2>
+                <p class="mb-3"> </p>
+              </li>
+              <li class="list-group-item">
+                <h2 class="fw-bold mb-3">Offers</h2>
+                <p >No offers available</p>
+                <p  >1</p>
+
+              </li>
+
+              <li class="list-group-item">
+                <ul class="list-unstyled">
+                  <li class="mb-2"><strong>Brand:</strong> 1</li>
+                  <li class="mb-2"><strong>Category:</strong> 1</li>
+                 </ul>
+              </li>
+              <li class="list-group-item">
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                      <button class="accordion-button"
+                        type="button"
+                        [class.collapsed]="!isAccordionOpen"
+                        [class.expanded]="isAccordionOpen"
+                        (click)="toggleAccordion()"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#accordion-content"
+                        aria-controls="accordion-content">
+                        {{ isAccordionOpen ? 'Hide' : 'Show' }} Description
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" [class.show]="isAccordionOpen" aria-labelledby="panelsStayOpen-headingOne">
+                      <div class="accordion-body">
+                        <h2 class="fw-bold mb-3">Description</h2>
+                        <p class="mb-3">{{123213}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <img src="../../../../../../../../my-app/src/assets/cars/10.avif" alt=" " class="img-fluid mb-3">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+       </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
