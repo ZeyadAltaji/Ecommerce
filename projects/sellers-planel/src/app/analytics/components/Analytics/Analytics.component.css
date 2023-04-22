@@ -1,0 +1,61 @@
+.Reports-list{
+  width: 130%;
+}
+.top{
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: flex-end;
+  left: 19rem;
+  margin-bottom: 2rem;
+}
+.top .btn-add{
+  border-radius: 10px;
+  border: 1px solid;
+  display: inline-flex;
+  padding: 5px 10px;
+}
+.top .btn-add span{
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 1rem;
+}
+.top .btn-add:hover{
+  background: var(--color-white);
+  color: var(--color-primary);}
+hr{
+  border-bottom: 1px solid gray;
+  width: 130%;
+}
+.line{
+  border-bottom: 1px solid gray;
+  width: 57%;
+  justify-items: center;
+  margin: 19px 30px;
+
+}
+.list{
+  margin-top: 2rem;
+}
+.list .anaylsis{
+  background: var(--color-white);
+  width: 100%;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+.list table:hover{
+  box-shadow: none;
+
+}
+
+canvas#doubleLineCanvas{
+  background: var(--color-white);
+  max-width: 100%;
+  margin-top: 2rem;
+  border-radius:var(--card-border-radius) ;
+  padding: var(--card-padding);
+}
