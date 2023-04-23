@@ -3,7 +3,7 @@ import { Environment } from '../Environments/Environments';
 import { HttpClient } from '@angular/common/http';
 import { IBrands } from '../Models/IBrands';
 import { Brands } from '../Classes/Brands';
-import { Observable } from 'rxjs';
+import { Observable, pipe } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +27,9 @@ export class BrandsService {
     return this.http.get<Brands>(`${this.baseUrl}Brands/Brand/${id}`.toString()).pipe()
 
   }
-  UpdateBrand(Brand:Brands){
-    return this.http.put<Brands>(`${this.baseUrl}Brands/Brand/update/`+Brand.id,Brand);
+  UpdateBrand(formData:FormData){
+
+    return this.http.put<Brands>(`${this.baseUrl}Brands/update/`,formData).pipe();
 
   }
   DeleteBrands(id:number){

@@ -70,4 +70,19 @@ export class BrandNewComponent implements OnInit {
       let imageFile = this.imageInput?.nativeElement.files[0];
       this.formData.append('Image_BrandUrl', imageFile);
     }
+
+    HandleFile(event:any) {
+      if (event.target.files !== null && event.target.files.length > 0) {
+        const image_userUrl = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const imgElement = document.getElementById('inputGroupFile03') as HTMLImageElement;
+          if (imgElement && e.target) {
+            imgElement.src = e.target.result as string;
+          }
+        };
+        reader.readAsDataURL(image_userUrl);
+      } else {
+      }
+    }
 }

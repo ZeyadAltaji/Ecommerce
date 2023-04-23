@@ -1,7 +1,7 @@
 export interface IBrands {
   id: number,
   name: string,
-  Image_BrandUrl:File,
+  Image_BrandUrl:string,
   public_id:string;
 
 }

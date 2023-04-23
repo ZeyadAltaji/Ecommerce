@@ -18,7 +18,7 @@ export class BrandListComponent implements OnInit {
   constructor(public brandsService:BrandsService) { }
 
     ngOnInit() {
-      interval(1000).subscribe(() => {
+      // interval(1000).subscribe(() => {
         this.brandsService.GetAllBrands().subscribe(listData=>{
           this.brandsService.listBrands=listData;
          },
@@ -26,7 +26,7 @@ export class BrandListComponent implements OnInit {
           console.log('httperror:');
           console.log(error);
         });
-      });
+      // });
   }
    openModal(id: number) {
     this.brandsService.GetByIdModal(id).subscribe(response => {
