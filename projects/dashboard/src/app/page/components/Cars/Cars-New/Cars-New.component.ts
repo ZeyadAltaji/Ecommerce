@@ -78,14 +78,6 @@ export class CarsNewComponent implements OnInit {
       return;
     }
     this.formData.append ('isActive', this._isActive.value);
-    //   this.formData.append=this.classCar.value;
-    // if (this.ProductionDate.valid) {
-    //   this.formData.append = this.ProductionDate.value;
-    // } else {
-    //   console.error("Production date is required.");
-    //   return;
-    // }
-    // this.formData.append  = this._isActive.value;
    }
   HandleFile(event:any) {
     if (event.target.files !== null && event.target.files.length > 0) {

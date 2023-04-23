@@ -5,6 +5,7 @@ export interface ICars {
   image_CarUrl:string;
   class:string;
   isActive:boolean;
+  public_id:string;
 
 }
 

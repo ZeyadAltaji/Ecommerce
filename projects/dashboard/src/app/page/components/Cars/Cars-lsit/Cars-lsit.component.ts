@@ -19,13 +19,14 @@ export class CarsLsitComponent implements OnInit {
     production_Date: 0,
     name: '',
     image_CarUrl: '',
-    class:'',
-    isActive: false
+    class: '',
+    isActive: false,
+    public_id: ''
   }
   constructor(public carService:CarService ) { }
 
   ngOnInit() {
-    interval(1000).subscribe(() => {
+    // interval(1000).subscribe(() => {
       this.carService.GetAllCars().subscribe(listData=>{
         this.carService.ListCars=listData;
        },
@@ -33,7 +34,7 @@ export class CarsLsitComponent implements OnInit {
         console.log('httperror:');
         console.log(error);
       });
-    });
+    // });
   }
   openModal(id: number) {
     this.carService.GetByIdModal(id)

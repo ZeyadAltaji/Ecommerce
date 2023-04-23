@@ -24,15 +24,24 @@
               <input type="text" class="form-control" [value]="cars.class" id="classCar" formControlName="classCar">
             </div>
             <div class="mb-3">
-              <label for="TypeCar" class="form-label">Type Car</label>
-              <input type="text" class="form-control" id="TypeCar">
+              <label for="TypeCar" class="form-label">Production Date</label>
+              <input type="number" class="form-control" id="ProductionDate" formControlName="ProductionDate" min="1900" max="2099" step="1" placeholder="YYYY">
             </div>
-            <div class="mb-3">
-              <label for="photo" class="form-label">photo</label>
-              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
-            </div>
+
+
         </div>
         <div class="col-6 right">
+          <div class="mb-3">
+            <label for="Photo" class="form-label">Photo</label>
+            <input type="file" class="form-control" (change)="HandleFile($event)" id="inputGroupFile03" formControlName="Image_CarUrl" #imageInput>
+          </div>
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-md-6 offset-md-3">
+                <div class="card" style="width: 18rem;"><img src="{{[UrlImage]}}" id="selectedImageLabel" class="img-fluid rounded border bg-light" id="image" alt=""></div>
+              </div>
+            </div>
+           </div>
           <div class="form-check mt-2" *ngIf="showInputs" >
             <input class="form-check-input" type="checkbox" formControlName="isActive" id="defaultCheck1">
             <label class="form-check-label" for="defaultCheck1">

@@ -43,8 +43,7 @@ export class BrandEditComponent implements OnInit {
         this.UrlImage = `assets/image/Brands/${this.Brand.public_id}`;
         var imagepath =
           (this.UrlImage = `assets/image/Brands/${this.Brand.public_id}`);
-        console.log(imagepath);
-        this.brandName = this.EditBrandForm.controls['Name'].setValue(this.Brand.name);
+         this.brandName = this.EditBrandForm.controls['Name'].setValue(this.Brand.name);
        },
     });
   }
@@ -73,9 +72,8 @@ export class BrandEditComponent implements OnInit {
             if (willUpdate) {
               const name = this.Brand.name;
               const updateimage=this.Brand.public_id;
-              this.brandsService.UpdateBrand(fd).subscribe(actor => {
-                console.log("OK");
-                // Show a success message after the brand has been updated
+              this.brandsService.UpdateBrand(fd).subscribe(data => {
+                 // Show a success message after the brand has been updated
                 swal({
                   title: "Success!",
                   text: "The brand has been updated.",
@@ -105,7 +103,7 @@ export class BrandEditComponent implements OnInit {
   get _Nameiamge() {
     return this.EditBrandForm.controls['Nameiamge'] as FormGroup;
   }
-  MapCategorise() {
+  MapBrands() {
     this.formData = new FormData();
     this.formData.append('Name', this._NameBrand.value);
     let imageFile = this.imageInput?.nativeElement.files[0];

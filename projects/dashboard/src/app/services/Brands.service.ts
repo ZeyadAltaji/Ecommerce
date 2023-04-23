@@ -21,20 +21,15 @@ export class BrandsService {
   }
   GetAllBrands(){
     return this.http.get<IBrands[]>(`${this.baseUrl}Brands/GetAllBrand`).pipe()
-
   }
   GetByIDBrands(id:string){
     return this.http.get<Brands>(`${this.baseUrl}Brands/Brand/${id}`.toString()).pipe()
-
   }
   UpdateBrand(formData:FormData){
-
     return this.http.put<Brands>(`${this.baseUrl}Brands/update/`,formData).pipe();
-
   }
   DeleteBrands(id:number){
     return this.http.put<Brands>(`${this.baseUrl}Brands/Brand/Delete/` + id.toString(), {});
-
   }
   GetByIdModal(id:number){
     return this.http.get<Brands>(`${this.baseUrl}Brands/Brand/${id}`.toString()).pipe()
