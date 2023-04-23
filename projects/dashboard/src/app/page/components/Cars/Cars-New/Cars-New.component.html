@@ -31,6 +31,13 @@
             <label for="Photo" class="form-label">Photo</label>
             <input type="file" class="form-control" (change)="HandleFile($event)" id="inputGroupFile03" formControlName="Image_CarUrl" #imageInput>
           </div>
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-md-6 offset-md-3">
+                <div class="card" style="width: 18rem;"><img src="" class="img-fluid rounded border bg-light" id="image" alt=""></div>
+              </div>
+            </div>
+           </div>
           <div class="form-check mt-2" *ngIf="showInputs" >
             <input class="form-check-input" type="checkbox" formControlName="isActive" id="defaultCheck1">
             <label class="form-check-label" for="defaultCheck1">
