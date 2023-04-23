@@ -76,7 +76,7 @@ export class BrandNewComponent implements OnInit {
         const image_userUrl = event.target.files[0];
         const reader = new FileReader();
         reader.onload = (e) => {
-          const imgElement = document.getElementById('inputGroupFile03') as HTMLImageElement;
+          const imgElement = document.getElementById('image') as HTMLImageElement;
           if (imgElement && e.target) {
             imgElement.src = e.target.result as string;
           }
