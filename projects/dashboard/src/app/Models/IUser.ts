@@ -18,10 +18,19 @@ export interface IUser {
   isDelete: boolean;
   isActive: boolean;
   image_userUrl?: string;
-  Public_id: string;
+  public_id: string;
 }
-// export interface IUserPhoto {
-//   Image_userUrl: string;
-//   Public_id: string;
 
-// }
+export interface INewUser{
+  frist_Name: string;
+  last_Name: string;
+  userName: string;
+  email: string;
+  password: string;
+  comfirmPassword: string;
+  role: number;
+  phone1: string;
+  phone2: string;
+  address: string;
+  image_userUrl: string;
+}

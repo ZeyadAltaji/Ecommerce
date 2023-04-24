@@ -34,8 +34,16 @@
             </div>
             <div class="mb-3">
               <label for="Email" class="form-label">photo</label>
-              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+              <input type="file" class="form-control" (change)="HandleFile($event)" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload" formControlName="image_userUrl" #imageInput>
             </div>
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-md-6 offset-md-3"> <div class="card" style="width: 18rem;">
+                  <img src="" class="img-fluid rounded border bg-light" id="image" alt="">
+                </div></div>
+              </div>
+
+             </div>
 
         </div>
         <div class="col-6 right">
@@ -71,7 +79,7 @@
     <div class="container text-center">
     <div class="loc">
       <button type="submit" class="btn-save">save</button>
-      <button class="btn-cancel">cancel</button>
+      <button class="btn-cancel" [routerLink]="['/Employyes']">cancel</button>
     </div>
     </div>
     </form>

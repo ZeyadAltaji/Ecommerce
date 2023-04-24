@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'projects/authentication/src/app/services/authentication.service';
@@ -11,37 +11,47 @@ import { SweetAlertService } from 'projects/dashboard/src/app/services/SweetAler
   styleUrls: ['./New-employyes.component.css']
 })
 export class NewEmployyesComponent implements OnInit {
+  NewEmployyesForm!:FormGroup;
+  User=new User();
+  formData: FormData = new FormData();
+  @ViewChild('imageInput') imageInput?: ElementRef;
 
   constructor(private router: Router,
     private userService:AuthenticationService,
    private fb: FormBuilder,
    private sweetAlertService :SweetAlertService)
   { }
-      NewEmployyesForm!:FormGroup;
-      User=new User();
+
+
     ngOnInit() {
       this.AddNewUserForm();
   }
   OnSubmit(){
+    debugger
     this.userData();
     const selectedValue = this._selectRole.value;
 
     if (selectedValue === '3') {
-      this.userService.registerUserNormal(this.User).subscribe(
+      this.userService.NewUser(this.formData).subscribe(
         (res) => {
           this.sweetAlertService.success("Success", "User added successfully.");
+          this.router.navigate(['/Employyes']);
+
         },
         err => {
-          this.sweetAlertService.error("Error", "There was an error creating the user account.");
+          this.sweetAlertService.error("Error", "User already exists, please try different user name.");
         }
       );
     } else if (selectedValue === '2') {
-      this.userService.createBusinessAccountNormal(this.User).subscribe(
+      this.userService.NewUser(this.formData).subscribe(
         (res) => {
           console.log("Success", "User Business added successfully.");
+          this.sweetAlertService.success("Success", "User Business added successfully.");
+          this.router.navigate(['/Employyes']);
+
         },
         err => {
-          console.log("Error", "There was an error creating the user account.");
+          console.log("Error", "User already exists, please try different user name.");
         }
       );
       } else {
@@ -61,6 +71,7 @@ export class NewEmployyesComponent implements OnInit {
       Mobile1: [null, Validators.required],
       Mobile2: [null, Validators.required],
       selectRole: [null, Validators.required],
+      image_userUrl :[null, Validators.required],
 
     },
     { Validators: this.passwordMatchingValidator }
@@ -71,19 +82,20 @@ export class NewEmployyesComponent implements OnInit {
       { notmatched: true }
   };
   userData(): void {
-
-    this.User.frist_Name= this.FristName.value,
-    this.User.last_Name= this.LastName.value,
-    this.User.userName= this.UserName.value,
-    this.User.email= this._Email.value,
-    this.User.password= this._Password.value,
-    this.User.comfirmPassword= this._ComfirmPassword.value,
-    this.User.phone1= this._Mobile1.value,
-    this.User.phone2= this._Mobile2.value,
-    this.User.address= this._Address.value,
-    this.User.role= this._selectRole.value
-
-
+    this.formData = new FormData();
+    debugger
+    this.formData.append('Frist_Name', this.FristName.value);
+    this.formData.append('Last_Name', this.LastName.value);
+    this.formData.append('UserName', this.UserName.value);
+    this.formData.append('Email', this._Email.value);
+    this.formData.append('Password', this._Password.value);
+    this.formData.append('ComfirmPassword', this._ComfirmPassword.value);
+    this.formData.append('Phone1', this._Mobile1.value);
+    this.formData.append('Phone2', this._Mobile2.value);
+    this.formData.append('Address', this._Address.value);
+    this.formData.append('Role', this._selectRole.value);
+    let imageFile = this.imageInput?.nativeElement.files[0];
+    this.formData.append('Image_userUrl', imageFile);
 }
 
 get FristName() {
@@ -115,7 +127,23 @@ get _Mobile2() {
 }
 get _selectRole(){
   return this.NewEmployyesForm.get('selectRole') as FormControl;
-
+}
+get photo(){
+  return this.NewEmployyesForm.controls['image_userUrl']as FormGroup;
+}
+HandleFile(event:any) {
+  if (event.target.files !== null && event.target.files.length > 0) {
+    const image_userUrl = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const imgElement = document.getElementById('image') as HTMLImageElement;
+      if (imgElement && e.target) {
+        imgElement.src = e.target.result as string;
+      }
+    };
+    reader.readAsDataURL(image_userUrl);
+  } else {
+  }
 }
 
 }

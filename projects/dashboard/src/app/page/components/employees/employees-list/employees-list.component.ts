@@ -16,6 +16,7 @@ export class EmployeesListComponent implements OnInit {
   DataUser=new User();
   selectedEmployee: User|undefined;
   public mainPhotoUrl: string | null = null;
+  UrlImage = '';
 
    ngOnInit() {
     interval(1000).subscribe(() => {
@@ -32,6 +33,8 @@ export class EmployeesListComponent implements OnInit {
     this.userService.GetByIdModal(id)
       .subscribe(response => {
         this.selectedEmployee = response;
+        this.UrlImage = `assets/image/Users/${response.public_id}`;
+
         const modal = document.getElementById('DataUserModal');
         modal?.classList.add('show');
         modal?.setAttribute('style', 'display: block; padding-right: 17px;');

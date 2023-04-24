@@ -23,6 +23,8 @@ export class CarsLsitComponent implements OnInit {
     isActive: false,
     public_id: ''
   }
+  UrlImage = '';
+
   constructor(public carService:CarService ) { }
 
   ngOnInit() {
@@ -40,6 +42,7 @@ export class CarsLsitComponent implements OnInit {
     this.carService.GetByIdModal(id)
       .subscribe(response => {
         this.Car = response;
+        
         const modal = document.getElementById('carsModal');
         modal?.classList.add('show');
         modal?.setAttribute('style', 'display: block; padding-right: 17px;');

@@ -1,4 +1,4 @@
-import { IUser } from "../Models/IUser";
+import { INewUser, IUser } from "../Models/IUser";
 
 export class User implements IUser {
   id!: number;
@@ -20,7 +20,22 @@ export class User implements IUser {
   isDelete!: boolean;
   isActive!: boolean;
   image_userUrl?: string;
-  Public_id!: string;
+  public_id!: string;
 
 }
 
+export class NewUser implements INewUser {
+  frist_Name!: string;
+  last_Name!: string;
+  userName!: string;
+  email!: string;
+  password!: string;
+  comfirmPassword!: string;
+  role!: number;
+  phone1!: string;
+  phone2!: string;
+  address!: string;
+  image_userUrl!: string;
+
+
+}
