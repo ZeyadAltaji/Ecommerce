@@ -7,46 +7,69 @@
 <main class="Employyes-new">
  <div class="margin">
   <div class="location">
-    <form action="">
-    <div class="container text-center">
+    <form (ngSubmit)="OnSubmit()" [formGroup]="EditEmployyesForm">
+      <div class="container text-center">
       <div class="row">
         <div class="col-6 info">
+          <div class="mb-3">
+            <label for="UserName" class="form-label">User Name</label>
+            <input type="text" class="form-control" id="UserName" aria-describedby="UserName" [value]="User.userName"formControlName="UserName">
+          </div>
             <div class="mb-3">
               <label for="FirstName" class="form-label">First Name</label>
-              <input type="text" class="form-control" id="FirstName" aria-describedby="FirstName">
+              <input type="text" class="form-control" id="FirstName" aria-describedby="FirstName" [value]="User.frist_Name" formControlName="FirstName">
             </div>
             <div class="mb-3">
               <label for="lastName" class="form-label">last Name</label>
-              <input type="text" class="form-control" id="lastName">
+              <input type="text" class="form-control" id="lastName" formControlName="last_Name" [value]="User.last_Name">
             </div>
             <div class="mb-3">
               <label for="FirstName" class="form-label">Employyes role</label>
-
-              <select class="form-select" aria-label="Default select example">
+              <select class="form-select" aria-label="Default select example" formControlName="selectRole" [value]="User.role">
                 <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                 <option value="1">Manager</option>
+                <option value="2">Seller</option>
+                <option value="3">Customer</option>
               </select>
             </div>
             <div class="mb-3">
               <label for="Email" class="form-label">photo</label>
-              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+              <input type="file" class="form-control" (change)="HandleFile($event)" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03"  #imageInput aria-label="Upload" formControlName="image_userUrl">
             </div>
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-md-6 offset-md-3"> <div class="card" style="width: 18rem;">
+                  <img src="{{[UrlImage]}}" class="img-fluid rounded border bg-light" id="image" alt="">
+                </div></div>
+              </div>
+
+             </div>
 
         </div>
         <div class="col-6 right">
           <div class="mb-3">
             <label for="Email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="Email" aria-describedby="Email">
+            <input type="email" class="form-control" id="Email" aria-describedby="Email" formControlName="Email"  [value]="User.email">
           </div>
           <div class="mb-3">
             <label for="Password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="Password">
+            <input type="password" class="form-control" id="Password" formControlName="Password">
           </div>
           <div class="mb-3">
             <label for="ConfirmPassword" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="ConfirmPassword">
+            <input type="password" class="form-control" id="ConfirmPassword" formControlName="ConfirmPassword">
+          </div>
+          <div class="mb-3">
+            <label for="Address" class="form-label">Address</label>
+            <input type="text" class="form-control" id="Address" formControlName="Address" [value]="User.address">
+          </div>
+          <div class="mb-3">
+            <label for="Mobile1" class="form-label">Mobile 1</label>
+            <input type="text" class="form-control" id="Mobile1" formControlName="Mobile1" [value]="User.phone1">
+          </div>
+          <div class="mb-3">
+            <label for="Mobile2" class="form-label">Mobile 2</label>
+            <input type="text" class="form-control" id="Mobile2" formControlName="Mobile2" [value]="User.phone2">
           </div>
 
       </div>
@@ -55,8 +78,8 @@
     <hr class="hr">
     <div class="container text-center">
     <div class="loc">
-      <button class="btn-save">save</button>
-      <button class="btn-cancel">cancel</button>
+      <button type="submit" class="btn-save">save</button>
+      <button class="btn-cancel" [routerLink]="['/Employyes']">cancel</button>
     </div>
     </div>
     </form>

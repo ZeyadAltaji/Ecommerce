@@ -26,21 +26,19 @@ export class AuthenticationService {
   GetAllUser():Observable<IUser[]>{
     return this.http.get<IUser[]>(`${this.baseUrl}Accounts/AllUsers`);
   }
+  GetByID(id:string){
+    return this.http.get<User>(`${this.baseUrl}Accounts/AllUsers/${id}`.toString()).pipe()
+  }
   GetByIdModal(id:number){
     return this.http.get<User>(`${this.baseUrl}Accounts/AllUsers/${id}`.toString()).pipe()
   }
   DeleteUser(id:number){
     return this.http.put<User>(`${this.baseUrl}Accounts/Users/Delete/` + id.toString(), {});
   }
-  UpdateUser(user:User){
-    return this.http.put<User>(`${this.baseUrl}Accounts/Users/update/`+user.id,user);
-
+  NewUser(formData:FormData){
+    return this.http.post(`${this.baseUrl}Accounts/NewUser`,formData)
   }
-  registerUserNormal(userReg: User) {
-    return this.http.post<IUser>(`${this.baseUrl}Accounts/register`, userReg);
-  }
-
-  createBusinessAccountNormal(userBusin: User){
-    return this.http.post<IUser>(`${this.baseUrl}Accounts/BusinessAccount`, userBusin);
+  UpdateUser(formData:FormData){
+    return this.http.put<User>(`${this.baseUrl}Accounts/Users/update/`,formData).pipe();
   }
 }

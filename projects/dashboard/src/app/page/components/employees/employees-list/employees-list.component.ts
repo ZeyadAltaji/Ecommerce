@@ -19,7 +19,7 @@ export class EmployeesListComponent implements OnInit {
   UrlImage = '';
 
    ngOnInit() {
-    interval(1000).subscribe(() => {
+    // interval(1000).subscribe(() => {
       this.userService.GetAllUser().subscribe(listData=>{
         this.userService.ListUser=listData as IUser[];
         },
@@ -27,7 +27,7 @@ export class EmployeesListComponent implements OnInit {
         console.log('httperror:');
         console.log(error);
       });
-    });
+    // });
   }
   openModal(id: number) {
     this.userService.GetByIdModal(id)

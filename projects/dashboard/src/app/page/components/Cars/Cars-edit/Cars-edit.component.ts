@@ -39,8 +39,7 @@ export class CarsEditComponent implements OnInit {
         next: (response) => {
            this.cars = response;
           this.UrlImage = `assets/image/Cars/${this.cars.public_id}`;
-          var imagepath =
-            (this.UrlImage = `assets/image/Cars/${this.cars.public_id}`);
+
            this.CarsName = this.EditCarsForm.controls['NameCar'].setValue(this.cars.name);
            this.Carsclass = this.EditCarsForm.controls['classCar'].setValue(this.cars.class);
            this.CarsisActive = this.EditCarsForm.controls['isActive'].setValue(this.cars.isActive);
@@ -48,51 +47,12 @@ export class CarsEditComponent implements OnInit {
 
          },
       });
-
-      // this.route.paramMap.subscribe({
-      //   next:(params)=>{
-      //     const id=params.get('id');
-      //     if(id){
-      //       this.carService.GetByIDCars(id).subscribe({
-      //         next:(response)=>{
-      //           this.cars=response;
-      //         }
-      //       })
-      //     }
-      //   }
-      // });
     }
-    // OnSubmit(){
-    //   this.Mapcars();
-    //   this.sweetAlertService.warning("Are you sure?", "Do you want to update this product?")
-    //   .then((willUpdate) => {
-    //     if (willUpdate) {
-    //       this.carService.UpdateCars(this.cars).subscribe(
-    //         (updatedProduct) => {
-    //           console.log(updatedProduct)
-    //           console.log("Product updated successfully:", updatedProduct);
-    //           swal("Product updated successfully!", {
-    //             icon: "success",
-    //           });
-    //           this.router.navigate(['/category']);
-    //          },
-    //         (error) => {
-    //           console.log(error);
-    //           console.error("Error updating product:", error);
-    //           swal("Error updating product!", {
-    //             icon: "error",
-    //           });
-    //         }
-    //       );
-    //     }
-    //   });
-    // }
     OnSubmit(){
       this.route.paramMap.subscribe({
 
         next:(params)=>{
-          debugger
-          const id=params.get('id');
+           const id=params.get('id');
           if(id){
             const fd = new FormData();
             let imageFile = this.imageInput?.nativeElement.files[0];
