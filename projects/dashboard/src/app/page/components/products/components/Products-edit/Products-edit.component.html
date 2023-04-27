@@ -4,7 +4,7 @@
   </div>
 </section>
 <hr>
-<main class="Employyes-new">
+<main class="products-edit">
  <div class="margin">
   <div class="location">
     <form (ngSubmit)="OnSubmit()" [formGroup]="EditProductsForm">
@@ -28,8 +28,38 @@
               <input type="text" class="form-control" id="-Quantity" [value]="product.quantity" formControlName="Quantity">
             </div>
             <div class="mb-3">
-              <label for="Photo" class="form-label">photo primary</label>
-              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+              <label for="primaryimages" class="form-label">Photo primary</label>
+              <input type="file" class="form-control" (change)="HandleFilePrimaryimages($event)" id="inputGroupFile03" formControlName="Primary_Image" aria-describedby="inputGroupFileAddon03" aria-label="Upload"  #PrimaryImage>
+            </div>
+            <div class="mb-3">
+              <label for="IsForeignImage1" class="form-label">Photo Foreign</label>
+              <input type="file" class="form-control" (change)="HandleFileForeignImage1($event)" id="inputGroupFile02" formControlName="Foreign_Image1" aria-describedby="inputGroupFileAddon03" aria-label="Upload" #ForeignImage1>
+            </div>
+            <div class="mb-3">
+              <label for="IsForeignImage2" class="form-label">Photo Foreign</label>
+              <input type="file" class="form-control" (change)="HandleFileForeignImage2($event)" id="inputGroupFile01" formControlName="Foreign_Image2" aria-describedby="inputGroupFileAddon03" aria-label="Upload" #ForeignImage2>
+            </div>
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <div class="card" style="width: 22rem;">
+                    <div class="card-img-tiles" data-abc="true">
+                      <div class="inner">
+                          <div class="main-img">
+                            <img  src="{{[showPrimaryImage]}}" id="PrimaryImage" alt="Is Primary Image">
+                          </div>
+                          <div class="thumblist">
+                            <img src="{{[showForeignImage1]}}"  id="ForeignImage1" alt="Is Foreign Image">
+
+                            <img src="{{[showForeignImage2]}}"  id="ForeignImage2" alt="Is Foreign Image">
+                          </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
             </div>
             <div class="mb-3">
               <a class="btn btn-primary mb-2"
@@ -61,7 +91,7 @@
         <div class="col-6 right">
           <div class="mb-3">
             <label class="form-label">Categorise</label>
-            <select #Category (change)="propertyView.category=Category.options[Category.options.selectedIndex].text" class="form-select" id="floatingSelect" formControlName="Categorise" aria-label="Floating label select example">
+            <select #Category (change)="propertyView.category=Category.options[Category.options.selectedIndex].text"   class="form-select" id="floatingSelect" formControlName="Categorise" aria-label="Floating label select example">
               <option selected>Select Type Category</option>
               <option *ngFor="let categorise of categoriseList" value={{categorise.id}}>
                 {{categorise.name}}
@@ -70,7 +100,7 @@
            </div>
            <div class="mb-3">
             <label class="form-label">Type Cars</label>
-            <select #Cars (change)="propertyView.cars=Cars.options[Cars.options.selectedIndex].text" class="form-select" id="floatingSelect" formControlName="Cars" aria-label="Floating label select example">
+            <select #Cars (change)="propertyView.cars=Cars.options[Cars.options.selectedIndex].text"   class="form-select" id="floatingSelect" formControlName="Cars" aria-label="Floating label select example">
               <option selected>Select Type Cars</option>
               <option *ngFor="let car of CarsList" value={{car.id}}>
                 {{car.name}}

@@ -2,6 +2,12 @@ import { IProducts } from "../Models/IProduct";
 
 export class Product implements IProducts
 {
+  isPrimaryImage!: string;
+  isForeignImage1!: string;
+  isForeignImage2!: string;
+  Primary_Image!: string;
+  ForeignImage1!: string;
+  ForeignImage2!: string;
   id!: number;
   serial_Id!:string;
   title!:string;

@@ -25,27 +25,11 @@ export class ProductsListComponent implements OnInit {
   categoriseList: any[] | undefined;
   CarsList:any[]|undefined;
   BrandList:any[]|undefined;
-  propertyView: IProducts = {
-    id: 0,
-    serial_Id: '',
-    title: '',
-    price: 0,
-    quantity: 0,
-    offers: 0,
-    New_price:0,
-    UserId: 0,
-    admin_Id: 0,
-    createDate: '',
-    isActive: false,
-    isDelete: false,
-    cars: '',
-    category: '',
-    brands: '',
-    Brands_Id: 0,
-    Category_Id: 0,
-    Car_Id: 0,
-    description:''
-  };
+  showPrimaryImage = '';
+  showForeignImage1='';
+  showForeignImage2='';
+  displayedBrands: string[] = [];
+
   constructor(
     public productsService:ProductService,
     private carService:CarService,
@@ -54,7 +38,7 @@ export class ProductsListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  interval(1000).subscribe(() => {
+  // interval(1000).subscribe(() => {
     this.productsService.GetAllProducts().subscribe(listData=>{
       this.productsService.listProducts=listData;
      },
@@ -62,7 +46,7 @@ export class ProductsListComponent implements OnInit {
       console.log('httperror:');
       console.log(error);
     });
-  });
+  // });
   this.productsService.getAllcategorise().subscribe(data=>{
     this.categoriseList=data;
   console.log(data)
@@ -80,6 +64,10 @@ this.brandsService.GetAllBrands().subscribe(data=>{
     this.productsService.GetByIdModal(id)
       .subscribe(response => {
         this.product = response;
+        this.showPrimaryImage = `assets/image/Products/${response.isPrimaryImage}`;
+        this.showForeignImage1 = `assets/image/Products/${response.isForeignImage1}`;
+        this.showForeignImage2 = `assets/image/Products/${response.isForeignImage1}`;
+
         const modal = document.getElementById('productModal');
         modal?.classList.add('show');
         modal?.setAttribute('style', 'display: block; padding-right: 17px;');

@@ -86,8 +86,19 @@
 
               <li class="list-group-item">
                 <ul class="list-unstyled">
-                  <li class="mb-2"><strong>Brand:</strong> {{product.brands}}</li>
-                  <li class="mb-2"><strong>Category:</strong> {{product.category}}</li>
+                  <li class="mb-2" *ngFor="let item of BrandList">
+                      <div  *ngIf="item.available">
+                        <strong>Brand : </strong>{{ item.name }}
+                      </div>
+
+                  </li>
+
+                  <li class="mb-2" *ngFor="let item of categoriseList">
+                    <div>
+                      <strong>Category:</strong>
+                      {{item.name}}
+                    </div>
+
                  </ul>
               </li>
               <li class="list-group-item">
@@ -117,7 +128,23 @@
             </ul>
           </div>
           <div class="col-md-6">
-            <img src="../../../../../../../../my-app/src/assets/cars/10.avif" alt="{{product.title}}" class="img-fluid mb-3">
+            <div class="card mb-3" style="max-width: 350px;">
+              <div class="row g-0">
+                <div class="card-img-tiles" data-abc="true">
+                  <div class="inner">
+                    <div class="col-md-6 main-img">
+
+                          <img src="{{[showPrimaryImage]}}" class="img-fluid rounded-start"id="PrimaryImage" alt="Is Primary Image">
+                        </div>
+                       <div class="col-md-5 thumblist">
+
+
+                          <img src="{{[showForeignImage1]}}" class="img-fluid rounded-start" id="ForeignImage1" alt="Is Foreign Image"  >
+                          <img src="{{[showForeignImage2]}}" class="img-fluid rounded-start" id="ForeignImage2" alt="Is Foreign Image">
+                       </div>
+                  </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -9,8 +9,7 @@ import { FormGroup } from '@angular/forms';
 export class ProductsEditComponent implements OnInit {
 
   constructor() { }
-  EditProductsForm!:FormGroup;
-  showInputs = false;
+   showInputs = false;
 
   ngOnInit() {
   }

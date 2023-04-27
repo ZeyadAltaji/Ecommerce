@@ -59,12 +59,10 @@ export class EditEmployyesComponent implements OnInit {
   OnSubmit(){
     this.route.paramMap.subscribe({
       next:(params)=>{
-        debugger
-        const id=params.get('id');
+         const id=params.get('id');
         if(id){
 
           const fd = new FormData();
-          debugger
             let imageFile = this.imageInput?.nativeElement.files[0];
             fd.append('Image_userUrl', imageFile);
             fd.append('Frist_Name', this._FristName.value);

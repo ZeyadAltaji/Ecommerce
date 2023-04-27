@@ -10,8 +10,7 @@ export class ProductsNewComponent implements OnInit {
 
   constructor() { }
   showInputs = false;
-  NewProductsForm!:FormGroup;
-
+ 
   ngOnInit() {
   }
   OnSubmit(){

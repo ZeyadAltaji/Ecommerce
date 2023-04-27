@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { data } from 'jquery';
@@ -48,30 +48,37 @@ export class ProductsNewComponent implements OnInit {
     Brands_Id: 0,
     Category_Id: 0,
     Car_Id: 0,
-    description:''
+    description: '',
+    isPrimaryImage: '',
+    isForeignImage1: '',
+    isForeignImage2: '',
+    Primary_Image: '',
+    ForeignImage1: '',
+    ForeignImage2: ''
   };
-
+  formData: FormData = new FormData();
+  @ViewChild('PrimaryImage') PrimaryImage?: ElementRef;
+  @ViewChild('ForeignImage1') ForeignImage1?: ElementRef;
+  @ViewChild('ForeignImage2') ForeignImage2?: ElementRef;
 
 
   ngOnInit() {
     this.AddNewProductsForm();
     this.productService.getAllcategorise().subscribe(data=>{
-      this.categoriseList=data;
-    console.log(data)
-  });
+    this.categoriseList=data;
+   });
   this.carService.GetAllCars().subscribe(data=>{
     this.CarsList=data;
-    console.log(data)
-  });
+   });
   this.brandsService.GetAllBrands().subscribe(data=>{
     this.BrandList=data;
-    console.log(data);
-  });
+   });
   }
 
   OnSubmit(){
+    debugger
     this.MapProducts();
-    this.productService.AddProducts(this.product).subscribe(
+    this.productService.AddProducts(this.formData).subscribe(
       (data)=>{
       this.sweetAlertService.success("Success", "Products added successfully.");
       this.router.navigate(['/Prodcuts']);
@@ -94,6 +101,9 @@ export class ProductsNewComponent implements OnInit {
       newprice: [null],
       Offer: [null],
       isActive: false,
+      Primary_Image:[null, Validators.required],
+      Foreign_Image1:[null, Validators.required],
+      Foreign_Image2:[null, Validators.required]
     });
   }
   get _SerialId() {
@@ -131,23 +141,81 @@ export class ProductsNewComponent implements OnInit {
   get _isActive() {
     return this.NewProductsForm.controls['isActive']as FormGroup;
   }
+  get _Primary_Image(){
+    return this.NewProductsForm.controls['Primary_Image']as FormGroup;
+  }
+  get _Foreign_Image1(){
+    return this.NewProductsForm.controls['Foreign_Image1']as FormGroup;
+  }
+  get _Foreign_Image2(){
+    return this.NewProductsForm.controls['Foreign_Image2']as FormGroup;
+  }
   MapProducts():void{
-    this.product.title = this._NameProducts.value;
-    this.product.serial_Id = this._SerialId.value;
-    this.product.price = this._PriceProducts.value;
-    this.product.quantity = this._Quantity.value;
-    this.product.description = this._Description.value;
-    this.product.Brands_Id = this._Brands.value;
-    this.product.Car_Id = this._Cars.value;
-    this.product.Category_Id = this._Categorise.value;
-    this.product.isActive = this._isActive.value;
-    if (this._new_price && this._offers) {
-      this.product.New_price = this._new_price.value;
-      this.product.offers = this._offers.value;
-    }
+    debugger
+    this.formData = new FormData();
+    this.formData.append('Serial_Id', this._SerialId.value);
+    this.formData.append('Title', this._NameProducts.value);
+    this.formData.append('Description', this._Description.value);
+    this.formData.append('Price', this._PriceProducts.value);
+    this.formData.append('Offers', this._offers.value);
+    this.formData.append('New_price', this._new_price.value);
+    this.formData.append('Brands_Id', this._Brands.value);
+    this.formData.append('Car_Id', this._Cars.value);
+    this.formData.append('Category_Id', this._Categorise.value);
+    this.formData.append('Quantity', this._Quantity.value);
+    let Primary_Image = this.PrimaryImage?.nativeElement.files[0];
+    this.formData.append('Primary_Image', Primary_Image);
+    let Foreign_Image1 = this.ForeignImage1?.nativeElement.files[0];
+      this.formData.append('ForeignImage1', Foreign_Image1);
+      let Foreign_Image2 = this.ForeignImage2?.nativeElement.files[0];
+      this.formData.append('ForeignImage2', Foreign_Image2);
+
+
+
+
+   
   }
   toggleInputs() {
     this.showInputs = !this.showInputs;
+  }
+  HandleFilePrimaryimages(event:any){
+    if (event.target.files !== null && event.target.files.length > 0) {
+      const image_userUrl = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imgElement = document.getElementById('PrimaryImage') as HTMLImageElement;
+        if (imgElement && e.target) {
+          imgElement.src = e.target.result as string;
+        }
+      };
+      reader.readAsDataURL(image_userUrl);
+    }
+  }
+  HandleFileForeignImage1(event:any){
+    if (event.target.files !== null && event.target.files.length > 0) {
+      const image_userUrl = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imgElement = document.getElementById('ForeignImage1') as HTMLImageElement;
+        if (imgElement && e.target) {
+          imgElement.src = e.target.result as string;
+        }
+      };
+      reader.readAsDataURL(image_userUrl);
+    }
+  }
+  HandleFileForeignImage2(event:any){
+    if (event.target.files !== null && event.target.files.length > 0) {
+      const image_userUrl = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imgElement = document.getElementById('ForeignImage2') as HTMLImageElement;
+        if (imgElement && e.target) {
+          imgElement.src = e.target.result as string;
+        }
+      };
+      reader.readAsDataURL(image_userUrl);
+    }
   }
 }
 

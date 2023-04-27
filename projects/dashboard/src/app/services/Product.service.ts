@@ -13,8 +13,8 @@ export class ProductService {
   baseUrl =Environment.baseUrl;
   listProducts:IProducts[]=[];
   constructor( private http: HttpClient) { }
-  AddProducts(product:Product){
-    return this.http.post(`${this.baseUrl}Product`,product);
+  AddProducts(formData: FormData){
+    return this.http.post(`${this.baseUrl}Product`,formData);
   }
   GetAllProducts():Observable<IProducts[]>{
     return this.http.get<IProducts[]>(`${this.baseUrl}Product/AllProduct`).pipe()
@@ -25,8 +25,8 @@ export class ProductService {
   GetByIdModal(id:number){
     return this.http.get<Product>(`${this.baseUrl}Product/Products/${id}`.toString()).pipe()
   }
-  UpdateProducts(product: Product){
-    return this.http.put<Product>(`${this.baseUrl}Product/Products/update/`+product.id,product);
+  UpdateProducts(formData:FormData){
+    return this.http.put<Product>(`${this.baseUrl}Product/Products/update/`,formData);
   }
   getAllcategorise(): Observable<string[]> {
      return this.http.get<string[]>(`${this.baseUrl}Category/categorise`);

@@ -42,7 +42,7 @@ export class CarsLsitComponent implements OnInit {
     this.carService.GetByIdModal(id)
       .subscribe(response => {
         this.Car = response;
-        
+        this.UrlImage = `assets/image/Cars/${response.public_id}`;
         const modal = document.getElementById('carsModal');
         modal?.classList.add('show');
         modal?.setAttribute('style', 'display: block; padding-right: 17px;');
