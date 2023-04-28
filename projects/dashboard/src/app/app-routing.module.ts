@@ -153,7 +153,7 @@ const routes: Routes = [
     component:NewSubProductsComponent
   },
   {
-    path:'list-product',
+    path:'Edit-product/:id',
     component:EditSubProductsComponent
   }
 

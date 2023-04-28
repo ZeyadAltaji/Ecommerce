@@ -1,3 +1,163 @@
-<p>
-  ListProducts works!
-</p>
+<section>
+  <div class="header">
+    <h1>products</h1>
+  </div>
+</section>
+<header class="top">
+  <button class="btn-add" [routerLink]="['/New-product']">
+    Add New products
+    <span class="material-icons">add_circle</span>
+  </button>
+</header>
+<hr>
+<main class="products-list">
+  <div class="list">
+    <table class="table">
+      <thead class="thead">
+        <tr>
+          <th>#</th>
+           <th>Serial Number</th>
+          <th>Product Name</th>
+          <th>Price</th>
+          <th>Quantity </th>
+          <th>Spectail products</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody class="tbody">
+        <tr *ngFor="let porducts of productsService.listProducts">
+          <td>{{porducts.id}}</td>
+          <td>{{porducts.serial_Id}}</td>
+          <td>{{porducts.title}}</td>
+          <td>{{porducts.price}}$</td>
+          <td>{{porducts.quantity}}</td>
+           <td>
+            <form>
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            </form>
+          </td>
+          <td class="primary action">
+             <span class="material-icons" (click)="openModal(porducts.id)">info</span>
+
+            <span class="material-icons" [routerLink]="['/Edit-product/',porducts.id]">edit</span>
+            <span class="material-icons" (click)="DeleteMehtods(porducts.id)">delete</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">{{product.title}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-group list-group-flush">
+
+              <li class="list-group-item">
+                <h2 class="fw-bold mb-3">Serial Number</h2>
+                <p class="mb-3">{{product.serial_Id}}</p>
+              </li>
+              <li class="list-group-item">
+                <h2 class="fw-bold mb-3">Product Name</h2>
+                <p class="mb-3">{{product.title}}</p>
+              </li>
+              <li class="list-group-item">
+                <h2 class="fw-bold mb-3">Price</h2>
+                <p class="mb-3">{{product.price}}$</p>
+              </li>
+              <li class="list-group-item">
+                <h2 class="fw-bold mb-3">Quantity</h2>
+                <p class="mb-3">{{product.quantity}}</p>
+              </li>
+              <li class="list-group-item">
+                <h2 class="fw-bold mb-3">Offers</h2>
+                <p *ngIf="!product.offers">No offers available</p>
+                <p *ngIf="product.offers">{{product.offers}}</p>
+
+              </li>
+
+              <li class="list-group-item">
+                <ul class="list-unstyled">
+                  <li class="mb-2" *ngFor="let item of BrandList">
+                      <div  *ngIf="item.available">
+                        <strong>Brand : </strong>{{ item.name }}
+                      </div>
+
+                  </li>
+
+                  <li class="mb-2" *ngFor="let item of categoriseList">
+                    <div>
+                      <strong>Category:</strong>
+                      {{item.name}}
+                    </div>
+
+                 </ul>
+              </li>
+              <li class="list-group-item">
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                      <button class="accordion-button"
+                        type="button"
+                        [class.collapsed]="!isAccordionOpen"
+                        [class.expanded]="isAccordionOpen"
+                        (click)="toggleAccordion()"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#accordion-content"
+                        aria-controls="accordion-content">
+                        {{ isAccordionOpen ? 'Hide' : 'Show' }} Description
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" [class.show]="isAccordionOpen" aria-labelledby="panelsStayOpen-headingOne">
+                      <div class="accordion-body">
+                        <h2 class="fw-bold mb-3">Description</h2>
+                        <p class="mb-3">{{product.description}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <div class="card mb-3" style="max-width: 350px;">
+              <div class="row g-0">
+                <div class="card-img-tiles" data-abc="true">
+                  <div class="inner">
+                    <div class="col-md-6 main-img">
+
+                          <img src="{{[showPrimaryImage]}}" class="img-fluid rounded-start"id="PrimaryImage" alt="Is Primary Image">
+                        </div>
+                       <div class="col-md-5 thumblist">
+
+
+                          <img src="{{[showForeignImage1]}}" class="img-fluid rounded-start" id="ForeignImage1" alt="Is Foreign Image"  >
+                          <img src="{{[showForeignImage2]}}" class="img-fluid rounded-start" id="ForeignImage2" alt="Is Foreign Image">
+                       </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+       </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
