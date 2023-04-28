@@ -2,7 +2,9 @@ aside{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 88vh;
+  height: 134vh;
+  max-height: 300vh;
+  min-height: 120vh;
 }
 aside button.close-btn{
   display: none;
@@ -10,7 +12,7 @@ aside button.close-btn{
 .sidebar{
 
 display: flex; flex-direction: column;
-height: 86vh;position: relative;
+height: 86vh;
 top:0;
 }
 h3{
@@ -66,7 +68,29 @@ border-radius: var(--border-radius-1);
 {
   font-weight: 500;
 }
+.dropdown-menu.show{
+  display: block;
+  color: var(--color-gray-dark);
+  margin-left: 2rem;
+  gap: 1.2rem;
+  height: 5.2rem;
+  align-items: center;
+  position: relative;
+  transition: var(--transition);
+  background:   var(--color-light);
+  border: none;
+  text-decoration: none;
+}
+.dropdown-menu .dropdown-item{
+  margin: 12px 0 1px 21px;
+}
+.dropdown-menu .dropdown-item:hover{
+  color: var(--color-primary);
+    height: 39px;
+}
+.dropdown-menu .dropdown-item:hover:hover span{
 
+}
 @media screen and (max-width: 1024px) {
   aside button.close-btn{
     display: inline-block;

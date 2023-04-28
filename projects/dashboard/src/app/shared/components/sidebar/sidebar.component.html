@@ -31,6 +31,10 @@
     </a>
     <a [routerLink]="['/Prodcuts']" [routerLinkActive]="'active'">
       <span class="material-icons">inventory</span>
+      <h3>Main Products</h3>
+    </a>
+    <a [routerLink]="['/Prodcuts']" [routerLinkActive]="'active'">
+      <span class="material-icons">inventory</span>
       <h3>Products</h3>
     </a>
     <a [routerLink]="['/Reports-list']" [routerLinkActive]="'active'">
@@ -42,14 +46,18 @@
       <h3>Employees</h3>
     </a>
     <div class="dropdown">
-      <a class="dropdown-toggle" href="#" role="button" id="productsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown()">
+      <a class="dropdown-toggle" role="button" id="productsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown()">
         <span class="material-icons">inventory</span>
         <h3>Optional</h3>
       </a>
 
       <div class="dropdown-menu" aria-labelledby="productsDropdown" [class.show]="isDropdownOpen">
-        <a class="dropdown-item"  [routerLink]="['/Brand']">Brand</a>
-        <a class="dropdown-item"  [routerLink]="['/Cars']">Car</a>
+
+          <a class="dropdown-item" [routerLink]="['/Brand']">Brand</a>
+
+
+          <a  class="dropdown-item" [routerLink]="['/Cars']">Car</a>
+
       </div>
     </div>
     <a [routerLink]="['#']" [routerLinkActive]="'active'">
