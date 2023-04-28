@@ -22,6 +22,9 @@ import { CarsLsitComponent } from './components/Cars/Cars-lsit/Cars-lsit.compone
 import { BrandEditComponent } from './components/Brand/Brand-edit/Brand-edit.component';
 import { BrandNewComponent } from './components/Brand/Brand-New/Brand-New.component';
 import { BrandListComponent } from './components/Brand/Brand-list/Brand-list.component';
+import { NewSubProductsComponent } from './components/SubProducts/NewSubProducts/NewSubProducts.component';
+import { ListProductsComponent } from './components/SubProducts/ListProducts/ListProducts.component';
+import { EditSubProductsComponent } from './components/SubProducts/EditSubProducts/EditSubProducts.component';
 
 
 
@@ -54,7 +57,11 @@ import { BrandListComponent } from './components/Brand/Brand-list/Brand-list.com
     // Brand
     BrandEditComponent,
     BrandNewComponent,
-    BrandListComponent
+    BrandListComponent,
+    //subproducts
+    NewSubProductsComponent,
+    ListProductsComponent,
+    EditSubProductsComponent
 
   ],
   imports: [
@@ -93,7 +100,11 @@ import { BrandListComponent } from './components/Brand/Brand-list/Brand-list.com
     // Brand
     BrandEditComponent,
     BrandNewComponent,
-    BrandListComponent
+    BrandListComponent,
+    //subproducts
+    NewSubProductsComponent,
+    ListProductsComponent,
+    EditSubProductsComponent
   ]
 })
 export class PageModule { }

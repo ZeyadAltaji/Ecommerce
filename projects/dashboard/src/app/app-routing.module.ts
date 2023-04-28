@@ -24,6 +24,9 @@ import { CarsEditComponent } from './page/components/Cars/Cars-edit/Cars-edit.co
 import { BrandListComponent } from './page/components/Brand/Brand-list/Brand-list.component';
 import { BrandNewComponent } from './page/components/Brand/Brand-New/Brand-New.component';
 import { BrandEditComponent } from './page/components/Brand/Brand-edit/Brand-edit.component';
+import { ListProductsComponent } from './page/components/SubProducts/ListProducts/ListProducts.component';
+import { EditSubProductsComponent } from './page/components/SubProducts/EditSubProducts/EditSubProducts.component';
+import { NewSubProductsComponent } from './page/components/SubProducts/NewSubProducts/NewSubProducts.component';
 
 const routes: Routes = [
   {
@@ -140,6 +143,18 @@ const routes: Routes = [
   {
     path:'Edit-Brand/:id',
     component:BrandEditComponent
+  },
+  {
+    path:'list-products',
+    component:ListProductsComponent
+  },
+  {
+    path:'New-product',
+    component:NewSubProductsComponent
+  },
+  {
+    path:'list-product',
+    component:EditSubProductsComponent
   }
 
 ];
@@ -149,3 +164,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
+
+
