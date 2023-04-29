@@ -27,6 +27,7 @@ import { BrandEditComponent } from './page/components/Brand/Brand-edit/Brand-edi
 import { ListProductsComponent } from './page/components/SubProducts/ListProducts/ListProducts.component';
 import { EditSubProductsComponent } from './page/components/SubProducts/EditSubProducts/EditSubProducts.component';
 import { NewSubProductsComponent } from './page/components/SubProducts/NewSubProducts/NewSubProducts.component';
+import { SettingsComponent } from './page/components/settings/settings/settings.component';
 
 const routes: Routes = [
   {
@@ -155,8 +156,11 @@ const routes: Routes = [
   {
     path:'Edit-product/:id',
     component:EditSubProductsComponent
-  }
-
+  },
+  {
+    path:'Settings',
+    component:SettingsComponent
+  },
 ];
 
 @NgModule({

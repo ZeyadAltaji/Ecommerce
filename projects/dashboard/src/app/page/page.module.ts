@@ -25,6 +25,7 @@ import { BrandListComponent } from './components/Brand/Brand-list/Brand-list.com
 import { NewSubProductsComponent } from './components/SubProducts/NewSubProducts/NewSubProducts.component';
 import { ListProductsComponent } from './components/SubProducts/ListProducts/ListProducts.component';
 import { EditSubProductsComponent } from './components/SubProducts/EditSubProducts/EditSubProducts.component';
+import { SettingsComponent } from './components/settings/settings/settings.component';
 
 
 
@@ -61,7 +62,8 @@ import { EditSubProductsComponent } from './components/SubProducts/EditSubProduc
     //subproducts
     NewSubProductsComponent,
     ListProductsComponent,
-    EditSubProductsComponent
+    EditSubProductsComponent,
+    SettingsComponent
 
   ],
   imports: [
@@ -104,7 +106,8 @@ import { EditSubProductsComponent } from './components/SubProducts/EditSubProduc
     //subproducts
     NewSubProductsComponent,
     ListProductsComponent,
-    EditSubProductsComponent
+    EditSubProductsComponent,
+    SettingsComponent
   ]
 })
 export class PageModule { }

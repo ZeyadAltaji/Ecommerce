@@ -60,13 +60,17 @@
 
       </div>
     </div>
-    <a [routerLink]="['#']" [routerLinkActive]="'active'">
+    <a [routerLink]="['/Settings']" [routerLinkActive]="'active'">
       <span class="material-icons">settings</span>
       <h3>Settings</h3>
     </a>
     <a [routerLink]="['/New-products']" [routerLinkActive]="'active'">
       <span class="material-icons">add</span>
       <h3>Add Products</h3>
+    </a>
+    <a [routerLink]="['#']" [routerLinkActive]="'active'">
+      <span class="material-icons">delete</span>
+      <h3>Trash</h3>
     </a>
     <a [routerLink]="['#']" [routerLinkActive]="'active'">
       <span class="material-icons">logout</span>
