@@ -18,16 +18,14 @@ export class BrandListComponent implements OnInit {
   constructor(public brandsService:BrandsService) { }
 
     ngOnInit() {
-      // interval(1000).subscribe(() => {
-        this.brandsService.GetAllBrands().subscribe(listData=>{
+         this.brandsService.GetAllBrands().subscribe(listData=>{
           this.brandsService.listBrands=listData;
          },
         error => {
           console.log('httperror:');
           console.log(error);
         });
-      // });
-  }
+   }
    openModal(id: number) {
     this.brandsService.GetByIdModal(id).subscribe(response => {
       this.brands = response;

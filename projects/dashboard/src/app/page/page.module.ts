@@ -26,6 +26,8 @@ import { NewSubProductsComponent } from './components/SubProducts/NewSubProducts
 import { ListProductsComponent } from './components/SubProducts/ListProducts/ListProducts.component';
 import { EditSubProductsComponent } from './components/SubProducts/EditSubProducts/EditSubProducts.component';
 import { SettingsComponent } from './components/settings/settings/settings.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -71,7 +73,8 @@ import { SettingsComponent } from './components/settings/settings/settings.compo
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CarouselModule,
 
   ],exports:[
     // Employees

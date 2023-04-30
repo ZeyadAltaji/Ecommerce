@@ -17,22 +17,8 @@ export class SettingService {
 
    baseUrl =Environment.baseUrl;
    constructor( private http: HttpClient) { }
-//main silder
-
-   AddSiderMain(formData: FormData){
-    return this.http.post(`${this.baseUrl}Slider`,formData);
-  }
-  GetAllSiderMain():Observable<ISiderMain[]>{
-    return this.http.get<ISiderMain[]>(`${this.baseUrl}Slider/AllSlider`).pipe()
-  }
 
 
-  UpdateSiderMain(formData:FormData){
-    return this.http.put<SiderMain>(`${this.baseUrl}Slider/Sliders/update/`,formData);
-  }
-  DeleteSiderMain(id: number){
-    return this.http.put<SiderMain>(`${this.baseUrl}SliderSlider/Delete/` + id.toString(), {});
-  }
   // sub silder
   AddSiderSub(formData: FormData){
     return this.http.post(`${this.baseUrl}Slider`,formData);
@@ -55,4 +41,5 @@ export class SettingService {
   GetByIDlogo(id:number){
     return this.http.get<ISetting>(`${this.baseUrl}Setting/logo/${1}`.toString()).pipe()
   }
+
 }

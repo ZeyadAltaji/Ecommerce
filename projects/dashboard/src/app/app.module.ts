@@ -8,6 +8,8 @@ import { PageModule } from './page/page.module';
 import { ProfileUserModule } from './profile-user/profile-user.module';
 import { SharedModule } from './shared/shared.module';
 import { SweetAlertService } from './services/SweetAlert.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SettingsComponent } from './page/components/settings/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,7 @@ import { SweetAlertService } from './services/SweetAlert.service';
     HomeModule,
     PageModule,
     ProfileUserModule,
-
+    BrowserAnimationsModule
 
   ],
   providers: [],

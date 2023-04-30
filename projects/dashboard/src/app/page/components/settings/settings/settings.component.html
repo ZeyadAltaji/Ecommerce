@@ -9,12 +9,8 @@
     <li class="nav-item" role="presentation">
       <button class="" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Sub Slider</button>
     </li>
-    <li class="nav-item" role="presentation">
-      <button class="" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
-    </li>
+
+
   </ul>
   <div class="container">
     <div class="tab-content" id="myTabContent">
@@ -31,6 +27,7 @@
               <nav class="navbar bg-light">
                 <div class="container-fluid">
                   <a class="navbar-brand"   >
+
                     <img src="assets/image/Setting/Logo/{{[logoData.isLogoUrl]}}" alt="Logo" id="Logo" style="width:7rem;"  class="d-inline-block align-text-top">
                   </a>
                 </div>
@@ -40,14 +37,36 @@
          </div>
       </div>
 
-      <div class="tab-pane fade" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab">
-          <div class="mb-3">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mainSliderModal">
-              Edit Main Slider
+      <div class="tab-pane fade" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"  >
+        <div class="mb-3"  *ngFor="let x of Data">
+          <button type="button" class="btn btn-primary"  data-bs-toggle="modal" (click)="openModal(x.id)" data-bs-target="#mainSliderModal">
+            Edit Main Slider
+          </button>
+        </div>
+        <div class="mb-3">
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active"   >
+                <img src="{{MainImage}}"  class="d-block" id="image1" style="width: 90rem;" alt="1">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
             </button>
           </div>
+        </div>
+
+
 
       </div>
+
+
+
 
       <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab">
         <div class="mb-3">
@@ -57,15 +76,15 @@
         </div>
         <div class="mb-3">
           <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
+            <div class="carousel-inner"  >
               <div class="carousel-item active">
-                <img src="" class="d-block" id="image1" style="width: 90rem;" alt="...">
+                <img src="{{MainImage}}"  class="d-block" id="image1" style="width: 90rem;" alt="1">
               </div>
               <div class="carousel-item">
-                <img src=""  id="image2" class="d-block  " alt="..." style="width: 90rem;">
+                <img src=""  id="image2" class="d-block  " alt="2" style="width: 90rem;">
               </div>
               <div class="carousel-item">
-                <img src=""  id="image3" class="d-block " alt="..."style="width: 90rem;">
+                <img src=""  id="image3" class="d-block " alt="3"style="width: 90rem;">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -83,9 +102,7 @@
       <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab">
 
       </div>
-      <!-- <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab">
 
-      </div> -->
     </div>
   </div>
 
@@ -99,7 +116,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Logo </h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()" aria-label="Close"></button>
       </div>
          <div class="modal-body">
           <form  [formGroup]="EditLogo" (ngSubmit)="onSubmit()">
@@ -112,7 +129,7 @@
           </form>
         </div>
        <div class="modal-footer">
-        <button  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button  class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Close</button>
         <button   class="btn btn-primary">update</button>
       </div>
 
@@ -127,7 +144,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="subSliderModalLabel">Edit Sub Slider</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="container text-center">
@@ -197,7 +214,7 @@
         </div>
       </div>
        <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Close</button>
       <button type="button" class="btn btn-primary">Update</button>
       </div>
     </div>
@@ -206,10 +223,11 @@
 <!-- main slider -->
 <div class="modal fade" id="mainSliderModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="subSliderModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content">
+   <form (ngSubmit)="OnEdit()"   [formGroup]="EditMainForm">
+    <div class="modal-content"  >
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="subSliderModalLabel">Edit Main Slider</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"   aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="container text-center">
@@ -218,15 +236,19 @@
               <div class="col-5">
                 <div class="mb-3">
                   <label for="formGroupExampleInput" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput"  >
+                  <input type="text" class="form-control" id="formGroupExampleInput" [value]="siderMain.title" formControlName="Name"  >
                 </div>
                 <div class="mb-3">
                   <label for="formGroupExampleInput2" class="form-label">Description</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput2" >
+                  <input type="text" class="form-control" id="formGroupExampleInput2" [value]="siderMain.description"  formControlName="Description" >
+                </div>
+                <div class="mb-3">
+                  <label for="formGroupExampleInput2" class="form-label">Name Button</label>
+                  <input type="text" class="form-control" id="formGroupExampleInput2" [value]="siderMain.button" formControlName="Button" >
                 </div>
                 <div class="mb-3">
                   <label for="inputState" class="form-label">State</label>
-                  <select id="inputState" class="form-select">
+                  <select id="inputState" class="form-select" formControlName="Active">
                     <option selected>Choose...</option>
                     <option>...</option>
                   </select>
@@ -235,16 +257,9 @@
               <div class="col-5">
                 <div class="mb-3">
                   <label for="Photo" class="form-label">Photo</label>
-                  <input type="file" class="form-control"  id="inputGroupFile03" (change)="HandleFile($event)">
+                  <input type="file" class="form-control"  id="inputGroupFile03" (change)="HandleFile($event)" #MainImages>
                 </div>
-                <div class="mb-3">
-                  <label for="Photo" class="form-label">Photo</label>
-                  <input type="file" class="form-control" id="inputGroupFile03" (change)="HandleFile1($event)" >
-                </div>
-                <div class="mb-3">
-                  <label for="Photo" class="form-label">Photo</label>
-                  <input type="file" class="form-control" (change)="HandleFile2($event)" id="inputGroupFile03" >
-                </div>
+
               </div>
             </div>
           </div>
@@ -255,33 +270,22 @@
             <div class="row justify-content-center">
               <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="" class="d-block" id="image1" style="width: 90rem;" alt="...">
+                  <div class="carousel-item active" >
+                    <img src="{{[MainImage]}}"  class="d-block" id="image1" style="width: 90rem;" alt="1">
                   </div>
-                  <div class="carousel-item">
-                    <img src=""  id="image2" class="d-block  " alt="..." style="width: 90rem;">
-                  </div>
-                  <div class="carousel-item">
-                    <img src=""  id="image3" class="d-block " alt="..."style="width: 90rem;">
-                  </div>
+
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
+
               </div>
             </div>
           </div>
         </div>
       </div>
        <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Update</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+      <button type="submit" class="btn btn-primary">Update</button>
       </div>
     </div>
+   </form>
   </div>
 </div>

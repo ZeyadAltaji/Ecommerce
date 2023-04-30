@@ -1,13 +1,12 @@
 import { ISiderMain } from "../Models/ISiderMain";
 
-export class SiderMain implements ISiderMain{
+export class SiderMain implements ISiderMain {
+  id!:number;
   Image!: string;
-  Image1!: string;
-  Image2!: string;
   imageURl!: string;
-  imageURl1!: string;
-  imageURl2!: string;
   title!: string;
-  Description!: string;
-}
+  description!: string;
+  isActive!:boolean;
+  button!: string;
 
+}
