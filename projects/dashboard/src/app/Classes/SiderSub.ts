@@ -1,6 +1,7 @@
 import { ISiderSub } from "../Models/ISiderSub";
 
 export class SiderSub implements ISiderSub {
+  id!:number;
   Image!: string;
   Image1!: string;
   Image2!: string;
@@ -8,5 +9,5 @@ export class SiderSub implements ISiderSub {
   imageURl1!: string;
   imageURl2!: string;
   title!: string;
-  Description!: string;
+  description!: string;
 }

@@ -7,9 +7,11 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Environment } from 'projects/authentication/src/app/Environments/Environment';
 import { Setting } from 'projects/dashboard/src/app/Classes/Setting';
 import { SiderMain } from 'projects/dashboard/src/app/Classes/SiderMain';
+import { SiderSub } from 'projects/dashboard/src/app/Classes/SiderSub';
 import { ISetting } from 'projects/dashboard/src/app/Models/ISetting';
 import { ISiderMain } from 'projects/dashboard/src/app/Models/ISiderMain';
 import { SettingService } from 'projects/dashboard/src/app/services/Setting.service';
+import { SiderSubService } from 'projects/dashboard/src/app/services/SiderSub.service';
 import { SliderMainService } from 'projects/dashboard/src/app/services/SliderMain.service';
 import { SweetAlertService } from 'projects/dashboard/src/app/services/SweetAlert.service';
 import swal from 'sweetalert';
@@ -21,93 +23,80 @@ declare var $: any;
   encapsulation: ViewEncapsulation.None
 })
 export class SettingsComponent  implements OnInit  {
-  UrlImage = '';
+  //initialize classes
+  formData: FormData = new FormData();
+  siderMain=new SiderMain();
+  logoData!: ISetting;
+  SiderMain = new SiderMain;
+  imageMain: any;
+  SliderMain: ISiderMain[] = [];
+  Main_Image!:File;
+  brandId:any;
+  setting=new Setting;
+  Data: SiderMain[] = [];
+  datasubintranal!:SiderSub;
+  datasubEx!:SiderSub;
+  datemechanic!:SiderSub;
+  getAllSubSlider!:SiderSub;
+  //froms
   EditLogo!:FormGroup;
   EditMainForm!:FormGroup;
   selectedImage!: File;
-  formData: FormData = new FormData();
-  LogoId!:any;
+   LogoId!:any;
   selectedSetting!: Setting;
-  siderMain=new SiderMain();
   editForm!: FormGroup;
   logoUrl!: File;
-  baseUrl =Environment.baseUrl;
-  logo1:any;
+   logo1:any;
   title:any;
   description:any;
   Button:any;
   IsActive: any;
-  showImage='';
-id:any;
-logoData!: ISetting;
+  id:any;
  // initialize mainSliderItems as an empty array
 MainImage='';
 SilderMain='';
+showImage='';
+UrlImage = '';
 
-SiderMain = new SiderMain;
-  imageMain: any;
-  SliderMain: ISiderMain[] = [];
-  Main_Image!:File;
+
 
 
   constructor(public settingservice:SettingService,
   private router: Router,private route: ActivatedRoute,
     private sweetAlertService :SweetAlertService,private fb: FormBuilder
-    , private http: HttpClient,public slidermainService :SliderMainService) {       }
+    , private http: HttpClient,public slidermainService :SliderMainService,public siderSubService :SiderSubService) {       }
 
 
   @ViewChild('imageInput') imageInput?: ElementRef;
   @ViewChild('MainImages') MainImages?: ElementRef;
 
-  brandId:any;
-  setting=new Setting;
-  Data: SiderMain[] = [];
 
   ngOnInit() {
+    this.siderSubService.GetByIdnumber(1).subscribe((result) => {
+      this.datasubintranal = result;
+      console.log(result);
+    });
+    this.siderSubService.GetByIdnumber(2).subscribe((result) => {
+      this.datasubEx = result;
+      console.log(result);
+    });
+    this.siderSubService.GetByIdnumber(3).subscribe((result) => {
+      this.datemechanic = result;
+      console.log(result);
+    });
+     this.getMainSlider();
+     this.EditSettingForm();
+     this.getLogoData();
+     this.showbyeditMainSlider();
 
-   this.getMainSlider();
-   this.EditSettingForm();
-   this.getLogoData();
-   this.showbyeditMainSlider();
-    }
+     }
+
    getLogoData() {
      this.settingservice.GetByIDlogo(1).subscribe(data => {
       this.logoData = data;
 
     });
   }
-  // openModal(id: number) {
-  //    this.slidermainService.GetByIdModal(id).subscribe(response => {
-  //     if (response) {
-  //       if (Array.isArray(response) && response.length > 0 && response[0].imageURl) {
-  //         this.Data=response
-
-  //         this.imageMain = response[0];
-
-  //         this.SilderMain = `assets/image/Slider/${this.imageMain.imageURl}`;
-  //         console.log(this.SilderMain);
-  //       }
-
-  //       console.log(this.UrlImage)
-  //       const modal = document.getElementById('mainSliderModal');
-  //        if (modal) {
-  //         modal.classList.add('show');
-  //         modal.classList.remove('fade'); // remove fade class to force show
-  //         modal.setAttribute('style', 'display: block; padding-right: 17px;');
-  //         const modalBackdrop = document.createElement('div');
-  //         modalBackdrop.classList.add('modal-backdrop', 'fade', 'show');
-  //         document.body.appendChild(modalBackdrop);
-  //        } else {
-  //         console.error("Modal element not found");
-  //       }
-  //     } else {
-  //       console.error("API response is null or undefined");
-  //     }
-  //   }, error => {
-  //     console.error("API error:", error);
-  //   });
-  // }
-
   openModal(id: number) {
     this.slidermainService.GetByIdModal(id)
       .subscribe(response => {
@@ -160,13 +149,12 @@ SiderMain = new SiderMain;
             let imageFile = this.imageInput?.nativeElement.files[0];
             formData.append('IsLogoUrl', imageFile);
             formData.append('id', id.toString());
-            if (this.selectedImage) { // check if a new image is selected
+            if (this.selectedImage) {
               formData.append('IsLogoUrl', this.selectedImage, this.selectedImage.name);
                 }
                 this.settingservice.UpdateLogo(formData).subscribe(() => {
                   console.log(formData);
-                  // do something after the logo is updated successfully
-                });
+                 });
           }
       }
     })
@@ -330,4 +318,16 @@ closeModal() {
  const modalBackdrop = document.querySelector('.modal-backdrop');
  modalBackdrop?.parentNode?.removeChild(modalBackdrop);
 }
+
+
+
+openModalSubSlider(id: number) {
+  this.siderSubService.GetByIdModal(id) // pass id to the method
+    .subscribe(response => {
+      this.getAllSubSlider = response;
+      response.id=id;
+      console.log(id); // this should now output the value of id
+    });
+}
+
 }

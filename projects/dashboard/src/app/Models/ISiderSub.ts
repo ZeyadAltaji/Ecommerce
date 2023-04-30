@@ -1,4 +1,6 @@
 export interface ISiderSub {
+  id:number;
+
    Image:string;
    Image1:string;
    Image2:string;
@@ -6,5 +8,5 @@ export interface ISiderSub {
    imageURl1:string;
    imageURl2:string;
    title:string;
-   Description:string;
+   description:string;
 }

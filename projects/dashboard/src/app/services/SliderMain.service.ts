@@ -27,7 +27,7 @@ export class SliderMainService {
     return this.http.put<SiderMain>(`${this.baseUrl}Slider/Sliders/update/`,formData);
   }
   DeleteSiderMain(id: number){
-    return this.http.put<SiderMain>(`${this.baseUrl}SliderSlider/Delete/` + id.toString(), {});
+    return this.http.put<SiderMain>(`${this.baseUrl}Slider/Slider/Delete/` + id.toString(), {});
   }
   GetByIDslider(id:string){
     return this.http.get<SiderMain>(`${this.baseUrl}Slider/Sliders/`+id.toString())
