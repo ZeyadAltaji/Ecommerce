@@ -40,9 +40,6 @@ export class SettingsComponent  implements OnInit  {
   brandId:any;
   setting=new Setting;
   Data: SiderMain[] = [];
-  // datasubintranal!:SiderSub;
-  // datasubEx!:SiderSub;
-  // datemechanic!:SiderSub;
   getAllSubSlider!:SiderSub;
   //froms
   EditLogo!:FormGroup;
@@ -60,19 +57,19 @@ export class SettingsComponent  implements OnInit  {
   IsActive: any;
   id:any;
  // initialize mainSliderItems as an empty array
-MainImage='';
-SilderMain='';
-showImage='';
-UrlImage = '';
+  MainImage='';
+  SilderMain='';
+  showImage='';
+  UrlImage = '';
 
 
-image_sub!:File;
-image_sub1!:File;
-image_sub2!:File;
+  image_sub!:File;
+  image_sub1!:File;
+  image_sub2!:File;
 
-@ViewChild('imagesub') imagesub?: ElementRef;
-@ViewChild('imagesub1') imagesub1?: ElementRef;
-@ViewChild('imagesub2') imagesub2?: ElementRef;
+  @ViewChild('imagesub') imagesub?: ElementRef;
+  @ViewChild('imagesub1') imagesub1?: ElementRef;
+  @ViewChild('imagesub2') imagesub2?: ElementRef;
 
 
 
@@ -159,59 +156,6 @@ image_sub2!:File;
         }
       })
     };
-
-    //  OnEditSubSlider() {
-    //   debugger
-    //   const updatedData = {
-    //     id: this.getdata.id,
-
-    //   };
-    //   this.route.paramMap.subscribe({
-    //     next:(params)=>{
-    //       const id=this.getdata.id;
-    //       if(id){
-    //         const fd = new FormData();
-    //         debugger
-    //         let imageFile = this.imagesub?.nativeElement.files[0];
-    //         fd.append('Image', imageFile);
-    //         let imageFile1 = this.imagesub1?.nativeElement.files[0];
-    //         fd.append('Image1', imageFile1);
-    //         let imageFile2 = this.imagesub2?.nativeElement.files[0];
-    //         fd.append('Image2', imageFile2);
-    //         fd.append('Title', this._tiltes.value);
-    //         fd.append('Description', this._Descriptions.value);
-    //         fd.append('id', id.toString());
-    //       if (this.imagesub) { // check if a new image is selected
-    //         fd.append('Image', this.image_sub, this.image_sub.name);
-    //       }
-    //       if (this.imagesub1) { // check if a new image is selected
-    //         fd.append('Image1', this.image_sub1, this.image_sub1.name);
-    //       }
-    //       if (this.imagesub2) { // check if a new image is selected
-    //         fd.append('Image2', this.image_sub2, this.image_sub2.name);
-    //       }
-    //         // Show a warning message before updating the brand
-    //         this.sweetAlertService.warning("Are you sure?", "Do you want to update this product?")
-    //         .then((willUpdate) => {
-    //           if (willUpdate) {
-
-    //             this.siderSubService.UpdateSiderMain(fd).subscribe(data => {
-    //                // Show a success message after the product has been updated
-    //                this.sweetAlertService.success("Success", "The product has been successfully Updatedd")
-
-    //               this.router.navigate(['/Setting']);
-    //             }, ex => {
-    //               this.sweetAlertService.error("Errors ! ", "There's something wrong with data entry!")
-
-    //             });
-
-    //           }
-
-    //         })
-    //       }
-    //     }
-    //   })
-    // }
 
   getLogoData() {
      this.settingservice.GetByIDlogo(1).subscribe(data => {
@@ -313,9 +257,13 @@ if(this.brandId){
 }
   }
   OnEdit(){
+    const updatedData = {
+      id: this.getdata.id,
+    };
     this.route.paramMap.subscribe({
       next:(params)=>{
-         const id=params.get('id');
+        debugger
+         const id=this.siderMain.id;
         if(id){
 
           const fd = new FormData();
@@ -458,6 +406,21 @@ closeModal() {
  modal?.setAttribute('style', 'display: none; padding-right: 0;');
  const modalBackdrop = document.querySelector('.modal-backdrop');
  modalBackdrop?.parentNode?.removeChild(modalBackdrop);
+}
+
+closeModalMain() {
+  const modal = document.getElementById('mainSliderModal');
+  const modalBackdrop = document.querySelector('.modal-backdrop');
+  modal?.classList.remove('show');
+  modal?.setAttribute('style', 'display: none; padding-right: 0;');
+
+  // Check if there are any other modals present on the page
+  const otherModals = document.querySelectorAll('.modal.show');
+  if (otherModals.length === 0) {
+    modalBackdrop?.parentNode?.removeChild(modalBackdrop);
+  }
+
+  const modalBody = modal?.querySelector('.modal-body');
 }
 
 
