@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginComponent } from 'projects/authentication/src/app/Areas/components/Login/Login.component';
+import { SettingService } from 'projects/dashboard/src/app/services/Setting.service';
 import { environment } from 'projects/my-app/src/environments/environment.development';
 
 @Component({
@@ -14,13 +15,20 @@ export class NavbarComponent implements OnInit {
   showUser: boolean = false;
   showsearch: boolean = false;
   logo: string = "assets/images/logo.png";
+  logoData!: any;
 
   LoginForm!:FormGroup;
-  constructor(private fb:FormBuilder,private router:Router) { }
+  constructor(private fb:FormBuilder,private router:Router,
+    public settingservice:SettingService) { }
   ngOnInit():void {
     this.LoginForm=this.fb.group({
       UserName:['',Validators.required],
       password :['',Validators.required]
+    });
+    this.settingservice.GetByIDlogo(1).subscribe(data => {
+      console.log(data)
+      this.logoData = data.isLogoUrl;
+
     });
 
 }
