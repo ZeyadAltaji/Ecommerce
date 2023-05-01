@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { param } from 'jquery';
 import { OwlOptions } from 'ngx-owl-carousel-o';
@@ -23,30 +23,37 @@ declare var $: any;
   encapsulation: ViewEncapsulation.None
 })
 export class SettingsComponent  implements OnInit  {
+  getdata = new SiderSub();
+
   //initialize classes
   formData: FormData = new FormData();
   siderMain=new SiderMain();
-  logoData!: ISetting;
-  SiderMain = new SiderMain;
+  datasubintranal=new SiderSub();
+  datasubEx=new SiderSub();
+  datemechanic=new SiderSub();
+
+  logoData!: any;
+  SiderMain = new SiderMain();
   imageMain: any;
   SliderMain: ISiderMain[] = [];
   Main_Image!:File;
   brandId:any;
   setting=new Setting;
   Data: SiderMain[] = [];
-  datasubintranal!:SiderSub;
-  datasubEx!:SiderSub;
-  datemechanic!:SiderSub;
+  // datasubintranal!:SiderSub;
+  // datasubEx!:SiderSub;
+  // datemechanic!:SiderSub;
   getAllSubSlider!:SiderSub;
   //froms
   EditLogo!:FormGroup;
   EditMainForm!:FormGroup;
+  EditSubSliderForm!:FormGroup;
   selectedImage!: File;
-   LogoId!:any;
+  LogoId!:any;
   selectedSetting!: Setting;
   editForm!: FormGroup;
   logoUrl!: File;
-   logo1:any;
+  logo1:any;
   title:any;
   description:any;
   Button:any;
@@ -58,6 +65,14 @@ SilderMain='';
 showImage='';
 UrlImage = '';
 
+
+image_sub!:File;
+image_sub1!:File;
+image_sub2!:File;
+
+@ViewChild('imagesub') imagesub?: ElementRef;
+@ViewChild('imagesub1') imagesub1?: ElementRef;
+@ViewChild('imagesub2') imagesub2?: ElementRef;
 
 
 
@@ -91,9 +106,117 @@ UrlImage = '';
 
      }
 
-   getLogoData() {
+     OnEditSubSlider() {
+      debugger
+      const updatedData = {
+        id: this.getdata.id,
+      }; // <-- added closing curly brace for updatedData object
+
+      this.route.paramMap.subscribe({
+
+        next:(params)=>{
+          debugger
+
+          const id=this.getdata.id;
+          if(id){
+            debugger
+
+            const fd = new FormData();
+            let imageFile = this.imagesub?.nativeElement.files[0];
+            fd.append('Image', imageFile);
+            let imageFile1 = this.imagesub1?.nativeElement.files[0];
+            fd.append('Image1', imageFile1);
+            let imageFile2 = this.imagesub2?.nativeElement.files[0];
+            fd.append('Image2', imageFile2);
+            fd.append('Title', this._tiltes.value);
+            fd.append('Description', this._Descriptions.value);
+            fd.append('id', id.toString());
+            debugger
+
+            if (this.imagesub) { // check if a new image is selected
+              fd.append('Image', this.image_sub?.name);
+            }
+            if (this.imagesub1) { // check if a new image is selected
+              fd.append('Image1', this.image_sub1?.name);
+            }
+            if (this.imagesub2) { // check if a new image is selected
+              fd.append('Image2', this.image_sub2?.name);
+            }
+            // Show a warning message before updating the brand
+            this.sweetAlertService.warning("Are you sure?", "Do you want to update this product?")
+            .then((willUpdate) => {
+              if (willUpdate) {
+                this.siderSubService.UpdateSiderMain(fd).subscribe(data => {
+                  // Show a success message after the product has been updated
+                  this.sweetAlertService.success("Success", "The product has been successfully Updatedd")
+                  this.router.navigate(['/Setting']);
+                }, ex => {
+                  this.sweetAlertService.error("Errors ! ", "There's something wrong with data entry!")
+                });
+              }
+            })
+          }
+        }
+      })
+    };
+
+    //  OnEditSubSlider() {
+    //   debugger
+    //   const updatedData = {
+    //     id: this.getdata.id,
+
+    //   };
+    //   this.route.paramMap.subscribe({
+    //     next:(params)=>{
+    //       const id=this.getdata.id;
+    //       if(id){
+    //         const fd = new FormData();
+    //         debugger
+    //         let imageFile = this.imagesub?.nativeElement.files[0];
+    //         fd.append('Image', imageFile);
+    //         let imageFile1 = this.imagesub1?.nativeElement.files[0];
+    //         fd.append('Image1', imageFile1);
+    //         let imageFile2 = this.imagesub2?.nativeElement.files[0];
+    //         fd.append('Image2', imageFile2);
+    //         fd.append('Title', this._tiltes.value);
+    //         fd.append('Description', this._Descriptions.value);
+    //         fd.append('id', id.toString());
+    //       if (this.imagesub) { // check if a new image is selected
+    //         fd.append('Image', this.image_sub, this.image_sub.name);
+    //       }
+    //       if (this.imagesub1) { // check if a new image is selected
+    //         fd.append('Image1', this.image_sub1, this.image_sub1.name);
+    //       }
+    //       if (this.imagesub2) { // check if a new image is selected
+    //         fd.append('Image2', this.image_sub2, this.image_sub2.name);
+    //       }
+    //         // Show a warning message before updating the brand
+    //         this.sweetAlertService.warning("Are you sure?", "Do you want to update this product?")
+    //         .then((willUpdate) => {
+    //           if (willUpdate) {
+
+    //             this.siderSubService.UpdateSiderMain(fd).subscribe(data => {
+    //                // Show a success message after the product has been updated
+    //                this.sweetAlertService.success("Success", "The product has been successfully Updatedd")
+
+    //               this.router.navigate(['/Setting']);
+    //             }, ex => {
+    //               this.sweetAlertService.error("Errors ! ", "There's something wrong with data entry!")
+
+    //             });
+
+    //           }
+
+    //         })
+    //       }
+    //     }
+    //   })
+    // }
+
+  getLogoData() {
      this.settingservice.GetByIDlogo(1).subscribe(data => {
-      this.logoData = data;
+      console.log(data)
+      this.logoData = data.isLogoUrl;
 
     });
   }
@@ -159,38 +282,35 @@ UrlImage = '';
       }
     })
   }
-
   showbyeditMainSlider(){
 
     this.brandId = this.route.snapshot.params['id']
-    this.slidermainService.GetByIDslider(this.brandId).subscribe({
-      next: (response) => {
-        this.siderMain = response;
+if(this.brandId){
+  this.slidermainService.GetByIDslider(this.brandId).subscribe({
+    next: (response) => {
+      this.siderMain = response;
 
-        if (Array.isArray(response) && response.length > 0 && response[0].imageURl) {
-          this.Data=response
+      if (Array.isArray(response) && response.length > 0 && response[0].imageURl) {
+        this.Data=response
 
-          this.imageMain = response[0];
-          this.MainImage = `assets/image/Slider/${this.imageMain.imageURl}`;
-          console.log(this.showImage);
-        }
-        this.SiderMain = response;
-        console.log(response)
-        if (response && response.imageURl) {
-          this.MainImage = `assets/image/Slider/${response.imageURl}`;
-          console.log(this.UrlImage)
-        }
+        this.imageMain = response[0];
+        this.MainImage = `assets/image/Slider/${this.imageMain.imageURl}`;
+        console.log(this.showImage);
+      }
+      this.SiderMain = response;
+      console.log(response)
+      if (response && response.imageURl) {
+        this.MainImage = `assets/image/Slider/${response.imageURl}`;
+        console.log(this.UrlImage)
+      }
+       this.title = this.EditMainForm.controls['Name'].setValue(this.siderMain.title);
+       this.description = this.EditMainForm.controls['Description'].setValue(this.siderMain.description);
+       this.Button=this.EditMainForm.controls['Button'].setValue(this.siderMain.button);
+       this.IsActive=this.EditMainForm.controls['Active'].setValue(this.siderMain.isActive);
 
-
-
-
-         this.title = this.EditMainForm.controls['Name'].setValue(this.siderMain.title);
-         this.description = this.EditMainForm.controls['Description'].setValue(this.siderMain.description);
-         this.Button=this.EditMainForm.controls['Button'].setValue(this.siderMain.button);
-         this.IsActive=this.EditMainForm.controls['Active'].setValue(this.siderMain.isActive);
-
-       },
-    });
+     },
+  });
+}
   }
   OnEdit(){
     this.route.paramMap.subscribe({
@@ -231,17 +351,31 @@ UrlImage = '';
 
         }
       });
-   }
-   EditSettingForm(){
+  }
+  EditSettingForm(){
     this.EditLogo =this.fb.group({
       logo:[null, Validators.required],
       Active: [null,Validators.required],
       Description:[null,Validators.required],
       Button:[null,Validators.required],
       Name: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
+     })
+    this.EditSubSliderForm = new FormGroup({
+      title: new FormControl(),
+      Descriptions: new FormControl(),
+      imageURl: new FormControl(),
+      imageURl1: new FormControl(),
+      imageURl2: new FormControl()
+    });
+    this.EditMainForm=this.fb.group({
+      Name:[null,Validators.required],
+      Description:[null,Validators.required],
+      Button:['',Validators.required],
+      Active: [null,Validators.required],
 
     })
-   }
+
+  }
    GeneralSettings(event:any) {
     if (event.target.files !== null && event.target.files.length > 0) {
       const image_userUrl = event.target.files[0];
@@ -300,17 +434,24 @@ UrlImage = '';
   }
   get _Name() {
     return this.EditMainForm.controls['Name'] as FormGroup;
-}
-get _Description(){
-  return this.EditMainForm.controls['Description'] as FormGroup;
-}
-get _isActive(){
-  return this.EditMainForm.controls['Active'] as FormGroup;
-}
-get _Button(){
-  return this.EditMainForm.controls['Button'] as FormGroup;
+  }
 
+  get _tiltes() {
+    return this.EditSubSliderForm.controls['title'] as FormGroup;
 }
+get _Descriptions(){
+  return this.EditSubSliderForm.controls['Descriptions'] as FormGroup;
+}
+  get _Description(){
+    return this.EditMainForm.controls['Description'] as FormGroup;
+  }
+  get _isActive(){
+    return this.EditMainForm.controls['Active'] as FormGroup;
+  }
+  get _Button(){
+    return this.EditMainForm.controls['Button'] as FormGroup;
+
+  }
 closeModal() {
   const modal = document.getElementById('mainSliderModal');
  modal?.classList.remove('show');
@@ -324,7 +465,7 @@ closeModal() {
 openModalSubSlider(id: number) {
   this.siderSubService.GetByIdModal(id) // pass id to the method
     .subscribe(response => {
-      this.getAllSubSlider = response;
+      this.getdata = response;
       response.id=id;
       console.log(id); // this should now output the value of id
     });

@@ -3,6 +3,7 @@ import { Environment } from '../Environments/Environments';
 import { HttpClient } from '@angular/common/http';
 import { ISiderMain } from '../Models/ISiderMain';
 import { SiderMain } from '../Classes/SiderMain';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,7 @@ export class SliderMainService {
     return this.http.put<SiderMain>(`${this.baseUrl}Slider/Slider/Delete/` + id.toString(), {});
   }
   GetByIDslider(id:string){
+    if(!id) return throwError('Invalid ID');
     return this.http.get<SiderMain>(`${this.baseUrl}Slider/Sliders/`+id.toString())
   }
 }
