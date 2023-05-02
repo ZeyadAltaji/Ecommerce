@@ -40,11 +40,11 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   }
-  .slide-1 {
+  /* .slide-1 {
   background-image: url(../../../../assets/images/owl1.jpg);
   background-size: cover;
   background-position: center center;
-  }
+  } */
   .slide-2 {
   background-image: url(../../../../assets/images/quad_bike.jpg);
   background-size: cover;
@@ -91,14 +91,7 @@
     width: 100px !important;
     height: 100px !important;
 
-  /* position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #fff !important;
-  font-size: 65px !important;
-  font-weight: bolder !important;
-  background:none !important;
-  */
+
   }
   .owl-prev {
   left: 1%;

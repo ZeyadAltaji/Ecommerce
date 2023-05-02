@@ -1,28 +1,15 @@
 <section class="section-home">
-  <owl-carousel-o [options]="customOptions">
-   <ng-template carouselSlide>
-     <div class="slide slide-1">
+  <owl-carousel-o [options]="customOptions" >
+   <ng-template carouselSlide  *ngFor="let x of Data; let i = index">
+     <div class="slide slide-1" [ngStyle]="{ 'background-image': 'url(http://localhost:4203/assets/image/Slider/'+ x.imageURl+')'}">
        <div class="content animation-text-main slide-content">
-         <h1>Auto-Parts</h1>
-         <p>Wide selection of new and used auto parts at the lowest price.</p>
-         <button class="btn-shop">Shop Now
+         <h1>{{x.title}}</h1>
+         <p>{{x.description}}</p>
+         <button class="btn-shop">{{x.button}}
            <i class="bx icon-add bx-cart-add"></i>
          </button>
        </div>
      </div>
-   </ng-template>
-   <ng-template carouselSlide>
-     <div class="slide slide-2">
-       <div class="content animation-text-main slide-content">
-           <h1>Quad bike, UTV, ATV Accessories</h1>
-           <p>
-             From boxes to plows, we have everything for the road ahead.
-         </p>
-         <button class="btn-shop">Shop Now
-           <i class="bx icon-add bx-cart-add"></i>
-         </button>
-       </div>
-   </div>
    </ng-template>
   </owl-carousel-o>
 
