@@ -10,4 +10,5 @@ export class SiderSub implements ISiderSub {
   imageURl2!: string;
   title!: string;
   description!: string;
+  button!:string;
 }

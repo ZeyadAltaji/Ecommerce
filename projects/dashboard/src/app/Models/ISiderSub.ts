@@ -9,4 +9,5 @@ export interface ISiderSub {
    imageURl2:string;
    title:string;
    description:string;
+   button:string;
 }

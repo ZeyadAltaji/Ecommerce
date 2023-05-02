@@ -6,6 +6,16 @@
    <div>
     <div class="owl-brand">
       <owl-carousel-o [options]="brand">
+        <!-- <ng-template carouselSlide *ngFor="let x of Data; let i = index">
+          <div class="item">
+            <a > <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}" alt="{{[x.public_id]}}"></a>
+          </div>
+        </ng-template> -->
+        <!-- <ng-template carouselSlide  *ngFor="let x of line1; let i = index">
+          <div class="item">
+            <a > <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}" alt="{{[x.public_id]}}"></a>
+          </div>
+        </ng-template> -->
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/1.webp" alt=""></div></ng-template>
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/2.avif" alt=""></div></ng-template>
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/3.webp" alt=""></div></ng-template>
@@ -18,11 +28,15 @@
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/10.avif" alt=""></div></ng-template>
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/10.avif" alt=""></div></ng-template>
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/11.webp" alt=""></div></ng-template>
-
       </owl-carousel-o>
     </div>
     <div class="owl-brand">
       <owl-carousel-o [options]="brand">
+        <!-- <ng-template carouselSlide  *ngFor="let x of line2; let i = index">
+          <div class="item">
+            <a > <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}" alt="{{[x.public_id]}}"></a>
+          </div>
+        </ng-template> -->
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/14.avif" alt=""></div></ng-template>
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/15.avif" alt=""></div></ng-template>
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/16.avif" alt=""></div></ng-template>
@@ -40,6 +54,11 @@
     </div>
     <div class="owl-brand">
       <owl-carousel-o [options]="brand">
+        <!-- <ng-template carouselSlide  *ngFor="let x of line3; let i = index">
+          <div class="item">
+            <a > <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}" alt="{{[x.public_id]}}"></a>
+          </div>
+        </ng-template> -->
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/26.webp" alt=""></div></ng-template>
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/27.webp" alt=""></div></ng-template>
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/28.avif" alt=""></div></ng-template>
@@ -72,38 +91,28 @@
         <ng-template carouselSlide>
           <div>
             <div class="contents animation-text slide-content">
-              <h1>External Parts</h1>
-              <p>title title title title title.</p>
-              <!-- <button class="btn-go" routerLinkActive="Active" routerLink="/detailproducts">Shop Now
+              <h1>{{DataExternal.title}}</h1>
+              <p>{{[DataExternal.description]}}</p>
+              <a  class="btn-go" href="/View-All-Products" routerLinkActive="Active"  routerLink="/detailproducts" >{{[DataExternal.button]}}
                 <i class="bx icon-add bx-cart-add"></i>
-              </button> -->
-              <a  class="btn-go" href="/View-All-Products" routerLinkActive="Active"  routerLink="/detailproducts" >Shop Now
-                <i class="bx icon-add bx-cart-add"></i>
-
               </a>
 
             </div>
-            <img class="owl-img" src="../../../../assets/image-home/3.png" >
-
-          </div>
+            <img class="owl-img" *ngIf="DataExternal.imageURl" src="http://localhost:4203/assets/image/SubSlider/{{DataExternal.imageURl}}" >
+            </div>
         </ng-template>
-
         <ng-template carouselSlide>
           <div>
             <div class="contents animation-text slide-content">
-              <h1>External Parts</h1>
-              <p>title title title title title.</p>
-              <!-- <button class="btn-go" routerLinkActive="Active" routerLink="/detailproducts">Shop Now
+              <h1>{{DataExternal.title}}</h1>
+              <p>{{[DataExternal.description]}}</p>
+              <a  class="btn-go" href="/View-All-Products" routerLinkActive="Active"  routerLink="/detailproducts" >{{[DataExternal.button]}}
                 <i class="bx icon-add bx-cart-add"></i>
-              </button> -->
-              <a  class="btn-go" href="/View-All-Products" routerLinkActive="Active"  routerLink="/detailproducts" >Shop Now
-                <i class="bx icon-add bx-cart-add"></i>
-
               </a>
-            </div>
-              <img class="owl-img" src="../../../../assets/image-home/4.png"  >
 
-          </div>
+            </div>
+            <img class="owl-img" *ngIf="DataExternal.imageURl" src="http://localhost:4203/assets/image/SubSlider/{{DataExternal.imageURl1}}" >
+            </div>
         </ng-template>
        </owl-carousel-o>
   </div>
@@ -122,55 +131,33 @@
         <ng-template carouselSlide>
           <div>
             <div class="contents animation-text slide-content">
-              <h1>Indoor Cutting</h1>
-              <p>title title title title title.</p>
-              <!-- <button class="btn-go" routerLinkActive="Active" routerLink="/detailproducts">Shop Now
-                <i class="bx icon-add bx-cart-add"></i>
-              </button> -->
-              <a  class="btn-go" href="/View-All-Products" routerLinkActive="Active"  routerLink="/detailproducts" >Shop Now
+              <h1>{{[DataIndoor.title]}}</h1>
+              <p>{{[DataIndoor.description]}}</p>
+              <a  class="btn-go" href="/View-All-Products" routerLinkActive="Active"  routerLink="/detailproducts" >{{[DataIndoor.button]}}
                 <i class="bx icon-add bx-cart-add"></i>
 
               </a>
 
             </div>
-               <img class="owl-img" src="../../../../assets/image-home/1.jpg">
+            <img class="owl-img" *ngIf="DataExternal.imageURl" src="http://localhost:4203/assets/image/SubSlider/{{DataIndoor.imageURl}}" >
           </div>
         </ng-template>
 
         <ng-template carouselSlide>
           <div>
             <div class="contents animation-text slide-content">
-              <h1>Indoor Cutting</h1>
-              <p>title title title title title.</p>
-              <!-- <button class="btn-go" routerLinkActive="Active" routerLink="/detailproducts">Shop Now
-                <i class="bx icon-add bx-cart-add"></i>
-              </button> -->
+              <h1>{{[DataIndoor.title]}}</h1>
+              <p>{{[DataIndoor.description]}}</p>
               <a  class="btn-go" href="/View-All-Products" routerLinkActive="Active"  routerLink="/detailproducts" >Shop Now
                 <i class="bx icon-add bx-cart-add"></i>
 
               </a>
             </div>
-               <img class="owl-img" src="../../../../assets/image-home/2.png">
+            <img class="owl-img" *ngIf="DataExternal.imageURl1" src="http://localhost:4203/assets/image/SubSlider/{{DataIndoor.imageURl1}}" >
 
           </div>
         </ng-template>
-        <ng-template carouselSlide>
-          <div>
-            <div class="contents animation-text slide-content">
-              <h1>Indoor Cutting</h1>
-              <p>title title title title title.</p>
-              <!-- <button class="btn-go" routerLinkActive="Active" routerLink="/detailproducts">Shop Now
-                <i class="bx icon-add bx-cart-add"></i>
-              </button> -->
-              <a  class="btn-go" href="/View-All-Products" routerLinkActive="Active"  routerLink="/detailproducts" >Shop Now
-                <i class="bx icon-add bx-cart-add"></i>
 
-              </a>
-            </div>
-               <img class="owl-img" src="../../../../assets/image-home/5.png">
-
-          </div>
-        </ng-template>
        </owl-carousel-o>
   </div>
    </div>
@@ -187,18 +174,15 @@
         <ng-template carouselSlide>
           <div>
             <div class="contents animation-text slide-content">
-              <h1>Cutting Spatials</h1>
-              <p>title title title title title.</p>
-              <!-- <button class="btn-go" routerLinkActive="Active" routerLink="/detailproducts">Shop Now
-                <i class="bx icon-add bx-cart-add"></i>
-              </button> -->
-              <a  class="btn-go" href="/View-All-Products" routerLinkActive="Active"  routerLink="/detailproducts" >Shop Now
+              <h1>{{[DataMechanical.title]}}</h1>
+              <p>{{[DataMechanical.description]}}</p>
+              <a  class="btn-go" href="/View-All-Products" routerLinkActive="Active"  routerLink="/detailproducts" >{{[DataMechanical.button]}}
                 <i class="bx icon-add bx-cart-add"></i>
 
               </a>
 
             </div>
-              <img class="owl-img" src="../../../../assets/image-home/6.jpg" >
+            <img class="owl-img" *ngIf="DataExternal.imageURl" src="http://localhost:4203/assets/image/SubSlider/{{DataMechanical.imageURl}}" >
 
           </div>
         </ng-template>
@@ -206,17 +190,15 @@
         <ng-template carouselSlide>
           <div>
             <div class="contents animation-text slide-content">
-              <h1>Cutting Spatials</h1>
-              <p>title title title title title.</p>
-              <!-- <button class="btn-go" routerLinkActive="Active" routerLink="/detailproducts">Shop Now
-                <i class="bx icon-add bx-cart-add"></i>
-              </button> -->
-              <a  class="btn-go" href="/View-All-Products" routerLinkActive="Active"  routerLink="/detailproducts" >Shop Now
+              <h1>{{[DataMechanical.title]}}</h1>
+              <p>{{[DataMechanical.description]}}</p>
+              <a  class="btn-go" href="/View-All-Products" routerLinkActive="Active"  routerLink="/detailproducts" >{{[DataMechanical.button]}}
                 <i class="bx icon-add bx-cart-add"></i>
 
               </a>
+
             </div>
-              <img class="owl-img" src="../../../../assets/image-home/7.jpg"  >
+            <img class="owl-img" *ngIf="DataExternal.imageURl" src="http://localhost:4203/assets/image/SubSlider/{{DataMechanical.imageURl1}}" >
 
           </div>
         </ng-template>
@@ -347,6 +329,12 @@
           <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/cars/18.webp" alt=""></div></ng-template>
           <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/cars/19.avif" alt=""></div></ng-template>
           <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/cars/20.avif" alt=""></div></ng-template>
+          <!-- <ng-template carouselSlide *ngFor="let x of DataCars;">
+            <div class="item">
+              <a><img class="image-brand" src="http://localhost:4203/assets/image/Cars/{{[x.public_id]}}" alt=""></a>
+            </div>
+          </ng-template> -->
+
         </owl-carousel-o>
       </div>
     </div>
