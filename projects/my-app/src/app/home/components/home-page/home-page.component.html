@@ -309,8 +309,14 @@
     <div>
       <div class="owl-brand">
         <owl-carousel-o [options]="brandcars">
-          <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/cars/1.avif" alt=""></div></ng-template>
-          <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/cars/2.avif" alt=""></div></ng-template>
+          <ng-template carouselSlide *ngFor="let item of carService.ListCars">
+            <a href="{{[item.id]}}">
+              <div class="item">
+                <img class="image-brand" src="http://localhost:4203/assets/image/Cars/{{[item.public_id]}}" alt="">
+              </div>
+            </a>
+          </ng-template>
+          <!-- <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/cars/2.avif" alt=""></div></ng-template>
           <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/cars/3.avif" alt=""></div></ng-template>
           <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/cars/4.avif" alt=""></div></ng-template>
           <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/cars/5.avif" alt=""></div></ng-template>
@@ -328,7 +334,7 @@
           <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/cars/16.avif" alt=""></div></ng-template>
           <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/cars/18.webp" alt=""></div></ng-template>
           <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/cars/19.avif" alt=""></div></ng-template>
-          <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/cars/20.avif" alt=""></div></ng-template>
+          <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/cars/20.avif" alt=""></div></ng-template> -->
           <!-- <ng-template carouselSlide *ngFor="let x of DataCars;">
             <div class="item">
               <a><img class="image-brand" src="http://localhost:4203/assets/image/Cars/{{[x.public_id]}}" alt=""></a>
@@ -340,3 +346,7 @@
     </div>
   </div>
 </main>
+
+
+
+

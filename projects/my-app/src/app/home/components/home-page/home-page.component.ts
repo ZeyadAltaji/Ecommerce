@@ -2,9 +2,11 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Brands } from 'projects/dashboard/src/app/Classes/Brands';
 import { Cars } from 'projects/dashboard/src/app/Classes/Cars';
+import { Product } from 'projects/dashboard/src/app/Classes/Product';
 import { SiderSub } from 'projects/dashboard/src/app/Classes/SiderSub';
 import { BrandsService } from 'projects/dashboard/src/app/services/Brands.service';
 import { CarService } from 'projects/dashboard/src/app/services/Car.service';
+import { ProductService } from 'projects/dashboard/src/app/services/Product.service';
 import { SiderSubService } from 'projects/dashboard/src/app/services/SiderSub.service';
 
 @Component({
@@ -15,13 +17,14 @@ import { SiderSubService } from 'projects/dashboard/src/app/services/SiderSub.se
 
 })
 export class HomePageComponent implements OnInit{
-  constructor(public brandsService:BrandsService,public siderSubService :SiderSubService,public carService:CarService){}
+  constructor(public brandsService:BrandsService,public siderSubService :SiderSubService,public carService:CarService,public productService:ProductService){}
   Data:Brands[]=[];
   DataCars:Cars[]=[];
-
   DataExternal=new SiderSub();
   DataIndoor=new SiderSub();
   DataMechanical=new SiderSub();
+  DataProducts=new Product();
+
   line1: any[] = [];
   line2: any[] = [];
   line3: any[] = [];
@@ -68,8 +71,14 @@ ngOnInit() {
     console.log('httperror:');
     console.log(error);
   });
+ }
+showProductsByBrand(brandId: number) {
+  this.productService.GetProductsByCars(brandId)
+    .subscribe((response) => {
+      this.DataProducts = response;
+      console.log(response)
+    });
 }
-
 shuffle(array: any[]): any[] {
   // Fisher-Yates shuffle algorithm
   for (let i = array.length - 1; i > 0; i--) {
