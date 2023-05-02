@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { BrowserModule } from '@angular/platform-browser';
   imports: [
     CommonModule,
     CarouselModule,
+    ReactiveFormsModule,
+    RouterModule
    ],exports:[
     SectionHomeComponent
   ]
