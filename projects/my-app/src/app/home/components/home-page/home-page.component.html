@@ -6,17 +6,17 @@
    <div>
     <div class="owl-brand">
       <owl-carousel-o [options]="brand">
-        <!-- <ng-template carouselSlide *ngFor="let x of Data; let i = index">
+        <ng-template carouselSlide *ngFor="let x of Data; let i = index">
           <div class="item">
-            <a > <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}" alt="{{[x.public_id]}}"></a>
+            <a routerLink="View-All-Products/brand/{{[x.id]}}" > <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}" alt="{{[x.public_id]}}"></a>
           </div>
-        </ng-template> -->
+        </ng-template>
         <!-- <ng-template carouselSlide  *ngFor="let x of line1; let i = index">
           <div class="item">
             <a > <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}" alt="{{[x.public_id]}}"></a>
           </div>
         </ng-template> -->
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/1.webp" alt=""></div></ng-template>
+        <!-- <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/1.webp" alt=""></div></ng-template>
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/2.avif" alt=""></div></ng-template>
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/3.webp" alt=""></div></ng-template>
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/4.avif" alt=""></div></ng-template>
@@ -27,7 +27,7 @@
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/9.avif" alt=""></div></ng-template>
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/10.avif" alt=""></div></ng-template>
         <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/10.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/11.webp" alt=""></div></ng-template>
+        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/11.webp" alt=""></div></ng-template> -->
       </owl-carousel-o>
     </div>
     <div class="owl-brand">
@@ -111,7 +111,7 @@
               </a>
 
             </div>
-            <img class="owl-img" *ngIf="DataExternal.imageURl" src="http://localhost:4203/assets/image/SubSlider/{{DataExternal.imageURl1}}" >
+            <img class="owl-img" *ngIf="DataExternal.imageURl" src="http://localhost:4203/assets/image/SubSlider/{{DataExternal.imageURl}}" >
             </div>
         </ng-template>
        </owl-carousel-o>
@@ -153,7 +153,7 @@
 
               </a>
             </div>
-            <img class="owl-img" *ngIf="DataExternal.imageURl1" src="http://localhost:4203/assets/image/SubSlider/{{DataIndoor.imageURl1}}" >
+            <img class="owl-img" *ngIf="DataExternal.imageURl1" src="http://localhost:4203/assets/image/SubSlider/{{DataIndoor.imageURl}}" >
 
           </div>
         </ng-template>
@@ -310,7 +310,7 @@
       <div class="owl-brand">
         <owl-carousel-o [options]="brandcars">
           <ng-template carouselSlide *ngFor="let item of carService.ListCars">
-            <a href="{{[item.id]}}">
+            <a routerLink="View-All-Products/car/{{[item.id]}}">
               <div class="item">
                 <img class="image-brand" src="http://localhost:4203/assets/image/Cars/{{[item.public_id]}}" alt="">
               </div>

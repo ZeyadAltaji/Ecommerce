@@ -40,7 +40,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'View-All-Products/:id',
+        path: 'View-All-Products/:type/:id',
          component: ViewAllProductsComponent
       },
       {

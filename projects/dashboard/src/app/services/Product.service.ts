@@ -34,11 +34,13 @@ export class ProductService {
   DeleteProducts(id: number){
     return this.http.put<Product>(`${this.baseUrl}Product/Products/Delete/` + id.toString(), {});
   }
-  GetProductsByBrand(id:string){
-    return this.http.get<Product>(`${this.baseUrl}Product/ByBrand/${id}`.toString()).pipe()
+  GetProductsByCarOrBrand(id:string, type:string){
+    if (type === 'car') {
+      return this.http.get<Product[]>(`${this.baseUrl}Product/ByCars/${id}`).pipe();
+    } else if (type === 'brand') {
+      return this.http.get<Product[]>(`${this.baseUrl}Product/ByBrand/${id}`).pipe();
+    } else {
+      return null;
+    }
   }
-  GetProductsByCars(id:number){
-    return this.http.get<Product>(`${this.baseUrl}Product/ByCars/${id}`.toString()).pipe()
-  }
-
 }
