@@ -1,8 +1,8 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from 'projects/dashboard/src/app/Classes/Product';
-import { IProducts } from 'projects/dashboard/src/app/Models/IProduct';
+ import { SubProducts } from 'projects/dashboard/src/app/Classes/SubProducts';
+ import { ISubProducts } from 'projects/dashboard/src/app/Models/ISubProducts';
 import { BrandsService } from 'projects/dashboard/src/app/services/Brands.service';
 import { CarService } from 'projects/dashboard/src/app/services/Car.service';
 import { SubproductsService } from 'projects/dashboard/src/app/services/Subproducts.service';
@@ -21,9 +21,9 @@ export class EditSubProductsComponent implements OnInit {
   categoriseList: any[] | undefined;
   CarsList:any[]|undefined;
   BrandList:any[]|undefined;
-  product = new Product();
+  product = new SubProducts();
   showInputs = false;
-  propertyView: IProducts = {
+  propertyView: ISubProducts = {
     id: 0,
     serial_Id: '',
     title: '',
@@ -44,12 +44,8 @@ export class EditSubProductsComponent implements OnInit {
     Car_Id: 0,
     description: '',
     isPrimaryImage: '',
-    isForeignImage1: '',
-    isForeignImage2: '',
-    Primary_Image: '',
-    ForeignImage1: '',
-    ForeignImage2: ''
-  };
+     Primary_Image: '',
+   };
   productsId:any;
   showPrimaryImage = '';
   showForeignImage1='';

@@ -129,24 +129,9 @@
           </div>
           <div class="col-md-6">
             <div class="card mb-3" style="max-width: 350px;">
-              <div class="row g-0">
-                <div class="card-img-tiles" data-abc="true">
-                  <div class="inner">
-                    <div class="col-md-6 main-img">
-
-                          <img src="{{[showPrimaryImage]}}" class="img-fluid rounded-start"id="PrimaryImage" alt="Is Primary Image">
-                        </div>
-                       <div class="col-md-5 thumblist">
-
-
-                          <img src="{{[showForeignImage1]}}" class="img-fluid rounded-start" id="ForeignImage1" alt="Is Foreign Image"  >
-                          <img src="{{[showForeignImage2]}}" class="img-fluid rounded-start" id="ForeignImage2" alt="Is Foreign Image">
-                       </div>
-                  </div>
-              </div>
+              <img src="{{[showPrimaryImage]}}" class="img-fluid rounded-start" id="PrimaryImage" alt="Is Primary Image">
             </div>
           </div>
-        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModal()" data-bs-dismiss="modal">Close</button>

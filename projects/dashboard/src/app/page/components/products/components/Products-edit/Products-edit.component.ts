@@ -26,13 +26,8 @@ export class ProductsEditComponent implements OnInit {
   showInputs = false;
   propertyView: IProducts = {
     id: 0,
-    serial_Id: '',
-    title: '',
-    price: 0,
-    quantity: 0,
-    offers: 0,
-    New_price: 0,
-    UserId: 0,
+     title: '',
+     UserId: 0,
     admin_Id: 0,
     createDate: '',
     isActive: false,
@@ -43,8 +38,7 @@ export class ProductsEditComponent implements OnInit {
     Brands_Id: 0,
     Category_Id: 0,
     Car_Id: 0,
-    description: '',
-    isPrimaryImage: '',
+     isPrimaryImage: '',
     isForeignImage1: '',
     isForeignImage2: '',
     Primary_Image: '',
@@ -91,13 +85,7 @@ export class ProductsEditComponent implements OnInit {
           this.showPrimaryImage = `assets/image/Products/${response.isPrimaryImage}`;
           this.showForeignImage1 = `assets/image/Products/${response.isForeignImage1}`;
           this.showForeignImage2 = `assets/image/Products/${response.isForeignImage1}`;
-          this.serial_Id = this.EditProductsForm.controls['Serial_Id'].setValue(this.product.serial_Id);
           this.title = this.EditProductsForm.controls['NameProducts'].setValue(this.product.title);
-          this.description = this.EditProductsForm.controls['Description'].setValue(this.product.description);
-          this.price = this.EditProductsForm.controls['PriceProducts'].setValue(this.product.price);
-          this.offers = this.EditProductsForm.controls['Offer'].setValue(this.product.offers);
-          this.new_price = this.EditProductsForm.controls['newprice'].setValue(this.product.New_price);
-          this.quantity = this.EditProductsForm.controls['Quantity'].setValue(this.product.quantity);
           this.brands_Id = this.EditProductsForm.controls['Brands'].setValue(this.product.Brands_Id);
           this.car_Id = this.EditProductsForm.controls['Cars'].setValue(this.product.Car_Id);
           this.category_Id = this.EditProductsForm.controls['Categorise'].setValue(this.product.Category_Id);
@@ -232,18 +220,12 @@ export class ProductsEditComponent implements OnInit {
   }
   MapProducts():void{
     this.product.title = this._NameProducts.value;
-    this.product.serial_Id = this._SerialId.value;
-    this.product.price = this._PriceProducts.value;
-    this.product.quantity = this._Quantity.value;
-    this.product.description = this._Description.value;
+
     this.product.Brands_Id = this._Brands.value;
     this.product.Car_Id = this._Cars.value;
     this.product.Category_Id = this._Categorise.value;
     this.product.isActive=this._isActive.value;
-    if (this.new_priceProducts && this._offers) {
-      this.product.New_price = this.new_priceProducts.value;
-      this.product.offers = this._offers.value;
-    }
+
   }
   toggleInputs() {
     this.showInputs = !this.showInputs;

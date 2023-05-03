@@ -19,9 +19,7 @@ export interface ISubProducts {
   Car_Id: number;
   cars:string;
   isPrimaryImage:string;
-  isForeignImage1:string;
-  isForeignImage2:string;
+
    Primary_Image:string;
-   ForeignImage1:string;
-   ForeignImage2:string;
+
 }

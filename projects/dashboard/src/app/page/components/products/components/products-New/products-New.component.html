@@ -11,22 +11,12 @@
     <div class="container text-center">
       <div class="row">
         <div class="col-6 info">
-            <div class="mb-3">
-              <label for="NumberProducts" class="form-label">Serial Number Products</label>
-              <input type="text" class="form-control" id="Serial_Id" aria-describedby="NumberProducts" formControlName="Serial_Id">
-            </div>
+
             <div class="mb-3">
               <label for="NameProducts" class="form-label">Name Products</label>
               <input type="text" class="form-control" id="NameProducts" formControlName="NameProducts">
             </div>
-            <div class="mb-3">
-              <label for="TypeProducts" class="form-label">Price</label>
-              <input type="text" class="form-control" id="PriceProducts" formControlName="PriceProducts">
-            </div>
-            <div class="mb-3">
-              <label for="Password" class="form-label">Quantity Have</label>
-              <input type="text" class="form-control" id="-Quantity" formControlName="Quantity">
-            </div>
+
             <div class="mb-3">
               <label for="primaryimages" class="form-label">Photo primary</label>
               <input type="file" class="form-control" (change)="HandleFilePrimaryimages($event)" id="inputGroupFile03" formControlName="Primary_Image" aria-describedby="inputGroupFileAddon03" aria-label="Upload"  #PrimaryImage>
@@ -70,14 +60,7 @@
                 >more_horiz</i>More Options
               </a>
               <div [class.show]="showInputs">
-                <div *ngIf="showInputs" data-bs-parent="#parentDiv">
-                  <label for="New_price" class="form-label">New Price</label>
-                  <input type="text" class="form-control" id="PriceProducts" formControlName="newprice">
-                </div>
-                 <div  *ngIf="showInputs" data-bs-parent="#parentDiv">
-                  <label for="Offer" class="form-label">Offers</label>
-                  <input type="text" class="form-control" id="offers"  formControlName="Offer">
-                 </div>
+
                  <div class="form-check mt-2" *ngIf="showInputs" >
                   <input class="form-check-input" type="checkbox" formControlName="isActive" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">
@@ -116,12 +99,7 @@
               </option>
             </select>
           </div>
-          <div class="mb-3">
-            <label for="Description" class="form-label">Description</label>
-            <textarea type="text"
-            class="form-control"
-            rows="6" formControlName="Description"></textarea>
-          </div>
+          
 
 
 

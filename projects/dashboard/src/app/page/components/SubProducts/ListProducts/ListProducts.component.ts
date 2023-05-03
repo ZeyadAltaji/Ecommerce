@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'projects/dashboard/src/app/Classes/Product';
-import { IProducts } from 'projects/dashboard/src/app/Models/IProduct';
+import { SubProducts } from 'projects/dashboard/src/app/Classes/SubProducts';
+ import { ISubProducts } from 'projects/dashboard/src/app/Models/ISubProducts';
 import { BrandsService } from 'projects/dashboard/src/app/services/Brands.service';
 import { CarService } from 'projects/dashboard/src/app/services/Car.service';
 import { SubproductsService } from 'projects/dashboard/src/app/services/Subproducts.service';
@@ -15,9 +16,9 @@ import swal from 'sweetalert';
 })
 export class ListProductsComponent implements OnInit {
 
-  listProducts: IProducts[] | undefined;
+  listProducts: ISubProducts[] | undefined;
   public ProductId: number | undefined;
-  product = new Product();
+  product = new SubProducts();
   isAccordionOpen = false;
   categoriseList: any[] | undefined;
   CarsList:any[]|undefined;
@@ -39,6 +40,7 @@ export class ListProductsComponent implements OnInit {
   // interval(1000).subscribe(() => {
     this.productsService.GetAllProducts().subscribe(listData=>{
       this.productsService.listProducts=listData;
+      console.log(listData);
      },
     error => {
       console.log('httperror:');
@@ -62,10 +64,7 @@ this.brandsService.GetAllBrands().subscribe(data=>{
     this.productsService.GetByIdModal(id)
       .subscribe(response => {
         this.product = response;
-        this.showPrimaryImage = `assets/image/Products/${response.isPrimaryImage}`;
-        this.showForeignImage1 = `assets/image/Products/${response.isForeignImage1}`;
-        this.showForeignImage2 = `assets/image/Products/${response.isForeignImage1}`;
-
+        this.showPrimaryImage = `assets/image/SubProduct/${response.isPrimaryImage}`;
         const modal = document.getElementById('productModal');
         modal?.classList.add('show');
         modal?.setAttribute('style', 'display: block; padding-right: 17px;');

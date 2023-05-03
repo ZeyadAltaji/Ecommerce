@@ -31,12 +31,7 @@ export class ProductsNewComponent implements OnInit {
   showInputs = false;
   propertyView: IProducts = {
     id: 0,
-    serial_Id: '',
-    title: '',
-    price: 0,
-    quantity: 0,
-    offers: 0,
-    New_price: 0,
+     title: '',
     UserId: 0,
     admin_Id: 0,
     createDate: '',
@@ -48,8 +43,7 @@ export class ProductsNewComponent implements OnInit {
     Brands_Id: 0,
     Category_Id: 0,
     Car_Id: 0,
-    description: '',
-    isPrimaryImage: '',
+     isPrimaryImage: '',
     isForeignImage1: '',
     isForeignImage2: '',
     Primary_Image: '',
@@ -90,31 +84,21 @@ export class ProductsNewComponent implements OnInit {
   }
   AddNewProductsForm() {
     this.NewProductsForm = this.fb.group({
-      Serial_Id: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
       NameProducts: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
-      PriceProducts: [null, Validators.required],
       Categorise: [null,Validators.required],
       Cars: [null, Validators.required],
       Brands: [null, Validators.required],
-      Quantity:[null, Validators.required],
-      Description:[null,Validators.required],
-      newprice: [null],
-      Offer: [null],
       isActive: false,
       Primary_Image:[null, Validators.required],
       Foreign_Image1:[null, Validators.required],
       Foreign_Image2:[null, Validators.required]
     });
   }
-  get _SerialId() {
-    return this.NewProductsForm.controls['Serial_Id'] as FormGroup;
-  }
+
   get _NameProducts() {
       return this.NewProductsForm.controls['NameProducts'] as FormGroup;
   }
-  get _PriceProducts() {
-      return this.NewProductsForm.controls['PriceProducts'] as FormGroup;
-  }
+
   get _Categorise() {
       return this.NewProductsForm.controls['Categorise'] as FormGroup;
   }
@@ -124,19 +108,8 @@ export class ProductsNewComponent implements OnInit {
   get _Brands(){
     return this.NewProductsForm.controls['Brands'] as FormGroup;
   }
-  get _Description(){
-    return this.NewProductsForm.controls['Description'] as FormGroup;
-  }
-  get _Quantity(){
-    return this.NewProductsForm.controls['Quantity'] as FormGroup;
-  }
-  get _new_price() {
-    return this.NewProductsForm.controls['newprice']as FormGroup;
-  }
 
-  get _offers() {
-    return this.NewProductsForm.controls['Offer']as FormGroup;
-  }
+
 
   get _isActive() {
     return this.NewProductsForm.controls['isActive']as FormGroup;
@@ -153,17 +126,11 @@ export class ProductsNewComponent implements OnInit {
   MapProducts():void{
     debugger
     this.formData = new FormData();
-    this.formData.append('Serial_Id', this._SerialId.value);
-    this.formData.append('Title', this._NameProducts.value);
-    this.formData.append('Description', this._Description.value);
-    this.formData.append('Price', this._PriceProducts.value);
-    this.formData.append('Offers', this._offers.value);
-    this.formData.append('New_price', this._new_price.value);
-    this.formData.append('Brands_Id', this._Brands.value);
+     this.formData.append('Title', this._NameProducts.value);
+     this.formData.append('Brands_Id', this._Brands.value);
     this.formData.append('Car_Id', this._Cars.value);
     this.formData.append('Category_Id', this._Categorise.value);
-    this.formData.append('Quantity', this._Quantity.value);
-    let Primary_Image = this.PrimaryImage?.nativeElement.files[0];
+     let Primary_Image = this.PrimaryImage?.nativeElement.files[0];
     this.formData.append('Primary_Image', Primary_Image);
     let Foreign_Image1 = this.ForeignImage1?.nativeElement.files[0];
       this.formData.append('ForeignImage1', Foreign_Image1);
@@ -173,7 +140,7 @@ export class ProductsNewComponent implements OnInit {
 
 
 
-   
+
   }
   toggleInputs() {
     this.showInputs = !this.showInputs;

@@ -2,11 +2,9 @@ import { ISubProducts } from "../Models/ISubProducts";
 
 export class SubProducts implements ISubProducts {
   isPrimaryImage!: string;
-  isForeignImage1!: string;
-  isForeignImage2!: string;
+ 
   Primary_Image!: string;
-  ForeignImage1!: string;
-  ForeignImage2!: string;
+
   id!: number;
   serial_Id!:string;
   title!:string;
