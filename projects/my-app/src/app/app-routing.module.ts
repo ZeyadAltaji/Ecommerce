@@ -52,7 +52,7 @@ const routes: Routes = [
         component:SingleProducteSelftComponent
       },
       {
-        path: "Products-Detail",
+        path: "Products/Products-Detail/:id",
         component:ProductsDetailComponent
       },
       {

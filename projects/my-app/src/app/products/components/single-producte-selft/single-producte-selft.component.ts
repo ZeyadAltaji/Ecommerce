@@ -30,7 +30,5 @@ export class SingleProducteSelftComponent implements OnInit{
     }
   }
 
-  gotodelter(){
-    this.router.navigate(["/Products-Detail"]);
-  }
+
 }

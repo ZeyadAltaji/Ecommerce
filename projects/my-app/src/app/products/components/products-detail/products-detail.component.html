@@ -2,7 +2,7 @@
 <div class="super_container">
   <div class="single_product">
     <div class="container-fluid"  >
-        <div class="row Main-products justify-content-around">
+        <div  class="row Main-products justify-content-around">
             <!-- <div class="col-lg-2 order-lg-1 order-2">
                 <ul class="image_list">
                     <li data-image="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565713229/single_4.jpg"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565713229/single_4.jpg" alt=""></li>
@@ -12,7 +12,7 @@
             </div> -->
             <div class="col-lg-4 ">
                 <div class="image_selected">
-                  <img class="figure-img img-fluid  img-prodcuts" src="../../../assets/images/cars1.webp" alt="">
+                  <img class="figure-img img-fluid  img-prodcuts" src="http://localhost:4203/assets/image/SubProduct/{{subProducts.isPrimaryImage}}" alt="">
                 </div>
             </div>
             <div class="col-lg-6  mt-3  right">
@@ -25,13 +25,13 @@
                         </ol>
                     </nav>
                     <div class="product_name">
-                      Acer Aspire 3 Celeron Dual Core - (2 GB/500 GB HDD/Windows 10 Home) A315-33 Laptop (15.6 inch, Black, 2.1 kg)
-                    </div>
+                      {{subProducts.title}}
+                     </div>
                     <!-- <div class="product-rating"><span class="badge badge-success"><i class="fa fa-star"></i> 4.5 Star</span> <span class="rating-review">35 Ratings & 45 Reviews</span></div> -->
                     <div>
-                      <span class="product_price">Price 150$</span>
+                      <span class="product_price">{{subProducts.new_price}}$</span>
                        <div class="product_discount">
-                         <span><p><del>300$</del></p></span>
+                         <span><p><del>{{subProducts.price}}$</del></p></span>
                        </div>
                     </div>
                      <hr>
