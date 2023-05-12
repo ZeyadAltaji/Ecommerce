@@ -26,6 +26,7 @@ import { RouterModule } from '@angular/router';
     ShoppingcartComponent,
     SingleProducteSelftComponent,
     ViewAllProductsComponent
+
   ]
 })
 export class ProductsModule { }

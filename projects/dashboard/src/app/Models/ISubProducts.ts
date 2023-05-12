@@ -5,7 +5,7 @@ export interface ISubProducts {
   description?:string;
    price?:number;
   offers?:number;
-  New_price?:number;
+  new_price?:number;
   quantity?:number;
   UserId:number;
   admin_Id:number;
@@ -18,6 +18,9 @@ export interface ISubProducts {
   category:string;
   Car_Id: number;
   cars:string;
+  productId:number;
+  Products:string;
+
   isPrimaryImage:string;
 
    Primary_Image:string;

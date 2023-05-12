@@ -79,6 +79,15 @@
             </select>
            </div>
            <div class="mb-3">
+            <label class="form-label">Categorise</label>
+            <select #Products (change)="propertyView.Products =Products.options[Products.options.selectedIndex].text" class="form-select" id="floatingSelect" formControlName="Products" aria-label="Floating label select example">
+              <option selected>Select Type Category</option>
+              <option *ngFor="let x of ProductsList" value={{x.id}}>
+                {{x.name}}
+              </option>
+            </select>
+           </div>
+           <div class="mb-3">
             <label class="form-label">Type Cars</label>
             <select #Cars (change)="propertyView.cars=Cars.options[Cars.options.selectedIndex].text"   class="form-select" id="floatingSelect" formControlName="Cars" aria-label="Floating label select example">
               <option selected>Select Type Cars</option>

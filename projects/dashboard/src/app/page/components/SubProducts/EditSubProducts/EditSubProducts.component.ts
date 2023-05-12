@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
  import { ISubProducts } from 'projects/dashboard/src/app/Models/ISubProducts';
 import { BrandsService } from 'projects/dashboard/src/app/services/Brands.service';
 import { CarService } from 'projects/dashboard/src/app/services/Car.service';
+import { ProductService } from 'projects/dashboard/src/app/services/Product.service';
 import { SubproductsService } from 'projects/dashboard/src/app/services/Subproducts.service';
 import { SweetAlertService } from 'projects/dashboard/src/app/services/SweetAlert.service';
 import { CategoriseService } from 'projects/dashboard/src/app/services/categorise.service';
@@ -21,6 +22,8 @@ export class EditSubProductsComponent implements OnInit {
   categoriseList: any[] | undefined;
   CarsList:any[]|undefined;
   BrandList:any[]|undefined;
+  ProductsList:any[]|undefined;
+
   product = new SubProducts();
   showInputs = false;
   propertyView: ISubProducts = {
@@ -44,8 +47,10 @@ export class EditSubProductsComponent implements OnInit {
     Car_Id: 0,
     description: '',
     isPrimaryImage: '',
-     Primary_Image: '',
-   };
+    Primary_Image: '',
+    productId: 0,
+    Products: ''
+  };
   productsId:any;
   showPrimaryImage = '';
   showForeignImage1='';
@@ -62,6 +67,8 @@ export class EditSubProductsComponent implements OnInit {
   quantity:any;
   brands_Id:any;
   car_Id:any;
+  productId:any;
+
   category_Id:any;
   IsActive: any;
   formData: FormData = new FormData();
@@ -74,7 +81,9 @@ export class EditSubProductsComponent implements OnInit {
               private carService:CarService,
               private CategoryService:CategoriseService,
               private brandsService:BrandsService,
-              private sweetService:SweetAlertService) { }
+              private sweetService:SweetAlertService,
+              private Productsservice:ProductService,
+              ) { }
 
 ngOnInit():void {
     this.EditProductForm();
@@ -92,6 +101,7 @@ ngOnInit():void {
           this.quantity = this.EditProductsForm.controls['Quantity'].setValue(this.product.quantity);
           this.brands_Id = this.EditProductsForm.controls['Brands'].setValue(this.product.Brands_Id);
           this.car_Id = this.EditProductsForm.controls['Cars'].setValue(this.product.Car_Id);
+          this.productId = this.EditProductsForm.controls['Products'].setValue(this.product.productId);
           this.category_Id = this.EditProductsForm.controls['Categorise'].setValue(this.product.Category_Id);
             this.IsActive=this.EditProductsForm.controls['Active'].setValue(this.product.isActive);
         }
@@ -106,6 +116,9 @@ ngOnInit():void {
     this.brandsService.GetAllBrands().subscribe(data=>{
     this.BrandList=data;
     });
+    this.Productsservice.GetAllProducts().subscribe(data=>{
+      this.ProductsList=data;
+     });
 }
     EditProductForm() {
       this.EditProductsForm = this.fb.group({
@@ -120,11 +133,12 @@ ngOnInit():void {
         Categorise: [null,Validators.required],
         Cars: [null, Validators.required],
         Brands: [null, Validators.required],
+        Products: [null, Validators.required],
+
         Quantity:[null, Validators.required],
         Description:[null,Validators.required],
         Primary_Image:[null, Validators.required],
-        Foreign_Image1:[null, Validators.required],
-        Foreign_Image2:[null, Validators.required]
+
 
       });
     }
@@ -145,6 +159,7 @@ ngOnInit():void {
             fd.append('New_price', this.new_priceProducts.value);
             fd.append('Quantity', this._Quantity.value);
             fd.append('Brands_Id', this._Brands.value);
+            fd.append('productId', this._Brands.value);
             fd.append('Car_Id', this._Cars.value);
             fd.append('Category_Id', this._Categorise.value);
             fd.append('id', id.toString());
@@ -196,6 +211,9 @@ ngOnInit():void {
       get _Brands(){
         return this.EditProductsForm.controls['Brands'] as FormGroup;
       }
+      get Products(){
+        return this.EditProductsForm.controls['Products'] as FormGroup;
+      }
       get _Description(){
         return this.EditProductsForm.controls['Description'] as FormGroup;
       }
@@ -218,6 +236,7 @@ ngOnInit():void {
         this.product.description = this._Description.value;
         this.product.Brands_Id = this._Brands.value;
         this.product.Car_Id = this._Cars.value;
+        this.product.productId = this.Products.value;
         this.product.Category_Id = this._Categorise.value;
         this.product.isActive=this._isActive.value;
         if (this.new_priceProducts && this._offers) {

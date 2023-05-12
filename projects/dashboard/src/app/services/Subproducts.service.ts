@@ -29,6 +29,9 @@ UpdateProducts(formData:FormData){
 }
 DeleteProducts(id: number){
   return this.http.put<SubProducts>(`${this.baseUrl}SubProduct/Delete/` + id.toString(), {});
+}
+GetByProducts(id:string){
+  return this.http.get<SubProducts[]>(`${this.baseUrl}SubProduct/ByProducts/${id}`).pipe();
 
 }
 

@@ -7,6 +7,7 @@ import { IProducts } from 'projects/dashboard/src/app/Models/IProduct';
 import { ISubProducts } from 'projects/dashboard/src/app/Models/ISubProducts';
 import { BrandsService } from 'projects/dashboard/src/app/services/Brands.service';
 import { CarService } from 'projects/dashboard/src/app/services/Car.service';
+import { ProductService } from 'projects/dashboard/src/app/services/Product.service';
 import { SubproductsService } from 'projects/dashboard/src/app/services/Subproducts.service';
 import { SweetAlertService } from 'projects/dashboard/src/app/services/SweetAlert.service';
 import { CategoriseService } from 'projects/dashboard/src/app/services/categorise.service';
@@ -23,13 +24,15 @@ export class NewSubProductsComponent implements OnInit {
     private carService:CarService,
     private brandsService:BrandsService,
     private CategoryService:CategoriseService,
-
+    private Productsservice:ProductService,
     private sweetAlertService :SweetAlertService
    ) { }
    product =new SubProducts();
    categoriseList: any[] | undefined;
    CarsList:any[]|undefined;
    BrandList:any[]|undefined;
+   ProductsList:any[]|undefined;
+
    NewProductsForm!:FormGroup;
    showInputs = false;
    propertyView: ISubProducts = {
@@ -53,7 +56,9 @@ export class NewSubProductsComponent implements OnInit {
      Car_Id: 0,
      description: '',
      isPrimaryImage: '',
-     Primary_Image: ''
+     Primary_Image: '',
+     productId: 0,
+     Products: ''
    };
    formData: FormData = new FormData();
    @ViewChild('PrimaryImage') PrimaryImage?: ElementRef;
@@ -67,6 +72,10 @@ export class NewSubProductsComponent implements OnInit {
    });
     this.brandsService.GetAllBrands().subscribe(data=>{
     this.BrandList=data;
+   });
+   this.Productsservice.GetAllProducts().subscribe(data=>{
+    this.ProductsList=data;
+    console.log(data);
    });
   }
   OnSubmit(){
@@ -90,6 +99,7 @@ export class NewSubProductsComponent implements OnInit {
       Categorise: [null,Validators.required],
       Cars: [null, Validators.required],
       Brands: [null, Validators.required],
+      Products: [null, Validators.required],
       Quantity:[null, Validators.required],
       Description:[null,Validators.required],
       newprice: [null],
@@ -116,6 +126,9 @@ export class NewSubProductsComponent implements OnInit {
   }
   get _Brands(){
     return this.NewProductsForm.controls['Brands'] as FormGroup;
+  }
+  get products(){
+    return this.NewProductsForm.controls['Products'] as FormGroup;
   }
   get _Description(){
     return this.NewProductsForm.controls['Description'] as FormGroup;
@@ -148,6 +161,7 @@ export class NewSubProductsComponent implements OnInit {
     this.formData.append('New_price', this._new_price.value);
     this.formData.append('Brands_Id', this._Brands.value);
     this.formData.append('Car_Id', this._Cars.value);
+    this.formData.append('productId', this.products.value);
     this.formData.append('Category_Id', this._Categorise.value);
     this.formData.append('Quantity', this._Quantity.value);
     let Primary_Image = this.PrimaryImage?.nativeElement.files[0];

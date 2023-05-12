@@ -44,7 +44,11 @@ const routes: Routes = [
          component: ViewAllProductsComponent
       },
       {
-        path: "View-All-Products/productsbyId",
+        path: 'ByProducts/:id',
+         component: SingleProducteSelftComponent
+      },
+      {
+        path: "Products/:id",
         component:SingleProducteSelftComponent
       },
       {

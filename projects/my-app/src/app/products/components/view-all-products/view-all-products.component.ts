@@ -13,10 +13,10 @@ export class ViewAllProductsComponent implements OnInit {
     private router: Router) {  }
       productsMainId:any;
      productsType:any;
-     product: Product[] = []; // declare product as an array of Product objects
-     products: Product[] | null = [];// declare if  product = null
+     product: Product[] | null = []; // declare product as an array of Product objects
 
      ngOnInit() {
+      debugger
       this.productsMainId = this.route.snapshot.paramMap.get('id');
       this.productsType = this.route.snapshot.paramMap.get('type');
       let products = this.productsService.GetProductsByCarOrBrand(this.productsMainId, this.productsType);
@@ -28,8 +28,8 @@ export class ViewAllProductsComponent implements OnInit {
         });
       } else {
         // handle the case when products is null
-        this.products = null;
+        this.product = null;
       }
     }
-  
+
 }
