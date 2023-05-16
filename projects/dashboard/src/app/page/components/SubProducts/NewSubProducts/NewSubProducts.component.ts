@@ -42,7 +42,7 @@ export class NewSubProductsComponent implements OnInit {
      price: 0,
      quantity: 0,
      offers: 0,
-     New_price: 0,
+     new_price: 0,
      UserId: 0,
      admin_Id: 0,
      createDate: '',

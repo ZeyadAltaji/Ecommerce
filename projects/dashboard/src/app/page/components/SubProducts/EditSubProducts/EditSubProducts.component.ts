@@ -33,7 +33,7 @@ export class EditSubProductsComponent implements OnInit {
     price: 0,
     quantity: 0,
     offers: 0,
-    New_price: 0,
+    new_price: 0,
     UserId: 0,
     admin_Id: 0,
     createDate: '',
@@ -97,7 +97,7 @@ ngOnInit():void {
           this.description = this.EditProductsForm.controls['Description'].setValue(this.product.description);
           this.price = this.EditProductsForm.controls['PriceProducts'].setValue(this.product.price);
           this.offers = this.EditProductsForm.controls['Offer'].setValue(this.product.offers);
-          this.new_price = this.EditProductsForm.controls['newprice'].setValue(this.product.New_price);
+          this.new_price = this.EditProductsForm.controls['newprice'].setValue(this.product.new_price);
           this.quantity = this.EditProductsForm.controls['Quantity'].setValue(this.product.quantity);
           this.brands_Id = this.EditProductsForm.controls['Brands'].setValue(this.product.Brands_Id);
           this.car_Id = this.EditProductsForm.controls['Cars'].setValue(this.product.Car_Id);
@@ -240,7 +240,7 @@ ngOnInit():void {
         this.product.Category_Id = this._Categorise.value;
         this.product.isActive=this._isActive.value;
         if (this.new_priceProducts && this._offers) {
-          this.product.New_price = this.new_priceProducts.value;
+          this.product.new_price = this.new_priceProducts.value;
           this.product.offers = this._offers.value;
         }
       }

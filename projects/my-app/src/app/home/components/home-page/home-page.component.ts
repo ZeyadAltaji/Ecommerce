@@ -28,15 +28,7 @@ export class HomePageComponent implements OnInit{
   line1: any[] = [];
   line2: any[] = [];
   line3: any[] = [];
-//   ngOnInit() {
-//     this.brandsService.GetAllBrands().subscribe(listData=>{
-//      this.Data=listData;
-//     },
-//    error => {
-//      console.log('httperror:');
-//      console.log(error);
-//    });
-// }
+  id:any;
 ngOnInit() {
   this.brandsService.GetAllBrands().subscribe(listData => {
     // shuffle the data array randomly
@@ -72,7 +64,7 @@ ngOnInit() {
     console.log(error);
   });
  }
- 
+
 shuffle(array: any[]): any[] {
   // Fisher-Yates shuffle algorithm
   for (let i = array.length - 1; i > 0; i--) {

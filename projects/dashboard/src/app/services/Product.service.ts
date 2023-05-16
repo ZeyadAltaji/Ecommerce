@@ -43,4 +43,15 @@ export class ProductService {
       return null;
     }
   }
+  GetProductsBycategorise(id:string, type:string){
+    if (type === 'External') {
+      return this.http.get<Product[]>(`${this.baseUrl}Product/ByCateogers/${id}`).pipe();
+    } else if (type === 'Indoor') {
+      return this.http.get<Product[]>(`${this.baseUrl}Product/ByCateogers/${id}`).pipe();
+    } else if (type === 'Mechanical') {
+      return this.http.get<Product[]>(`${this.baseUrl}Product/ByCateogers/${id}`).pipe();
+    } else {
+      return null;
+    }
+   }
 }
