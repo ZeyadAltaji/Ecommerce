@@ -8,6 +8,7 @@ import { User } from 'projects/dashboard/src/app/Classes/User';
 import { environment } from 'projects/authentication/src/environments/environment.development';
 import { Environment } from '../../../Environments/Environment';
 import { CookieService } from 'ngx-cookie-service';
+import { SettingService } from 'projects/dashboard/src/app/services/Setting.service';
 
 @Component({
   selector: 'app-Login',
@@ -18,16 +19,23 @@ export class LoginComponent implements OnInit {
   loginForm!:FormGroup;
   user:User | undefined;
   loggedInUser: any;
+  logoData!: any;
 
    constructor(private router:Router,
    private authService : AuthenticationService,
    private builder : FormBuilder,
-   private cookieServices:CookieService) { }
+   private cookieServices:CookieService,
+   public settingservice:SettingService) { }
    ngOnInit():void {
     this.loginForm=this.builder.group({
       UserName:this.builder.control('',Validators.required),
       Password:this.builder.control('',Validators.required)
-    })
+    });
+    this.settingservice.GetByIDlogo(1).subscribe(data => {
+      console.log(data)
+      this.logoData = data.isLogoUrl;
+
+    });
   }
   static GetAppURL(RoleName:number){
     switch(RoleName)
@@ -66,6 +74,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
- 
+
 
 }

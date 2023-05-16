@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from '../../../Classes/User';
 import { IUser } from '../../../Models/IUser';
+import { SettingService } from '../../../services/Setting.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,7 @@ import { IUser } from '../../../Models/IUser';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent  implements OnInit{
-  constructor(private cookieServices:CookieService){
+  constructor(private cookieServices:CookieService,public settingservice:SettingService){
   }
   public user :IUser ={
     id: 0,
@@ -31,16 +32,21 @@ export class NavbarComponent  implements OnInit{
     public_id: '',
    }
   loggedInUser: any; // Declare a variable to store the logged-in user details
+  logoData!: any;
 
   ngOnInit() {
 
-    debugger
-    const userString = this.cookieServices.get('loggedInUser');
+     const userString = this.cookieServices.get('loggedInUser');
     this.loggedInUser = userString ? JSON.parse(userString) : null;
     if (this.loggedInUser && this.loggedInUser.fullUser) {
       this.user = this.loggedInUser.fullUser;
     }
-  console.log(userString);
+    this.settingservice.GetByIDlogo(1).subscribe(data => {
+      console.log(data)
+      this.logoData = data.isLogoUrl;
+
+    });
+
   }
   menustatus:boolean=false;
   showdropdown: boolean = false;
