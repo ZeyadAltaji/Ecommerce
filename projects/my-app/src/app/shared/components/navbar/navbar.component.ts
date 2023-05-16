@@ -14,8 +14,7 @@ export class NavbarComponent implements OnInit {
   showcart: boolean = false;
   showUser: boolean = false;
   showsearch: boolean = false;
-  logo: string = "assets/images/logo.png";
-  logoData!: any;
+   logoData!: any;
 
   LoginForm!:FormGroup;
   constructor(private fb:FormBuilder,private router:Router,
