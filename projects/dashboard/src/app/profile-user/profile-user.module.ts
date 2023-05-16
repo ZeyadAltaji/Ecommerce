@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 
@@ -14,8 +14,9 @@ import { EditUserProfileComponent } from './Components/edit-user-profile/edit-us
   ],
   imports: [
     CommonModule,
-     ReactiveFormsModule,
-     RouterModule
+    ReactiveFormsModule,
+     RouterModule,
+     FormsModule
     ],exports:[
       ProfilePageComponent,
       EditUserProfileComponent

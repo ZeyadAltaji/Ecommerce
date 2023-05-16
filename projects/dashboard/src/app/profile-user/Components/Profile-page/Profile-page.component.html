@@ -7,9 +7,10 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="../../../../assets/profile/person-4.png" alt="Admin" class="rounded-circle" width="100">
+                    <img *ngIf="user?.public_id" src="http://localhost:4203/assets/image/Users/{{ user?.public_id }}" alt="User" class="rounded-circle" width="100">
+                    <img *ngIf="!user?.public_id" src="../../../../assets/profile/person-4.png" alt="Admin" class="rounded-circle" width="100">
                     <div>
-                      <h4>Zeyad Altaji</h4>
+                      <h4>{{ user?.frist_Name }} {{ user?.last_Name }}</h4>
                     </div>
                   </div>
                 </div>
@@ -27,7 +28,7 @@
                           <h6 class="mb-0">Full Name</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                          Zeyad Altaji
+                          {{  user?.frist_Name }}{{loggedInUser.last_Name}}
                         </div>
                       </div>
                       <hr>
@@ -36,7 +37,7 @@
                           <h6 class="mb-0">Email</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                          <a href="#" >ziadaltaji130@outlook.com</a>
+                          <a href="#" >{{ user?.email }}</a>
                         </div>
                       </div>
                       <hr>
@@ -61,7 +62,7 @@
                           <h6 class="mb-0">Phone</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                          +962-78-700-1066
+                          {{ user?.phone1 }}
                         </div>
                       </div>
                       <hr>
@@ -70,7 +71,7 @@
                           <h6 class="mb-0">Mobile</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                          +962-78-700-1066
+                          {{ user?.phone2 }}
                         </div>
                       </div>
                       <hr>
@@ -79,13 +80,13 @@
                           <h6 class="mb-0">Address</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                          Jordan, Amman
+                          {{ user?.address }}
                         </div>
                       </div>
                     <hr>
                     <div class="row">
                       <div class="col-sm-12">
-                         <a class="btn btn-info" [routerLink]="['/Edit-My-profile']">Edit</a>
+                         <a class="btn btn-info" [routerLink]="['/Edit-My-profile',user?.id]">Edit</a>
                       </div>
                     </div>
                 </div>

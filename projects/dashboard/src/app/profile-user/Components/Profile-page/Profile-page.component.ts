@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
+import { CookieService } from 'ngx-cookie-service';
+import { IUser } from '../../../Models/IUser';
 
 @Component({
   selector: 'app-Profile-page',
@@ -15,10 +17,19 @@ export class ProfilePageComponent implements OnInit {
   dataradar:any;
   datacombo: any;
   chartOptions: any;
-  constructor() { }
-
+  loggedInUser: any; // Declare a variable to store the logged-in user details
+  public user :IUser | undefined;
+  constructor(private cookieServices:CookieService){}
 
   ngOnInit() {
+     const userString = this.cookieServices.get('loggedInUser');
+    this.loggedInUser = userString ? JSON.parse(userString) : null;
+    if (this.loggedInUser && this.loggedInUser.fullUser) {
+      this.user = this.loggedInUser.fullUser;
+    }
+
+  console.log(userString);
+
     // Line Chart
     const lineCanvasEle: any = document.getElementById('line_chart')
     const lineChar = new Chart(lineCanvasEle.getContext('2d'), {

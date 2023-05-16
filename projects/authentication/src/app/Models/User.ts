@@ -1,7 +1,11 @@
+import { User } from "projects/dashboard/src/app/Classes/User";
+
 export  interface UserForLogin{
-  userName: string;
+   userName: string;
   password: string;
   token: string;
+  role:number;
+  UserData:User;
 }
 export interface UserForRegister {
   Frist_Name: string;

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +15,8 @@ import { AuthenticationService } from './services/authentication.service';
         AppComponent
     ],
     providers: [
-      AuthenticationService
+      AuthenticationService,
+      CookieService
     ],
     bootstrap: [AppComponent],
     imports: [

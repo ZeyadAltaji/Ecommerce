@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
@@ -25,7 +26,7 @@ import { SettingsComponent } from './page/components/settings/settings/settings.
     BrowserAnimationsModule
 
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent,
    ]
 })

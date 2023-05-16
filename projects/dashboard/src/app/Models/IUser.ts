@@ -12,13 +12,12 @@ export interface IUser {
   address: string;
   role: number;
    userCreate: string;
-  createDate: Date;
-  userUpdate: string;
-  updateDate: Date;
-  isDelete: boolean;
+   userUpdate: string;
+   isDelete: boolean;
   isActive: boolean;
   image_userUrl?: string;
   public_id: string;
+  additionalData?:any;
 }
 
 export interface INewUser{

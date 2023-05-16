@@ -118,7 +118,7 @@ const routes: Routes = [
     component:ProfilePageComponent
   },
   {
-    path:'Edit-My-profile',
+    path:'Edit-My-profile/:id',
     component:EditUserProfileComponent
   },
   {

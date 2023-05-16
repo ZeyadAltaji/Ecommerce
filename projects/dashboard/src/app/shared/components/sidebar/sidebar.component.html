@@ -67,7 +67,7 @@
       <span class="material-icons">delete</span>
       <h3>Trash</h3>
     </a>
-    <a [routerLink]="['#']" [routerLinkActive]="'active'">
+    <a  (click)="logout()" [routerLinkActive]="'active'">
       <span class="material-icons">logout</span>
       <h3>Logout</h3>
     </a>

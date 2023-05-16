@@ -18,8 +18,7 @@ export class EditEmployyesComponent implements OnInit {
   formData: FormData = new FormData();
   @ViewChild('imageInput') imageInput?: ElementRef;
   UrlImage = '';
-  CarsId:any;
-  Frist_Name:any;
+   Frist_Name:any;
   Last_Name:any;
   UserName:any;
   Email:any;
@@ -77,7 +76,7 @@ export class EditEmployyesComponent implements OnInit {
             fd.append('Role', this._selectRole.value);
             fd.append('id', id.toString());
             if (this.selectedImage) { // check if a new image is selected
-              fd.append('Image_CarUrl', this.selectedImage, this.selectedImage.name);
+              fd.append('Image_userUrl', this.selectedImage, this.selectedImage.name);
                 }
             // Show a warning message before updating the brand
             swal({
