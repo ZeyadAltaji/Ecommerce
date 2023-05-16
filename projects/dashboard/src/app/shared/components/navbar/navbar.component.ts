@@ -3,6 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { User } from '../../../Classes/User';
 import { IUser } from '../../../Models/IUser';
 import { SettingService } from '../../../services/Setting.service';
+import { Environment } from 'projects/authentication/src/app/Environments/Environment';
 
 @Component({
   selector: 'app-navbar',
@@ -70,7 +71,7 @@ export class NavbarComponent  implements OnInit{
   logout() {
     // Clear the logged-in user information and redirect to the login page
     this.cookieServices.delete('loggedInUser');
-    window.location.href = '/login';
+    window.location.href = Environment.AuthURl;
   }
 }
 

@@ -6,5 +6,5 @@ export const Environment=
     // ClinetURl:
     SellerURl:'http://localhost:4204/',
     // DeliveryURl:
-    AuthURl:'http://localhost:4202/'
+    AuthURl:'http://localhost:4202/Login'
   }
