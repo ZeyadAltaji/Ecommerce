@@ -48,12 +48,12 @@
     <!-- users -->
       <div class="user" [class.activeuser]="showUser">
         <h2>login Now</h2>
-        <form class="Fromslogin" [formGroup]="LoginForm">
+        <form class="Fromslogin" (ngSubmit)="onLogin(loginForm)" [formGroup]="loginForm">
         <input type="text" placeholder="Your UserName...." formControlName="UserName">
-        <small *ngIf="LoginForm.controls['UserName'].dirty && LoginForm.hasError('required','UserName')" class="text-danger massgeRequred">Email is required</small>
+        <small *ngIf="loginForm.controls['UserName'].dirty && loginForm.hasError('required','UserName')" class="text-danger massgeRequred">Email is required</small>
         <input type="password" name="" id="" placeholder="Enter Password ! " formControlName="password">
-        <small *ngIf="LoginForm.controls['password'].dirty && LoginForm.hasError('required','password')" class="text-danger massgeRequred">Password is required</small>
-        <input  (click)="onsubmit()" type="submit" value="Login" class="Login-btn">
+        <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')" class="text-danger massgeRequred">Password is required</small>
+        <input    type="submit" value="Login" class="Login-btn">
         <p>Forget Password <a class="text" href="#">Reset Now</a></p>
          <p>Don't have Acount <a class="text"  (click)="onNavigate()" >Create Aconut</a></p>
 

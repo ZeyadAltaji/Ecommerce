@@ -13,7 +13,8 @@
       <div class="profile">
         <div class="profile-photo">
           <img *ngIf="user?.public_id" src="http://localhost:4203/assets/image/Users/{{ user?.public_id }}" alt="User" class="rounded-circle" width="100">
-          <img *ngIf="!user?.public_id" src="../../../../assets/profile/person-4.png" alt="Admin" class="rounded-circle" width="100">        </div>
+          <img *ngIf="!user?.public_id" src="../../../../assets/profile/person-4.png" alt="Admin" class="rounded-circle" width="100">
+        </div>
         <h5>{{ user.userName }}</h5>
         <span class="material-icons" (click)="dropdown()">expand_more</span>
       </div>

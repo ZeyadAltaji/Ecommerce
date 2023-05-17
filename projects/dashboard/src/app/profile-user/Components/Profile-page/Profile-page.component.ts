@@ -28,8 +28,7 @@ export class ProfilePageComponent implements OnInit {
       this.user = this.loggedInUser.fullUser;
     }
 
-  console.log(userString);
-
+ 
     // Line Chart
     const lineCanvasEle: any = document.getElementById('line_chart')
     const lineChar = new Chart(lineCanvasEle.getContext('2d'), {

@@ -52,12 +52,16 @@ export class LoginComponent implements OnInit {
   }
   onLogin(loginForm: FormGroup) {
     if (this.loginForm.valid) {
+      debugger
        this.authService.AuthenticationLogin(this.loginForm.value).subscribe({
-        next: (response:User) => {
+        next: (response:UserForLogin) => {
           console.log(response);
           const user = response;
-          if (user) {
-                const GetAppURL = LoginComponent.GetAppURL(user.role);
+          const role = user.fullUser.role;
+          if (user ) {
+            debugger
+
+                const GetAppURL = LoginComponent.GetAppURL(user.fullUser.role);
                 // Redirect to the appropriate URL based on the role
                 window.location.href = GetAppURL;
                 this.cookieServices.set('loggedInUser', JSON.stringify(user));

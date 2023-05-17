@@ -4,8 +4,7 @@ export  interface UserForLogin{
    userName: string;
   password: string;
   token: string;
-  role:number;
-  UserData:User;
+  fullUser:User;
 }
 export interface UserForRegister {
   Frist_Name: string;
