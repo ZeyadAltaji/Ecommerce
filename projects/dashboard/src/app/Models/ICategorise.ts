@@ -1,6 +1,7 @@
 export interface ICategorise {
   id: number,
   name: string,
+  Admin_Id: number,
 }
 
 export interface ICategoriseList {
