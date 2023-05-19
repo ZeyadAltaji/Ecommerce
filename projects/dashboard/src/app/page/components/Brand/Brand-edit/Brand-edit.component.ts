@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Brands } from 'projects/dashboard/src/app/Classes/Brands';
+import { IUser } from 'projects/dashboard/src/app/Models/IUser';
 import { BrandsService } from 'projects/dashboard/src/app/services/Brands.service';
 import { SweetAlertService } from 'projects/dashboard/src/app/services/SweetAlert.service';
 import swal from 'sweetalert';
@@ -19,8 +21,10 @@ export class BrandEditComponent implements OnInit {
   Image_BrandUrl!: File;
   brandId:any;
   brandName:any;
+  UserCreate:any;
   selectedImage!: File;
-
+  loggedInUser: any;
+  public user :IUser | undefined;
   @ViewChild('imageInput') imageInput?: ElementRef;
 
   constructor(
@@ -28,31 +32,40 @@ export class BrandEditComponent implements OnInit {
     private route: ActivatedRoute,
     private brandsService: BrandsService,
     private sweetAlertService: SweetAlertService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private cookieServices:CookieService
   ) {
     this.Image_BrandUrl == null;
 
 
   }
   ngOnInit() {
+    const userString = this.cookieServices.get('loggedInUser');
+    this.loggedInUser = userString ? JSON.parse(userString) : null;
+    if (this.loggedInUser && this.loggedInUser.fullUser) {
+      this.user = this.loggedInUser.fullUser;
+    }
     this.EditBrandsForm();
     this.brandId = this.route.snapshot.params['id']
     this.brandsService.GetByIDBrands(this.brandId).subscribe({
       next: (response) => {
-         this.Brand = response;
+        this.Brand = response;
         this.UrlImage = `assets/image/Brands/${this.Brand.public_id}`;
-        var imagepath =
-          (this.UrlImage = `assets/image/Brands/${this.Brand.public_id}`);
-         this.brandName = this.EditBrandForm.controls['Name'].setValue(this.Brand.name);
+        (this.UrlImage = `assets/image/Brands/${this.Brand.public_id}`);
+        this.brandName = this.EditBrandForm.controls['Name'].setValue(this.Brand.name);
        },
     });
   }
   OnSubmit(){
-    this.route.paramMap.subscribe({
+     
+    if (this.loggedInUser && this.loggedInUser.fullUser) {
+      const username = this.loggedInUser.fullUser.userName;
+      this.route.paramMap.subscribe({
 
       next:(params)=>{
         const id=params.get('id');
         if(id){
+           
           const fd = new FormData();
           let imageFile = this.imageInput?.nativeElement.files[0];
           fd.append('Image_BrandUrl', imageFile);
@@ -61,7 +74,7 @@ export class BrandEditComponent implements OnInit {
           if (this.selectedImage) { // check if a new image is selected
             fd.append('Image_BrandUrl', this.selectedImage, this.selectedImage.name);
               }
-          // Show a warning message before updating the brand
+              fd.append('userUpdate', this.loggedInUser.fullUser.userName);           // Show a warning message before updating the brand
           swal({
             title: "Are you sure?",
             text: "You are about to update the brand. Do you want to continue?",
@@ -70,8 +83,9 @@ export class BrandEditComponent implements OnInit {
           })
           .then((willUpdate) => {
             if (willUpdate) {
-              const name = this.Brand.name;
+               const name = this.Brand.name;
               const updateimage=this.Brand.public_id;
+              this.loggedInUser.fullUser.userName= this.Brand.userUpdate;
               this.brandsService.UpdateBrand(fd).subscribe(data => {
                  // Show a success message after the brand has been updated
                 swal({
@@ -90,6 +104,7 @@ export class BrandEditComponent implements OnInit {
         }
       }
     });
+    }
   }
   EditBrandsForm() {
     this.EditBrandForm = this.fb.group({
@@ -103,11 +118,10 @@ export class BrandEditComponent implements OnInit {
   get _Nameiamge() {
     return this.EditBrandForm.controls['Nameiamge'] as FormGroup;
   }
-  MapBrands() {
-    this.formData = new FormData();
-    this.formData.append('Name', this._NameBrand.value);
-    let imageFile = this.imageInput?.nativeElement.files[0];
-    this.formData.append('Image_BrandUrl', imageFile);
+  MapBrands(UserUpdate:string) :void{
+      
+     this.formData.append('userUpdate', UserUpdate);
+
   }
   HandleFile(event: any) {
     const file = event.target.files[0];

@@ -6,4 +6,7 @@ export class Brands implements IBrands
   name!: string;
   Image_BrandUrl!:string;
   public_id!:string;
+  Admin_Id!:number;
+  userCreate!:string;
+  userUpdate!:string;
 }

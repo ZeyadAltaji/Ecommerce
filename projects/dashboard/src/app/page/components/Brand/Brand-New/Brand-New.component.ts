@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Brands } from 'projects/dashboard/src/app/Classes/Brands';
+import { IUser } from 'projects/dashboard/src/app/Models/IUser';
 import { BrandsService } from 'projects/dashboard/src/app/services/Brands.service';
 import { SweetAlertService } from 'projects/dashboard/src/app/services/SweetAlert.service';
 
@@ -15,12 +17,16 @@ export class BrandNewComponent implements OnInit {
   Brand=new Brands;
   Image = { name: '', image: null };
   formData: FormData = new FormData();
+  loggedInUser: any;
+  public user :IUser | undefined;
   @ViewChild('imageInput') imageInput?: ElementRef;
 
 
   constructor( private fb: FormBuilder,private router: Router,
     private brandsService:BrandsService,
-    private sweetAlertService :SweetAlertService
+    private sweetAlertService :SweetAlertService,
+    private cookieServices:CookieService
+
     ) {    this.createForm();
     }
 
@@ -32,13 +38,22 @@ export class BrandNewComponent implements OnInit {
       });
     }
     ngOnInit():void {
+      const userString = this.cookieServices.get('loggedInUser');
+      this.loggedInUser = userString ? JSON.parse(userString) : null;
+      if (this.loggedInUser && this.loggedInUser.fullUser) {
+        this.user = this.loggedInUser.fullUser;
+      }
       this.NewBrandForm = this.fb.group({
         NameBrand: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
         Image: [null]
       });
     }
     OnSubmit() {
-      this.MapBrands();
+      debugger
+      if (this.loggedInUser && this.loggedInUser.fullUser) {
+        const adminId = this.loggedInUser.fullUser.id; // Get the adminid from the logged-in user
+        const username = this.loggedInUser.fullUser.userName; // Get the adminid from the logged-in user
+        this.MapBrands(adminId,username);// Pass the adminid to the MapBrands method
 
       this.brandsService.AddBrands(this.formData).subscribe(
           (data) => {
@@ -49,6 +64,7 @@ export class BrandNewComponent implements OnInit {
               console.log(error);
           }
       )
+      }
   }
     AddNewBrandForm() {
       this.NewBrandForm = this.fb.group({
@@ -64,11 +80,16 @@ export class BrandNewComponent implements OnInit {
       return this.NewBrandForm.controls['Image_BrandUrl'] as FormGroup;
     }
 
-    MapBrands() {
+    MapBrands(adminId: number,UserCreate:string) {
+      debugger
       this.formData = new FormData();
       this.formData.append('Name', this._NameBrand.value);
       let imageFile = this.imageInput?.nativeElement.files[0];
       this.formData.append('Image_BrandUrl', imageFile);
+      this.formData.append('Admin_Id', adminId.toString());
+      this.formData.append('UserCreate', UserCreate);
+      // this.Brand.Admin_Id = adminId;
+      // this.Brand.userCreate=UserCreate;
     }
 
     HandleFile(event:any) {

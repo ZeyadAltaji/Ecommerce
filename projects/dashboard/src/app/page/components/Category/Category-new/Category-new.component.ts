@@ -25,8 +25,7 @@ export class CategoryNewComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    debugger
-    const userString = this.cookieServices.get('loggedInUser');
+     const userString = this.cookieServices.get('loggedInUser');
     this.loggedInUser = userString ? JSON.parse(userString) : null;
     if (this.loggedInUser && this.loggedInUser.fullUser) {
       this.user = this.loggedInUser.fullUser;
@@ -34,8 +33,7 @@ export class CategoryNewComponent implements OnInit {
     this.AddNewCategoriseForm();
   }
   OnSubmit() {
-    debugger
-    if (this.loggedInUser && this.loggedInUser.fullUser) {
+     if (this.loggedInUser && this.loggedInUser.fullUser) {
       const adminId = this.loggedInUser.fullUser.id; // Get the adminid from the logged-in user
       const username = this.loggedInUser.fullUser.userName; // Get the adminid from the logged-in user
       this.MapCategorise(adminId,username); // Pass the adminid to the MapCategorise method
@@ -61,8 +59,7 @@ export class CategoryNewComponent implements OnInit {
     return this.NewCategoryForm.controls['NameCategory'] as FormGroup;
   }
   MapCategorise(adminId: number,UserCreate:string):void{
-    debugger
-    this.Category.name=this._NameCategory.value;
+     this.Category.name=this._NameCategory.value;
     this.Category.Admin_Id = adminId;
     this.Category.userCreate=UserCreate;
 

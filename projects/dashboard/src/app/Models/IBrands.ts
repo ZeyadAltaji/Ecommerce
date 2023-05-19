@@ -3,5 +3,8 @@ export interface IBrands {
   name: string,
   Image_BrandUrl:string,
   public_id:string;
+  userUpdate:string;
+  userCreate:string;
+
 
 }
