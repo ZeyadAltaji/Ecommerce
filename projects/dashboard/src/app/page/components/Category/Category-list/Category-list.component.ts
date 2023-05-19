@@ -16,12 +16,13 @@ export class CategoryListComponent implements OnInit {
   Category=new Categorise;
   Categorylist:ICategorise={
     id: 0,
-    name: ''
+    name: '',
+    Admin_Id: 0
   }
   constructor(public CategoryService:CategoriseService) { }
 
   ngOnInit() {
-    interval(1000).subscribe(() => {
+
       this.CategoryService.GetAllCategorise().subscribe(listData=>{
         this.CategoryService.listCategory=listData;
        },
@@ -29,7 +30,7 @@ export class CategoryListComponent implements OnInit {
         console.log('httperror:');
         console.log(error);
       });
-    });
+
   }
   openModal(id: number) {
     this.CategoryService.GetByIdModal(id)
