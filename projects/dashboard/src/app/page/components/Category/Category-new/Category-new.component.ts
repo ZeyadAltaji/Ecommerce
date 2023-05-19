@@ -37,8 +37,8 @@ export class CategoryNewComponent implements OnInit {
     debugger
     if (this.loggedInUser && this.loggedInUser.fullUser) {
       const adminId = this.loggedInUser.fullUser.id; // Get the adminid from the logged-in user
-
-      this.MapCategorise(adminId); // Pass the adminid to the MapCategorise method
+      const username = this.loggedInUser.fullUser.userName; // Get the adminid from the logged-in user
+      this.MapCategorise(adminId,username); // Pass the adminid to the MapCategorise method
 
       this.CategoryService.AddCategory(this.Category).subscribe(
         (data) => {
@@ -60,10 +60,11 @@ export class CategoryNewComponent implements OnInit {
   get _NameCategory() {
     return this.NewCategoryForm.controls['NameCategory'] as FormGroup;
   }
-  MapCategorise(adminId: number):void{
+  MapCategorise(adminId: number,UserCreate:string):void{
     debugger
     this.Category.name=this._NameCategory.value;
     this.Category.Admin_Id = adminId;
+    this.Category.userCreate=UserCreate;
 
   }
 }

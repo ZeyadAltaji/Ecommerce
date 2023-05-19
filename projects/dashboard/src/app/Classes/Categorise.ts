@@ -4,4 +4,6 @@ export class Categorise implements ICategorise {
   id!: number;
   name!: string;
   Admin_Id!:number;
+  userCreate!:string;
+  userUpdate!:string;
 }

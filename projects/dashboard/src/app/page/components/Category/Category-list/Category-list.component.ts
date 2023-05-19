@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Categorise } from 'projects/dashboard/src/app/Classes/Categorise';
-import { ICategorise } from 'projects/dashboard/src/app/Models/ICategorise';
+import { ICategorise, ICategoriseList } from 'projects/dashboard/src/app/Models/ICategorise';
 import { CategoriseService } from 'projects/dashboard/src/app/services/categorise.service';
 import { interval } from 'rxjs';
 import swal from 'sweetalert';
@@ -14,10 +14,17 @@ export class CategoryListComponent implements OnInit {
   CategoryList:ICategorise[]|undefined;
   public CategoryId: number | undefined;
   Category=new Categorise;
-  Categorylist:ICategorise={
+  Categorylist:ICategoriseList={
     id: 0,
     name: '',
-    Admin_Id: 0
+    admin_Id: 0,
+    user: 0,
+    userCreate: undefined,
+    createDate: undefined,
+    userUpdate: undefined,
+    updateDate: undefined,
+    isDelete: false,
+    isActive: false
   }
   constructor(public CategoryService:CategoriseService) { }
 
