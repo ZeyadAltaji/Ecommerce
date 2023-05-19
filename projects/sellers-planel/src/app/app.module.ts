@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AnalyticsModule } from './analytics/analytics.module';
 import { ProfileUserModule } from './profile-user/profile-user.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProfileUserModule } from './profile-user/profile-user.module';
     AppRoutingModule,
     SharedModule,
     AnalyticsModule,
-    ProfileUserModule
+    ProfileUserModule,
+    HttpClientModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

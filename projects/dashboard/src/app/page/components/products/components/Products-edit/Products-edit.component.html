@@ -74,34 +74,49 @@
         <div class="col-6 right">
           <div class="mb-3">
             <label class="form-label">Categorise</label>
-            <select #Category (change)="propertyView.category=Category.options[Category.options.selectedIndex].text"   class="form-select" id="floatingSelect" formControlName="Categorise" aria-label="Floating label select example">
+            <select #Category
+                    (change)="propertyView.category = Category.options[Category.options.selectedIndex].text"
+                    class="form-select"
+                    id="floatingSelect"
+                    formControlName="Categorise"
+                    aria-label="Floating label select example">
               <option selected>Select Type Category</option>
-              <option *ngFor="let categorise of categoriseList" value={{categorise.id}}>
-                {{categorise.name}}
-              </option>
-            </select>
-           </div>
-           <div class="mb-3">
-            <label class="form-label">Type Cars</label>
-            <select #Cars (change)="propertyView.cars=Cars.options[Cars.options.selectedIndex].text"   class="form-select" id="floatingSelect" formControlName="Cars" aria-label="Floating label select example">
-              <option selected>Select Type Cars</option>
-              <option *ngFor="let car of CarsList" value={{car.id}}>
-                {{car.name}}
+              <option *ngFor="let categorise of categoriseList" [value]="categorise.id" [selected]="categorise.id === category_Id">
+                {{ categorise.name }}
               </option>
             </select>
           </div>
+
+          <div class="mb-3">
+            <label class="form-label">Type Cars</label>
+            <select #Cars
+                    (change)="propertyView.cars = Cars.options[Cars.options.selectedIndex].text"
+                    class="form-select"
+                    id="floatingSelect"
+                    formControlName="Cars"
+                    aria-label="Floating label select example">
+              <option selected>Select Type Cars</option>
+              <option *ngFor="let car of CarsList" [value]="car.id" [selected]="car.id === car_Id">
+                {{ car.name }}
+              </option>
+            </select>
+          </div>
+
           <div class="mb-3">
             <label class="form-label">Name Brands</label>
-            <select #Brands (change)="propertyView.brands=Brands.options[Brands.options.selectedIndex].text" class="form-select" id="floatingSelect" formControlName="Brands" aria-label="Floating label select example">
+            <select #Brands
+                    (change)="propertyView.brands = Brands.options[Brands.options.selectedIndex].text"
+                    class="form-select"
+                    id="floatingSelect"
+                    formControlName="Brands"
+                    aria-label="Floating label select example">
               <option selected>Select Type Brands</option>
-              <option *ngFor="let Brands of BrandList" value={{Brands.id}}>
-                {{Brands.name}}
+              <option *ngFor="let brand of BrandList" [value]="brand.id" [selected]="brand.id === brands_Id">
+                {{ brand.name }}
               </option>
             </select>
           </div>
-
-
-      </div>
+        </div>
       </div>
     </div>
     <hr class="hr">

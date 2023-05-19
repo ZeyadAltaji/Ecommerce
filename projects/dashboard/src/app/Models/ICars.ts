@@ -6,6 +6,7 @@ export interface ICars {
   class:string;
   isActive:boolean;
   public_id:string;
-
+  userUpdate:string;
+  userCreate:string;
 }
 

@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { AuthenticationService } from 'projects/authentication/src/app/services/authentication.service';
 import { User } from 'projects/dashboard/src/app/Classes/User';
+import { IUser } from 'projects/dashboard/src/app/Models/IUser';
 import { SweetAlertService } from 'projects/dashboard/src/app/services/SweetAlert.service';
 import swal from 'sweetalert';
 
@@ -29,14 +31,24 @@ export class EditEmployyesComponent implements OnInit {
   comfirmPassword:any;
   Role:any;
   selectedImage!: File;
+  loggedInUser: any;
+  public user :IUser | undefined;
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
     private userService:AuthenticationService,
-   private fb: FormBuilder,
-   private sweetAlertService :SweetAlertService ,private router: Router)
+    private fb: FormBuilder,
+     private sweetAlertService :SweetAlertService,
+     private router: Router,
+     private cookieServices:CookieService)
   { }
 
   ngOnInit() {
+    const userString = this.cookieServices.get('loggedInUser');
+    this.loggedInUser = userString ? JSON.parse(userString) : null;
+    if (this.loggedInUser && this.loggedInUser.fullUser) {
+      this.user = this.loggedInUser.fullUser;
+    }
     this.EditNewUserForm();
     this.userId = this.route.snapshot.params['id']
     this.userService.GetByID(this.userId).subscribe({
@@ -56,68 +68,72 @@ export class EditEmployyesComponent implements OnInit {
     });
   }
   OnSubmit(){
-    this.route.paramMap.subscribe({
-      next:(params)=>{
-         const id=params.get('id');
-        if(id){
-
-          const fd = new FormData();
-            let imageFile = this.imageInput?.nativeElement.files[0];
-            fd.append('Image_userUrl', imageFile);
-            fd.append('Frist_Name', this._FristName.value);
-            fd.append('Last_Name', this.LastName.value);
-            fd.append('UserName', this._UserName.value);
-            fd.append('Email', this._Email.value);
-            fd.append('Phone1', this._Mobile1.value);
-            fd.append('Phone2', this._Mobile2.value);
-            fd.append('Address', this._Address.value);
-            fd.append('password', this._Password.value);
-            fd.append('comfirmPassword', this._ComfirmPassword.value);
-            fd.append('Role', this._selectRole.value);
-            fd.append('id', id.toString());
-            if (this.selectedImage) { // check if a new image is selected
-              fd.append('Image_userUrl', this.selectedImage, this.selectedImage.name);
-                }
-            // Show a warning message before updating the brand
-            swal({
-              title: "Are you sure?",
-              text: "You are about to update the brand. Do you want to continue?",
-              icon: "warning",
-              dangerMode: true,
-            })
-            .then((willUpdate) => {
-              if (willUpdate) {
-                const frist_Name = this.User.frist_Name;
-                const Last_Name = this.User.last_Name;
-                const UserName = this.User.userName;
-                const Email = this.User.email;
-                const Phone1 = this.User.phone1;
-                const Phone2 = this.User.phone2;
-                const Address = this.User.address;
-                const password = this.User.password;
-                const comfirmPassword = this.User.comfirmPassword;
-                const role =this.User.role;
-                const updateimage=this.User.public_id;
-                this.userService.UpdateUser(fd).subscribe(data => {
-                   // Show a success message after the User has been updated
-                  swal({
-                    title: "Success!",
-                    text: "The User has been updated.",
-                    icon: "success",
+    if (this.loggedInUser && this.loggedInUser.fullUser) {
+      const username = this.loggedInUser.fullUser.userName;
+      this.route.paramMap.subscribe({
+        next:(params)=>{
+           const id=params.get('id');
+          if(id){
+  
+            const fd = new FormData();
+              let imageFile = this.imageInput?.nativeElement.files[0];
+              fd.append('Image_userUrl', imageFile);
+              fd.append('Frist_Name', this._FristName.value);
+              fd.append('Last_Name', this.LastName.value);
+              fd.append('UserName', this._UserName.value);
+              fd.append('Email', this._Email.value);
+              fd.append('Phone1', this._Mobile1.value);
+              fd.append('Phone2', this._Mobile2.value);
+              fd.append('Address', this._Address.value);
+              fd.append('password', this._Password.value);
+              fd.append('comfirmPassword', this._ComfirmPassword.value);
+              fd.append('userUpdate', this.loggedInUser.fullUser.userName); 
+              fd.append('Role', this._selectRole.value);
+              fd.append('id', id.toString());
+              if (this.selectedImage) { // check if a new image is selected
+                fd.append('Image_userUrl', this.selectedImage, this.selectedImage.name);
+                  }
+              // Show a warning message before updating the User
+              swal({
+                title: "Are you sure?",
+                text: "You are about to update the User. Do you want to continue?",
+                icon: "warning",
+                dangerMode: true,
+              })
+              .then((willUpdate) => {
+                if (willUpdate) {
+                  const frist_Name = this.User.frist_Name;
+                  const Last_Name = this.User.last_Name;
+                  const UserName = this.User.userName;
+                  const Email = this.User.email;
+                  const Phone1 = this.User.phone1;
+                  const Phone2 = this.User.phone2;
+                  const Address = this.User.address;
+                  const password = this.User.password;
+                  const comfirmPassword = this.User.comfirmPassword;
+                  const role =this.User.role;
+                  const updateimage=this.User.public_id;
+                  this.userService.UpdateUser(fd).subscribe(data => {
+                     // Show a success message after the User has been updated
+                    swal({
+                      title: "Success!",
+                      text: "The User has been updated.",
+                      icon: "success",
+                    });
+                    this.router.navigate(['/Employyes']);
+                  }, ex => {
+                    console.log(ex);
                   });
-                  this.router.navigate(['/Employyes']);
-                }, ex => {
-                  console.log(ex);
-                });
-
-              }
-
-            })
+  
+                }
+  
+              })
+            }
+  
           }
-
-        }
-      });
+        });
     }
+  }
   HandleFile(event:any){
 
   }

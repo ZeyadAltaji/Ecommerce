@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from 'projects/authentication/src/app/services/authentication.service';
 import { User } from 'projects/dashboard/src/app/Classes/User';
 import { SweetAlertService } from 'projects/dashboard/src/app/services/SweetAlert.service';
+import { CookieService } from 'ngx-cookie-service';
+import { IUser } from 'projects/dashboard/src/app/Models/IUser';
 
 @Component({
   selector: 'app-New-employyes',
@@ -14,23 +16,34 @@ export class NewEmployyesComponent implements OnInit {
   NewEmployyesForm!:FormGroup;
   User=new User();
   formData: FormData = new FormData();
+  loggedInUser: any;
+  public user :IUser | undefined;
+
   @ViewChild('imageInput') imageInput?: ElementRef;
 
   constructor(private router: Router,
-    private userService:AuthenticationService,
+   private userService:AuthenticationService,
    private fb: FormBuilder,
-   private sweetAlertService :SweetAlertService)
+   private sweetAlertService :SweetAlertService,
+   private cookieServices:CookieService       
+   )
   { }
 
 
     ngOnInit() {
+      const userString = this.cookieServices.get('loggedInUser');
+      this.loggedInUser = userString ? JSON.parse(userString) : null;
+      if (this.loggedInUser && this.loggedInUser.fullUser) {
+        this.user = this.loggedInUser.fullUser;
+      }
       this.AddNewUserForm();
   }
   OnSubmit(){
-    debugger
-    this.userData();
-    const selectedValue = this._selectRole.value;
-
+    if (this.loggedInUser && this.loggedInUser.fullUser) {
+      const adminId = this.loggedInUser.fullUser.id; // Get the adminid from the logged-in user
+      const username = this.loggedInUser.fullUser.userName; // Get the adminid from the logged-in user
+      this.userData(adminId,username);// Pass the adminid to the MapCars method
+      const selectedValue = this._selectRole.value;
     if (selectedValue === '3') {
       this.userService.NewUser(this.formData).subscribe(
         (res) => {
@@ -58,6 +71,7 @@ export class NewEmployyesComponent implements OnInit {
         console.error('Invalid option selected:', selectedValue);
       }
 
+    }
   }
   AddNewUserForm() {
     this.NewEmployyesForm = this.fb.group({
@@ -81,7 +95,7 @@ export class NewEmployyesComponent implements OnInit {
     return fc.get('Password')?.value === fc.get('ComfirmPassword')?.value ? null :
       { notmatched: true }
   };
-  userData(): void {
+  userData(adminId: number,UserCreate:string) {
     this.formData = new FormData();
     debugger
     this.formData.append('Frist_Name', this.FristName.value);
@@ -96,6 +110,8 @@ export class NewEmployyesComponent implements OnInit {
     this.formData.append('Role', this._selectRole.value);
     let imageFile = this.imageInput?.nativeElement.files[0];
     this.formData.append('Image_userUrl', imageFile);
+    this.formData.append('Admin_Id', adminId.toString());
+    this.formData.append('UserCreate', UserCreate);
 }
 
 get FristName() {

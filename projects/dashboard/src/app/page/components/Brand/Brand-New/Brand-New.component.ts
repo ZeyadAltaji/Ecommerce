@@ -22,7 +22,9 @@ export class BrandNewComponent implements OnInit {
   @ViewChild('imageInput') imageInput?: ElementRef;
 
 
-  constructor( private fb: FormBuilder,private router: Router,
+  constructor( 
+    private fb: FormBuilder,
+    private router: Router,
     private brandsService:BrandsService,
     private sweetAlertService :SweetAlertService,
     private cookieServices:CookieService
@@ -49,7 +51,7 @@ export class BrandNewComponent implements OnInit {
       });
     }
     OnSubmit() {
-      debugger
+       
       if (this.loggedInUser && this.loggedInUser.fullUser) {
         const adminId = this.loggedInUser.fullUser.id; // Get the adminid from the logged-in user
         const username = this.loggedInUser.fullUser.userName; // Get the adminid from the logged-in user
@@ -88,8 +90,7 @@ export class BrandNewComponent implements OnInit {
       this.formData.append('Image_BrandUrl', imageFile);
       this.formData.append('Admin_Id', adminId.toString());
       this.formData.append('UserCreate', UserCreate);
-      // this.Brand.Admin_Id = adminId;
-      // this.Brand.userCreate=UserCreate;
+ 
     }
 
     HandleFile(event:any) {

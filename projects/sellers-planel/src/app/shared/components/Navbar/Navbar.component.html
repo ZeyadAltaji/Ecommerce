@@ -1,6 +1,6 @@
 <nav>
   <div class="container">
-    <img src="../../../../assets/images/logo.png" class="logo" alt="">
+    <img src="http://localhost:4203/assets/image/Setting/Logo/{{[logoData]}}" class="logo" alt="">
     <div class="search-bar">
       <span class="material-icons">search</span>
       <input type="search" placeholder="Search">
@@ -12,9 +12,10 @@
       </div>
       <div class="profile">
         <div class="profile-photo">
-          <img src="../../../../assets/user/zeyad.jpg" alt="">
+          <img *ngIf="user?.public_id" src="http://localhost:4203/assets/image/Users/{{ user?.public_id }}" alt="User" class="rounded-circle" width="100">
+          <img *ngIf="!user?.public_id" src="../../../../assets/profile/person-4.png" alt="Admin" class="rounded-circle" width="100">
         </div>
-        <h5>Zeyad</h5>
+        <h5>{{ user.userName }}</h5>
         <span class="material-icons" (click)="dropdown()">expand_more</span>
       </div>
       <div class="drop-down" [class.active-dropdown]="showdropdown">
@@ -22,7 +23,7 @@
           <a [routerLink]="['My-profile']" class="list-group-item list-group-item-action" [routerLinkActive]="'active'" aria-current="true">
             My Profile
           </a>
-           <a href="#" class="list-group-item list-group-item-action" [routerLinkActive]="'active'">Log Out</a>
+           <a   class="list-group-item list-group-item-action" (click)="logout()" [routerLinkActive]="'active'">Log Out</a>
          </div>
       </div>
       <!-- <button id="meun-btn" (click)="sidebarToggle()"> -->

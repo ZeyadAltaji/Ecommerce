@@ -8,5 +8,7 @@ export class Cars implements ICars {
   class!: string;
   isActive!:boolean;
   public_id!:string;
+  userCreate!:string;
+  userUpdate!:string;
 
 }

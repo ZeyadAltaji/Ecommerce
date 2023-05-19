@@ -1,101 +1,136 @@
 <main class="profile">
-  <div class="row  justify-content-evenly">
-    <div class="col-md-4 mb-3">
-        <div class="sup-porfile">
-          <div class="sub-profile">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex flex-column align-items-center text-center">
-                  <img src="../../../../assets/profile/person-4.png" alt="Admin" class="rounded-circle" width="100">
-                  <div class="mb-3">
-                    <label for="formFileMultiple" class="form-label" >Change Phote</label>
-                    <input class="form-control" type="file" id="formFileMultiple" multiple>
-                  </div>
-                </div>
+  <form class="row  justify-content-evenly" (ngSubmit)="OnSubmit()"   [formGroup]="EditUserForm">
+  <div class="col-md-4 mb-3">
+    <div class="sup-porfile">
+      <div class="sub-profile">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex flex-column align-items-center text-center">
+              <img *ngIf="user?.public_id" src="http://localhost:4203/assets/image/Users/{{ user?.public_id }}" alt="User" class="rounded-circle" width="100">
+              <img *ngIf="!user?.public_id" src="../../../../assets/profile/person-4.png" alt="Admin" class="rounded-circle" width="100">
+              <div class="mb-3">
+                <label for="formFileMultiple" class="form-label" >Change Phote</label>
+                <input class="form-control" id="Image_UserUrl"  #imageInput (change)="HandleFile($event)" type="file" id="formFileMultiple" multiple>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
-    <div class="col-md-8">
-        <div class="sup-porfile">
-          <div class="sub-profile">
-            <div class="card mb-3">
-              <div class="card-body">
-                  <div class="row">
-                    <div div class="row mb-3">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">ID</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        <input type="text" class="form-control" value="45664" disabled>
-                      </div>
+</div>
+<div class="col-md-8">
+    <div class="sup-porfile">
+      <div class="sub-profile">
+        <div class="card mb-3">
+          <div class="card-body">
+              <div class="row">
+                <div   class="row mb-3">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">ID</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <input type="text" class="form-control" [value]="user.id" disabled>
+                  </div>
+                </div>
+                <div   class="row mb-3">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">User Name</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <input type="text" class="form-control" [value]="user.userName" formControlName="UserName">
+                  </div>
+
+                </div>
+                <div   class="row mb-3">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Frist Name</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <input type="text" class="form-control" [value]="user.frist_Name" formControlName="FirstName">
+                  </div>
+
+                </div>
+                <div   class="row mb-3">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Last Name</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <input type="text" class="form-control" [value]="user.last_Name" formControlName="last_Name">
+                  </div>
+
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Email</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <input type="text" class="form-control" [value]="user.email" formControlName="Email" >
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Password</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary d-flex">
+                    <input type="password" class="form-control">
+                    <div class="form-check ms-2" style="margin: 5px;">
+                      <input class="form-check-input" type="checkbox"  id="defaultCheck1" formControlName="Password">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Show
+                      </label>
                     </div>
-                    <div div class="row mb-3">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Full Name</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        <input type="text" class="form-control" value="zeyad">
-                      </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Confirm Password</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary d-flex">
+                    <input type="password" class="form-control">
+                    <div class="form-check ms-2" style="margin: 5px;">
+                      <input class="form-check-input" type="checkbox" id="defaultCheck1" formControlName="ConfirmPassword">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Show
+                      </label>
                     </div>
-                    <div class="row mb-3">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Email</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        <input type="text" class="form-control" value="zeyad@outlook.com">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Password</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary d-flex">
-                        <input type="password" class="form-control" value="********">
-                        <div class="form-check ms-2" style="margin: 5px;">
-                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Show
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Phone</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        <input type="text" class="form-control" value="0787001066">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Mobile</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        <input type="text" class="form-control" value="0787001466">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Address</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        <input type="text" class="form-control" value="Jordan, Amman">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-3"></div>
-                      <div class="col-sm-9 text-secondary">
-                        <input type="button" class="btn btn-primary px-4" [routerLink]="['/']" value="Save Changes">
-                      </div>
-                    </div>
-                 </div>
-              </div>
-           </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Phone</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <input type="text" class="form-control" [value]="user.phone1"  formControlName="Mobile1">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Mobile</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <input type="text" class="form-control" [value]="user.phone2" formControlName="Mobile2">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Address</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <input type="text" class="form-control" [value]="user.address" formControlName="Address">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-9 text-secondary d-grid gap-2 d-md-block">
+                    <input type="submit" class="btn btn-primary px-4 ms-2" style="margin-right: 5px;" value="Save Changes">
+                    <input type="button" class="btn btn-outline-danger" [routerLink]="['/My-profile']" value="cancel">
+                  </div>
+                </div>
+             </div>
           </div>
-        </div>
+       </div>
+      </div>
     </div>
-  </div>
+</div>
+ </form>
 </main>

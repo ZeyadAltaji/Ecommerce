@@ -34,11 +34,7 @@ export class BrandEditComponent implements OnInit {
     private sweetAlertService: SweetAlertService,
     private fb: FormBuilder,
     private cookieServices:CookieService
-  ) {
-    this.Image_BrandUrl == null;
-
-
-  }
+  ) {this.Image_BrandUrl == null;}
   ngOnInit() {
     const userString = this.cookieServices.get('loggedInUser');
     this.loggedInUser = userString ? JSON.parse(userString) : null;

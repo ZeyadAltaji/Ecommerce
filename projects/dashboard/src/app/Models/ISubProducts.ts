@@ -12,11 +12,11 @@ export interface ISubProducts {
   createDate:string;
   isActive:boolean;
   isDelete:boolean;
-  Brands_Id: number;
+  brandsId: number;
   brands:string;
-  Category_Id: number;
+  categoryId: number;
   category:string;
-  Car_Id: number;
+  carId: number;
   cars:string;
   productId:number;
   Products:string;

@@ -1,10 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Product } from 'projects/dashboard/src/app/Classes/Product';
 import { SubProducts } from 'projects/dashboard/src/app/Classes/SubProducts';
 import { IProducts } from 'projects/dashboard/src/app/Models/IProduct';
 import { ISubProducts } from 'projects/dashboard/src/app/Models/ISubProducts';
+import { IUser } from 'projects/dashboard/src/app/Models/IUser';
 import { BrandsService } from 'projects/dashboard/src/app/services/Brands.service';
 import { CarService } from 'projects/dashboard/src/app/services/Car.service';
 import { ProductService } from 'projects/dashboard/src/app/services/Product.service';
@@ -25,7 +27,9 @@ export class NewSubProductsComponent implements OnInit {
     private brandsService:BrandsService,
     private CategoryService:CategoriseService,
     private Productsservice:ProductService,
-    private sweetAlertService :SweetAlertService
+    private sweetAlertService :SweetAlertService,
+    private cookieServices:CookieService
+
    ) { }
    product =new SubProducts();
    categoriseList: any[] | undefined;
@@ -51,18 +55,25 @@ export class NewSubProductsComponent implements OnInit {
      cars: '',
      category: '',
      brands: '',
-     Brands_Id: 0,
-     Category_Id: 0,
-     Car_Id: 0,
      description: '',
      isPrimaryImage: '',
      Primary_Image: '',
-     productId: 0,
-     Products: ''
+     Products: '',
+     brandsId: 0,
+     categoryId: 0,
+     carId: 0,
+     productId: 0
    };
+   loggedInUser: any;
+   public user :IUser | undefined;
    formData: FormData = new FormData();
    @ViewChild('PrimaryImage') PrimaryImage?: ElementRef;
   ngOnInit() {
+    const userString = this.cookieServices.get('loggedInUser');
+      this.loggedInUser = userString ? JSON.parse(userString) : null;
+      if (this.loggedInUser && this.loggedInUser.fullUser) {
+        this.user = this.loggedInUser.fullUser;
+      }
     this.AddNewProductsForm();
     this.CategoryService.GetAllCategorise().subscribe(data=>{
     this.categoriseList=data;
@@ -79,17 +90,20 @@ export class NewSubProductsComponent implements OnInit {
    });
   }
   OnSubmit(){
-    debugger
-    this.MapProducts();
-    this.productService.AddProducts(this.formData).subscribe(
-      (data)=>{
-      this.sweetAlertService.success("Success", "Products added successfully.");
-      this.router.navigate(['/list-products']);
+    if (this.loggedInUser && this.loggedInUser.fullUser) {
+          const adminId = this.loggedInUser.fullUser.id; // Get the adminid from the logged-in user
+          const username = this.loggedInUser.fullUser.userName; // Get the adminid from the logged-in user
+          this.MapProducts(adminId,username);// Pass the adminid to the MapBrands method
+          this.productService.AddProducts(this.formData).subscribe(
+          (data)=>{
+          this.sweetAlertService.success("Success", "Products added successfully.");
+          this.router.navigate(['/list-products']);
 
-      },(error)=>{
-        console.log(error);
-      }
-    )
+          },(error)=>{
+            console.log(error);
+          }
+        )
+    }
   }
   AddNewProductsForm() {
     this.NewProductsForm = this.fb.group({
@@ -150,7 +164,7 @@ export class NewSubProductsComponent implements OnInit {
   get _Primary_Image(){
     return this.NewProductsForm.controls['Primary_Image']as FormGroup;
   }
-  MapProducts():void{
+  MapProducts(adminId: number,UserCreate:string) {
     debugger
     this.formData = new FormData();
     this.formData.append('Serial_Id', this._SerialId.value);
@@ -166,6 +180,8 @@ export class NewSubProductsComponent implements OnInit {
     this.formData.append('Quantity', this._Quantity.value);
     let Primary_Image = this.PrimaryImage?.nativeElement.files[0];
     this.formData.append('Primary_Image', Primary_Image);
+    this.formData.append('Admin_Id', adminId.toString());
+    this.formData.append('UserCreate', UserCreate);
   }
   toggleInputs() {
     this.showInputs = !this.showInputs;

@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors,
 import { BusinessAccount } from '../../../Models/User';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-BusinessAccount',
@@ -13,8 +14,11 @@ export class BusinessAccountComponent implements OnInit {
   BusinessAccountForm!: FormGroup;
   user!: BusinessAccount;
   userSubmitted!: boolean;
-  constructor(private fb: FormBuilder, private authService: AuthenticationService,
-    private router:Router,) { }
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthenticationService,
+    private router:Router,
+    private cookieServices:CookieService,) { }
 
 
   ngOnInit() {
@@ -37,13 +41,13 @@ export class BusinessAccountComponent implements OnInit {
 
   OnBusinessAccount(BusinessAccountForm:FormGroup){
 
-    console.log(this.BusinessAccountForm);
-    this.userSubmitted = true;
+     this.userSubmitted = true;
     if (this.BusinessAccountForm.valid) {
       this.authService.BusinessAccount(this.userData()).subscribe(
         (data) => {
           this.onReset();
-          console.log('Registeration Business Account successfully !!')
+          
+           
 
         },
         (error) => {

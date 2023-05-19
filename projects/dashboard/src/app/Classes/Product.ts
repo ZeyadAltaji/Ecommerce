@@ -2,16 +2,17 @@ import { IProducts } from "../Models/IProduct";
 
 export class Product implements IProducts
 {
+
   id!: number;
 
   title!:string;
-  Brands_Id!: number;
+  brands_Id!: number;
   brands!:string;
-  Category_Id!: number;
+  category_Id!: number;
   category!:string;
-  Car_Id!: number;
+  car_Id!: number;
   cars!:string;
-
+ 
   isPrimaryImage!: string;
   isForeignImage1!: string;
   isForeignImage2!: string;
@@ -24,6 +25,9 @@ export class Product implements IProducts
   createDate!:string;
   isActive!:boolean;
   isDelete!:boolean;
+  
+  userCreate!: string;
+  userUpdate!: string;
 
 }
 

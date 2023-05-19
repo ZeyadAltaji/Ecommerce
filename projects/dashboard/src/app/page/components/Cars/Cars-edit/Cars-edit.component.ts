@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Cars } from 'projects/dashboard/src/app/Classes/Cars';
+import { IUser } from 'projects/dashboard/src/app/Models/IUser';
 import { CarService } from 'projects/dashboard/src/app/services/Car.service';
 import { SweetAlertService } from 'projects/dashboard/src/app/services/SweetAlert.service';
 import swal from 'sweetalert';
@@ -25,12 +27,24 @@ export class CarsEditComponent implements OnInit {
   UrlImage = '';
   Image_CarUrl!: File;
   selectedImage!: File;
+  loggedInUser: any;
+  public user :IUser | undefined;
   @ViewChild('imageInput') imageInput?: ElementRef;
 
-  constructor(private router: Router,private route: ActivatedRoute, private carService:CarService,
-    private sweetAlertService :SweetAlertService,private fb: FormBuilder) {    this.Image_CarUrl == null;    }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private carService:CarService,
+    private sweetAlertService:SweetAlertService,
+    private fb: FormBuilder,
+    private cookieServices:CookieService) {this.Image_CarUrl == null;}
 
     ngOnInit() {
+      const userString = this.cookieServices.get('loggedInUser');
+      this.loggedInUser = userString ? JSON.parse(userString) : null;
+      if (this.loggedInUser && this.loggedInUser.fullUser) {
+        this.user = this.loggedInUser.fullUser;
+      }
       this.EditcarsForm();
 
 
@@ -49,57 +63,61 @@ export class CarsEditComponent implements OnInit {
       });
     }
     OnSubmit(){
-      this.route.paramMap.subscribe({
+      if (this.loggedInUser && this.loggedInUser.fullUser) {
+        const username = this.loggedInUser.fullUser.userName;
+        this.route.paramMap.subscribe({
 
-        next:(params)=>{
-           const id=params.get('id');
-          if(id){
-            const fd = new FormData();
-            let imageFile = this.imageInput?.nativeElement.files[0];
-            fd.append('Image_CarUrl', imageFile);
-            fd.append('Name', this._NameCar.value);
-            fd.append('Class', this.classCar.value);
-            fd.append('isActive', this._isActive.value);
-
-            if (this.ProductionDate.valid) {
-             fd.append ('production_Date', this.ProductionDate.value);
-            } else {
-              console.error("Production date is required.");
-              return;
-            }
-            fd.append('id', id.toString());
-            if (this.selectedImage) { // check if a new image is selected
-              fd.append('Image_CarUrl', this.selectedImage, this.selectedImage.name);
-                }
-            // Show a warning message before updating the brand
-            swal({
-              title: "Are you sure?",
-              text: "You are about to update the brand. Do you want to continue?",
-              icon: "warning",
-              dangerMode: true,
-            })
-            .then((willUpdate) => {
-              if (willUpdate) {
-                const name = this.cars.name;
-                const updateimage=this.cars.public_id;
-                this.carService.UpdateCars(fd).subscribe(data => {
-                   // Show a success message after the Cars has been updated
-                  swal({
-                    title: "Success!",
-                    text: "The Cars has been updated.",
-                    icon: "success",
-                  });
-                  this.router.navigate(['/Cars']);
-                }, ex => {
-                  console.log(ex);
-                });
+          next:(params)=>{
+             const id=params.get('id');
+            if(id){
+              const fd = new FormData();
+              let imageFile = this.imageInput?.nativeElement.files[0];
+              fd.append('Image_CarUrl', imageFile);
+              fd.append('Name', this._NameCar.value);
+              fd.append('Class', this.classCar.value);
+              fd.append('isActive', this._isActive.value);
+              fd.append('userUpdate', this.loggedInUser.fullUser.userName); 
+  
+              if (this.ProductionDate.valid) {
+               fd.append ('production_Date', this.ProductionDate.value);
               } else {
-                // Do nothing if the user cancels the update
+                console.error("Production date is required.");
+                return;
               }
-            });
+              fd.append('id', id.toString());
+              if (this.selectedImage) { // check if a new image is selected
+                fd.append('Image_CarUrl', this.selectedImage, this.selectedImage.name);
+                  }
+              // Show a warning message before updating the Car
+              swal({
+                title: "Are you sure?",
+                text: "You are about to update the Car. Do you want to continue?",
+                icon: "warning",
+                dangerMode: true,
+              })
+              .then((willUpdate) => {
+                if (willUpdate) {
+                  const name = this.cars.name;
+                  const updateimage=this.cars.public_id;
+                  this.carService.UpdateCars(fd).subscribe(data => {
+                     // Show a success message after the Cars has been updated
+                    swal({
+                      title: "Success!",
+                      text: "The Cars has been updated.",
+                      icon: "success",
+                    });
+                    this.router.navigate(['/Cars']);
+                  }, ex => {
+                    console.log(ex);
+                  });
+                } else {
+                  // Do nothing if the user cancels the update
+                }
+              });
+            }
           }
-        }
-      });
+        });
+      }
     }
     EditcarsForm(){
       this.EditCarsForm = this.fb.group({

@@ -1,11 +1,11 @@
 export interface IProducts {
   id: number;
   title:string;
-  Brands_Id: number;
+  brands_Id: number;
   brands:string;
-  Category_Id: number;
+  category_Id: number;
   category:string;
-  Car_Id: number;
+  car_Id: number;
   cars:string;
   isPrimaryImage: string;
   isForeignImage1: string;
@@ -18,6 +18,8 @@ export interface IProducts {
   createDate:string;
   isActive:boolean;
   isDelete:boolean;
+  userCreate:string;
+  userUpdate:string;
 }
 
 

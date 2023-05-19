@@ -21,7 +21,9 @@ export class CarsLsitComponent implements OnInit {
     image_CarUrl: '',
     class: '',
     isActive: false,
-    public_id: ''
+    public_id: '',
+    userUpdate: '',
+    userCreate: ''
   }
   UrlImage = '';
 

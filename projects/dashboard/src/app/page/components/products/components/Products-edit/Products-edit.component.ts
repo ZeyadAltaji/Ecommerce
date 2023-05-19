@@ -1,8 +1,10 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Product } from 'projects/dashboard/src/app/Classes/Product';
 import { IProducts } from 'projects/dashboard/src/app/Models/IProduct';
+import { IUser } from 'projects/dashboard/src/app/Models/IUser';
 import { BrandsService } from 'projects/dashboard/src/app/services/Brands.service';
 import { CarService } from 'projects/dashboard/src/app/services/Car.service';
 import { ProductService } from 'projects/dashboard/src/app/services/Product.service';
@@ -26,8 +28,8 @@ export class ProductsEditComponent implements OnInit {
   showInputs = false;
   propertyView: IProducts = {
     id: 0,
-     title: '',
-     UserId: 0,
+    title: '',
+    UserId: 0,
     admin_Id: 0,
     createDate: '',
     isActive: false,
@@ -35,15 +37,17 @@ export class ProductsEditComponent implements OnInit {
     cars: '',
     category: '',
     brands: '',
-    Brands_Id: 0,
-    Category_Id: 0,
-    Car_Id: 0,
-     isPrimaryImage: '',
+    brands_Id: 0,
+    category_Id: 0,
+    car_Id: 0,
+    isPrimaryImage: '',
     isForeignImage1: '',
     isForeignImage2: '',
     Primary_Image: '',
     ForeignImage1: '',
-    ForeignImage2: ''
+    ForeignImage2: '',
+    userCreate: '',
+    userUpdate: ''
   };
   productsId:any;
   showPrimaryImage = '';
@@ -63,6 +67,8 @@ export class ProductsEditComponent implements OnInit {
   car_Id:any;
   category_Id:any;
   IsActive: any;
+  loggedInUser: any;
+  public user :IUser | undefined;
   formData: FormData = new FormData();
   @ViewChild('PrimaryImage') PrimaryImage?: ElementRef;
   @ViewChild('ForeignImage1') ForeignImage1?: ElementRef;
@@ -74,35 +80,55 @@ export class ProductsEditComponent implements OnInit {
               private fb: FormBuilder,
               private carService:CarService,
               private brandsService:BrandsService,
-              private sweetService:SweetAlertService) { }
+              private sweetService:SweetAlertService,
+              private cookieServices:CookieService) { }
 
   ngOnInit():void {
+    const userString = this.cookieServices.get('loggedInUser');
+    this.loggedInUser = userString ? JSON.parse(userString) : null;
+    if (this.loggedInUser && this.loggedInUser.fullUser) {
+      this.user = this.loggedInUser.fullUser;
+    }
     this.EditProductForm();
     this.productsId=this.route.snapshot.params['id'];
     this.productsService.GetByIdProducts(this.productsId).subscribe({
       next:(response)=>{
           this.product=response;
+           
           this.showPrimaryImage = `assets/image/Products/${response.isPrimaryImage}`;
           this.showForeignImage1 = `assets/image/Products/${response.isForeignImage1}`;
           this.showForeignImage2 = `assets/image/Products/${response.isForeignImage1}`;
           this.title = this.EditProductsForm.controls['NameProducts'].setValue(this.product.title);
-          this.brands_Id = this.EditProductsForm.controls['Brands'].setValue(this.product.Brands_Id);
-          this.car_Id = this.EditProductsForm.controls['Cars'].setValue(this.product.Car_Id);
-          this.category_Id = this.EditProductsForm.controls['Categorise'].setValue(this.product.Category_Id);
+          this.brands_Id = this.EditProductsForm.controls['Brands'].setValue(this.product.brands_Id);
+          this.car_Id = this.EditProductsForm.controls['Cars'].setValue(this.product.car_Id);
+          this.category_Id = this.EditProductsForm.controls['Categorise'].setValue(this.product.category_Id);
            this.IsActive=this.EditProductsForm.controls['Active'].setValue(this.product.isActive);
         }
     });
+     
+    this.EditProductsForm.patchValue({
+      
+      Categorise: this.product.category_Id,
+      Cars: this.product.car_Id,
+      Brands: this.product.brands_Id,
+    });
 
-
+ 
     this.productsService.getAllcategorise().subscribe(data=>{
+       
       this.categoriseList=data;
-      this.selectedCategory = this.categoriseList[0].name;
+       this.selectedCategory = this.categoriseList.find(c => c.id === this.product.category_Id)?.name || '';
+
    });
   this.carService.GetAllCars().subscribe(data=>{
     this.CarsList=data;
+    this.propertyView.cars = this.CarsList.find(c => c.id === this.product.car_Id)?.id || '';
+
    });
   this.brandsService.GetAllBrands().subscribe(data=>{
     this.BrandList=data;
+    this.propertyView.brands = this.BrandList.find(b => b.id === this.product.brands_Id)?.id || '';
+
    });
   }
 
@@ -128,60 +154,61 @@ export class ProductsEditComponent implements OnInit {
     });
   }
   OnSubmit(){
-    this.route.paramMap.subscribe({
-      next:(params)=>{
-         const id=params.get('id');
-        if(id){
+    debugger
+    if (this.loggedInUser && this.loggedInUser.fullUser) {
+      const username = this.loggedInUser.fullUser.userName;
+      this.route.paramMap.subscribe({
+        next:(params)=>{
+           const id=params.get('id');
+          if(id){
+            debugger
+            const fd = new FormData();
+            let imageFile = this.PrimaryImage?.nativeElement.files[0];
+            fd.append('Primary_Image', imageFile);
+            let imageFile1 = this.ForeignImage1?.nativeElement.files[0];
+            fd.append('ForeignImage1', imageFile1);
+            let imageFile2 = this.ForeignImage2?.nativeElement.files[0];
+            fd.append('ForeignImage2', imageFile2);
+             fd.append('Title', this._NameProducts.value);
+ 
+            fd.append('Brands_Id', this._Brands.value);
+            fd.append('Car_Id', this._Cars.value);
+            fd.append('Category_Id', this._Categorise.value);
+            fd.append('userUpdate', this.loggedInUser.fullUser.userName);           // Show a warning message before updating the brand
 
-          const fd = new FormData();
-          let imageFile = this.PrimaryImage?.nativeElement.files[0];
-          fd.append('Primary_Image', imageFile);
-          let imageFile1 = this.ForeignImage1?.nativeElement.files[0];
-          fd.append('ForeignImage1', imageFile1);
-          let imageFile2 = this.ForeignImage2?.nativeElement.files[0];
-          fd.append('ForeignImage2', imageFile2);
-          fd.append('Serial_Id', this._SerialId.value);
-          fd.append('Title', this._NameProducts.value);
-          fd.append('Description', this._Description.value);
-          fd.append('Price', this._PriceProducts.value);
-          fd.append('Offers', this._offers.value);
-          fd.append('New_price', this.new_priceProducts.value);
-          fd.append('Quantity', this._Quantity.value);
-          fd.append('Brands_Id', this._Brands.value);
-          fd.append('Car_Id', this._Cars.value);
-          fd.append('Category_Id', this._Categorise.value);
-          fd.append('id', id.toString());
-          if (this.Primary_Image) { // check if a new image is selected
-            fd.append('Primary_Image', this.Primary_Image, this.Primary_Image.name);
+            fd.append('id', id.toString());
+            if (this.Primary_Image) { // check if a new image is selected
+              fd.append('Primary_Image', this.Primary_Image, this.Primary_Image.name);
+            }
+            if (this.Foreign_Image1) { // check if a new image is selected
+              fd.append('ForeignImage1', this.Foreign_Image1, this.Foreign_Image1.name);
+            }
+            if (this.Foreign_Image2) { // check if a new image is selected
+              fd.append('ForeignImage2', this.Foreign_Image2, this.Foreign_Image2.name);
+            }
+              // Show a warning message before updating the brand
+              this.sweetService.warning("Are you sure?", "Do you want to update this product?")
+              .then((willUpdate) => {
+                if (willUpdate) {
+  
+                  this.productsService.UpdateProducts(fd).subscribe(data => {
+                     // Show a success message after the product has been updated
+                     this.sweetService.success("Success", "The product has been successfully Updatedd")
+  
+                    this.router.navigate(['/Prodcuts']);
+                  }, ex => {
+                    this.sweetService.error("Errors ! ", "There's something wrong with data entry!")
+  
+                  });
+  
+                }
+  
+              })
+            }
+  
           }
-          if (this.Foreign_Image1) { // check if a new image is selected
-            fd.append('ForeignImage1', this.Foreign_Image1, this.Foreign_Image1.name);
-          }
-          if (this.Foreign_Image2) { // check if a new image is selected
-            fd.append('ForeignImage2', this.Foreign_Image2, this.Foreign_Image2.name);
-          }
-            // Show a warning message before updating the brand
-            this.sweetService.warning("Are you sure?", "Do you want to update this product?")
-            .then((willUpdate) => {
-              if (willUpdate) {
-
-                this.productsService.UpdateProducts(fd).subscribe(data => {
-                   // Show a success message after the product has been updated
-                   this.sweetService.success("Success", "The product has been successfully Updatedd")
-
-                  this.router.navigate(['/Prodcuts']);
-                }, ex => {
-                  this.sweetService.error("Errors ! ", "There's something wrong with data entry!")
-
-                });
-
-              }
-
-            })
-          }
-
-        }
-      });
+        });
+    }
     }
   get _SerialId() {
     return this.EditProductsForm.controls['Serial_Id'] as FormGroup;
@@ -221,9 +248,9 @@ export class ProductsEditComponent implements OnInit {
   MapProducts():void{
     this.product.title = this._NameProducts.value;
 
-    this.product.Brands_Id = this._Brands.value;
-    this.product.Car_Id = this._Cars.value;
-    this.product.Category_Id = this._Categorise.value;
+    this.product.brands_Id = this._Brands.value;
+    this.product.car_Id = this._Cars.value;
+    this.product.category_Id = this._Categorise.value;
     this.product.isActive=this._isActive.value;
 
   }

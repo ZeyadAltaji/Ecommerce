@@ -2,8 +2,10 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { data } from 'jquery';
+import { CookieService } from 'ngx-cookie-service';
 import { Product } from 'projects/dashboard/src/app/Classes/Product';
 import { IProducts } from 'projects/dashboard/src/app/Models/IProduct';
+import { IUser } from 'projects/dashboard/src/app/Models/IUser';
 import { BrandsService } from 'projects/dashboard/src/app/services/Brands.service';
 import { CarService } from 'projects/dashboard/src/app/services/Car.service';
 import { ProductService } from 'projects/dashboard/src/app/services/Product.service';
@@ -21,7 +23,8 @@ export class ProductsNewComponent implements OnInit {
     private productService: ProductService,
     private carService:CarService,
     private brandsService:BrandsService,
-    private sweetAlertService :SweetAlertService
+    private sweetAlertService :SweetAlertService,
+    private cookieServices:CookieService
    ) { }
    product =new Product();
   categoriseList: any[] | undefined;
@@ -31,7 +34,7 @@ export class ProductsNewComponent implements OnInit {
   showInputs = false;
   propertyView: IProducts = {
     id: 0,
-     title: '',
+    title: '',
     UserId: 0,
     admin_Id: 0,
     createDate: '',
@@ -40,16 +43,20 @@ export class ProductsNewComponent implements OnInit {
     cars: '',
     category: '',
     brands: '',
-    Brands_Id: 0,
-    Category_Id: 0,
-    Car_Id: 0,
-     isPrimaryImage: '',
+    brands_Id: 0,
+    category_Id: 0,
+    car_Id: 0,
+    isPrimaryImage: '',
     isForeignImage1: '',
     isForeignImage2: '',
     Primary_Image: '',
     ForeignImage1: '',
-    ForeignImage2: ''
+    ForeignImage2: '',
+    userCreate: '',
+    userUpdate: ''
   };
+  loggedInUser: any;
+  public user :IUser | undefined;
   formData: FormData = new FormData();
   @ViewChild('PrimaryImage') PrimaryImage?: ElementRef;
   @ViewChild('ForeignImage1') ForeignImage1?: ElementRef;
@@ -57,6 +64,11 @@ export class ProductsNewComponent implements OnInit {
 
 
   ngOnInit() {
+    const userString = this.cookieServices.get('loggedInUser');
+      this.loggedInUser = userString ? JSON.parse(userString) : null;
+      if (this.loggedInUser && this.loggedInUser.fullUser) {
+        this.user = this.loggedInUser.fullUser;
+      }
     this.AddNewProductsForm();
     this.productService.getAllcategorise().subscribe(data=>{
     this.categoriseList=data;
@@ -71,16 +83,20 @@ export class ProductsNewComponent implements OnInit {
 
   OnSubmit(){
     debugger
-    this.MapProducts();
-    this.productService.AddProducts(this.formData).subscribe(
-      (data)=>{
-      this.sweetAlertService.success("Success", "Products added successfully.");
-      this.router.navigate(['/Prodcuts']);
-
-      },(error)=>{
-        console.log(error);
-      }
-    )
+    if (this.loggedInUser && this.loggedInUser.fullUser) {
+      const adminId = this.loggedInUser.fullUser.id; // Get the adminid from the logged-in user
+      const username = this.loggedInUser.fullUser.userName; // Get the adminid from the logged-in user
+      this.MapProducts(adminId,username);// Pass the adminid to the MapBrands method
+       this.productService.AddProducts(this.formData).subscribe(
+        (data)=>{
+        this.sweetAlertService.success("Success", "Products added successfully.");
+        this.router.navigate(['/Prodcuts']);
+  
+        },(error)=>{
+          console.log(error);
+        }
+      )
+    }
   }
   AddNewProductsForm() {
     this.NewProductsForm = this.fb.group({
@@ -123,24 +139,21 @@ export class ProductsNewComponent implements OnInit {
   get _Foreign_Image2(){
     return this.NewProductsForm.controls['Foreign_Image2']as FormGroup;
   }
-  MapProducts():void{
+  MapProducts(adminId: number,UserCreate:string) {
     debugger
     this.formData = new FormData();
-     this.formData.append('Title', this._NameProducts.value);
-     this.formData.append('Brands_Id', this._Brands.value);
+    this.formData.append('Title', this._NameProducts.value);
+    this.formData.append('Brands_Id', this._Brands.value);
     this.formData.append('Car_Id', this._Cars.value);
     this.formData.append('Category_Id', this._Categorise.value);
-     let Primary_Image = this.PrimaryImage?.nativeElement.files[0];
+    let Primary_Image = this.PrimaryImage?.nativeElement.files[0];
     this.formData.append('Primary_Image', Primary_Image);
     let Foreign_Image1 = this.ForeignImage1?.nativeElement.files[0];
-      this.formData.append('ForeignImage1', Foreign_Image1);
-      let Foreign_Image2 = this.ForeignImage2?.nativeElement.files[0];
-      this.formData.append('ForeignImage2', Foreign_Image2);
-
-
-
-
-
+    this.formData.append('ForeignImage1', Foreign_Image1);
+    let Foreign_Image2 = this.ForeignImage2?.nativeElement.files[0];
+    this.formData.append('ForeignImage2', Foreign_Image2);
+    this.formData.append('Admin_Id', adminId.toString());
+    this.formData.append('UserCreate', UserCreate);
   }
   toggleInputs() {
     this.showInputs = !this.showInputs;

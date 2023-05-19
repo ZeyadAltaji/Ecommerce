@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Cars } from 'projects/dashboard/src/app/Classes/Cars';
+import { IUser } from 'projects/dashboard/src/app/Models/IUser';
 import { CarService } from 'projects/dashboard/src/app/services/Car.service';
 import { SweetAlertService } from 'projects/dashboard/src/app/services/SweetAlert.service';
 
@@ -15,28 +17,42 @@ export class CarsNewComponent implements OnInit {
   car=new Cars;
   showInputs=true;
   formData: FormData = new FormData();
+  loggedInUser: any;
+  public user :IUser | undefined;
   @ViewChild('imageInput') imageInput?: ElementRef;
 
-  constructor( private fb: FormBuilder,private router: Router,
+  constructor( 
+    private fb: FormBuilder,
+    private router: Router,
     private carService:CarService,
-    private sweetAlertService :SweetAlertService
+    private sweetAlertService :SweetAlertService,
+    private cookieServices:CookieService
     ) { }
   ngOnInit() {
+    const userString = this.cookieServices.get('loggedInUser');
+      this.loggedInUser = userString ? JSON.parse(userString) : null;
+      if (this.loggedInUser && this.loggedInUser.fullUser) {
+        this.user = this.loggedInUser.fullUser;
+      }
     this.AddNewCarsForm();
 
   }
   OnSubmit(){
-    this.MapCars();
+    if (this.loggedInUser && this.loggedInUser.fullUser) {
+      const adminId = this.loggedInUser.fullUser.id; // Get the adminid from the logged-in user
+      const username = this.loggedInUser.fullUser.userName; // Get the adminid from the logged-in user
+      this.MapCars(adminId,username);// Pass the adminid to the MapCars method
 
-    this.carService.AddCars(this.formData).subscribe(
-      (data) => {
-        console.log(data)
-        this.sweetAlertService.success("Success", "Car added successfully.");
-        this.router.navigate(['/Cars']);
-      },(error)=>{
-        console.log(error);
-      }
-    )
+      this.carService.AddCars(this.formData).subscribe(
+        (data) => {
+          console.log(data)
+          this.sweetAlertService.success("Success", "Car added successfully.");
+          this.router.navigate(['/Cars']);
+        },(error)=>{
+          console.log(error);
+        }
+      )
+    }
   }
 
   AddNewCarsForm() {
@@ -65,7 +81,7 @@ export class CarsNewComponent implements OnInit {
   get _isActive() {
     return this.NewCarForm.controls['isActive']as FormGroup;
   }
-  MapCars() {
+  MapCars(adminId: number,UserCreate:string) {
     this.formData = new FormData();
       this.formData.append('Name', this._NameCars.value);
       let imageFile = this.imageInput?.nativeElement.files[0];
@@ -78,6 +94,8 @@ export class CarsNewComponent implements OnInit {
       return;
     }
     this.formData.append ('isActive', this._isActive.value);
+    this.formData.append('Admin_Id', adminId.toString());
+    this.formData.append('UserCreate', UserCreate);
    }
   HandleFile(event:any) {
     if (event.target.files !== null && event.target.files.length > 0) {

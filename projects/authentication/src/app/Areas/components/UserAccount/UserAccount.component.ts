@@ -41,14 +41,12 @@ export class UserAccountComponent implements OnInit {
     };
 
     onRegister(RegisterForm:FormGroup){
-
-     console.log(this.RegisterForm);
-    this.userSubmitted = true;
+      this.userSubmitted = true;
     if (this.RegisterForm.valid) {
       this.authService.RegisterUser(this.userData()).subscribe(
         (data) => {
           this.onReset();
-          console.log('Registeration successfully !!')
+           
 
         },
         (error) => {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { Environment } from 'projects/authentication/src/app/Environments/Environment';
 
 @Component({
   selector: 'app-Sidebar',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cookieServices:CookieService){}
 
   ngOnInit() {
   }
-
+  logout() {
+    // Clear the logged-in user information and redirect to the login page
+    this.cookieServices.delete('loggedInUser');
+    window.location.href = Environment.AuthURl;
+  }
 }
