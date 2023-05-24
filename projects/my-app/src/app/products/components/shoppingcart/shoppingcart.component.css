@@ -9,3 +9,55 @@
 .btn-remove:hover{
 background: crimson;
 }
+.img-sm {
+  width: 15rem;
+  height: 11rem;
+  border-radius:13px;
+}
+.center-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+td.text-center {
+  text-align: center;
+}
+.counter{
+  width: 86%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+ .btn-cont{
+  width: 39px;
+  height: 36px;
+  border-radius: 50%;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-family: ‘Open Sans’;
+  font-weight: 900;
+  color: #202020;
+  cursor: pointer;
+  border: 1px solid gray;
+
+ }
+ .btn-cont:hover{
+  background-color: #d9d9d9;
+
+ }
+ .count{
+  font-size: 20px;
+  font-family: ‘Open Sans’;
+  font-weight: 900;
+  color: #202020;
+  padding: 5px 8px 5px 8px;
+
+ }
+ .count-input{
+  border: none;
+  text-align: center;
+  outline: none;
+ }

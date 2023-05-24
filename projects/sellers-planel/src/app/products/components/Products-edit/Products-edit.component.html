@@ -7,30 +7,40 @@
 <main class="products-edit">
  <div class="margin">
   <div class="location">
-    <form (ngSubmit)="OnSubmit()">
+    <form (ngSubmit)="OnSubmit()" [formGroup]="EditProductsForm">
     <div class="container text-center">
       <div class="row">
         <div class="col-6 info">
             <div class="mb-3">
               <label for="NumberProducts" class="form-label">Serial Number Products</label>
-              <input type="text" class="form-control" id="NumberProducts"   formControlName="Serial_Id"  aria-describedby="NumberProducts">
+              <input type="text" class="form-control" id="NumberProducts"  [value]="product.serial_Id" formControlName="Serial_Id"  aria-describedby="NumberProducts">
             </div>
             <div class="mb-3">
               <label for="NameProducts" class="form-label">Name Products</label>
-              <input type="text" class="form-control"   id="NameProducts" formControlName="NameProducts">
+              <input type="text" class="form-control"  [value]="product.title" id="NameProducts" formControlName="NameProducts">
             </div>
             <div class="mb-3">
               <label for="TypeProducts" class="form-label">Price</label>
-              <input type="text" class="form-control" id="PriceProducts"  formControlName="PriceProducts">
+              <input type="text" class="form-control" id="PriceProducts" [value]="product.price"  formControlName="PriceProducts">
             </div>
             <div class="mb-3">
               <label for="Password" class="form-label">Quantity Have</label>
-              <input type="text" class="form-control" id="-Quantity"  formControlName="Quantity">
+              <input type="text" class="form-control" id="-Quantity" [value]="product.quantity" formControlName="Quantity">
             </div>
             <div class="mb-3">
-              <label for="Photo" class="form-label">photo primary</label>
-              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+              <label for="primaryimages" class="form-label">Photo primary</label>
+              <input type="file" class="form-control" (change)="HandleFilePrimaryimages($event)" id="inputGroupFile03" formControlName="Primary_Image" aria-describedby="inputGroupFileAddon03" aria-label="Upload"  #PrimaryImage>
             </div>
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <div class="card" style="width: 18rem;">
+                    <img  src="{{[showPrimaryImage]}}" id="PrimaryImage" alt="Is Primary Image">
+                  </div>
+                </div>
+              </div>
+             </div>
+
             <div class="mb-3">
               <a class="btn btn-primary mb-2"
                data-bs-parent="#parentDiv"
@@ -42,14 +52,14 @@
               <div [class.show]="showInputs">
                 <div *ngIf="showInputs" data-bs-parent="#parentDiv">
                   <label for="New_price" class="form-label">New Price</label>
-                  <input type="text" class="form-control" id="PriceProducts"   formControlName="newprice">
+                  <input type="text" class="form-control" id="PriceProducts" [value]="product.new_price" formControlName="newprice">
                 </div>
                  <div  *ngIf="showInputs" data-bs-parent="#parentDiv">
                   <label for="Offer" class="form-label">Offers</label>
-                  <input type="text" class="form-control" id="offers" formControlName="Offer">
+                  <input type="text" class="form-control" id="offers" [value]="product.offers" formControlName="Offer">
                  </div>
                  <div class="form-check mt-2" *ngIf="showInputs" >
-                  <input class="form-check-input" id=""  type="checkbox" formControlName="Active" id="defaultCheck1">
+                  <input class="form-check-input" id="" [(ngModel)]="product.isActive" type="checkbox" formControlName="Active" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">
                     Active
                   </label>
@@ -61,33 +71,51 @@
         <div class="col-6 right">
           <div class="mb-3">
             <label class="form-label">Categorise</label>
-            <select #Category   class="form-select" id="floatingSelect" formControlName="Categorise" aria-label="Floating label select example">
+            <select #Category (change)="propertyView.category=Category.options[Category.options.selectedIndex].text"   class="form-select" id="floatingSelect" formControlName="Categorise" aria-label="Floating label select example">
               <option selected>Select Type Category</option>
-              <option  >
-               </option>
+              <option *ngFor="let categorise of categoriseList" [value]="categorise.id" [selected]="categorise.id === category_Id">
+                {{categorise.name}}
+              </option>
             </select>
            </div>
            <div class="mb-3">
+            <label class="form-label">Product</label>
+            <select #Products
+                    (change)="propertyView.Products = Products.options[Products.options.selectedIndex].text"
+                    class="form-select"
+                    id="floatingSelect"
+                    formControlName="Products"
+                    aria-label="Floating label select example">
+              <option value="" disabled>Select Type Product</option>
+              <option *ngFor="let product of ProductsList" [value]="product.id" [selected]="product.id === productId">
+                {{ product.title }}
+              </option>
+            </select>
+          </div>
+
+           <div class="mb-3">
             <label class="form-label">Type Cars</label>
-            <select  class="form-select" id="floatingSelect" formControlName="Cars" aria-label="Floating label select example">
+            <select #Cars (change)="propertyView.cars=Cars.options[Cars.options.selectedIndex].text"   class="form-select" id="floatingSelect" formControlName="Cars" aria-label="Floating label select example">
               <option selected>Select Type Cars</option>
-              <option  >
-1              </option>
+              <option *ngFor="let car of CarsList" [value]="car.id" [selected]="car.id === car_Id">
+                {{car.name}}
+              </option>
             </select>
           </div>
           <div class="mb-3">
             <label class="form-label">Name Brands</label>
-            <select   class="form-select" id="floatingSelect" formControlName="Brands" aria-label="Floating label select example">
+            <select #Brands (change)="propertyView.brands=Brands.options[Brands.options.selectedIndex].text" class="form-select" id="floatingSelect" formControlName="Brands" aria-label="Floating label select example">
               <option selected>Select Type Brands</option>
-              <option  >
-1              </option>
+              <option *ngFor="let Brands of BrandList"  [value]="Brands.id" [selected]="Brands.id === brands_Id">
+                {{Brands.name}}
+              </option>
             </select>
           </div>
           <div class="mb-3">
             <label for="Description" class="form-label">Description</label>
             <textarea type="text"
             class="form-control"
-            rows="6" formControlName="Description"></textarea>
+            rows="6" [value]="product.description" formControlName="Description"></textarea>
           </div>
 
       </div>
@@ -97,7 +125,7 @@
     <div class="container text-center">
     <div class="loc">
       <button class="btn-save">save</button>
-      <button class="btn-cancel">cancel</button>
+      <button class="btn-cancel" [routerLink]="['/Prodcuts']">cancel</button>
     </div>
     </div>
     </form>

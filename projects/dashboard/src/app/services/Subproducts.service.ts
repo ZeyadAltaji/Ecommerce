@@ -34,5 +34,8 @@ GetByProducts(id:string){
   return this.http.get<SubProducts[]>(`${this.baseUrl}SubProduct/ByProducts/${id}`).pipe();
 
 }
+ProductsByUserId(id:number){
+  return this.http.get<SubProducts[]>(`${this.baseUrl}SubProduct/GetAllproducts/${id}`.toString()).pipe()
+}
 
 }

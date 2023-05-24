@@ -70,125 +70,33 @@
     <table class="table">
       <thead>
         <tr>
-          <th>#</th>
-          <th>Product Name</th>
-          <th>Product Number</th>
-          <th>Payment</th>
-          <th>Status</th>
-          <th>Shipping Address</th>
-          <th>Billing Address</th>
-          <th>Tracking Number</th>
+          <th>Full Name</th>
+         <th>Email</th>
+         <th>Mobile</th>
+         <th>Total Price</th>
+         <th>Shipping Address</th>
+         <th>Order Status</th>
           <th>Action</th>
-        </tr>
+       </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td class="primary">
-            <span class="material-icons">info</span>
+      <tbody class="tbody">
+        <tr  *ngFor="let Order of contactUsService.ListOrder">
+           <td>{{Order.fullName}}</td>
+          <td>{{Order.email}}</td>
+          <td>{{Order.mobile}}</td>
+
+          <td>{{Order.totalPrice}}</td>
+          <td>{{Order.shippingAddress}}</td>
+          <td>
+            {{ Order.orderStatus ? Order.orderStatus : 'Waiting' }}
           </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td class="primary">
+                    <td class="primary action">
             <span class="material-icons">info</span>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td class="primary">
-            <span class="material-icons">info</span>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td class="primary">
-            <span class="material-icons">info</span>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td class="primary">
-            <span class="material-icons">info</span>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td class="primary">
-            <span class="material-icons">info</span>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td class="primary">
-            <span class="material-icons">info</span>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-          <td class="primary">
-            <span class="material-icons">info</span>
-          </td>
+           </td>
         </tr>
       </tbody>
     </table>
-    <a href="#">Show All
+    <a href="/Order-List" routerLinkActive="router-link-active" >Show All
       <span class="material-icons">chevron_right</span>
     </a>
   </div>

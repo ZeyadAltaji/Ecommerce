@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   user:User | undefined;
   loggedInUser: any;
   logoData!: any;
+  static cookieServiceee: CookieService; // declare the static property
 
    constructor(private router:Router,
    private authService : AuthenticationService,
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit {
 
     });
   }
+
   static GetAppURL(RoleName:number){
     switch(RoleName)
     {
@@ -44,6 +46,13 @@ export class LoginComponent implements OnInit {
         return Environment.AdminURL;
       case 2 :
         return Environment.SellerURl;
+        case 3:
+          // // Check if the customer has chosenProducts
+          // if (this. ().length > 0) {
+          //   return Environment.ClinetURlShop; // Redirect to shoppingCartPage
+          // } else {
+          //   return Environment.ClinetURlHome; // Redirect to http://localhost:4201/ if the cart is empty
+          // }
       default:
         return Environment.AdminURL;
 

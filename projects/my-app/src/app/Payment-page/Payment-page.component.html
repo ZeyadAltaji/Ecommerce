@@ -61,9 +61,13 @@
 
     <div class="panel-footer">
       <!-- <button class="btn back-btn">Back</button> -->
-      <a href="#" class="btn btn-back btn-light"> <i class="bx bx-chevron-left"></i> Continue shopping </a>
+      <a routerLink='/' class="btn btn-back btn-light"> <i class="bx bx-chevron-left"></i> Continue shopping </a>
 
-      <button class="btn next-btn">Continue Purchase</button>
+      <div class="d-grid gap-2">
+        <button routerLink="shoppingCartPage/Order" class="btn next-btn" [disabled]="isPaymentInfoIncomplete()">Continue Purchase</button>
+        <a href="shoppingCartPage/Order" class="btn next-btn" style="padding-top: 13px;">cash on delivery</a>
+      </div>
+
     </div>
   </div>
 

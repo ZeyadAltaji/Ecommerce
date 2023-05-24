@@ -142,7 +142,7 @@ ngOnInit():void {
 
     });
     this.Productsservice.GetAllProducts().subscribe(data=>{
-      debugger
+       
       this.ProductsList=data;
       console.log(data)
       this.productId = this.product.productId;

@@ -7,7 +7,7 @@
 <main class="products-new">
  <div class="margin">
   <div class="location">
-    <form (ngSubmit)="OnSubmit()"  >
+    <form (ngSubmit)="OnSubmit()" [formGroup]="NewProductsForm">
     <div class="container text-center">
       <div class="row">
         <div class="col-6 info">
@@ -28,9 +28,17 @@
               <input type="text" class="form-control" id="-Quantity" formControlName="Quantity">
             </div>
             <div class="mb-3">
-              <label for="Email" class="form-label">photo primary</label>
-              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+              <label for="Photo" class="form-label">Photo</label>
+              <input type="file" class="form-control" (change)="HandleFilePrimaryimages($event)" id="inputGroupFile03" formControlName="Primary_Image" aria-describedby="inputGroupFileAddon03" aria-label="Upload"  #PrimaryImage>
             </div>
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <div class="card" style="width: 18rem;"><img src="" id="PrimaryImage" alt="Is Primary Image"></div>
+                </div>
+              </div>
+             </div>
+
             <div class="mb-3">
               <a class="btn btn-primary mb-2"
                data-bs-parent="#parentDiv"
@@ -61,26 +69,36 @@
         <div class="col-6 right">
           <div class="mb-3">
             <label class="form-label">Categorise</label>
-            <select #Category   class="form-select" id="floatingSelect" formControlName="Categorise" aria-label="Floating label select example">
+            <select #Category (change)="propertyView.category=Category.options[Category.options.selectedIndex].text" class="form-select" id="floatingSelect" formControlName="Categorise" aria-label="Floating label select example">
               <option selected>Select Type Category</option>
-              <option  >
-
+              <option *ngFor="let categorise of categoriseList" value={{categorise.id}}>
+                {{categorise.name}}
+              </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Products</label>
+            <select #Products (change)="propertyView.Products =Products.options[Products.options.selectedIndex].text" class="form-select" id="floatingSelect" formControlName="Products" aria-label="Floating label select example">
+              <option selected>Select Type Products</option>
+              <option *ngFor="let x of ProductsList" value={{x.id}}>
+                {{x.title}}
               </option>
             </select>
           </div>
           <div class="mb-3">
             <label class="form-label">Type Cars</label>
-            <select class="form-select" id="floatingSelect" formControlName="Cars" aria-label="Floating label select example">
+            <select #Cars (change)="propertyView.cars=Cars.options[Cars.options.selectedIndex].text" class="form-select" id="floatingSelect" formControlName="Cars" aria-label="Floating label select example">
               <option selected>Select Type Cars</option>
-              <option >
-1              </option>
+              <option *ngFor="let car of CarsList" value={{car.id}}>
+                {{car.name}}
+              </option>
             </select>
           </div>
           <div class="mb-3">
             <label class="form-label">Name Brands</label>
-            <select #Brands   class="form-select" id="floatingSelect" formControlName="Brands" aria-label="Floating label select example">
+            <select #Brands (change)="propertyView.brands=Brands.options[Brands.options.selectedIndex].text" class="form-select" id="floatingSelect" formControlName="Brands" aria-label="Floating label select example">
               <option selected>Select Type Brands</option>
-              <option  >
+              <option *ngFor="let Brands of BrandList" value={{Brands.id}}>
                 {{Brands.name}}
               </option>
             </select>
@@ -91,10 +109,7 @@
             class="form-control"
             rows="6" formControlName="Description"></textarea>
           </div>
-          <div class="mb-3">
-            <label for="ConfirmPassword" class="form-label">Products</label>
-            <input type="text" class="form-control" id="ConfirmPassword">
-          </div>
+
 
 
       </div>
@@ -105,7 +120,7 @@
     <div class="container text-center">
     <div class="loc">
       <button class="btn-save">save</button>
-      <button class="btn-cancel">cancel</button>
+      <button class="btn-cancel"  [routerLink]="['/Prodcuts']">cancel</button>
     </div>
     </div>
     </form>

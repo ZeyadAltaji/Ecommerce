@@ -8,6 +8,8 @@ import { SharedModule } from './shared/shared.module';
 import { AnalyticsModule } from './analytics/analytics.module';
 import { ProfileUserModule } from './profile-user/profile-user.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { ProductsModule } from './products/products.module';
 
 @NgModule({
   declarations: [
@@ -16,10 +18,12 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    CommonModule,
     SharedModule,
     AnalyticsModule,
     ProfileUserModule,
-    HttpClientModule
+    ProductsModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

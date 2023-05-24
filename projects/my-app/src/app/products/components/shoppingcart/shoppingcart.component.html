@@ -4,107 +4,56 @@
   <div class="row p-5">
       <main class="col-md-9">
   <div class="card">
+    <table class="table table-borderless table-shopping-cart">
+      <thead class="text-muted">
+        <tr class="small text-uppercase">
+          <th scope="col">Product</th>
+          <th scope="col" width="120">Quantity</th>
+          <th scope="col" width="120">Price</th>
+          <th scope="col" class="text-right" width="200">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td class="align-middle">
+            <figure class="itemside">
+              <div class="aside"><img src="http://localhost:4203/assets/image/SubProduct/{{ item.isPrimaryImage }}" class="img-sm"></div>
+              <figcaption class="info">
+                <a href="#" class="title text-dark">{{ item.name }}</a>
+              </figcaption>
+            </figure>
+          </td>
+          <td class="align-middle">
+            <div class="counter">
+              <div class="btn-cont btn-increment" (click)="incrementCount(item)">+</div>
+              <input type="number" class="count-input" [(ngModel)]="item.count" (input)="validateCount(item)" min="1" [max]="item.quantity">
+              <div class="btn-cont btn-decrement" (click)="decrementCount(item)">-</div>
 
-  <table class="table table-borderless table-shopping-cart">
-  <thead class="text-muted">
-  <tr class="small text-uppercase">
-    <th scope="col">Product</th>
-    <th scope="col" width="120">Quantity</th>
-    <th scope="col" width="120">Price</th>
-    <th scope="col" class="text-right" width="200"> </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-      <td>
-          <figure class="itemside">
-              <div class="aside"><img src="../../../../assets/production/3.avif" class="img-sm"></div>
-              <figcaption class="info">
-                  <a href="#" class="title text-dark">Some name of item goes here nice</a>
-                  <p class="text-muted small">Size: no size, Color: no color, <br> Brand: Name</p>
-              </figcaption>
-          </figure>
-      </td>
-      <td>
-          <select class="form-control">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-          </select>
-      </td>
-      <td>
-          <div class="price-wrap">
-              <var class="price">$1156.00</var>
-              <small class="text-muted"> $315.20 each </small>
-          </div> <!-- price-wrap .// -->
-      </td>
-      <td class="text-right">
-       <a href="" class="btn-remove btn btn-light"> Remove</a>
-      </td>
-  </tr>
-  <tr>
-      <td>
-          <figure class="itemside">
-              <div class="aside"><img src="../../../../assets/production/2.jpg" class="img-sm"></div>
-              <figcaption class="info">
-                  <a href="#" class="title text-dark">Product name  goes here nice</a>
-                  <p class="text-muted small">Size: no size, Color: no color, <br> Brand: Name</p>
-              </figcaption>
-          </figure>
-      </td>
-      <td>
-          <select class="form-control">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-          </select>
-      </td>
-      <td>
-          <div class="price-wrap">
-              <var class="price">$149.97</var>
-              <small  class="text-muted"> $75.00 each </small>
-          </div> <!-- price-wrap .// -->
-      </td>
-      <td class="text-right">
-       <a href="" class="btn-remove btn btn-light btn-round"> Remove</a>
-      </td>
-  </tr>
-  <tr>
-      <td>
-          <figure class="itemside">
-              <div class="aside"><img src="../../../../assets/production/1.jpg" class="img-sm"></div>
-              <figcaption class="info">
-                  <a href="#" class="title text-dark">Another name of some product goes just here</a>
-                  <p class="text-muted small">Size: no size, Color: no color, <br> Brand: Name</p>
-              </figcaption>
-          </figure>
-      </td>
-      <td>
-          <select class="form-control">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-          </select>
-      </td>
-      <td>
-          <div class="price-wrap">
-              <var class="price">$98.00</var>
-              <small class="text-muted"> $578.00 each</small>
-          </div> <!-- price-wrap .// -->
-      </td>
-      <td class="text-right">
-           <a href="" class="btn-remove btn btn-light btn-round"> Remove</a>
-      </td>
-  </tr>
-  </tbody>
-  </table>
+            </div>
+          </td>
+          <td class="align-middle">
+            <div class="price-wrap">
+              <var class="price" *ngIf="item.new_price">{{ calculateItemPrice(item) }}</var>
+               <var class="price" *ngIf="!item.new_price">{{ calculateItemPrice(item) }}</var>
+              <small class="text-muted" *ngIf="!item.new_price">{{ calculateItemPrice(item) }} each</small>
+            </div>
+          </td>
+          <td class="text-right align-middle">
+            <a href="" class="btn-remove btn btn-light" (click)="removeFromCart(item)">Remove</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
 
   <div class="card-body border-top btn-pay ">
       <a href="#" class="btn btn-light"> <i class="bx bx-chevron-left"></i> Continue shopping </a>
-      <a (click)="gotoPayment()" href="#" class="btn btn-primary float-md-right"> Make Purchase <i class="bx bx-chevron-right"></i> </a>
+      <div *ngIf="cartItems.length > 0 && isLoggedIn">
+        <!-- <div *ngIf="cartItems.length > 0"> -->
 
+        <!-- Display the button only when there are items in the cart -->
+        <a (click)="gotoPayment()" routerLinkActive="router-link-active"   class="btn btn-primary float-md-right"> Make Purchase <i class="bx bx-chevron-right"></i> </a>
+      </div>
   </div>
   </div>
 
@@ -131,7 +80,7 @@
               <div class="card-body">
                       <dl class="dlist-align">
                         <dt>Total price:</dt>
-                        <dd class="text-right">USD 568</dd>
+                        <dd class="text-right">{{ calculateTotal() }}</dd>
                       </dl>
                       <dl class="dlist-align">
                         <dt>Discount:</dt>
@@ -139,7 +88,7 @@
                       </dl>
                       <dl class="dlist-align">
                         <dt>Total:</dt>
-                        <dd class="text-right  h5"><strong>$1,650</strong></dd>
+                        <dd class="text-right  h5"><strong>{{ calculateTotal() }}</strong></dd>
                       </dl>
                       <hr>
                       <p class="text-center d-flex mb-3 image-payments">

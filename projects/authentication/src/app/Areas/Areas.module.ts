@@ -4,7 +4,6 @@ import { UserAccountComponent } from './components/UserAccount/UserAccount.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/Login/Login.component';
 import { BusinessAccountComponent } from './components/BusinessAccount/BusinessAccount.component';
-import { PaymentPageComponent } from './components/Payment-page/Payment-page.component';
 import { RouterModule } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -26,7 +25,6 @@ import { RestPasswordComponent } from './components/RestPassword/RestPassword.co
     UserAccountComponent,
     LoginComponent,
     BusinessAccountComponent,
-    PaymentPageComponent,
     RestPasswordComponent
 
   ]

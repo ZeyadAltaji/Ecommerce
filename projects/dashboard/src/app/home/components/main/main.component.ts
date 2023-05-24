@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import Chart from 'chart.js/auto';
+import { CartItemService } from '../../../services/CartItem.service';
 
 
 
@@ -9,11 +10,23 @@ import Chart from 'chart.js/auto';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent  implements AfterViewInit {
+export class MainComponent  implements OnInit {
   @ViewChild('doubleLineCanvas') doubleLineCanvas: ElementRef | undefined;
   doubleLineChart: any;
 
-  constructor() {}
+
+  constructor(public contactUsService:CartItemService) { }
+
+  ngOnInit() {
+    this.contactUsService.GetAllCategorise().subscribe(listData=>{
+      this.contactUsService.ListOrder=listData;
+      console.log(this.contactUsService.ListOrder)
+     },
+    error => {
+      console.log('httperror:');
+      console.log(error);
+    });
+   }
 
   ngAfterViewInit(): void {
     this.doubleLineChartMethod();

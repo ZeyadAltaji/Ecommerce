@@ -18,48 +18,68 @@
   </div>
    <div class="header-icon">
 
-      <i class="bx bx-cart-alt" id="cart-icon" (click)="mycart()" ></i>
-      <i class="bx bx-user" id="user-icon" (click)="myuser()"></i>
+    <i class="bx bx-cart-alt" id="cart-icon" (click)="mycart()">
+      <span class="badge ">
+        <span class="badge-content">{{ cartItems.length }}</span>
+      </span>
+    </i>
+
+
+
+          <i class="bx bx-user" id="user-icon" (click)="myuser()"></i>
     </div>
-    <!-- Cart -->
+
     <div class="cart" [class.active]="showcart">
-      <div class="box" >
-        <img src="" alt="">
+      <div class="box" *ngFor="let item of cartItems.slice(0, maxDisplayedProducts)">
+        <img src="http://localhost:4203/assets/image/SubProduct/{{ item.isPrimaryImage }}" alt="{{ item.title }}">
         <div class="text">
-            <h3>title cate</h3>
-        <span> picen</span>
-        <span>conut part </span>
+          <h3>{{ item.title }}</h3>
+          <span>{{ item.price }}</span>
+          <span>{{ item.quantity }}</span>
+          <span>{{ item.quantity }}</span>
+
         </div>
         <i class="bx bxs-trash-alt"></i>
       </div>
-      <div class="box">
-        <img src="" alt="">
-        <div class="text">
-            <h3>title cate</h3>
-        <span> picen</span>
-        <span>conut part </span>
+
+      <div *ngIf="cartItems.length === 0">
+        <div class="alert alert-danger" role="alert">
+          No products in the cart.
         </div>
-        <i class="bx bxs-trash-alt"></i>
+       </div>
+
+      <div *ngIf="cartItems.length > maxDisplayedProducts">
+        <button class="btn-More" (click)="showMore()">Show More</button>
       </div>
-      <h2>Total : 1000.50$</h2>
-      <a href="#" class="btn-Chechout">Chechout</a>
+
+      <h2 *ngIf="calculateTotal() > 0">Total: {{ calculateTotal() }}</h2>
+      <a [routerLink]="['/shoppingCartPage']" class="btn-Chechout" *ngIf="cartItems.length > 0">Checkout</a>
     </div>
-    <!-- End Cart -->
+
     <!-- users -->
-      <div class="user" [class.activeuser]="showUser">
+    <div class="user" [class.activeuser]="showUser">
+      <div *ngIf="showLoginForm">
         <h2>login Now</h2>
-        <form class="Fromslogin" (ngSubmit)="onLogin(loginForm)" [formGroup]="loginForm">
+      <form class="Fromslogin"   (ngSubmit)="onLogin(loginForm)" [formGroup]="loginForm">
         <input type="text" placeholder="Your UserName...." formControlName="UserName">
         <small *ngIf="loginForm.controls['UserName'].dirty && loginForm.hasError('required','UserName')" class="text-danger massgeRequred">Email is required</small>
-        <input type="password" name="" id="" placeholder="Enter Password ! " formControlName="password">
+        <input type="password" name="" id="" placeholder="Enter Password!" formControlName="password">
         <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')" class="text-danger massgeRequred">Password is required</small>
-        <input    type="submit" value="Login" class="Login-btn">
+        <input type="submit" value="Login" class="Login-btn">
         <p>Forget Password <a class="text" href="#">Reset Now</a></p>
-         <p>Don't have Acount <a class="text"  (click)="onNavigate()" >Create Aconut</a></p>
-
+        <p>Don't have an account? <a class="text" (click)="navigateToNewUser()">Create Account</a></p>
       </form>
+      </div>
+      <div  >
+        <div *ngIf="loggedInUser && loggedInUser.fullUser">
+          <p>Welcome, {{ loggedInUser.fullUser.frist_Name }} {{ loggedInUser.fullUser.last_Name }}</p>
+          <button (click)="logout()">Logout</button>
+
+        </div>
 
       </div>
+    </div>
+
     <!--End Users -->
     <form action="" class="search-bar-container"  [class.active]="showsearch">
      <input type="search" id="search-bar" placeholder="search here...">

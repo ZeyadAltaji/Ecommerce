@@ -97,10 +97,10 @@ input[type='password']:focus {
   border-color: rgb(119, 219, 119);
 }
 
- #date { background: url(../../../../assets/imagechekout/calendar.png) no-repeat 95%; }
-#cardholder { background: url(../../../../assets/imagechekout/calendar.png) no-repeat 95%; }
-#cardnumber { background: url(../../../../assets/imagechekout/credit.png) no-repeat 95%; }
-#verification { background: url(../../../../assets/imagechekout/lock.png) no-repeat 95%; }
+ #date { background: url(./../../assets/imagechekout/calendar.png) no-repeat 95%; }
+#cardholder { background: url(./../../assets/imagechekout/calendar.png) no-repeat 95%; }
+#cardnumber { background: url(./../../assets/imagechekout/credit.png) no-repeat 95%; }
+#verification { background: url(./../../assets/imagechekout/lock.png) no-repeat 95%; }
 
 .small-inputs {
   display: flex;
@@ -117,6 +117,8 @@ input[type='password']:focus {
   padding: 0 80px;
    justify-content: space-between;
   align-items: center;
+  margin-bottom: 2rem;
+
 }.btn {
   font-size: 14px;
   width: 163px;

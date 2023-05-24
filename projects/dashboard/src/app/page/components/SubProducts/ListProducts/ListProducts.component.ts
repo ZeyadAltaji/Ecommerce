@@ -49,16 +49,13 @@ export class ListProductsComponent implements OnInit {
   // });
   this.CategoryService.GetAllCategorise().subscribe(data=>{
     this.categoriseList=data;
-  console.log(data)
-});
+ });
 this.carService.GetAllCars().subscribe(data=>{
   this.CarsList=data;
-  console.log(data)
-});
+ });
 this.brandsService.GetAllBrands().subscribe(data=>{
   this.BrandList=data;
-  console.log(data);
-});
+ });
   }
   openModal(id: number) {
     this.productsService.GetByIdModal(id)

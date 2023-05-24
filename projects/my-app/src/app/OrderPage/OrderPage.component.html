@@ -1,0 +1,62 @@
+<div class="container p-5">
+  <div class="checkout-panel">
+    <form (ngSubmit)="OnSubmit()" [formGroup]="NewEmployyesForm">
+      <div class="panel-body">
+        <h2 class="title">Delivery Information</h2>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-6 info">
+              <div class="mb-3">
+                <label for="FullName" class="form-label">Full Name</label>
+                 <input type="text" class="form-control" id="FullName" aria-describedby="FullName" [value]="loggedInUser.fullUser.frist_Name + ' ' + loggedInUser.fullUser.last_Name" formControlName="FullName">
+
+              </div>
+              <div class="mb-3">
+                <label for="Email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="Email" aria-describedby="Email" [value]=" user?.email" formControlName="Email">
+              </div>
+            </div>
+            <div class="col-6 right">
+              <div class="mb-3">
+                <label for="Address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="Address" formControlName="Address">
+              </div>
+              <div class="mb-3">
+                <label for="Mobile1" class="form-label">Mobile</label>
+                <input type="text" class="form-control" id="Mobile1" formControlName="Mobile">
+              </div>
+
+
+          </div>
+          </div>
+        </div>
+
+      <div class="panel-footer">
+        <a routerLink='/' class="btn btn-back btn-light"> <i class="bx bx-chevron-left"></i> Continue shopping </a>
+
+            <button class="btn next-btn">Purchase Completed</button>
+
+      </div>
+  </div>
+</form>
+</div>
+</div>
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successModalLabel">Success</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Thank you for dealing with us.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

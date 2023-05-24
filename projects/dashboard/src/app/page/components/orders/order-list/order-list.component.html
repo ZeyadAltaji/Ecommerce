@@ -9,145 +9,29 @@
     <table class="table">
       <thead class="thead">
         <tr>
-          <th>#</th>
-          <th>Product Name</th>
-          <th>Product Number</th>
-          <th>Payment</th>
-          <th>Status</th>
+           <th>Full Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Total Price</th>
           <th>Shipping Address</th>
-          <th>Billing Address</th>
-          <th>Tracking Number</th>
-          <th>Action</th>
+          <th>Order Status</th>
+           <th>Action</th>
         </tr>
       </thead>
       <tbody class="tbody">
-        <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
+        <tr  *ngFor="let Order of contactUsService.ListOrder">
+           <td>{{Order.fullName}}</td>
+          <td>{{Order.email}}</td>
+          <td>{{Order.mobile}}</td>
 
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-            <span class="material-icons">delete</span>
+          <td>{{Order.totalPrice}}</td>
+          <td>{{Order.shippingAddress}}</td>
+          <td>
+            {{ Order.orderStatus ? Order.orderStatus : 'Waiting' }}
           </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-            <span class="material-icons">delete</span>
-          </td>
-        </tr> <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-            <span class="material-icons">delete</span>
-          </td>
-        </tr> <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-            <span class="material-icons">delete</span>
-          </td>
-        </tr> <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-            <span class="material-icons">delete</span>
-          </td>
-        </tr> <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-            <span class="material-icons">delete</span>
-          </td>
-        </tr> <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-            <span class="material-icons">delete</span>
-          </td>
-        </tr> <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-            <span class="material-icons">delete</span>
-          </td>
-        </tr> <tr>
-          <td>1</td>
-          <td>door</td>
-          <td>#11111</td>
-          <td>paid</td>
-          <td class="warning">pending</td>
-          <td>Amman</td>
-          <td>fedex</td>
-          <td>56266</td>
-
-          <td class="primary action">
-            <span class="material-icons"[routerLink]="['']">info</span>
-            <span class="material-icons">delete</span>
-          </td>
+                    <td class="primary action">
+            <span class="material-icons">info</span>
+           </td>
         </tr>
       </tbody>
     </table>

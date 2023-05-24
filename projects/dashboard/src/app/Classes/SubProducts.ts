@@ -25,5 +25,4 @@ export class SubProducts implements ISubProducts {
   productId!:number;
   Products!:string;
 
-
 }

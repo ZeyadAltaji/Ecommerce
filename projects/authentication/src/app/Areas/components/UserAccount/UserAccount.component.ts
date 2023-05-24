@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors,
 import { Router } from '@angular/router';
 import { UserForRegister } from '../../../Models/User';
  import { AuthenticationService } from '../../../services/authentication.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-UserAccount',
@@ -14,14 +15,26 @@ export class UserAccountComponent implements OnInit {
   RegisterForm!: FormGroup;
   user!: UserForRegister;
   userSubmitted!: boolean;
+  private cartItemsKey = 'cartItems';
+  cartItems: any[] = [];
 
   constructor(private fb: FormBuilder, private authService: AuthenticationService,
-      private router:Router,) { }
+      private router:Router,    private cookieService: CookieService
+
+      ) { }
 
 
 
     ngOnInit() {
       this.NewUserForm();
+      this.retrieveCartItems();
+
+    }
+
+
+    retrieveCartItems() {
+      const storedItems = this.cookieService.get('cartItems');
+      this.cartItems = storedItems ? JSON.parse(storedItems) : [];
     }
     NewUserForm() {
       this.RegisterForm = this.fb.group({
@@ -46,7 +59,7 @@ export class UserAccountComponent implements OnInit {
       this.authService.RegisterUser(this.userData()).subscribe(
         (data) => {
           this.onReset();
-           
+
 
         },
         (error) => {

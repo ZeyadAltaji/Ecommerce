@@ -1,0 +1,34 @@
+<div class="container p-5">
+  <div class="checkout-panel">
+    <form   [formGroup]="contact_us">
+      <div class="panel-body">
+        <h2 class="title">CONTACT US</h2>
+        <div class="container text-center">
+          <form class="Form-cou row g-3">
+            <div class="col-md-6">
+              <label for="inputEmail4" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="inputEmail4" formControlName="FullName">
+            </div>
+            <div class="col-md-6">
+              <label for="Email" class="form-label">Email</label>
+              <input type="Email" class="form-control" id="Email"  formControlName="Email">
+            </div>
+            <div class="col-12">
+              <label for="Subject" class="form-label">Subject</label>
+              <input type="text" class="form-control" id="Subject"  formControlName="Subject">
+            </div>
+            <div class="col-12">
+              <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="Message"></textarea>
+            </div>
+            <div class="col-12">
+              <button (click)="OnSubmit()"  type="submit" class="btn btn-primary" style="width: 65rem;">Submit</button>
+            </div>
+          </form>
+        </div>
+
+
+  </div>
+</form>
+</div>
+</div>

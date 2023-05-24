@@ -22,7 +22,9 @@ import { ProductsEditComponent } from './components/Products-edit/Products-edit.
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+
+
   ],
   exports:[
       //products

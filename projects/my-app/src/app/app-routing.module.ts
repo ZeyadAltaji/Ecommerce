@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BusinessAccountComponent } from 'projects/authentication/src/app/Areas/components/BusinessAccount/BusinessAccount.component';
-import { LoginComponent } from 'projects/authentication/src/app/Areas/components/Login/Login.component';
-import { PaymentPageComponent } from 'projects/authentication/src/app/Areas/components/Payment-page/Payment-page.component';
-import { UserAccountComponent } from 'projects/authentication/src/app/Areas/components/UserAccount/UserAccount.component';
 import { ErrorComponent } from './Error/components/Error/Error.component';
 import { HomePageComponent } from './home/components/home-page/home-page.component';
 import { SectionHomeComponent } from './home/components/section-home/section-home.component';
@@ -11,6 +7,10 @@ import { ProductsDetailComponent } from './products/components/products-detail/p
 import { ShoppingcartComponent } from './products/components/shoppingcart/shoppingcart.component';
 import { SingleProducteSelftComponent } from './products/components/single-producte-selft/single-producte-selft.component';
 import { ViewAllProductsComponent } from './products/components/view-all-products/view-all-products.component';
+ import { Privacy_policyComponent } from './home/privacy_policy/privacy_policy.component';
+import { PaymentPageComponent } from './Payment-page/Payment-page.component';
+import { OrderPageComponent } from './OrderPage/OrderPage.component';
+import { Contact_usComponent } from './home/components/contact_us/contact_us.component';
 
 const routes: Routes = [
       {
@@ -58,6 +58,22 @@ const routes: Routes = [
       {
         path:"shoppingCartPage",
         component:ShoppingcartComponent
+      },
+      {
+        path:"Contact_Us",
+        component:Contact_usComponent
+      },
+      {
+        path:"PrivacyPolicy",
+        component:Privacy_policyComponent
+      },
+      {
+        path:"shoppingCartPage/Payment",
+        component:PaymentPageComponent
+      },
+      {
+        path:"shoppingCartPage/Order",
+        component:OrderPageComponent
       },
       {
         path: '**', pathMatch: 'full',

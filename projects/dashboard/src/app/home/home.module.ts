@@ -12,7 +12,7 @@ import { SubPageHomeComponent } from './components/sub-page-home/sub-page-home.c
   ],
   imports: [
     CommonModule,
-    
+
     ],exports:[
     MainComponent,
     SubPageHomeComponent
