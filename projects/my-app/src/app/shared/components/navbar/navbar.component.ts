@@ -75,7 +75,7 @@ ngOnInit(): void {
   // Update cart items and run change detection every second
   setInterval(() => {
     this.updateCartItems();
- 
+
   }, 1000);
   const userString = this.cookieServices.get('loggedInUser');
   this.loggedInUser = userString ? JSON.parse(userString) : null;
@@ -119,6 +119,8 @@ static GetAppURL(RoleName:number){
       return Environment.AdminURL;
     case 2 :
       return Environment.SellerURl;
+      case 4:
+      return Environment.DeliveryURl;
     default:
       return Environment.AdminURL;
 

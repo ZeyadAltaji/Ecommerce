@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
   user:User | undefined;
   loggedInUser: any;
   logoData!: any;
+  cartItems: any[] = [];
+
   static cookieServiceee: CookieService; // declare the static property
 
    constructor(private router:Router,
@@ -46,13 +48,8 @@ export class LoginComponent implements OnInit {
         return Environment.AdminURL;
       case 2 :
         return Environment.SellerURl;
-        case 3:
-          // // Check if the customer has chosenProducts
-          // if (this. ().length > 0) {
-          //   return Environment.ClinetURlShop; // Redirect to shoppingCartPage
-          // } else {
-          //   return Environment.ClinetURlHome; // Redirect to http://localhost:4201/ if the cart is empty
-          // }
+      case 4 :
+        return Environment.DeliveryURl;
       default:
         return Environment.AdminURL;
 
@@ -70,6 +67,29 @@ export class LoginComponent implements OnInit {
           if (user ) {
             debugger
 
+            if (role === 1) {
+
+              window.location.href = Environment.AdminURL
+            }
+           //sler
+           if (role === 2  ) {
+              window.location.href = Environment.AdminURL;
+
+              }
+             //clinet
+           if (role === 3 && this.cartItems.length > 0) {
+             // Redirect to the shopping cart page
+             window.location.href = Environment.ClinetURlShop;
+              } else {
+             // Redirect to the home page
+
+             window.location.href = Environment.ClinetURlHome;
+
+            }
+            if (role === 4  ) {
+              window.location.href = Environment.DeliveryURl;
+
+              }
                 const GetAppURL = LoginComponent.GetAppURL(user.fullUser.role);
                 // Redirect to the appropriate URL based on the role
                 window.location.href = GetAppURL;
