@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -88,8 +88,7 @@ export class EditSubProductsComponent implements OnInit {
               private brandsService:BrandsService,
               private sweetService:SweetAlertService,
               private Productsservice:ProductService,
-              private cookieServices:CookieService
-              ) { }
+              @Inject(CookieService) private cookieServices:CookieService              ) { }
 
 ngOnInit():void {
   const userString = this.cookieServices.get('loggedInUser');
@@ -142,7 +141,7 @@ ngOnInit():void {
 
     });
     this.Productsservice.GetAllProducts().subscribe(data=>{
-       
+
       this.ProductsList=data;
       console.log(data)
       this.productId = this.product.productId;

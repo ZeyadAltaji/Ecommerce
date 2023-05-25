@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -22,7 +22,7 @@ export class CategoryEditComponent implements OnInit {
   CategoryId:any;
 
   constructor(private router: Router,private route: ActivatedRoute, private CategoryService:CategoriseService,
-    private sweetAlertService :SweetAlertService,private fb: FormBuilder,private cookieServices:CookieService) { }
+    private sweetAlertService :SweetAlertService,private fb: FormBuilder,@Inject(CookieService) private cookieServices:CookieService) { }
 
   ngOnInit() {
     const userString = this.cookieServices.get('loggedInUser');

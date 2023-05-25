@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -21,7 +21,7 @@ export class CategoryNewComponent implements OnInit {
   constructor( private fb: FormBuilder,private router: Router,
     private CategoryService:CategoriseService,
     private sweetAlertService :SweetAlertService,
-    private cookieServices:CookieService
+    @Inject(CookieService) private cookieServices:CookieService
     ) { }
 
   ngOnInit() {

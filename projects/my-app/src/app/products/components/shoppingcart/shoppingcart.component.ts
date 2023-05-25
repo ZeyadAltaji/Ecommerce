@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Cart } from 'projects/dashboard/src/app/Classes/Cart';
@@ -37,7 +37,7 @@ export class ShoppingcartComponent implements OnInit{
     private router: Router,
     private zone: NgZone,
     private cdr: ChangeDetectorRef,
-    private cookieService: CookieService,
+    @Inject(CookieService) private cookieService:CookieService,
     private cartItemService: CartItemService,
 
   ) {}

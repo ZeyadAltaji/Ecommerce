@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -81,7 +81,7 @@ export class ProductsEditComponent implements OnInit {
               private carService:CarService,
               private brandsService:BrandsService,
               private sweetService:SweetAlertService,
-              private cookieServices:CookieService) { }
+              @Inject(CookieService) private cookieServices:CookieService) { }
 
   ngOnInit():void {
     const userString = this.cookieServices.get('loggedInUser');
@@ -94,7 +94,7 @@ export class ProductsEditComponent implements OnInit {
     this.productsService.GetByIdProducts(this.productsId).subscribe({
       next:(response)=>{
           this.product=response;
-           
+
           this.showPrimaryImage = `assets/image/Products/${response.isPrimaryImage}`;
           this.showForeignImage1 = `assets/image/Products/${response.isForeignImage1}`;
           this.showForeignImage2 = `assets/image/Products/${response.isForeignImage1}`;
@@ -105,17 +105,17 @@ export class ProductsEditComponent implements OnInit {
            this.IsActive=this.EditProductsForm.controls['Active'].setValue(this.product.isActive);
         }
     });
-     
+
     this.EditProductsForm.patchValue({
-      
+
       Categorise: this.product.category_Id,
       Cars: this.product.car_Id,
       Brands: this.product.brands_Id,
     });
 
- 
+
     this.productsService.getAllcategorise().subscribe(data=>{
-       
+
       this.categoriseList=data;
        this.selectedCategory = this.categoriseList.find(c => c.id === this.product.category_Id)?.name || '';
 
@@ -170,7 +170,7 @@ export class ProductsEditComponent implements OnInit {
             let imageFile2 = this.ForeignImage2?.nativeElement.files[0];
             fd.append('ForeignImage2', imageFile2);
              fd.append('Title', this._NameProducts.value);
- 
+
             fd.append('Brands_Id', this._Brands.value);
             fd.append('Car_Id', this._Cars.value);
             fd.append('Category_Id', this._Categorise.value);
@@ -190,22 +190,22 @@ export class ProductsEditComponent implements OnInit {
               this.sweetService.warning("Are you sure?", "Do you want to update this product?")
               .then((willUpdate) => {
                 if (willUpdate) {
-  
+
                   this.productsService.UpdateProducts(fd).subscribe(data => {
                      // Show a success message after the product has been updated
                      this.sweetService.success("Success", "The product has been successfully Updatedd")
-  
+
                     this.router.navigate(['/Prodcuts']);
                   }, ex => {
                     this.sweetService.error("Errors ! ", "There's something wrong with data entry!")
-  
+
                   });
-  
+
                 }
-  
+
               })
             }
-  
+
           }
         });
     }

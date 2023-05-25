@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -21,12 +21,12 @@ export class CarsNewComponent implements OnInit {
   public user :IUser | undefined;
   @ViewChild('imageInput') imageInput?: ElementRef;
 
-  constructor( 
+  constructor(
     private fb: FormBuilder,
     private router: Router,
     private carService:CarService,
     private sweetAlertService :SweetAlertService,
-    private cookieServices:CookieService
+    @Inject(CookieService) private cookieServices:CookieService
     ) { }
   ngOnInit() {
     const userString = this.cookieServices.get('loggedInUser');

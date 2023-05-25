@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserForRegister } from '../../../Models/User';
+ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+ import { UserForRegister } from '../../../Models/User';
  import { AuthenticationService } from '../../../services/authentication.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
+import { Component, Inject, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-UserAccount',
@@ -19,7 +19,7 @@ export class UserAccountComponent implements OnInit {
   cartItems: any[] = [];
 
   constructor(private fb: FormBuilder, private authService: AuthenticationService,
-      private router:Router,    private cookieService: CookieService
+      private router:Router,@Inject(CookieService) private cookieServices:CookieService
 
       ) { }
 
@@ -33,7 +33,7 @@ export class UserAccountComponent implements OnInit {
 
 
     retrieveCartItems() {
-      const storedItems = this.cookieService.get('cartItems');
+      const storedItems = this.cookieServices.get('cartItems');
       this.cartItems = storedItems ? JSON.parse(storedItems) : [];
     }
     NewUserForm() {

@@ -1,3 +1,4 @@
+import { Inject } from '@angular/core';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -18,14 +19,14 @@ import swal from 'sweetalert';
 })
 export class ProductsNewComponent implements OnInit {
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    @Inject(FormBuilder) private fb:FormBuilder,
     private router: Router,
     private productService: ProductService,
     private carService:CarService,
     private brandsService:BrandsService,
     private sweetAlertService :SweetAlertService,
-    private cookieServices:CookieService
-   ) { }
+    @Inject(CookieService) private cookieServices:CookieService   ) { }
    product =new Product();
   categoriseList: any[] | undefined;
   CarsList:any[]|undefined;
@@ -91,7 +92,7 @@ export class ProductsNewComponent implements OnInit {
         (data)=>{
         this.sweetAlertService.success("Success", "Products added successfully.");
         this.router.navigate(['/Prodcuts']);
-  
+
         },(error)=>{
           console.log(error);
         }

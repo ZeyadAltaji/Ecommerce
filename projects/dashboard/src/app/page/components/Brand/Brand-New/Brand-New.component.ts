@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -22,12 +22,12 @@ export class BrandNewComponent implements OnInit {
   @ViewChild('imageInput') imageInput?: ElementRef;
 
 
-  constructor( 
+  constructor(
     private fb: FormBuilder,
     private router: Router,
     private brandsService:BrandsService,
     private sweetAlertService :SweetAlertService,
-    private cookieServices:CookieService
+    @Inject(CookieService) private cookieServices:CookieService
 
     ) {    this.createForm();
     }
@@ -51,7 +51,7 @@ export class BrandNewComponent implements OnInit {
       });
     }
     OnSubmit() {
-       
+
       if (this.loggedInUser && this.loggedInUser.fullUser) {
         const adminId = this.loggedInUser.fullUser.id; // Get the adminid from the logged-in user
         const username = this.loggedInUser.fullUser.userName; // Get the adminid from the logged-in user
@@ -90,7 +90,7 @@ export class BrandNewComponent implements OnInit {
       this.formData.append('Image_BrandUrl', imageFile);
       this.formData.append('Admin_Id', adminId.toString());
       this.formData.append('UserCreate', UserCreate);
- 
+
     }
 
     HandleFile(event:any) {

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -37,7 +37,7 @@ export class CarsEditComponent implements OnInit {
     private carService:CarService,
     private sweetAlertService:SweetAlertService,
     private fb: FormBuilder,
-    private cookieServices:CookieService) {this.Image_CarUrl == null;}
+    @Inject(CookieService) private cookieServices:CookieService) {this.Image_CarUrl == null;}
 
     ngOnInit() {
       const userString = this.cookieServices.get('loggedInUser');
@@ -76,8 +76,8 @@ export class CarsEditComponent implements OnInit {
               fd.append('Name', this._NameCar.value);
               fd.append('Class', this.classCar.value);
               fd.append('isActive', this._isActive.value);
-              fd.append('userUpdate', this.loggedInUser.fullUser.userName); 
-  
+              fd.append('userUpdate', this.loggedInUser.fullUser.userName);
+
               if (this.ProductionDate.valid) {
                fd.append ('production_Date', this.ProductionDate.value);
               } else {

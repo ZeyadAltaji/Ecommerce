@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -33,7 +33,7 @@ export class BrandEditComponent implements OnInit {
     private brandsService: BrandsService,
     private sweetAlertService: SweetAlertService,
     private fb: FormBuilder,
-    private cookieServices:CookieService
+    @Inject(CookieService) private cookieServices:CookieService
   ) {this.Image_BrandUrl == null;}
   ngOnInit() {
     const userString = this.cookieServices.get('loggedInUser');
@@ -53,7 +53,7 @@ export class BrandEditComponent implements OnInit {
     });
   }
   OnSubmit(){
-     
+
     if (this.loggedInUser && this.loggedInUser.fullUser) {
       const username = this.loggedInUser.fullUser.userName;
       this.route.paramMap.subscribe({
@@ -61,7 +61,7 @@ export class BrandEditComponent implements OnInit {
       next:(params)=>{
         const id=params.get('id');
         if(id){
-           
+
           const fd = new FormData();
           let imageFile = this.imageInput?.nativeElement.files[0];
           fd.append('Image_BrandUrl', imageFile);
@@ -115,7 +115,7 @@ export class BrandEditComponent implements OnInit {
     return this.EditBrandForm.controls['Nameiamge'] as FormGroup;
   }
   MapBrands(UserUpdate:string) :void{
-      
+
      this.formData.append('userUpdate', UserUpdate);
 
   }

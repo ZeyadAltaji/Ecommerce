@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -40,7 +40,7 @@ export class EditEmployyesComponent implements OnInit {
     private fb: FormBuilder,
      private sweetAlertService :SweetAlertService,
      private router: Router,
-     private cookieServices:CookieService)
+     @Inject(CookieService) private cookieServices:CookieService)
   { }
 
   ngOnInit() {
@@ -74,7 +74,7 @@ export class EditEmployyesComponent implements OnInit {
         next:(params)=>{
            const id=params.get('id');
           if(id){
-  
+
             const fd = new FormData();
               let imageFile = this.imageInput?.nativeElement.files[0];
               fd.append('Image_userUrl', imageFile);
@@ -87,7 +87,7 @@ export class EditEmployyesComponent implements OnInit {
               fd.append('Address', this._Address.value);
               fd.append('password', this._Password.value);
               fd.append('comfirmPassword', this._ComfirmPassword.value);
-              fd.append('userUpdate', this.loggedInUser.fullUser.userName); 
+              fd.append('userUpdate', this.loggedInUser.fullUser.userName);
               fd.append('Role', this._selectRole.value);
               fd.append('id', id.toString());
               if (this.selectedImage) { // check if a new image is selected
@@ -124,12 +124,12 @@ export class EditEmployyesComponent implements OnInit {
                   }, ex => {
                     console.log(ex);
                   });
-  
+
                 }
-  
+
               })
             }
-  
+
           }
         });
     }

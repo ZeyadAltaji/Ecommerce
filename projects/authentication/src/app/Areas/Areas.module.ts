@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RestPasswordComponent } from './components/RestPassword/RestPassword.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { RestPasswordComponent } from './components/RestPassword/RestPassword.co
     FormsModule
   ],
   providers:[
-    AuthenticationService
+    AuthenticationService,
+    CookieService
   ]
   ,
   declarations: [

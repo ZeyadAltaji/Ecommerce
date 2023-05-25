@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Environment } from 'projects/authentication/src/app/Environments/Environment';
 
@@ -8,7 +8,7 @@ import { Environment } from 'projects/authentication/src/app/Environments/Enviro
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-  constructor(private cookieServices:CookieService){}
+  constructor( @Inject(CookieService) private cookieServices:CookieService){}
 // @Input()sidenav:boolean=false;
 isDropdownOpen = false;
 

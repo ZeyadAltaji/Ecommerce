@@ -1,3 +1,4 @@
+import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'projects/my-app/src/environments/environment.development';
@@ -10,7 +11,8 @@ import { environment } from 'projects/my-app/src/environments/environment.develo
 export class ErrorComponent implements OnInit {
 
 
-  constructor(private titleService:Title) {
+  constructor( @Inject(Title) private titleService:Title
+) {
     this.titleService.setTitle('Error Page !')
    }
 

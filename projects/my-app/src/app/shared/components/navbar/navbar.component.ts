@@ -48,7 +48,7 @@ export class NavbarComponent implements OnInit {
     isActive: false,
     public_id: '',
    }
-   constructor(private fb:FormBuilder,private router:Router,
+   constructor(private fb:FormBuilder,
     public settingservice:SettingService,
     private cookieServices:CookieService,
     private authService : AuthenticationService,

@@ -3,7 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Environment } from 'projects/authentication/src/app/Environments/Environment';
 import { IUser } from 'projects/dashboard/src/app/Models/IUser';
 import { SettingService } from 'projects/dashboard/src/app/services/Setting.service';
- 
+
 @Component({
   selector: 'app-Navbar',
   templateUrl: './Navbar.component.html',

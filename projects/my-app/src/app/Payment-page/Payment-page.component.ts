@@ -1,3 +1,4 @@
+import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -9,7 +10,8 @@ import { CookieService } from 'ngx-cookie-service';
 export class PaymentPageComponent implements OnInit {
    total : number = 0; // Declare the total as a number
 
-  constructor(private cookieServices:CookieService) { }
+  constructor(
+    @Inject(CookieService) private cookieServices:CookieService) { }
 
   ngOnInit() {
     const storedTotal = this.cookieServices.get('lastTotal'); // Retrieve the value from the cookie

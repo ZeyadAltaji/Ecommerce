@@ -1,3 +1,4 @@
+import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactUs } from 'projects/dashboard/src/app/Classes/ContactUs';
@@ -13,7 +14,9 @@ export class Contact_usComponent implements OnInit {
   contact_us!:FormGroup;
   Category=new ContactUs;
 
-  constructor(private fb: FormBuilder,private contactUsService:ContactUsService) { }
+  constructor(
+    @Inject(FormBuilder) private fb:FormBuilder
+  ,private contactUsService:ContactUsService) { }
 
   ngOnInit() {
     this.AddNewMessages();

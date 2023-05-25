@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserForLogin } from '../../../Models/User';
@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
    constructor(private router:Router,
    private authService : AuthenticationService,
    private builder : FormBuilder,
-   private cookieServices:CookieService,
-   public settingservice:SettingService) { }
+   public settingservice:SettingService,
+   @Inject(CookieService) private cookieServices:CookieService) { }
    ngOnInit():void {
     this.loginForm=this.builder.group({
       UserName:this.builder.control('',Validators.required),

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { CookieService } from 'ngx-cookie-service';
 import { IUser } from '../../../Models/IUser';
@@ -19,7 +19,7 @@ export class ProfilePageComponent implements OnInit {
   chartOptions: any;
   loggedInUser: any; // Declare a variable to store the logged-in user details
   public user :IUser | undefined;
-  constructor(private cookieServices:CookieService){}
+  constructor( @Inject(CookieService) private cookieServices:CookieService){}
 
   ngOnInit() {
      const userString = this.cookieServices.get('loggedInUser');
@@ -28,7 +28,7 @@ export class ProfilePageComponent implements OnInit {
       this.user = this.loggedInUser.fullUser;
     }
 
- 
+
     // Line Chart
     const lineCanvasEle: any = document.getElementById('line_chart')
     const lineChar = new Chart(lineCanvasEle.getContext('2d'), {

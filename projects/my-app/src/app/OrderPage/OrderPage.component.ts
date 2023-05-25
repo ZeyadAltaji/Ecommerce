@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { Order } from 'projects/dashboard/src/app/Classes/Order';
@@ -14,7 +14,8 @@ export class OrderPageComponent implements OnInit {
   formData: FormData = new FormData();
   NewEmployyesForm!:FormGroup;
 
-  constructor(private cookieServices:CookieService,private fb: FormBuilder,private OrderServices :CartItemService    ){}
+  constructor(
+    @Inject(CookieService) private cookieServices:CookieService ,private fb: FormBuilder,private OrderServices :CartItemService    ){}
   loggedInUser: any; // Declare a variable to store the logged-in user details
   totalPrice:any;
   public user :IUser | undefined;

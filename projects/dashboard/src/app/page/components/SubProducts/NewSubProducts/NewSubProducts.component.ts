@@ -1,3 +1,4 @@
+import { Inject } from '@angular/core';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -18,9 +19,11 @@ import { CategoriseService } from 'projects/dashboard/src/app/services/categoris
   selector: 'app-NewSubProducts',
   templateUrl: './NewSubProducts.component.html',
   styleUrls: ['./NewSubProducts.component.css']
+
 })
 export class NewSubProductsComponent implements OnInit {
-  constructor(private fb: FormBuilder,
+  constructor(
+    @Inject(FormBuilder) private fb:FormBuilder,
     private router: Router,
     private productService: SubproductsService,
     private carService:CarService,
@@ -28,7 +31,7 @@ export class NewSubProductsComponent implements OnInit {
     private CategoryService:CategoriseService,
     private Productsservice:ProductService,
     private sweetAlertService :SweetAlertService,
-    private cookieServices:CookieService
+    @Inject(CookieService) private cookieServices:CookieService
 
    ) { }
    product =new SubProducts();

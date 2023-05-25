@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'projects/authentication/src/app/services/authentication.service';
@@ -25,7 +25,7 @@ export class NewEmployyesComponent implements OnInit {
    private userService:AuthenticationService,
    private fb: FormBuilder,
    private sweetAlertService :SweetAlertService,
-   private cookieServices:CookieService       
+   @Inject(CookieService) private cookieServices:CookieService
    )
   { }
 

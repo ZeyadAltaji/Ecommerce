@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { BusinessAccount } from '../../../Models/User';
 import { AuthenticationService } from '../../../services/authentication.service';
@@ -15,10 +15,11 @@ export class BusinessAccountComponent implements OnInit {
   user!: BusinessAccount;
   userSubmitted!: boolean;
   constructor(
-    private fb: FormBuilder,
+    @Inject(FormBuilder) private fb:FormBuilder,
+
     private authService: AuthenticationService,
     private router:Router,
-    private cookieServices:CookieService,) { }
+    @Inject(CookieService) private cookieServices:CookieService) { }
 
 
   ngOnInit() {
@@ -46,8 +47,8 @@ export class BusinessAccountComponent implements OnInit {
       this.authService.BusinessAccount(this.userData()).subscribe(
         (data) => {
           this.onReset();
-          
-           
+
+
 
         },
         (error) => {

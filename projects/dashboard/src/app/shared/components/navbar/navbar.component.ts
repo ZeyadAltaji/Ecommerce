@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from '../../../Classes/User';
 import { IUser } from '../../../Models/IUser';
@@ -11,7 +11,7 @@ import { Environment } from 'projects/authentication/src/app/Environments/Enviro
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent  implements OnInit{
-  constructor(private cookieServices:CookieService,public settingservice:SettingService){
+  constructor( @Inject(CookieService) private cookieServices:CookieService,public settingservice:SettingService){
   }
   public user :IUser ={
     id: 0,

@@ -20,7 +20,7 @@ import { AuthenticationService } from './services/authentication.service';
     ],
     bootstrap: [AppComponent],
     imports: [
-        BrowserModule,
+        BrowserModule ,
         AppRoutingModule,
         AreasModule,
         SharedModule,
