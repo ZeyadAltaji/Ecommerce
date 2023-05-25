@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Environment } from '../Environments/Environments';
+ import { Environment } from '../Environments/Environments';
 import { HttpClient } from '@angular/common/http';
 import { ISiderMain } from '../Models/ISiderMain';
 import { SiderMain } from '../Classes/SiderMain';
 import { throwError } from 'rxjs';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'

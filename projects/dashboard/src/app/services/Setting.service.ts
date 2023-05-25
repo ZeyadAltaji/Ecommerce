@@ -1,13 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Environment } from '../Environments/Environments';
+ import { Environment } from '../Environments/Environments';
 import { Observable } from 'rxjs';
-import { ISiderMain } from '../Models/ISiderMain';
-import { SiderMain } from '../Classes/SiderMain';
 import { ISiderSub } from '../Models/ISiderSub';
 import { SiderSub } from '../Classes/SiderSub';
 import { ISetting } from '../Models/ISetting';
 import { Setting } from '../Classes/Setting';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
