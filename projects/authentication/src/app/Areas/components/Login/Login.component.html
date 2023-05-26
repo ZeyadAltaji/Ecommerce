@@ -18,28 +18,31 @@
                 <form  class="row g-3" [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm)" >
                   <div class="card2 card border-0 px-4 py-5">
 
-                    <div class="row px-3">
+                    <div class="row px-3 mb-4">
                         <label for="validationUsername" class="mb-1 form-label"><h6 class="mb-0 text-sm">User Name</h6></label>
-                        <input class="mb-4" type="text" name="text" placeholder="Enter a valid User Name" formControlName="UserName">
-                        <div    id="validationUsername" class="invalid-feedback">
-                          required user name
-                        </div>
+                        <input class="mb-1" type="text" name="text" placeholder="Enter a valid User Name" formControlName="UserName">
+                        <small  *ngIf="loginForm.controls['UserName'].dirty && loginForm.hasError('required','UserName')" class="text-danger massgeRequred mb-3" style="font-size: 700;">User Name OR Email is required</small>
+
                     </div>
                     <div class="row px-3">
                         <label for="validationpassword" class="mb-1 form-label"><h6 class="mb-0 text-sm">Password</h6></label>
                         <input type="password" name="password" placeholder="Enter password" formControlName="Password">
-                        <div   id="validationpassword" class="invalid-feedback">
-                          required user name
-                        </div>
-                    </div>
-                    <!-- <div class="row px-3">
-                      <div class="form-checkbox">
-                       <p>I agree to the <a href="#" class="text">Terms and Conditions</a>
-                      <input type="checkbox" name="checkbox">
-                            <span class="checkmark"></span>
+                        <small *ngIf="loginForm.controls['Password'].dirty && loginForm.hasError('required','Password')" class="text-danger massgeRequred" style="font-size: 700;">Password is required</small>
 
+                    </div>
+
+
+                    <div class="row px-3">
+
+                      <p class="checkbox-text">I agree to the <a href="#" class="text">Terms and Conditions</a></p>
+                      <div class="form-checkbox">
+                        <input type="checkbox" name="checkbox">
+                        <span class="checkmark"></span>
                       </div>
-                    </div> -->
+                    </div>
+                    <div  *ngIf="loginError" class="alert alert-danger text-center m-5 messageError" role="alert">
+                      <p>Incorrect username or password.</p>
+                    </div>
                     <div class="row px-3 mb-4 mt-3">
                       <a routerLink="['/Rest_Password']" class="ml-auto mb-0 text-sm">Forgot Password?</a>
 

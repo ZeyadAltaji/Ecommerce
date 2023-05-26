@@ -11,7 +11,7 @@
     "Authentication-start": "ng serve --project=\"authentication\" --port 4202",
     "dashboard-start": "ng serve --project=\"dashboard\" --port 4203",
     "sellers-panel-start": "ng serve --project=\"Sellers_Planel\" --port 4204",
-    "Delivery": "ng serve --project=\"delivery\" --port 4206"
+    "Delivery": "ng serve --project=\"Delivery\" --port 4206"
   },
   "private": true,
   "dependencies": {

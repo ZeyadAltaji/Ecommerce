@@ -33,42 +33,54 @@
       </div>
 
       <div class="input-fields">
-        <div class="column-1">
-          <label for="cardholder">Cardholder's Name</label>
-          <input type="text" id="cardholder" />
-
-          <div class="small-inputs">
-            <div>
-              <label for="date">Valid thru</label>
-              <input type="text" id="date" placeholder="MM / YY" />
+        <form [formGroup]="checkoutForm">
+          <div class="column-1">
+            <label for="cardholder">Cardholder's Name</label>
+            <input type="text" id="cardholder" formControlName="cardholder" />
+            <div class="error text-danger" *ngIf="checkoutForm.get('cardholder')?.invalid && checkoutForm.get('cardholder')?.touched">
+              Cardholder's name is required.
             </div>
 
-            <div>
-              <label for="verification">CVV / CVC *</label>
-              <input type="password" id="verification"/>
+            <div class="small-inputs">
+              <div>
+                <label for="date">Valid thru</label>
+                <input type="text" id="date" formControlName="date" placeholder="MM / YY" />
+                <div class="error text-danger " *ngIf="checkoutForm.get('date')?.invalid && checkoutForm.get('date')?.touched">
+                  Invalid date. Format should be MM / YY.
+                </div>
+              </div>
+
+              <div>
+                <label for="verification">CVV / CVC *</label>
+                <input type="password" id="verification" formControlName="verification" />
+                <div class="error text-danger" *ngIf="checkoutForm.get('verification')?.invalid && checkoutForm.get('verification')?.touched">
+                  CVV / CVC is required and should be 3 digits.
+                </div>
+              </div>
             </div>
+
           </div>
+          <div class="column-2">
+            <label for="cardnumber">Card Number</label>
+            <input type="password" id="cardnumber" formControlName="cardnumber" />
+            <div class="error text-danger" *ngIf="checkoutForm.get('cardnumber')?.invalid && checkoutForm.get('cardnumber')?.touched">
+              Card number is required and should be 16 digits.
+            </div>
 
-        </div>
-        <div class="column-2">
-          <label for="cardnumber">Card Number</label>
-          <input type="password" id="cardnumber"/>
-
-          <span class="info">* CVV or CVC is the card security code, unique three digits number on the back of your card separate from its number.</span>
-        </div>
+            <span class="info">* CVV or CVC is the card security code, unique three digits number on the back of your card separate from its number.</span>
+          </div>
+        </form>
       </div>
     </div>
 
     <div class="panel-footer">
-      <!-- <button class="btn back-btn">Back</button> -->
       <a routerLink='/' class="btn btn-back btn-light"> <i class="bx bx-chevron-left"></i> Continue shopping </a>
 
       <div class="d-grid gap-2">
-        <button routerLink="shoppingCartPage/Order" class="btn next-btn" [disabled]="isPaymentInfoIncomplete()">Continue Purchase</button>
+        <button routerLink="shoppingCartPage/Order" class="btn next-btn" [disabled]="checkoutForm.invalid">Continue Purchase</button>
         <a href="shoppingCartPage/Order" class="btn next-btn" style="padding-top: 13px;">cash on delivery</a>
       </div>
 
     </div>
   </div>
-
 </div>

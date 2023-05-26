@@ -14,22 +14,42 @@
             <div class="mb-3">
               <label for="NumberProducts" class="form-label">Serial Number Products</label>
               <input type="text" class="form-control" id="Serial_Id" aria-describedby="NumberProducts" formControlName="Serial_Id">
+              <div *ngIf="NewProductsForm.controls['Serial_Id'].invalid && NewProductsForm.controls['Serial_Id'].touched"
+              class="text-danger">
+              Serial Number is required.
+            </div>
             </div>
             <div class="mb-3">
               <label for="NameProducts" class="form-label">Name Products</label>
               <input type="text" class="form-control" id="NameProducts" formControlName="NameProducts">
+              <div *ngIf="NewProductsForm.controls['NameProducts'].invalid && NewProductsForm.controls['NameProducts'].touched"
+                class="text-danger">
+                Name Products is required.
+              </div>
             </div>
             <div class="mb-3">
               <label for="TypeProducts" class="form-label">Price</label>
               <input type="text" class="form-control" id="PriceProducts" formControlName="PriceProducts">
+              <div *ngIf="NewProductsForm.controls['PriceProducts'].invalid && NewProductsForm.controls['PriceProducts'].touched"
+                 class="text-danger">
+                 Price Products is required.
+              </div>
             </div>
             <div class="mb-3">
               <label for="Password" class="form-label">Quantity Have</label>
               <input type="text" class="form-control" id="-Quantity" formControlName="Quantity">
+              <div *ngIf="NewProductsForm.controls['Quantity'].invalid && NewProductsForm.controls['Quantity'].touched"
+                  class="text-danger">
+                  Quantity is required.
+              </div>
             </div>
             <div class="mb-3">
               <label for="Photo" class="form-label">Photo</label>
               <input type="file" class="form-control" (change)="HandleFilePrimaryimages($event)" id="inputGroupFile03" formControlName="Primary_Image" aria-describedby="inputGroupFileAddon03" aria-label="Upload"  #PrimaryImage>
+              <div *ngIf="NewProductsForm.controls['Primary_Image'].invalid && NewProductsForm.controls['Primary_Image'].touched"
+                  class="text-danger">
+                  Photo is required.
+              </div>
             </div>
             <div class="mb-3">
               <div class="row">
@@ -75,6 +95,10 @@
                 {{categorise.name}}
               </option>
             </select>
+            <div *ngIf="NewProductsForm.controls['Categorise'].invalid && NewProductsForm.controls['Categorise'].touched"
+            class="text-danger">
+            Category is required.
+          </div>
           </div>
           <div class="mb-3">
             <label class="form-label">Products</label>
@@ -84,6 +108,10 @@
                 {{x.title}}
               </option>
             </select>
+            <div *ngIf="NewProductsForm.controls['Products'].invalid && NewProductsForm.controls['Products'].touched"
+            class="text-danger">
+            Products is required.
+          </div>
           </div>
           <div class="mb-3">
             <label class="form-label">Type Cars</label>
@@ -93,6 +121,10 @@
                 {{car.name}}
               </option>
             </select>
+            <div *ngIf="NewProductsForm.controls['Cars'].invalid && NewProductsForm.controls['Cars'].touched"
+            class="text-danger">
+            Type Cars is required.
+          </div>
           </div>
           <div class="mb-3">
             <label class="form-label">Name Brands</label>
@@ -102,12 +134,20 @@
                 {{Brands.name}}
               </option>
             </select>
+            <div *ngIf="NewProductsForm.controls['Cars'].invalid && NewProductsForm.controls['Cars'].touched"
+            class="text-danger">
+            Type Cars is required.
+          </div>
           </div>
           <div class="mb-3">
             <label for="Description" class="form-label">Description</label>
             <textarea type="text"
             class="form-control"
             rows="6" formControlName="Description"></textarea>
+             <div *ngIf="NewProductsForm.controls['Description'].invalid && NewProductsForm.controls['Description'].touched"
+            class="text-danger">
+            Type Cars is required.
+          </div>
           </div>
 
 

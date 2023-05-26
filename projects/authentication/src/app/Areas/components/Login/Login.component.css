@@ -1,4 +1,4 @@
- 
+
 .containerr{
   position: relative;
   max-width: 1180px;
@@ -39,6 +39,12 @@
 
 .text-sm {
     font-size: 14px !important;
+    font-weight: 700;
+}
+.messageError p{
+  font-size: 17px;
+  color: black;
+  font-weight: 700;
 }
 .custom{
  }
@@ -85,7 +91,23 @@ button:focus {
     box-shadow: none !important;
     outline-width: 0;
 }
+.form-checkbox {
+  display: inline-block;
+  vertical-align: middle;
+  width: 6rem;
 
+}
+
+.checkbox-text {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+  width: 17rem;
+
+}
+.massgeRequred {
+font-weight: 700;
+}
 a {
     color: inherit;
     cursor: pointer;

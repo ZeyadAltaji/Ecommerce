@@ -16,28 +16,36 @@
             <div class="form-row form-row-1">
               <label for="first_name">First Name</label>
               <input formControlName="Frist_Name" type="text"  class="input-text">
+              <small  *ngIf="RegisterForm.controls['Frist_Name'].dirty && RegisterForm.hasError('required','Frist Name')" class="text-danger massgeRequred mb-3" style="font-size: 700;">Frist Name is required</small>
+
             </div>
             <div class="form-row form-row-1">
               <label for="Last_Name">Last Name</label>
               <input formControlName="Last_Name" type="text" class="input-text">
+              <small  *ngIf="RegisterForm.controls['Last_Name'].dirty && RegisterForm.hasError('required','Last_Name')" class="text-danger massgeRequred mb-3" style="font-size: 700;">Last Name is required</small>
+
             </div>
           </div>
           <div class="form-row">
             <label for="UserName">Your User Name</label>
             <input formControlName="UserName" type="text"  class="input-text" required>
+            <small  *ngIf="RegisterForm.controls['UserName'].dirty && RegisterForm.hasError('required','UserName')" class="text-danger massgeRequred mb-3" style="font-size: 700;">User Name  is required</small>
+
           </div>
           <div class="form-row">
             <label for="your_email">Your Email</label>
             <input formControlName="Email" type="email"  class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+            <small  *ngIf="RegisterForm.controls['Email'].dirty && RegisterForm.hasError('required','Email')" class="text-danger massgeRequred mb-3" style="font-size: 700;"> Email is required</small>
+
           </div>
           <div class="form-group">
             <div class="form-row form-row-1 ">
               <label for="password">Password</label>
-              <input formControlName="Password" type="password"   class="input-text" required>
+              <small *ngIf="RegisterForm.controls['Password'].dirty && RegisterForm.hasError('required','Password')" class="text-danger massgeRequred" style="font-size: 700;">Password is required</small>
             </div>
             <div class="form-row form-row-1">
               <label for="passwordConfirm">confirm Password</label>
-              <input  formControlName="ComfirmPassword" type="password"  class="input-text" required>
+              <small *ngIf="RegisterForm.controls['passwordConfirm'].dirty && RegisterForm.hasError('required','passwordConfirm')" class="text-danger massgeRequred" style="font-size: 700;">Comfirm Password is required</small>
             </div>
           </div>
           <div class="form-checkbox">

@@ -42,16 +42,18 @@ export class OrderPageComponent implements OnInit {
         fullName: this.FullName.value,
         email: this._Email.value,
         mobile: this._Mobile.value,
-        totalPrice: 5166 , // Convert totalPrice to number or default to 0
+        totalPrice: 5166,
         shippingAddress: this._Address.value,
         orderStatus: '',
-        cartId: cartId
+        cartId: cartId,
+        id: 0
       };
 
       this.OrderServices.createOrder(order).subscribe(
         (res) => {
           console.log(res);
           // Open the success modal
+          this.showModal();
         }
       );
     }

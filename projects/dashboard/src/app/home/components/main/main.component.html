@@ -71,8 +71,7 @@
       <thead>
         <tr>
           <th>Full Name</th>
-         <th>Email</th>
-         <th>Mobile</th>
+          <th>Mobile</th>
          <th>Total Price</th>
          <th>Shipping Address</th>
          <th>Order Status</th>
@@ -82,7 +81,7 @@
       <tbody class="tbody">
         <tr  *ngFor="let Order of contactUsService.ListOrder">
            <td>{{Order.fullName}}</td>
-          <td>{{Order.email}}</td>
+
           <td>{{Order.mobile}}</td>
 
           <td>{{Order.totalPrice}}</td>

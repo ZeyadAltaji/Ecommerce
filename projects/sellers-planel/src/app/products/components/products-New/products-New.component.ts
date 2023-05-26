@@ -90,20 +90,26 @@ export class ProductsNewComponent implements OnInit {
  });
   }
   OnSubmit(){
-    if (this.loggedInUser && this.loggedInUser.fullUser) {
-      const adminId = this.loggedInUser.fullUser.id; // Get the adminid from the logged-in user
-      const username = this.loggedInUser.fullUser.userName; // Get the adminid from the logged-in user
-      this.MapProducts(adminId,username);// Pass the adminid to the MapBrands method
-      this.productService.AddProducts(this.formData).subscribe(
-      (data)=>{
-      this.sweetAlertService.success("Success", "Products added successfully.");
-      this.router.navigate(['/list-products']);
+    if (this.NewProductsForm.valid) {
+      if (this.loggedInUser && this.loggedInUser.fullUser) {
+        const adminId = this.loggedInUser.fullUser.id; // Get the adminid from the logged-in user
+        const username = this.loggedInUser.fullUser.userName; // Get the adminid from the logged-in user
+        this.MapProducts(adminId,username);// Pass the adminid to the MapBrands method
+        this.productService.AddProducts(this.formData).subscribe(
+        (data)=>{
+        this.sweetAlertService.success("Success", "Products added successfully.");
+        this.router.navigate(['/list-products']);
 
-      },(error)=>{
-        console.log(error);
-      }
-    )
-}
+        },(error)=>{
+          console.log(error);
+        }
+      )
+  }
+    } else {
+      // Show validation errors for the form
+      this.NewProductsForm.markAllAsTouched();
+    }
+
   }
   AddNewProductsForm() {
     this.NewProductsForm = this.fb.group({

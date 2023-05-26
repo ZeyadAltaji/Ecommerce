@@ -30,8 +30,12 @@ export class CartItemService {
     createOrder(order: Order): Observable<any> {
       return this.http.post<any>(`${this.baseUrl}Order`, order);
     }
-    GetAllCategorise(): Observable<IOrder[]>{
+    GetAllOrder(): Observable<IOrder[]>{
       return this.http.get<IOrder[]>(`${this.baseUrl}Order/GetAllOrders`);
+
+    }
+    GetOrdersBydelivery(): Observable<IOrder[]>{
+      return this.http.get<IOrder[]>(`${this.baseUrl}Order/order/delivery`);
 
     }
     getOrderById(id: number): Observable<Order> {
@@ -41,4 +45,20 @@ export class CartItemService {
     getOrdersByCustomerId(customerId: number): Observable<Order[]> {
       return this.http.get<Order[]>(`${this.baseUrl}Order/customer/${customerId}`);
     }
+    updateOrderStatus(orderId: number, newStatus: string) {
+      const formData = new FormData();
+      formData.append('id', orderId.toString());
+      formData.append('orderStatus', newStatus);
+  
+      return this.http.put<any>(`https://localhost:7241/api/Order/Orders/update`,formData);
+ 
+    }
+    // updateOrderStatus(orderId: number, newStatus: string) {
+    //   const formData = { id: orderId, orderStatus: newStatus };
+  
+    //   return this.http.put<any>(`${this.baseUrle`, formData);
+    // }
+    // UpdateOrders(formData:FormData){
+    //   return this.http.put<Order>(`${this.baseUrl}OrderOrders/update/`,formData);
+    // }
 }

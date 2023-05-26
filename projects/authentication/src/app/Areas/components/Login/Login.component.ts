@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   loggedInUser: any;
   logoData!: any;
   cartItems: any[] = [];
+  loginError: boolean = false;
 
   static cookieServiceee: CookieService; // declare the static property
 
@@ -99,6 +100,8 @@ export class LoginComponent implements OnInit {
         },
         error: (err) => {
           console.log(err?.error.message);
+                  this.loginError = true; // Set loginError to true in case of error
+
         }
       });
     } else {

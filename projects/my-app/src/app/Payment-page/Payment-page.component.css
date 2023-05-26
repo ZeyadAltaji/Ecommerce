@@ -1,7 +1,7 @@
 .checkout-panel {
   display: flex;
   flex-direction: column;
-   height: 766px;
+   height: 861px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .2);
 }.panel-body {

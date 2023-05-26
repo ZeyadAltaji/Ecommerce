@@ -8,19 +8,27 @@
           <div class="input-boxes">
             <div class="input-box">
               <i class="fas fa-user"></i>
-              <input formControlName="UserName" type="text" placeholder="Enter your name" required>
+              <input formControlName="UserName" type="/text" placeholder="Enter your name" required>
+              <small  *ngIf="BusinessAccountForm.controls['UserName'].dirty && BusinessAccountForm.hasError('required','UserName')" class="text-danger massgeRequred mb-3" style="font-size: 700;">User Name  is required</small>
+
             </div>
             <div class="input-box">
               <i class="fas fa-envelope"></i>
               <input formControlName="Email" type="email" placeholder="Enter the email you'd like to use for your business account" required>
+              <small  *ngIf="BusinessAccountForm.controls['Email'].dirty && BusinessAccountForm.hasError('required','Email')" class="text-danger massgeRequred mb-3" style="font-size: 700;"> Email is required</small>
+
             </div>
             <div class="input-box">
               <i class="fas fa-lock"></i>
               <input formControlName="Password" type="password" placeholder="Enter your password" required>
+              <small *ngIf="BusinessAccountForm.controls['Password'].dirty && BusinessAccountForm.hasError('required','Password')" class="text-danger massgeRequred" style="font-size: 700;">Password is required</small>
+
             </div>
             <div class="input-box">
               <i class="fas fa-lock"></i>
               <input formControlName="ComfirmPassword" type="password" placeholder="Enter your Comfirm Password" required>
+              <small *ngIf="BusinessAccountForm.controls['Comfirm Password'].dirty && BusinessAccountForm.hasError('required','passwordConfirm')" class="text-danger massgeRequred" style="font-size: 700;">Comfirm Password is required</small>
+
             </div>
             <div class="button input-box">
               <input type="submit" value="Register">

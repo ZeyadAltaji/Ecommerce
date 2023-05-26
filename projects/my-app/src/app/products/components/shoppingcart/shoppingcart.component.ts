@@ -16,7 +16,8 @@ export class ShoppingcartComponent implements OnInit{
   count: number = 1; // Initial count value
   isLoggedIn: boolean = false; // Variable to track login status
   productData: any[] = []
-
+  popoverVisible = false;
+  popoverMessage = "Please log in to make a purchase";
  // Add a private property to store the Id value
  private totalItemPrice: number = 0;
 
@@ -55,7 +56,13 @@ export class ShoppingcartComponent implements OnInit{
   ngAfterViewInit(): void {
     this.updateCartItems();
   }
+  showPopover() {
+    this.popoverVisible = true;
+  }
 
+  hidePopover() {
+    this.popoverVisible = false;
+  }
   updateCartItems() {
     const storedItems = this.cookieService.get(this.cartItemsKey);
     this.cartItems = storedItems ? JSON.parse(storedItems) : [];

@@ -1,0 +1,39 @@
+<section>
+  <div class="header">
+    <h1>Order</h1>
+  </div>
+</section>
+<hr>
+<main class="order-list">
+  <div class="list" style="display: flex;justify-content: center;margin-left: 27rem;margin-top: 5rem;">
+    <table class="table">
+      <thead class="thead">
+        <tr>
+           <th>Full Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Total Price</th>
+          <th>Shipping Address</th>
+          <th>Order Status</th>
+           <th>Action</th>
+        </tr>
+      </thead>
+      <tbody class="tbody">
+        <tr  *ngFor="let Order of orderService.ListOrder">
+           <td>{{Order.fullName}}</td>
+          <td>{{Order.email}}</td>
+          <td>{{Order.mobile}}</td>
+
+          <td>{{Order.totalPrice}}</td>
+          <td>{{Order.shippingAddress}}</td>
+          <td>
+            {{ Order.orderStatus ? Order.orderStatus : 'Waiting' }}
+          </td>
+          <td class="primary action">
+             <button class="btn btn-success"  (click)="updateDelivery(Order.id)">Delivered</button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>

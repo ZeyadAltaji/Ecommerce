@@ -12,7 +12,7 @@ export class OrderListComponent implements OnInit {
   constructor(public contactUsService:CartItemService) { }
 
   ngOnInit() {
-    this.contactUsService.GetAllCategorise().subscribe(listData=>{
+    this.contactUsService.GetAllOrder().subscribe(listData=>{
       this.contactUsService.ListOrder=listData;
       console.log(this.contactUsService.ListOrder)
      },

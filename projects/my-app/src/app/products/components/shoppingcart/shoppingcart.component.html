@@ -48,12 +48,22 @@
 
   <div class="card-body border-top btn-pay ">
       <a href="#" class="btn btn-light"> <i class="bx bx-chevron-left"></i> Continue shopping </a>
-      <div *ngIf="cartItems.length > 0 && isLoggedIn">
-        <!-- <div *ngIf="cartItems.length > 0"> -->
-
-        <!-- Display the button only when there are items in the cart -->
-        <a (click)="gotoPayment()" routerLinkActive="router-link-active"   class="btn btn-primary float-md-right"> Make Purchase <i class="bx bx-chevron-right"></i> </a>
+      <div>
+        <span *ngIf="cartItems.length > 0 && isLoggedIn">
+          <a (click)="gotoPayment()" routerLinkActive="router-link-active" class="btn btn-primary float-md-right"> Make Purchase <i class="bx bx-chevron-right"></i> </a>
+        </span>
+        <span *ngIf="cartItems.length === 0 || !isLoggedIn">
+          <span class="popover-container" (mouseenter)="showPopover()" (mouseleave)="hidePopover()">
+            <button class="btn btn-primary float-md-right" type="button" [ngClass]="{'disabled': cartItems.length === 0 || !isLoggedIn}" [disabled]="cartItems.length === 0 || !isLoggedIn"> Make Purchase </button>
+            <div class="popover" [ngClass]="{'show': popoverVisible}">{{ popoverMessage }}</div>
+          </span>
+        </span>
       </div>
+
+      <!-- <div *ngIf="cartItems.length > 0 && isLoggedIn">
+
+        <a (click)="gotoPayment()" routerLinkActive="router-link-active"   class="btn btn-primary float-md-right"><i class="bx bx-chevron-right"></i> </a>
+      </div> -->
   </div>
   </div>
 
