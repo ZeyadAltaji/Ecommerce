@@ -65,7 +65,9 @@ export class NewSubProductsComponent implements OnInit {
      brandsId: 0,
      categoryId: 0,
      carId: 0,
-     productId: 0
+     productId: 0,
+     isSpecialProduct: false
+
    };
    loggedInUser: any;
    public user :IUser | undefined;
@@ -93,7 +95,11 @@ export class NewSubProductsComponent implements OnInit {
    });
   }
   OnSubmit(){
+    debugger
+    if (this.NewProductsForm.valid) {
+
     if (this.loggedInUser && this.loggedInUser.fullUser) {
+      debugger
           const adminId = this.loggedInUser.fullUser.id; // Get the adminid from the logged-in user
           const username = this.loggedInUser.fullUser.userName; // Get the adminid from the logged-in user
           this.MapProducts(adminId,username);// Pass the adminid to the MapBrands method
@@ -108,10 +114,11 @@ export class NewSubProductsComponent implements OnInit {
         )
     }
   }
+  }
   AddNewProductsForm() {
     this.NewProductsForm = this.fb.group({
-      Serial_Id: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
-      NameProducts: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
+      Serial_Id: [null, [Validators.required, Validators.pattern('[a-zA-Z0-9]{1,10}')]],
+      NameProducts: [null, [Validators.required, Validators.pattern('[a-zA-Z0-9]{1,10}')]],
       PriceProducts: [null, Validators.required],
       Categorise: [null,Validators.required],
       Cars: [null, Validators.required],
@@ -122,6 +129,7 @@ export class NewSubProductsComponent implements OnInit {
       newprice: [null],
       Offer: [null],
       isActive: false,
+      isSpecialProduct: false,
       Primary_Image:[null, Validators.required],
 
     });
@@ -164,6 +172,9 @@ export class NewSubProductsComponent implements OnInit {
   get _isActive() {
     return this.NewProductsForm.controls['isActive']as FormGroup;
   }
+  get _isSpecialProduct() {
+    return this.NewProductsForm.controls['isSpecialProduct']as FormGroup;
+  }
   get _Primary_Image(){
     return this.NewProductsForm.controls['Primary_Image']as FormGroup;
   }
@@ -174,8 +185,15 @@ export class NewSubProductsComponent implements OnInit {
     this.formData.append('Title', this._NameProducts.value);
     this.formData.append('Description', this._Description.value);
     this.formData.append('Price', this._PriceProducts.value);
-    this.formData.append('Offers', this._offers.value);
-    this.formData.append('New_price', this._new_price.value);
+
+    const offersValue = this._offers.value != null ? this._offers.value : '';
+  this.formData.append('Offers', offersValue);
+
+  // Calculate the new price based on the offers value
+  const price = parseFloat(this._PriceProducts.value);
+  const offers = parseFloat(this._offers.value);
+  const newPrice = (price - (price * (offers / 100))).toFixed(2);
+  this.formData.append('new_price', newPrice);
     this.formData.append('Brands_Id', this._Brands.value);
     this.formData.append('Car_Id', this._Cars.value);
     this.formData.append('productId', this.products.value);
@@ -185,6 +203,10 @@ export class NewSubProductsComponent implements OnInit {
     this.formData.append('Primary_Image', Primary_Image);
     this.formData.append('Admin_Id', adminId.toString());
     this.formData.append('UserCreate', UserCreate);
+    this.formData.append('isSpecialProduct', this._isSpecialProduct.value.toString());
+    this.formData.append('isActive', this._isActive.value.toString());
+
+
   }
   toggleInputs() {
     this.showInputs = !this.showInputs;
@@ -201,5 +223,11 @@ export class NewSubProductsComponent implements OnInit {
       };
       reader.readAsDataURL(image_userUrl);
     }
+  }
+  calculateNewPrice() {
+    const price = parseFloat(this._PriceProducts.value);
+    const offers = parseFloat(this._offers.value);
+    const newPrice = (price - (price * (offers / 100))).toFixed(2);
+    return newPrice;
   }
 }

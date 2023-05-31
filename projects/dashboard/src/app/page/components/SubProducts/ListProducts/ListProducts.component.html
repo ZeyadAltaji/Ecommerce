@@ -33,7 +33,7 @@
           <td>{{porducts.quantity}}</td>
            <td>
             <form>
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <input class="form-check-input" type="checkbox" [checked]="porducts.isSpecialProduct == true" (change)="updateSpecialProduct(porducts)">
             </form>
           </td>
           <td class="primary action">

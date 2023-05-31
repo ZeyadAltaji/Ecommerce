@@ -4,8 +4,8 @@ export interface ISubProducts {
   title:string;
   description?:string;
    price?:number;
-  offers?:number;
-  new_price?:number;
+   offers?: number | null;
+   new_price?: number | null;
   quantity?:number;
   UserId:number;
   admin_Id:number;
@@ -20,6 +20,7 @@ export interface ISubProducts {
   cars:string;
   productId:number;
   Products:string;
+  isSpecialProduct:boolean;
 
   isPrimaryImage:string;
 

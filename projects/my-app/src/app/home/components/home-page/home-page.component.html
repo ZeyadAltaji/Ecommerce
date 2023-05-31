@@ -8,7 +8,7 @@
       <owl-carousel-o [options]="brand">
         <ng-template carouselSlide *ngFor="let x of Data; let i = index">
           <div class="item">
-            <a routerLink="View-All-Products/brand/{{[x.id]}}" > <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}" alt="{{[x.public_id]}}"></a>
+            <a href="View-All-Products/brand/{{[x.id]}}"> <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}" alt="{{[x.public_id]}}"></a>
           </div>
         </ng-template>
         <!-- <ng-template carouselSlide  *ngFor="let x of line1; let i = index">
@@ -310,7 +310,7 @@
       <div class="owl-brand">
         <owl-carousel-o [options]="brandcars">
           <ng-template carouselSlide *ngFor="let item of carService.ListCars">
-            <a routerLink="View-All-Products/car/{{[item.id]}}">
+            <a href="View-All-Products/car/{{[item.id]}}">
               <div class="item">
                 <img class="image-brand" src="http://localhost:4203/assets/image/Cars/{{[item.public_id]}}" alt="">
               </div>

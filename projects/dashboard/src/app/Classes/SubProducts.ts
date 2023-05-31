@@ -1,6 +1,7 @@
 import { ISubProducts } from "../Models/ISubProducts";
 
 export class SubProducts implements ISubProducts {
+  isSpecialProduct!: boolean;
   isPrimaryImage!: string;
   Primary_Image!: string;
   id!: number;

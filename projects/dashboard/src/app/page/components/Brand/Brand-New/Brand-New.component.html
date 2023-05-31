@@ -11,46 +11,28 @@
       <div class="container text-center">
       <div class="row">
         <div class="col-6 info">
-            <div class="mb-3">
-              <label for="NumberBrand" class="form-label">Number Brand</label>
-              <input type="text" class="form-control" id="NumberBrand" aria-describedby="NumberBrand">
-            </div>
+
             <div class="mb-3">
               <label for="NameBrand" class="form-label">Name Brand</label>
               <input type="text" class="form-control" id="NameBrand" formControlName="NameBrand">
             </div>
-            <div class="mb-3">
-              <label for="TypeBrand" class="form-label">Type Brand</label>
-              <input type="text" class="form-control" id="TypeBrand">
-            </div>
-              <div class="mb-3">
-                <input type="file" class="form-control" id="inputGroupFile03" (change)="HandleFile($event)" aria-describedby="inputGroupFileAddon03" aria-label="Upload" #imageInput>
 
-              </div>
-            <div class="mb-3">
-              <div class="row">
-                <div class="col-md-6 offset-md-3">
-                  <div class="card" style="width: 18rem;"><img src="" class="img-fluid rounded border bg-light" id="image" alt=""></div>
-                </div>
-              </div>
-             </div>
-            <div class="mb-3">
-              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
-            </div>
+
         </div>
         <div class="col-6 right">
           <div class="mb-3">
-            <label for="Email" class="form-label">Brand</label>
-            <input type="text" class="form-control" id="Email" aria-describedby="Email">
+            <label for="NameBrand" class="form-label">Image Brand</label>
+
+            <input type="file" class="form-control" id="inputGroupFile03" (change)="HandleFile($event)" aria-describedby="inputGroupFileAddon03" aria-label="Upload" #imageInput>
+
           </div>
-          <div class="mb-3">
-            <label for="Password" class="form-label">Brand</label>
-            <input type="password" class="form-control" id="Password">
+        <div class="mb-3">
+          <div class="row">
+            <div class="col-md-6 offset-md-3">
+              <div class="card" style="width: 18rem;"><img src="" class="img-fluid rounded border bg-light" id="image" alt=""></div>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="ConfirmPassword" class="form-label">Brand</label>
-            <input type="password" class="form-control" id="ConfirmPassword">
-          </div>
+         </div>
 
       </div>
       </div>

@@ -4,7 +4,7 @@
   </div>
 </section>
 <header class="top">
-  <button class="btn-add"  >
+  <button class="btn-add" [routerLink]="['/New-products']" >
     Add New products
     <span class="material-icons">add_circle</span>
   </button>
@@ -87,19 +87,19 @@
               <li class="list-group-item">
                 <ul class="list-unstyled">
                   <li class="mb-2" *ngFor="let item of BrandList">
-                    <div *ngIf="item.id === product.brandsId">
+                    <div *ngIf="item.id === product.brands_Id">
                       <strong>Type Brand : </strong>
                       {{ item.name }}
                     </div>
                   </li>
                   <li class="mb-2" *ngFor="let item of categoriseList">
-                    <div *ngIf="item.id === product.categoryId">
+                    <div *ngIf="item.id === product.category_Id">
                       <strong>Type Category:</strong>
                       {{ item.name }}
                     </div>
                   </li>
                   <li class="mb-2" *ngFor="let item of CarsList">
-                    <div *ngIf="item.id === product.carId">
+                    <div *ngIf="item.id === product.car_Id">
                       <strong>Type Cars :</strong>
                       {{ item.name }}
                     </div>

@@ -58,10 +58,11 @@ export class ProductsNewComponent implements OnInit {
     isPrimaryImage: '',
     Primary_Image: '',
     Products: '',
-    brandsId: 0,
-    categoryId: 0,
-    carId: 0,
-    productId: 0
+    brands_Id: 0,
+    category_Id: 0,
+    car_Id: 0,
+    productId: 0,
+    isSpecialProduct: false
   };
   loggedInUser: any;
   public user :IUser | undefined;

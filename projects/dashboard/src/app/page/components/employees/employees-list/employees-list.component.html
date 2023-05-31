@@ -1,10 +1,10 @@
 <section>
   <div class="header">
-    <h1>Employyes</h1>
+    <h1>Users</h1>
   </div>
 </section>
 <header class="top">
-  <button class="btn-add" [routerLink]="['/NewEmployyes']">
+  <button class="btn-add" [routerLink]="['/NewUser']">
     Add New User
     <span class="material-icons">person_add</span>
   </button>
@@ -38,7 +38,7 @@
           </td>
           <td class="primary action">
             <span class="material-icons" (click)="openModal(dataUser.id)">info</span>
-            <span class="material-icons" [routerLink]="['/Edit-Employyes/',dataUser.id]">edit</span>
+            <span class="material-icons" [routerLink]="['/Edit-Users/',dataUser.id]">edit</span>
             <span class="material-icons" (click)="DeleteMehtods(dataUser.id)">delete</span>
           </td>
         </tr>

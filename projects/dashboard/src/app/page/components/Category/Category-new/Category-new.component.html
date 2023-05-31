@@ -11,44 +11,19 @@
       <div class="container text-center">
       <div class="row">
         <div class="col-6 info">
-            <div class="mb-3">
-              <label for="NumberCategory" class="form-label">Number Category</label>
-              <input type="text" class="form-control" id="NumberCategory" aria-describedby="NumberCategory">
-            </div>
+
             <div class="mb-3">
               <label for="NameCategory" class="form-label">Name Category</label>
               <input type="text" class="form-control" id="NameCategory" formControlName="NameCategory">
+              <div *ngIf="NewCategoryForm.controls['NameCategory'].invalid && NewCategoryForm.controls['NameCategory'].touched"
+              class="text-danger">
+              Name Category is required.
             </div>
-            <div class="mb-3">
-              <label for="TypeCategory" class="form-label">Type Category</label>
-              <input type="text" class="form-control" id="TypeCategory">
             </div>
-            <div class="mb-3">
-              <label for="Email" class="form-label">photo</label>
-              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
-            </div>
-            <div class="mb-3">
-              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
-            </div>
-            <div class="mb-3">
-              <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
-            </div>
-        </div>
-        <div class="col-6 right">
-          <div class="mb-3">
-            <label for="Email" class="form-label">Category</label>
-            <input type="email" class="form-control" id="Email" aria-describedby="Email">
-          </div>
-          <div class="mb-3">
-            <label for="Password" class="form-label">Category</label>
-            <input type="password" class="form-control" id="Password">
-          </div>
-          <div class="mb-3">
-            <label for="ConfirmPassword" class="form-label">Category</label>
-            <input type="password" class="form-control" id="ConfirmPassword">
-          </div>
 
-      </div>
+
+        </div>
+
       </div>
     </div>
     <hr class="hr">

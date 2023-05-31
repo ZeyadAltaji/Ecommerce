@@ -1,5 +1,5 @@
 .Category-new{
-  width: 202%;
+  width: 85rem;
 }
 hr{
   width: 202%;
@@ -29,8 +29,7 @@ hr{
 }
 .info{
   text-align: initial;
-  border-right:1px solid gray ;
-}
+ }
 .right{
   border-right:1px solid gray ;
 }

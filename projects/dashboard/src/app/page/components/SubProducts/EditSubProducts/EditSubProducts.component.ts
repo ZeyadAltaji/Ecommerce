@@ -45,14 +45,15 @@ export class EditSubProductsComponent implements OnInit {
     category: '',
     brands: '',
 
-    description: '',
+     description: '',
     isPrimaryImage: '',
     Primary_Image: '',
     Products: '',
     brandsId: 0,
     categoryId: 0,
     carId: 0,
-    productId: 0
+    productId: 0,
+    isSpecialProduct: false
   };
   productsId:any;
   showPrimaryImage = '';
@@ -71,7 +72,7 @@ export class EditSubProductsComponent implements OnInit {
   brands_Id:any;
   car_Id:any;
   productId:any;
-
+   isSpecialProduct!: any;
   category_Id:any;
   IsActive: any;
   loggedInUser: any;
@@ -114,7 +115,9 @@ ngOnInit():void {
           this.car_Id = this.EditProductsForm.controls['Cars'].setValue(this.product.carId);
           this.productId = this.EditProductsForm.controls['Products'].setValue(this.product.productId);
           this.category_Id = this.EditProductsForm.controls['Categorise'].setValue(this.product.categoryId);
-            this.IsActive=this.EditProductsForm.controls['Active'].setValue(this.product.isActive);
+          this.IsActive = this.EditProductsForm.controls['isActive'].setValue(this.product.isActive == true);
+          this.isSpecialProduct = this.EditProductsForm.controls['isSpecialProduct'].setValue(this.product.isSpecialProduct == true);
+
         }
       });
 
@@ -132,7 +135,8 @@ ngOnInit():void {
     });
     this.carService.GetAllCars().subscribe(data=>{
     this.CarsList=data;
-    this.propertyView.cars = this.CarsList.find(c => c.id === this.product.carId)?.id || '';
+    console.log(data);
+        this.propertyView.cars = this.CarsList.find(c => c.id === this.product.carId)?.id || '';
 
     });
     this.brandsService.GetAllBrands().subscribe(data=>{
@@ -158,8 +162,8 @@ ngOnInit():void {
 
         newprice: [null],
         Offer: null,
-        Active: false,
-
+        isActive: false,
+        isSpecialProduct: false,
         Categorise: [null,Validators.required],
         Cars: [null, Validators.required],
         Brands: [null, Validators.required],
@@ -174,11 +178,13 @@ ngOnInit():void {
     }
     OnSubmit(){
       if (this.loggedInUser && this.loggedInUser.fullUser) {
+        debugger
         const username = this.loggedInUser.fullUser.userName;
         this.route.paramMap.subscribe({
           next:(params)=>{
              const id=params.get('id');
             if(id){
+              debugger
 
               const fd = new FormData();
               let imageFile = this.PrimaryImage?.nativeElement.files[0];
@@ -187,8 +193,13 @@ ngOnInit():void {
               fd.append('Title', this._NameProducts.value);
               fd.append('Description', this._Description.value);
               fd.append('Price', this._PriceProducts.value);
+
               fd.append('Offers', this._offers.value);
-              fd.append('New_price', this.new_priceProducts.value);
+              const price = parseFloat(this._PriceProducts.value);
+              const offers = parseFloat(this._offers.value);
+              const newPrice = (price - (price * (offers / 100))).toFixed(2);
+              fd.append('New_price', newPrice.toString());
+              // fd.append('New_price', this.new_priceProducts.value);
               fd.append('Quantity', this._Quantity.value);
               fd.append('Brands_Id', this._Brands.value);
               fd.append('productId', this._Brands.value);
@@ -210,7 +221,7 @@ ngOnInit():void {
                        // Show a success message after the product has been updated
                        this.sweetService.success("Success", "The product has been successfully Updatedd")
 
-                      this.router.navigate(['/Prodcuts']);
+                      this.router.navigate(['/list-products']);
                     }, ex => {
                       this.sweetService.error("Errors ! ", "There's something wrong with data entry!")
 
@@ -224,6 +235,13 @@ ngOnInit():void {
             }
           });
       }
+
+      }
+      calculateNewPrice() {
+        const price = parseFloat(this._PriceProducts.value);
+        const offers = parseFloat(this._offers.value);
+        const newPrice = (price - (price * (offers / 100))).toFixed(2);
+        return newPrice;
       }
       get _SerialId() {
         return this.EditProductsForm.controls['Serial_Id'] as FormGroup;

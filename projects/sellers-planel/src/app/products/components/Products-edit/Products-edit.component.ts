@@ -60,10 +60,11 @@ export class ProductsEditComponent implements OnInit {
       isPrimaryImage: '',
       Primary_Image: '',
       Products: '',
-      brandsId: 0,
-      categoryId: 0,
-      carId: 0,
-      productId: 0
+      brands_Id: 0,
+      category_Id: 0,
+      car_Id: 0,
+      productId: 0,
+      isSpecialProduct: false
     };
     productsId:any;
     showPrimaryImage = '';
@@ -113,34 +114,34 @@ export class ProductsEditComponent implements OnInit {
             this.offers = this.EditProductsForm.controls['Offer'].setValue(this.product.offers);
             this.new_price = this.EditProductsForm.controls['newprice'].setValue(this.product.new_price);
             this.quantity = this.EditProductsForm.controls['Quantity'].setValue(this.product.quantity);
-            this.brands_Id = this.EditProductsForm.controls['Brands'].setValue(this.product.brandsId);
-            this.car_Id = this.EditProductsForm.controls['Cars'].setValue(this.product.carId);
+            this.brands_Id = this.EditProductsForm.controls['Brands'].setValue(this.product.brands_Id);
+            this.car_Id = this.EditProductsForm.controls['Cars'].setValue(this.product.car_Id);
             this.productId = this.EditProductsForm.controls['Products'].setValue(this.product.productId);
-            this.category_Id = this.EditProductsForm.controls['Categorise'].setValue(this.product.categoryId);
+            this.category_Id = this.EditProductsForm.controls['Categorise'].setValue(this.product.category_Id);
               this.IsActive=this.EditProductsForm.controls['Active'].setValue(this.product.isActive);
           }
         });
 
       this.EditProductsForm.patchValue({
 
-        Categorise: this.product.categoryId,
-        Cars: this.product.carId,
-        Brands: this.product.brandsId,
+        Categorise: this.product.category_Id,
+        Cars: this.product.car_Id,
+        Brands: this.product.brands_Id,
         product: this.product.productId,
 
       });
         this.CategoryService.GetAllCategorise().subscribe(data=>{
         this.categoriseList=data;
-        this.selectedCategory = this.categoriseList.find(c => c.id === this.product.categoryId)?.name || '';
+        this.selectedCategory = this.categoriseList.find(c => c.id === this.product.category_Id)?.name || '';
       });
       this.carService.GetAllCars().subscribe(data=>{
       this.CarsList=data;
-      this.propertyView.cars = this.CarsList.find(c => c.id === this.product.carId)?.id || '';
+      this.propertyView.cars = this.CarsList.find(c => c.id === this.product.car_Id)?.id || '';
 
       });
       this.brandsService.GetAllBrands().subscribe(data=>{
       this.BrandList=data;
-      this.propertyView.brands = this.BrandList.find(b => b.id === this.product.brandsId)?.id || '';
+      this.propertyView.brands = this.BrandList.find(b => b.id === this.product.brands_Id)?.id || '';
 
       });
       this.Productsservice.GetAllProducts().subscribe(data=>{
@@ -274,10 +275,10 @@ export class ProductsEditComponent implements OnInit {
     this.product.price = this._PriceProducts.value;
     this.product.quantity = this._Quantity.value;
     this.product.description = this._Description.value;
-    this.product.brandsId = this._Brands.value;
-    this.product.carId = this._Cars.value;
+    this.product.brands_Id = this._Brands.value;
+    this.product.car_Id = this._Cars.value;
     this.product.productId = this.Products.value;
-    this.product.categoryId = this._Categorise.value;
+    this.product.category_Id = this._Categorise.value;
     this.product.isActive=this._isActive.value;
     if (this.new_priceProducts && this._offers) {
       this.product.new_price = this.new_priceProducts.value;

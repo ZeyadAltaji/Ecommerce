@@ -56,14 +56,14 @@ const routes: Routes = [
   },
   //emp
   {
-    path:'Employyes',
+    path:'Users',
     component:EmployeesListComponent
   },{
-    path:'NewEmployyes',
+    path:'NewUser',
     component:NewEmployyesComponent
   },
   {
-    path:'Edit-Employyes/:id',
+    path:'Edit-Users/:id',
     component:EditEmployyesComponent
   },
   //prodcuts

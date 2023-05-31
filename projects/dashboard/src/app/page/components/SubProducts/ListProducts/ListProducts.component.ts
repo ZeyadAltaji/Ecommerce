@@ -57,6 +57,36 @@ this.brandsService.GetAllBrands().subscribe(data=>{
   this.BrandList=data;
  });
   }
+  updateSpecialProduct(product: ISubProducts): void {
+    debugger
+    product.isSpecialProduct = !product.isSpecialProduct; // Toggle the checkbox value
+
+    // Send an HTTP PUT request to update the product in the database
+    this.productsService.UpdateProducts(this.createFormData(product))
+      .subscribe(
+        (updatedProduct: SubProducts) => {
+          // Product updated successfully
+          console.log('Product updated:', updatedProduct);
+        },
+        (error: any) => {
+          // Handle error
+          console.error('Failed to update product:', error);
+          // Reset the checkbox value to its previous state
+          product.isSpecialProduct = !product.isSpecialProduct;
+        }
+      );
+  }
+  createFormData(product: ISubProducts): FormData {
+    debugger
+    const formData = new FormData();
+    // Append product properties to the form data
+    formData.append('id', product.id.toString());
+    formData.append('isSpecialProduct', product.isSpecialProduct.toString());
+    // Append other properties if needed
+    // formData.append('propertyKey', propertyValue);
+
+    return formData;
+  }
   openModal(id: number) {
     this.productsService.GetByIdModal(id)
       .subscribe(response => {
