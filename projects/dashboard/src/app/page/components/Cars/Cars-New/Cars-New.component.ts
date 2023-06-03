@@ -93,9 +93,10 @@ export class CarsNewComponent implements OnInit {
       console.error("Production date is required.");
       return;
     }
-    this.formData.append ('isActive', this._isActive.value);
     this.formData.append('Admin_Id', adminId.toString());
     this.formData.append('UserCreate', UserCreate);
+    this.formData.append('isActive', this._isActive.value.toString());
+
    }
   HandleFile(event:any) {
     if (event.target.files !== null && event.target.files.length > 0) {

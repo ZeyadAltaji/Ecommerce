@@ -5,6 +5,7 @@ export interface IBrands {
   public_id:string;
   userUpdate:string;
   userCreate:string;
+  isActive: boolean;
 
 
 }

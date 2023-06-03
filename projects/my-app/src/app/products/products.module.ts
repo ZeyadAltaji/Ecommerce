@@ -6,6 +6,7 @@ import { SingleProducteSelftComponent } from './components/single-producte-selft
 import { ViewAllProductsComponent } from './components/view-all-products/view-all-products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ShopByComponent } from './components/ShopBy/ShopBy.component';
 
 
 
@@ -14,8 +15,8 @@ import { RouterModule } from '@angular/router';
     ProductsDetailComponent,
     ShoppingcartComponent,
     SingleProducteSelftComponent,
-    ViewAllProductsComponent
-  ],
+    ViewAllProductsComponent,
+   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -26,8 +27,8 @@ import { RouterModule } from '@angular/router';
     ProductsDetailComponent,
     ShoppingcartComponent,
     SingleProducteSelftComponent,
-    ViewAllProductsComponent
-
+    ViewAllProductsComponent,
+ 
   ]
 })
 export class ProductsModule { }

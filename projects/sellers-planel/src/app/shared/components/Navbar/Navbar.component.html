@@ -12,28 +12,29 @@
       </div>
       <div class="profile">
         <div class="profile-photo">
-          <img *ngIf="user?.public_id" src="http://localhost:4203/assets/image/Users/{{ user?.public_id }}" alt="User" class="rounded-circle" width="100">
-          <img *ngIf="!user?.public_id" src="../../../../assets/profile/person-4.png" alt="Admin" class="rounded-circle" width="100">
+          <img *ngIf="user?.public_id" src="http://localhost:4203/assets/image/Users/{{ user?.public_id }}" alt="User"
+            class="rounded-circle" width="100">
+          <img *ngIf="!user?.public_id" src="../../../../assets/profile/person-4.png" alt="Admin" class="rounded-circle"
+            width="100">
         </div>
         <h5>{{ user.userName }}</h5>
         <span class="material-icons" (click)="dropdown()">expand_more</span>
       </div>
       <div class="drop-down" [class.active-dropdown]="showdropdown">
         <div class="list-group">
-          <a [routerLink]="['My-profile']" class="list-group-item list-group-item-action" [routerLinkActive]="'active'" aria-current="true">
+          <a [routerLink]="['My-profile']" class="list-group-item list-group-item-action" [routerLinkActive]="'active'"
+            aria-current="true">
             My Profile
           </a>
-           <a   class="list-group-item list-group-item-action" (click)="logout()" [routerLinkActive]="'active'">Log Out</a>
-         </div>
+          <a class="list-group-item list-group-item-action" (click)="logout()" [routerLinkActive]="'active'">Log Out</a>
+        </div>
       </div>
       <!-- <button id="meun-btn" (click)="sidebarToggle()"> -->
-        <button id="meun-btn" (click)="sidebarToggle()">
+      <button id="meun-btn" (click)="sidebarToggle()">
 
         <span class="material-icons">menu</span>
       </button>
     </div>
   </div>
 
- </nav>
-
-
+</nav>

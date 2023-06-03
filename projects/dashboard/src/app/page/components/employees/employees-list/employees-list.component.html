@@ -34,7 +34,7 @@
           <td>{{dataUser.phone1}}</td>
           <td>{{dataUser.address}}</td>
           <td>
-            {{ dataUser.role === 1 ? 'Manager' : dataUser.role === 2 ? 'Seller' : dataUser.role === 3 ? 'Customer' : 'Unknown' }}
+            {{ dataUser.role === 1 ? 'Manager' : dataUser.role === 2 ? 'Seller' : dataUser.role === 3 ? 'Customer' : dataUser.role === 4 ? 'Delivery' : 'Unknown' }}
           </td>
           <td class="primary action">
             <span class="material-icons" (click)="openModal(dataUser.id)">info</span>

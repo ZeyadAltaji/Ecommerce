@@ -2,31 +2,37 @@
   text-align: center;
   margin-bottom: -2rem;
 }
+
 .section-header #section-title {
   font-size: 28px;
-   padding-top:35px;
+  padding-top: 35px;
   margin-bottom: 15px;
 }
-.btn-search-by{
+
+.btn-search-by {
   display: inline-flex;
   height: 50px;
   padding: 0;
   background: rgb(169, 13, 13);
-  border: none; outline: none; border-radius: 5px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
   overflow: hidden;
   font-size: 16px;
   cursor: pointer;
-   text-decoration: none;
+  text-decoration: none;
   color: black;
   padding: 13px 25px;
 }
-.btn-search-by:hover{
+
+.btn-search-by:hover {
   background: rgb(167, 29, 29);
   opacity: 1;
   text-decoration: none;
   color: black;
 }
- .mb-30 {
+
+.mb-30 {
   margin-bottom: 30px !important;
 }
 
@@ -35,17 +41,18 @@
   border-bottom: 1px solid #e1e7ec;
 }
 
-.btn{
+.btn {
   padding: 0.7rem 1.2rem;
-    background: crimson;
-    color: #fff;
-    font-weight: 500;
-    display: inline-block;
-    text-transform: uppercase;
-    border-radius: 10px;
-    text-decoration: none;
+  background: crimson;
+  color: #fff;
+  font-weight: 500;
+  display: inline-block;
+  text-transform: uppercase;
+  border-radius: 10px;
+  text-decoration: none;
 }
-.btn:hover{
+
+.btn:hover {
   background: #2f73a3;
 
 }
@@ -55,22 +62,26 @@
   width: 100%;
 }
 
-.card-img-tiles .main-img, .card-img-tiles .thumblist {
+.card-img-tiles .main-img,
+.card-img-tiles .thumblist {
   display: table-cell;
   width: 65%;
   padding: 15px;
   vertical-align: middle;
 }
 
-.card-img-tiles .main-img>img:last-child, .card-img-tiles .thumblist>img:last-child {
+.card-img-tiles .main-img>img:last-child,
+.card-img-tiles .thumblist>img:last-child {
   margin-bottom: 0;
 }
 
-.card-img-tiles .main-img>img, .card-img-tiles .thumblist>img {
+.card-img-tiles .main-img>img,
+.card-img-tiles .thumblist>img {
   display: block;
   width: 100%;
   margin-bottom: 6px;
 }
+
 .thumblist {
   width: 35%;
   border-left: 1px solid #e1e7ec !important;
@@ -87,7 +98,9 @@
   width: 100%;
   margin-bottom: 6px;
 }
-.btn-group-sm>.btn, .btn-sm {
+
+.btn-group-sm>.btn,
+.btn-sm {
   padding: .45rem .5rem !important;
   font-size: .875rem;
   line-height: 1.5;

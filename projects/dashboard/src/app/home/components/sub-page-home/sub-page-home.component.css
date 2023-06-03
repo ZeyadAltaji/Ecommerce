@@ -1,8 +1,9 @@
-.right .recent-update{
+.right .recent-update {
   margin-top: 1.4rem;
   background: var(--color-white);
   border-radius: var(--card-border-radius);
 }
+
 /* .right .recent-update .updates::-webkit-scrollbar {
   width: 10px;
   background-color:var(--color-light);
@@ -12,23 +13,26 @@
   background-color:gray;
   border-radius: var(--border-radius-1);
 } */
-.right .recent-update img{
+.right .recent-update img {
   width: 3.4rem;
 
 }
-.right .recent-update .header{
+
+.right .recent-update .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--card-padding);
   padding-bottom: 0;
 }
-.right .updates .header a{
+
+.right .updates .header a {
   display: flex;
   align-items: center;
   color: var(--color-primary);
 }
-.right .updates .update{
+
+.right .updates .update {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,113 +40,137 @@
   border-bottom: 1px solid var(--color-light);
   transition: var(--transition);
 }
-.right .updates .update:last-child{
+
+.right .updates .update:last-child {
   border: none;
 }
-.right .updates .update:hover{
+
+.right .updates .update:hover {
   background: var(--color-light);
   border-radius: var(--card-border-radius);
   cursor: pointer;
 }
-.recent-update{
+
+.recent-update {
   margin-top: 1rem;
 }
-.recent-update h2{
+
+.recent-update h2 {
   margin-bottom: 0.8rem;
 }
-.recent-update .updates{
+
+.recent-update .updates {
   background: var(--color-white);
   padding: var(--card-padding);
-  border-radius:var(--card-border-radius);
+  border-radius: var(--card-border-radius);
   box-shadow: var(--box-shadow);
-  transition: var( --transition);
+  transition: var(--transition);
   min-width: 22rem;
 }
-.recent-update .updates:hover{
+
+.recent-update .updates:hover {
   box-shadow: none;
 }
-.recent-update .updates .update{
+
+.recent-update .updates .update {
   display: grid;
-  grid-template-columns: 2.6rem auto ;
-  gap:1rem;
+  grid-template-columns: 2.6rem auto;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
-.recent-update .updates .update .profile-photo{
+
+.recent-update .updates .update .profile-photo {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
   overflow: hidden;
 }
+
 /* sales-analytics */
-.sales-analytics .sales{
+.sales-analytics .sales {
   background: var(--color-white);
   border-radius: var(--card-border-radius);
 }
-.sales-analytics img{
+
+.sales-analytics img {
   width: 3rem;
 }
-.sales-analytics .header{
-   display: flex;
+
+.sales-analytics .header {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--card-padding);
   padding-bottom: 12px;
 }
-.sales-analytics .header a{
+
+.sales-analytics .header a {
   display: flex;
   align-items: center;
   color: var(--color-primary);
 }
-.sales-analytics .sales .sale{
+
+.sales-analytics .sales .sale {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: var(--card-padding);
-  border-bottom:1px solid var(--color-light) ;
+  border-bottom: 1px solid var(--color-light);
 }
-.sales-analytics .sales .sale:last-child{
+
+.sales-analytics .sales .sale:last-child {
   border: none;
 }
-.sales-analytics .sales .sale:hover{
+
+.sales-analytics .sales .sale:hover {
   background: var(--color-light);
 }
 
 
 
 @media screen and (max-width: 1024px) {
-  .updates{
+  .updates {
     display: none;
   }
+
   .sales-analytics {
-  margin-top: 3rem;
+    margin-top: 3rem;
   }
-  .sales-analytics .sales{
+
+  .sales-analytics .sales {
     width: 66vw;
   }
-  .header{
+
+  .header {
     display: none;
   }
-  .sales-analytics{
+
+  .sales-analytics {
     width: 66vw;
     left: 50%;
     margin: 2rem 0 0 0;
   }
 }
+
 @media screen and (max-width: 600px) {
-  .updates{
+  .updates {
     display: none;
   }
+
   .sales-analytics {
-  margin-top: 3rem;
+    margin-top: 3rem;
   }
-  .sales-analytics .sales{
+
+  .sales-analytics .sales {
     width: 120%;
     margin: 0;
   }
-  .header{
+
+  .header {
     display: none;
   }
-  .sales-analytics{
+
+  .sales-analytics {
     width: 100%;
     left: 50%;
     margin: 2rem 0 0 0;

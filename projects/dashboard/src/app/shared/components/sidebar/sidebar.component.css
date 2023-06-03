@@ -48,8 +48,7 @@ h3{
   background: var(--color-primary);
 }
 .sidebar a.active span{
-  color: var(--color-primary);
-  margin-left: calc(1rem -3px);
+   margin-left: calc(1rem -3px);
 }
 .sidebar a:hover{
   color: var(--color-primary);

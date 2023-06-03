@@ -1,79 +1,94 @@
-<div class="container-xxl containerr"  >
+<div class="container-xxl containerr">
   <div class="forms">
-      <div class="form-content">
+    <div class="form-content">
 
       <div class="signup-form">
         <div class="title">Let’s create your free name project Business account</div>
-        <form  [formGroup]="BusinessAccountForm" (ngSubmit)="OnBusinessAccount(BusinessAccountForm)">
+        <form [formGroup]="BusinessAccountForm" (ngSubmit)="OnBusinessAccount(BusinessAccountForm)">
           <div class="input-boxes">
             <div class="input-box">
               <i class="fas fa-user"></i>
               <input formControlName="UserName" type="/text" placeholder="Enter your name" required>
-              <small  *ngIf="BusinessAccountForm.controls['UserName'].dirty && BusinessAccountForm.hasError('required','UserName')" class="text-danger massgeRequred mb-3" style="font-size: 700;">User Name  is required</small>
+              <small
+                *ngIf="BusinessAccountForm.controls['UserName'].dirty && BusinessAccountForm.hasError('required','UserName')"
+                class="text-danger massgeRequred mb-3" style="font-size: 700;">User Name is required</small>
 
             </div>
             <div class="input-box">
               <i class="fas fa-envelope"></i>
-              <input formControlName="Email" type="email" placeholder="Enter the email you'd like to use for your business account" required>
-              <small  *ngIf="BusinessAccountForm.controls['Email'].dirty && BusinessAccountForm.hasError('required','Email')" class="text-danger massgeRequred mb-3" style="font-size: 700;"> Email is required</small>
+              <input formControlName="Email" type="email"
+                placeholder="Enter the email you'd like to use for your business account" required>
+              <small
+                *ngIf="BusinessAccountForm.controls['Email'].dirty && BusinessAccountForm.hasError('required','Email')"
+                class="text-danger massgeRequred mb-3" style="font-size: 700;"> Email is required</small>
 
             </div>
             <div class="input-box">
               <i class="fas fa-lock"></i>
               <input formControlName="Password" type="password" placeholder="Enter your password" required>
-              <small *ngIf="BusinessAccountForm.controls['Password'].dirty && BusinessAccountForm.hasError('required','Password')" class="text-danger massgeRequred" style="font-size: 700;">Password is required</small>
+              <small
+                *ngIf="BusinessAccountForm.controls['Password'].dirty && BusinessAccountForm.hasError('required','Password')"
+                class="text-danger massgeRequred" style="font-size: 700;">Password is required</small>
 
             </div>
             <div class="input-box">
               <i class="fas fa-lock"></i>
-              <input formControlName="ComfirmPassword" type="password" placeholder="Enter your Comfirm Password" required>
-              <small *ngIf="BusinessAccountForm.controls['Comfirm Password'].dirty && BusinessAccountForm.hasError('required','passwordConfirm')" class="text-danger massgeRequred" style="font-size: 700;">Comfirm Password is required</small>
-
+              <input formControlName="ComfirmPassword" type="password" placeholder="Enter your Comfirm Password"
+                required>
+              <small
+                *ngIf="BusinessAccountForm.controls['ComfirmPassword'].dirty && BusinessAccountForm.hasError('required','passwordConfirm')"
+                class="text-danger massgeRequred" style="font-size: 700;">Comfirm Password is required</small>
+              <small
+                *ngIf="BusinessAccountForm.controls['ComfirmPassword'].value !== BusinessAccountForm.controls['Password'].value && BusinessAccountForm.controls['ComfirmPassword'].touched"
+                class="mb-1 text-danger">
+                Passwords do not match.
+              </small>
             </div>
             <div class="button input-box">
               <input type="submit" value="Register">
             </div>
             <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
           </div>
-    </form>
-  </div>
-  </div>
-  </div>
-  <div class="inner"></div>
-  <div class="cover">
-  <div class="top"  >
-    <div class="row">
-      <h3 class="title">benefits of working with us</h3>
-    </div>
-  </div>
-  <div class="front">
-    <div class="text">
-
-
-      <div class="info">
-        <ul>
-          <li>
-            <i class='bx bx-desktop'></i>
-            <h3 class="infotext">Display your products</h3>
-          </li>
-          <li style="width: 92%;">
-            <i class='bx bx-group'></i>
-            <h3 class="infotext">Get many customers from all over the world</h3></li>
-          <li>
-            <i class='bx bx-money-withdraw'></i>
-            <h3 class="infotext">Simple Commission for Site
-          </h3>
-          </li>
-          <li>
-            <i class='bx bxs-shield-alt-2'></i>
-            <h3 class="infotext">The site is highly secure
-            </h3>
-          </li>
-
-        </ul>
+        </form>
       </div>
     </div>
   </div>
+  <div class="inner"></div>
+  <div class="cover">
+    <div class="top">
+      <div class="row">
+        <h3 class="title">benefits of working with us</h3>
+      </div>
+    </div>
+    <div class="front">
+      <div class="text">
 
- </div>
+
+        <div class="info">
+          <ul>
+            <li>
+              <i class='bx bx-desktop'></i>
+              <h3 class="infotext">Display your products</h3>
+            </li>
+            <li style="width: 92%;">
+              <i class='bx bx-group'></i>
+              <h3 class="infotext">Get many customers from all over the world</h3>
+            </li>
+            <li>
+              <i class='bx bx-money-withdraw'></i>
+              <h3 class="infotext">Simple Commission for Site
+              </h3>
+            </li>
+            <li>
+              <i class='bx bxs-shield-alt-2'></i>
+              <h3 class="infotext">The site is highly secure
+              </h3>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>

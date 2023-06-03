@@ -1,5 +1,5 @@
 import { Component, ElementRef, Inject, Input, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
  import { SubProducts } from 'projects/dashboard/src/app/Classes/SubProducts';
@@ -156,8 +156,8 @@ ngOnInit():void {
 }
     EditProductForm() {
       this.EditProductsForm = this.fb.group({
-        Serial_Id: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
-        NameProducts: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
+        Serial_Id: [null, [Validators.required, Validators.pattern('[a-zA-Z0-9]{1,10}')]],
+        NameProducts: [null, [Validators.required, Validators.pattern('[a-zA-Z0-9]{1,10}')]],
         PriceProducts: [null, Validators.required],
 
         newprice: [null],
@@ -177,6 +177,8 @@ ngOnInit():void {
       });
     }
     OnSubmit(){
+      debugger
+         debugger
       if (this.loggedInUser && this.loggedInUser.fullUser) {
         debugger
         const username = this.loggedInUser.fullUser.userName;
@@ -204,6 +206,12 @@ ngOnInit():void {
               fd.append('Brands_Id', this._Brands.value);
               fd.append('productId', this._Brands.value);
               fd.append('Car_Id', this._Cars.value);
+              const activeValue = this._isActive.value || false;
+              const specialProductValue = this._isSpecialProduct.value || false;
+
+              // Store true or false in FormData based on the values
+              fd.append('isActive', activeValue ? 'true' : 'false');
+              fd.append('isSpecialProduct', specialProductValue ? 'true' : 'false');
               fd.append('Category_Id', this._Categorise.value);
               fd.append('userUpdate', this.loggedInUser.fullUser.userName);           // Show a warning message before updating the brand
 
@@ -234,7 +242,8 @@ ngOnInit():void {
 
             }
           });
-      }
+
+    }
 
       }
       calculateNewPrice() {
@@ -278,8 +287,11 @@ ngOnInit():void {
         return this.EditProductsForm.controls['Offer'] as FormGroup;
       }
       get _isActive(){
-            return this.EditProductsForm.controls['Active'] as FormGroup;
+            return this.EditProductsForm.controls['isActive'] as FormControl;
 
+      }
+      get _isSpecialProduct() {
+        return this.EditProductsForm.controls['isSpecialProduct']as FormControl;
       }
       MapProducts():void{
         this.product.title = this._NameProducts.value;
@@ -292,6 +304,8 @@ ngOnInit():void {
         this.product.productId = this.Products.value;
         this.product.categoryId = this._Categorise.value;
         this.product.isActive=this._isActive.value;
+        this.product.isSpecialProduct=this._isSpecialProduct.value;
+
         if (this.new_priceProducts && this._offers) {
           this.product.new_price = this.new_priceProducts.value;
           this.product.offers = this._offers.value;

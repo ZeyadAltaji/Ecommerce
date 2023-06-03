@@ -1,0 +1,46 @@
+<div class="all">
+  <div>
+    <div>
+      <div class="container">
+        <h3 class="title">Shop By {{ title }}</h3>
+        <div class="products-container">
+          <div *ngFor="let Brand of brandsService.listBrands" class="product">
+            <a href="View-All-Products/brand/{{[Brand.id]}}">
+              <img src="http://localhost:4203/assets/image/Brands/{{[Brand.public_id]}}" alt="">
+              <h3>{{ Brand.name }}</h3>
+            </a>
+          </div>
+        </div>
+        <div class="products-container">
+          <div *ngFor="let  Car of carService.ListCars" class="product">
+            <a href="View-All-Products/car/{{[Car.id]}}">
+              <img src="http://localhost:4203/assets/image/Cars/{{[Car.public_id]}}" alt="">
+              <h3>{{ Car.name }}</h3>
+            </a>
+          </div>
+        </div>
+        <div class="products-container">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div *ngFor="let porducts of productsService.listProducts">
+              <div class="col">
+                <div class="card h-100">
+                  <img src="http://localhost:4203/assets/image/SubProduct/{{porducts.isPrimaryImage}}"
+                    class="img-fluid rounded-start image-s" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ porducts.description }}</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                      additional content. This content is a little bit longer.</p>
+                    <div class="text-end">
+                      <a href="/Products/Products-Detail/{{porducts.id}}" class="btn btn-danger ">See Details</a>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

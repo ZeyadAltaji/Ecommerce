@@ -87,14 +87,14 @@ hr{
 }
 .product_name {
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 700;
   margin-top: 20px;
 }
 
 .product_price {
   display: inline-block;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 700;
   margin-top: 2rem;
 }
 
@@ -264,4 +264,3 @@ width: 100%;
 
 
 
- 

@@ -32,7 +32,7 @@ hr{
   border-right:1px solid gray ;
 }
 .right{
-  border-right:1px solid gray ;
+  text-align: initial;
 }
 .hr{
   width: auto;

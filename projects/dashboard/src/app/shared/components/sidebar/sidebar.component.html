@@ -18,7 +18,7 @@
     <a [routerLink]="['/Messages-list']" [routerLinkActive]="'active'">
       <span class="material-icons"> mail_outline</span>
       <h3>Messages</h3>
-      <span class="message-count">26</span>
+      <span class="message-count">{{ unansweredCount }}</span>
     </a>
     <a [routerLink]="['/category']" [routerLinkActive]="'active'">
       <span class="material-icons">list</span>
@@ -63,10 +63,10 @@
       <span class="material-icons">add</span>
       <h3>Add Products</h3>
     </a>
-    <a [routerLink]="['#']" [routerLinkActive]="'active'">
+    <!-- <a [routerLink]="['#']" [routerLinkActive]="'active'">
       <span class="material-icons">delete</span>
       <h3>Trash</h3>
-    </a>
+    </a> -->
     <a  (click)="logout()" [routerLinkActive]="'active'">
       <span class="material-icons">logout</span>
       <h3>Logout</h3>

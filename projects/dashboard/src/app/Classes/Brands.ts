@@ -9,4 +9,6 @@ export class Brands implements IBrands
   Admin_Id!:number;
   userCreate!:string;
   userUpdate!:string;
+  isActive!: boolean;
+
 }

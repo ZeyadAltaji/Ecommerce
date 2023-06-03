@@ -2,97 +2,102 @@
   <div class="">
     <div class="row  justify-content-evenly">
       <div class="col-md-4 mb-3">
-          <div class="sup-porfile">
-            <div class="sub-profile">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex flex-column align-items-center text-center">
-                    <img *ngIf="user?.public_id" src="http://localhost:4203/assets/image/Users/{{ user?.public_id }}" alt="User" class="rounded-circle" width="100">
-                    <img *ngIf="!user?.public_id" src="../../../../assets/profile/person-4.png" alt="Admin" class="rounded-circle" width="100">
-                    <div>
-                      <h4>{{ user?.userName }}</h4>
-                    </div>
+        <div class="sup-porfile">
+          <div class="sub-profile">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                  <img *ngIf="user?.public_id" src="http://localhost:4203/assets/image/Users/{{ user?.public_id }}"
+                    alt="User" class="rounded-circle" width="100">
+                  <img *ngIf="!user?.public_id" src="../../../../assets/profile/person-4.png" alt="Admin"
+                    class="rounded-circle" width="100">
+                  <div>
+                    <h4>{{ user?.userName }}</h4>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
       </div>
       <div class="col-md-8">
-          <div class="sup-porfile">
-            <div class="sub-profile">
-              <div class="card mb-3">
-                <div class="card-body">
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <h6 class="mb-0">Full Name</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                          {{  user?.frist_Name }}{{loggedInUser.last_Name}}
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <h6 class="mb-0">Email</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                          <a href="#" >{{ user?.email }}</a>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <h6 class="mb-0">Password</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary d-flex justify-content-between" >
-                          ********
-                          <div class="form-check ms-2" style="text-align: center;">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                              show
-                            </label>
-                          </div>
-
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <h6 class="mb-0">Phone</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                          {{ user?.phone1 }}
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <h6 class="mb-0">Mobile</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                          {{ user?.phone2 }}
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <h6 class="mb-0">Address</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                          {{ user?.address }}
-                        </div>
-                      </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-12">
-                         <a class="btn btn-info" [routerLink]="['/Edit-My-profile',user?.id]">Edit</a>
-                      </div>
+        <div class="sup-porfile">
+          <div class="sub-profile">
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Full Name</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{ user?.frist_Name }}{{loggedInUser.last_Name}}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Email</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <a href="#">{{ user?.email }}</a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Password</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary d-flex justify-content-between">
+                    ********
+                    <div class="form-check ms-2" style="text-align: center;">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        show
+                      </label>
                     </div>
+
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Phone</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{ user?.phone1 }}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Mobile</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{ user?.phone2 }}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Address</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{ user?.address }}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-auto me-auto">
+                    <a class="btn btn-info me-2" [routerLink]="['/Edit-My-profile', user?.id]">Edit</a>
+                  </div>
+                  <div class="col-auto">
+                    <button class="btn btn-danger" (click)="DeleteMehtods(user?.id??0)">Delete</button>
+                  </div>
                 </div>
               </div>
+            </div>
           </div>
-          </div>
+        </div>
       </div>
 
     </div>

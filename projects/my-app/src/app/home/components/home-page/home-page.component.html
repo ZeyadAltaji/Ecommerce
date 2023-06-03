@@ -215,13 +215,36 @@
    <div class="container-fluid">
     <div class="container-xxl main">
          <owl-carousel-o [options]="SpatialsOffer">
-          <ng-template carouselSlide>
+          <ng-template carouselSlide *ngFor="let porducts of productsService.listProducts">
+            <div class="col">
+              <div class="card effect-1 mb-3" style="max-width: 540px;">
+                <span class="notify-badge badge-primary"></span>
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="http://localhost:4203/assets/image/SubProduct/{{porducts.isPrimaryImage}}" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ porducts.title }}</h5>
+                      <p class="card-text">{{ porducts.description }}</p>
+                       <div class="text-end">
+                        <a href="/Products/Products-Detail/{{porducts.id}}" class="btn btn-danger ">See Details</a>
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <!-- <ng-template carouselSlide>
             <div class="col">
               <div class="card effect-1 mb-3" style="max-width: 540px;">
                    <span class="notify-badge badge-primary"></span>
                  <div class="row g-0">
                   <div class="col-md-4">
-                    <img src="../../../../assets/cars1.jpg" class="img-fluid rounded-start" alt="...">
+                    <img src="..." class="img-fluid rounded-start" alt="...">
                   </div>
                   <div class="col-md-8">
 
@@ -266,33 +289,7 @@
                 </div>
               </div>
             </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="col">
-              <div class="card effect-1 mb-3" style="max-width: 540px;">
-                   <span class="notify-badge badge-primary"></span>
-                 <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="..." class="img-fluid rounded-start" alt="...">
-                  </div>
-                  <div class="col-md-8">
-
-                    <div class="card-body">
-                      <h5 class="card-title">Card title 3</h5>
-                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                  </div>
-                  <div class="card-footer text-muted">
-                      <div class="due-date">
-                        2 days ago
-
-                      </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ng-template>
+          </ng-template> -->
           </owl-carousel-o>
 
 

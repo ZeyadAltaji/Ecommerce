@@ -1,30 +1,33 @@
 <main class="profile">
-  <form class="row  justify-content-evenly" (ngSubmit)="OnSubmit()"   [formGroup]="EditUserForm">
-  <div class="col-md-4 mb-3">
-    <div class="sup-porfile">
-      <div class="sub-profile">
-        <div class="card">
-          <div class="card-body">
-            <div class="d-flex flex-column align-items-center text-center">
-              <img *ngIf="user?.public_id" src="http://localhost:4203/assets/image/Users/{{ user?.public_id }}" alt="User" class="rounded-circle" width="100">
-              <img *ngIf="!user?.public_id" src="../../../../assets/profile/person-4.png" alt="Admin" class="rounded-circle" width="100">
-              <div class="mb-3">
-                <label for="formFileMultiple" class="form-label" >Change Phote</label>
-                <input class="form-control" id="Image_UserUrl"  #imageInput (change)="HandleFile($event)" type="file" id="formFileMultiple" multiple>
+  <form class="row  justify-content-evenly" (ngSubmit)="OnSubmit()" [formGroup]="EditUserForm">
+    <div class="col-md-4 mb-3">
+      <div class="sup-porfile">
+        <div class="sub-profile">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex flex-column align-items-center text-center">
+                <img *ngIf="user?.public_id" src="http://localhost:4203/assets/image/Users/{{ user?.public_id }}"
+                  alt="User" class="rounded-circle" width="100">
+                <img *ngIf="!user?.public_id" src="../../../../assets/profile/person-4.png" alt="Admin"
+                  class="rounded-circle" width="100">
+                <div class="mb-3">
+                  <label for="formFileMultiple" class="form-label">Change Phote</label>
+                  <input class="form-control" id="Image_UserUrl" #imageInput (change)="HandleFile($event)" type="file"
+                    id="formFileMultiple" multiple>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-</div>
-<div class="col-md-8">
-    <div class="sup-porfile">
-      <div class="sub-profile">
-        <div class="card mb-3">
-          <div class="card-body">
+    <div class="col-md-8">
+      <div class="sup-porfile">
+        <div class="sub-profile">
+          <div class="card mb-3">
+            <div class="card-body">
               <div class="row">
-                <div   class="row mb-3">
+                <div class="row mb-3">
                   <div class="col-sm-3">
                     <h6 class="mb-0">ID</h6>
                   </div>
@@ -32,30 +35,44 @@
                     <input type="text" class="form-control" [value]="user.id" disabled>
                   </div>
                 </div>
-                <div   class="row mb-3">
+                <div class="row mb-3">
                   <div class="col-sm-3">
                     <h6 class="mb-0">User Name</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
                     <input type="text" class="form-control" [value]="user.userName" formControlName="UserName">
+                    <div *ngIf="EditUserForm.controls['UserName'].invalid && EditUserForm.controls['UserName'].touched"
+                      class="mb-1 text-danger">
+                      UserName is required.
+                    </div>
                   </div>
 
                 </div>
-                <div   class="row mb-3">
+                <div class="row mb-3">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Frist Name</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
                     <input type="text" class="form-control" [value]="user.frist_Name" formControlName="FirstName">
+                    <div
+                      *ngIf="EditUserForm.controls['FirstName'].invalid && EditUserForm.controls['FirstName'].touched"
+                      class="mb-1 text-danger">
+                      First Name is required.
+                    </div>
                   </div>
 
                 </div>
-                <div   class="row mb-3">
+                <div class="row mb-3">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Last Name</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
                     <input type="text" class="form-control" [value]="user.last_Name" formControlName="last_Name">
+                    <div
+                      *ngIf="EditUserForm.controls['last_Name'].invalid && EditUserForm.controls['last_Name'].touched"
+                      class="mb-1 text-danger">
+                      last Name is required.
+                    </div>
                   </div>
 
                 </div>
@@ -64,7 +81,11 @@
                     <h6 class="mb-0">Email</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <input type="text" class="form-control" [value]="user.email" formControlName="Email" >
+                    <input type="text" class="form-control" [value]="user.email" formControlName="Email">
+                    <div *ngIf="EditUserForm.controls['Email'].invalid && EditUserForm.controls['Email'].touched"
+                      class="mb-1 text-danger">
+                      Email is required.
+                    </div>
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -74,10 +95,12 @@
                   <div class="col-sm-9 text-secondary d-flex">
                     <input type="password" class="form-control">
                     <div class="form-check ms-2" style="margin: 5px;">
-                      <input class="form-check-input" type="checkbox"  id="defaultCheck1" formControlName="Password">
-                      <label class="form-check-label" for="defaultCheck1">
-                        Show
-                      </label>
+                      <input class="form-check-input" type="checkbox" id="defaultCheck1" formControlName="Password">
+                      <div
+                        *ngIf="EditUserForm.controls['Password'].invalid && EditUserForm.controls['Password'].touched"
+                        class="mb-1 text-danger">
+                        Password is required.
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -88,10 +111,18 @@
                   <div class="col-sm-9 text-secondary d-flex">
                     <input type="password" class="form-control">
                     <div class="form-check ms-2" style="margin: 5px;">
-                      <input class="form-check-input" type="checkbox" id="defaultCheck1" formControlName="ConfirmPassword">
-                      <label class="form-check-label" for="defaultCheck1">
-                        Show
-                      </label>
+                      <input class="form-check-input" type="checkbox" id="defaultCheck1"
+                        formControlName="ConfirmPassword">
+                      <div
+                        *ngIf="EditUserForm.controls['ConfirmPassword'].invalid && EditUserForm.controls['ConfirmPassword'].touched"
+                        class="mb-1 text-danger">
+                        Confirm Password is required.
+                      </div>
+                      <div
+                        *ngIf="EditUserForm.controls['ConfirmPassword'].value !== EditUserForm.controls['Password'].value && EditUserForm.controls['ConfirmPassword'].touched"
+                        class="mb-1 text-danger">
+                        Passwords do not match.
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -100,7 +131,11 @@
                     <h6 class="mb-0">Phone</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <input type="text" class="form-control" [value]="user.phone1"  formControlName="Mobile1">
+                    <input type="text" class="form-control" [value]="user.phone1" formControlName="Mobile1">
+                    <div *ngIf="EditUserForm.controls['Mobile1'].invalid && EditUserForm.controls['Mobile1'].touched"
+                      class="mb-1 text-danger">
+                      Mobile1 is required.
+                    </div>
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -109,6 +144,10 @@
                   </div>
                   <div class="col-sm-9 text-secondary">
                     <input type="text" class="form-control" [value]="user.phone2" formControlName="Mobile2">
+                    <div *ngIf="EditUserForm.controls['Mobile2'].invalid && EditUserForm.controls['Mobile2'].touched"
+                      class="mb-1 text-danger">
+                      Mobile2 is required.
+                    </div>
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -117,20 +156,25 @@
                   </div>
                   <div class="col-sm-9 text-secondary">
                     <input type="text" class="form-control" [value]="user.address" formControlName="Address">
+                    <div *ngIf="EditUserForm.controls['Address'].invalid && EditUserForm.controls['Address'].touched"
+                      class="mb-1 text-danger">
+                      Address is required.
+                    </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9 text-secondary d-grid gap-2 d-md-block">
-                    <input type="submit" class="btn btn-primary px-4 ms-2" style="margin-right: 5px;" value="Save Changes">
+                    <input type="submit" class="btn btn-primary px-4 ms-2" style="margin-right: 5px;"
+                      value="Save Changes">
                     <input type="button" class="btn btn-outline-danger" [routerLink]="['/My-profile']" value="cancel">
                   </div>
                 </div>
-             </div>
+              </div>
+            </div>
           </div>
-       </div>
+        </div>
       </div>
     </div>
-</div>
- </form>
+  </form>
 </main>

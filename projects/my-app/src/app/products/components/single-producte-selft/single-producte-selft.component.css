@@ -67,12 +67,17 @@
 }
 .new-price {
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 700;
+  color: black
+}
+.ifold-price {
+  font-size: 13px;
+  font-weight: 700;
   color: red
 }
 .old-price {
-  font-size: 11px;
-  font-weight: bold;
+  font-size: 15px;
+  font-weight: 700;
   color: grey
 }
 .rating-star {
@@ -101,7 +106,10 @@
   border-radius: 7px;
   text-decoration: none;
 }
-
+.strike-through {
+  text-decoration: line-through;
+  color: red; /* Optional: Customize the color of the strike-through text */
+}
 .voutchers {
   background-color: #fff;
   border: none;
@@ -132,20 +140,27 @@
 }
 
 .voutcher-right {
+  display: flex; /* Add this property */
+  align-items: center; /* Vertically center the items */
+  justify-content: center; /* Horizontally center the items */
   width: 40%;
   background-color: crimson;
-  color: #fff
+  color: #fff;
 }
 
 .discount-percent {
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 700;
   position: relative;
-  top: 5px
+  top: 4px;
+  left: -8px;
+
 }
 
 .off {
   font-size: 14px;
   position: relative;
-  bottom: 5px
+  bottom: 0;
+  font-weight: 700;
+
 }

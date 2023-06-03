@@ -44,6 +44,8 @@ export class CategoryEditComponent implements OnInit {
     });
   }
   OnSubmit(){
+    if (this.EditCategoryForm.valid) {
+
     if (this.loggedInUser && this.loggedInUser.fullUser) {
        const username = this.loggedInUser.fullUser.userName;
       this.MapCategorise(username);
@@ -69,7 +71,7 @@ export class CategoryEditComponent implements OnInit {
           );
         }
       });
-
+    }
     }
   }
   EditCategoriseForm(){

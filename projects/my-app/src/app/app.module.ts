@@ -14,12 +14,14 @@ import { PaymentPageComponent } from './Payment-page/Payment-page.component';
 import { OrderPageComponent } from './OrderPage/OrderPage.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShopByComponent } from './products/components/ShopBy/ShopBy.component';
 
 @NgModule({
   declarations: [
     AppComponent,
       PaymentPageComponent,
       OrderPageComponent,
+      ShopByComponent
     ],
   imports: [
     BrowserModule,

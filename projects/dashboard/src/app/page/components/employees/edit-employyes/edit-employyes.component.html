@@ -14,14 +14,26 @@
           <div class="mb-3">
             <label for="UserName" class="form-label">User Name</label>
             <input type="text" class="form-control" id="UserName" aria-describedby="UserName" [value]="User.userName"formControlName="UserName">
+            <div *ngIf="EditEmployyesForm.controls['UserName'].invalid && EditEmployyesForm.controls['UserName'].touched"
+            class="mb-1 text-danger">
+            UserName is required.
+          </div>
           </div>
             <div class="mb-3">
               <label for="FirstName" class="form-label">First Name</label>
               <input type="text" class="form-control" id="FirstName" aria-describedby="FirstName" [value]="User.frist_Name" formControlName="FirstName">
+              <div *ngIf="EditEmployyesForm.controls['FirstName'].invalid && EditEmployyesForm.controls['FirstName'].touched"
+            class="mb-1 text-danger">
+            First Name is required.
+          </div>
             </div>
             <div class="mb-3">
               <label for="lastName" class="form-label">last Name</label>
               <input type="text" class="form-control" id="lastName" formControlName="last_Name" [value]="User.last_Name">
+              <div *ngIf="EditEmployyesForm.controls['last_Name'].invalid && EditEmployyesForm.controls['last_Name'].touched"
+              class="mb-1 text-danger">
+              last Name is required.
+            </div>
             </div>
             <div class="mb-3">
               <label for="FirstName" class="form-label">Employyes role</label>
@@ -30,11 +42,21 @@
                  <option value="1">Manager</option>
                 <option value="2">Seller</option>
                 <option value="3">Customer</option>
+                <option value="4">Delivery</option>
+
               </select>
+              <div *ngIf="EditEmployyesForm.controls['selectRole'].invalid && EditEmployyesForm.controls['selectRole'].touched"
+              class="mb-1 text-danger">
+              User role is required.
+            </div>
             </div>
             <div class="mb-3">
               <label for="Email" class="form-label">photo</label>
               <input type="file" class="form-control" (change)="HandleFile($event)" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03"  #imageInput aria-label="Upload" formControlName="image_userUrl">
+              <div *ngIf="EditEmployyesForm.controls['image_userUrl'].invalid && EditEmployyesForm.controls['image_userUrl'].touched"
+              class="mb-1 text-danger">
+              photo is required.
+            </div>
             </div>
             <div class="mb-3">
               <div class="row">
@@ -50,26 +72,58 @@
           <div class="mb-3">
             <label for="Email" class="form-label">Email</label>
             <input type="email" class="form-control" id="Email" aria-describedby="Email" formControlName="Email"  [value]="User.email">
+            <div *ngIf="EditEmployyesForm.controls['Email'].invalid && EditEmployyesForm.controls['Email'].touched"
+            class="mb-1 text-danger">
+            Email is required.
+          </div>
           </div>
           <div class="mb-3">
             <label for="Password" class="form-label">Password</label>
             <input type="password" class="form-control" id="Password" formControlName="Password">
+            <div *ngIf="EditEmployyesForm.controls['Password'].invalid && EditEmployyesForm.controls['Password'].touched" class="mb-1 text-danger">
+              Password is required.
+            </div>
           </div>
           <div class="mb-3">
             <label for="ConfirmPassword" class="form-label">Confirm Password</label>
             <input type="password" class="form-control" id="ConfirmPassword" formControlName="ConfirmPassword">
+            <div *ngIf="EditEmployyesForm.controls['ConfirmPassword'].invalid && EditEmployyesForm.controls['ConfirmPassword'].touched" class="mb-1 text-danger">
+              Confirm Password is required.
+            </div>
+            <div *ngIf="EditEmployyesForm.controls['ConfirmPassword'].value !== EditEmployyesForm.controls['Password'].value && EditEmployyesForm.controls['ConfirmPassword'].touched" class="mb-1 text-danger">
+              Passwords do not match.
+            </div>
           </div>
           <div class="mb-3">
             <label for="Address" class="form-label">Address</label>
             <input type="text" class="form-control" id="Address" formControlName="Address" [value]="User.address">
+            <div *ngIf="EditEmployyesForm.controls['Address'].invalid && EditEmployyesForm.controls['Address'].touched"
+            class="mb-1 text-danger">
+            Address is required.
+          </div>
           </div>
           <div class="mb-3">
             <label for="Mobile1" class="form-label">Mobile 1</label>
             <input type="text" class="form-control" id="Mobile1" formControlName="Mobile1" [value]="User.phone1">
+            <div *ngIf="EditEmployyesForm.controls['Mobile1'].invalid && EditEmployyesForm.controls['Mobile1'].touched"
+            class="mb-1 text-danger">
+            Mobile1 is required.
+          </div>
           </div>
           <div class="mb-3">
             <label for="Mobile2" class="form-label">Mobile 2</label>
             <input type="text" class="form-control" id="Mobile2" formControlName="Mobile2" [value]="User.phone2">
+            <div *ngIf="EditEmployyesForm.controls['Mobile2'].invalid && EditEmployyesForm.controls['Mobile2'].touched"
+            class="mb-1 text-danger">
+            Mobile2 is required.
+          </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-check-label me-5" for="defaultCheck1">
+              Active
+            </label>
+            <input class="form-check-input" type="checkbox" formControlName="isActive" id="defaultCheck1">
+
           </div>
 
       </div>

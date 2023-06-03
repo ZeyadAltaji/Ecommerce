@@ -84,9 +84,18 @@
   display: flex; align-items: center;
   column-gap: 2rem;
   }
+  .top-header .cart .box .text{
+    display: grid;
+  }
   .top-header .cart .box .text h3{
   font-size: 1rem;
+  font-weight: 700;
   }
+  .top-header .cart .box .text span{
+    font-size: 1rem;
+    margin: 3px;
+    font-weight: 700;
+    }
   .top-header .cart .box .bx{
 
   font-size: 24px;

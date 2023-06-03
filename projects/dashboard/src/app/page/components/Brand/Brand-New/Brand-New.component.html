@@ -15,8 +15,18 @@
             <div class="mb-3">
               <label for="NameBrand" class="form-label">Name Brand</label>
               <input type="text" class="form-control" id="NameBrand" formControlName="NameBrand">
+              <div *ngIf="NewBrandForm.controls['NameBrand'].invalid && NewBrandForm.controls['NameBrand'].touched"
+            class="mb-1 text-danger">
+            Name Brand is required.
+          </div>
             </div>
-
+            <div class="mb-3">
+              <label class="form-check-label me-5" for="defaultCheck1">
+                Active
+              </label>
+              <input class="form-check-input" type="checkbox" formControlName="isActive" id="defaultCheck1">
+  
+            </div>
 
         </div>
         <div class="col-6 right">
@@ -24,7 +34,10 @@
             <label for="NameBrand" class="form-label">Image Brand</label>
 
             <input type="file" class="form-control" id="inputGroupFile03" (change)="HandleFile($event)" aria-describedby="inputGroupFileAddon03" aria-label="Upload" #imageInput>
-
+            <div *ngIf="NewBrandForm.controls['Image'].invalid && NewBrandForm.controls['Image'].touched"
+            class="mb-1 text-danger">
+            Image Brand is required.
+          </div>
           </div>
         <div class="mb-3">
           <div class="row">

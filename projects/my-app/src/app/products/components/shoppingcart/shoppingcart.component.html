@@ -1,117 +1,123 @@
 <section class="section-content pb-5">
   <div class="container">
 
-  <div class="row p-5">
+    <div class="row p-5">
       <main class="col-md-9">
-  <div class="card">
-    <table class="table table-borderless table-shopping-cart">
-      <thead class="text-muted">
-        <tr class="small text-uppercase">
-          <th scope="col">Product</th>
-          <th scope="col" width="120">Quantity</th>
-          <th scope="col" width="120">Price</th>
-          <th scope="col" class="text-right" width="200">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of cartItems">
-          <td class="align-middle">
-            <figure class="itemside">
-              <div class="aside"><img src="http://localhost:4203/assets/image/SubProduct/{{ item.isPrimaryImage }}" class="img-sm"></div>
-              <figcaption class="info">
-                <a href="#" class="title text-dark">{{ item.name }}</a>
-              </figcaption>
-            </figure>
-          </td>
-          <td class="align-middle">
-            <div class="counter">
-              <div class="btn-cont btn-increment" (click)="incrementCount(item)">+</div>
-              <input type="number" class="count-input" [(ngModel)]="item.count" (input)="validateCount(item)" min="1" [max]="item.quantity">
-              <div class="btn-cont btn-decrement" (click)="decrementCount(item)">-</div>
+        <div class="card">
+          <table class="table table-borderless table-shopping-cart">
+            <thead class="text-muted">
+              <tr class="small text-uppercase">
+                <th scope="col">Product</th>
+                <th scope="col" width="120">Quantity</th>
+                <th scope="col" width="120">Price</th>
+                <th scope="col" class="text-right" width="200">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of cartItems">
+                <td class="align-middle">
+                  <figure class="itemside">
+                    <div class="aside"><img
+                        src="http://localhost:4203/assets/image/SubProduct/{{ item.isPrimaryImage }}" class="img-sm">
+                    </div>
+                    <figcaption class="info">
+                      <a href="#" class="title text-dark">{{ item.title }}</a>
+                    </figcaption>
+                  </figure>
+                </td>
+                <td class="align-middle">
+                  <div class="counter">
+                    <div class="btn-cont btn-increment" (click)="incrementCount(item)">+</div>
+                    <input type="number" class="count-input" [(ngModel)]="item.count"
+                      (input)="validateCount(item.count)" min="1" [max]="item.quantity">
+                    <div class="btn-cont btn-decrement" (click)="decrementCount(item)">-</div>
+                  </div>
+                </td>
+                <td class="align-middle">
+                  <div class="price-wrap">
+                    <var class="price" *ngIf="item.new_price">{{ calculateItemPrice(item) }}</var>
+                    <var class="price" *ngIf="!item.new_price">{{ calculateItemPrice(item) }}</var>
+                    <small class="text-muted" *ngIf="!item.new_price">{{ calculateItemPrice(item) }} each</small>
 
+                  </div>
+                </td>
+                <td class="text-right align-middle">
+                  <a class="btn-remove btn btn-light" (click)="removeFromCart(item.id)">Remove</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <div class="card-body border-top btn-pay ">
+            <a href="#" class="btn btn-light"> <i class="bx bx-chevron-left"></i> Continue shopping </a>
+            <div>
+              <span *ngIf="cartItems.length > 0 && isLoggedIn">
+                <a (click)="gotoPayment()" routerLinkActive="router-link-active" class="btn btn-primary float-md-right">
+                  Make Purchase <i class="bx bx-chevron-right"></i> </a>
+              </span>
+              <span *ngIf="cartItems.length === 0 || !isLoggedIn">
+                <span class="popover-container" (mouseenter)="showPopover()" (mouseleave)="hidePopover()">
+                  <button class="btn btn-primary float-md-right" type="button"
+                    [ngClass]="{'disabled': cartItems.length === 0 || !isLoggedIn}"
+                    [disabled]="cartItems.length === 0 || !isLoggedIn"> Make Purchase </button>
+                  <div class="popover" [ngClass]="{'show': popoverVisible}">{{ popoverMessage }}</div>
+                </span>
+              </span>
             </div>
-          </td>
-          <td class="align-middle">
-            <div class="price-wrap">
-              <var class="price" *ngIf="item.new_price">{{ calculateItemPrice(item) }}</var>
-               <var class="price" *ngIf="!item.new_price">{{ calculateItemPrice(item) }}</var>
-              <small class="text-muted" *ngIf="!item.new_price">{{ calculateItemPrice(item) }} each</small>
-            </div>
-          </td>
-          <td class="text-right align-middle">
-            <a href="" class="btn-remove btn btn-light" (click)="removeFromCart(item)">Remove</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
 
+            <!-- <div *ngIf="cartItems.length > 0 && isLoggedIn">
 
-  <div class="card-body border-top btn-pay ">
-      <a href="#" class="btn btn-light"> <i class="bx bx-chevron-left"></i> Continue shopping </a>
-      <div>
-        <span *ngIf="cartItems.length > 0 && isLoggedIn">
-          <a (click)="gotoPayment()" routerLinkActive="router-link-active" class="btn btn-primary float-md-right"> Make Purchase <i class="bx bx-chevron-right"></i> </a>
-        </span>
-        <span *ngIf="cartItems.length === 0 || !isLoggedIn">
-          <span class="popover-container" (mouseenter)="showPopover()" (mouseleave)="hidePopover()">
-            <button class="btn btn-primary float-md-right" type="button" [ngClass]="{'disabled': cartItems.length === 0 || !isLoggedIn}" [disabled]="cartItems.length === 0 || !isLoggedIn"> Make Purchase </button>
-            <div class="popover" [ngClass]="{'show': popoverVisible}">{{ popoverMessage }}</div>
-          </span>
-        </span>
-      </div>
-
-      <!-- <div *ngIf="cartItems.length > 0 && isLoggedIn">
-
-        <a (click)="gotoPayment()" routerLinkActive="router-link-active"   class="btn btn-primary float-md-right"><i class="bx bx-chevron-right"></i> </a>
-      </div> -->
-  </div>
-  </div>
+              <a (click)="gotoPayment()" routerLinkActive="router-link-active" class="btn btn-primary float-md-right"><i
+                  class="bx bx-chevron-right"></i> </a>
+            </div> -->
+          </div>
+        </div>
 
 
 
       </main>
       <aside class="col-md-3">
-          <div class="card mb-3">
-              <div class="card-body">
-              <form>
-                  <div class="form-group m-1">
-                      <label>Have coupon?</label>
-                      <div class="input-group d-flex">
-                          <input type="text" class="form-control" name="" placeholder="Coupon code">
-                          <span class="input-group-append">
-                              <button class="btn btn-primary">Apply</button>
-                          </span>
-                      </div>
-                  </div>
-              </form>
-              </div> <!-- card-body.// -->
-          </div>  <!-- card .// -->
-          <div class="card">
-              <div class="card-body">
-                      <dl class="dlist-align">
-                        <dt>Total price:</dt>
-                        <dd class="text-right">{{ calculateTotal() }}</dd>
-                      </dl>
-                      <dl class="dlist-align">
-                        <dt>Discount:</dt>
-                        <dd class="text-right">USD 658</dd>
-                      </dl>
-                      <dl class="dlist-align">
-                        <dt>Total:</dt>
-                        <dd class="text-right  h5"><strong>{{ calculateTotal() }}</strong></dd>
-                      </dl>
-                      <hr>
-                      <p class="text-center d-flex mb-3 image-payments">
-                          <img src="../../../../assets/payments/paypal.png" height="50">
-                          <img src="../../../../assets/payments/mastercard.png" height="35"  >
-                          <img src="../../../../assets/payments/Visa.png" height="25" width="60">
-                      </p>
-
+        <div class="card mb-3">
+          <div class="card-body">
+            <form>
+              <div class="form-group m-1">
+                <label>Have coupon?</label>
+                <div class="input-group d-flex">
+                  <input type="text" class="form-control" name="" placeholder="Coupon code">
+                  <span class="input-group-append">
+                    <button class="btn btn-primary">Apply</button>
+                  </span>
+                </div>
               </div>
+            </form>
+          </div> <!-- card-body.// -->
+        </div> <!-- card .// -->
+        <div class="card">
+          <div class="card-body">
+            <dl class="dlist-align">
+              <dt>Total price:</dt>
+              <dd class="text-right">{{ calculateTotal() }}</dd>
+            </dl>
+            <dl class="dlist-align">
+              <dt>Discount:</dt>
+              <dd class="text-right">USD {{ calculateDiscount() }}</dd>
+            </dl>
+            <dl class="dlist-align">
+              <dt>Total:</dt>
+              <dd class="text-right h5"><strong>{{ calculateTotal() - calculateDiscount() }}</strong></dd>
+            </dl>
+            <hr>
+            <p class="text-center d-flex mb-3 image-payments">
+              <img src="../../../../assets/payments/paypal.png" height="50">
+              <img src="../../../../assets/payments/mastercard.png" height="35">
+              <img src="../../../../assets/payments/Visa.png" height="25" width="60">
+            </p>
+
           </div>
+        </div>
       </aside>
-  </div>
+    </div>
 
   </div>
-  </section>
-
+</section>

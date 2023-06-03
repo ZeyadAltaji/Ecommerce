@@ -7,14 +7,16 @@ import { SettingService } from 'projects/dashboard/src/app/services/Setting.serv
 @Component({
   selector: 'app-Navbar',
   templateUrl: './Navbar.component.html',
-  styleUrls: ['./Navbar.component.css']
+  styleUrls: ['./Navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-
-  constructor(private cookieServices:CookieService,public settingService:SettingService) { }
-  menustatus:boolean=false;
+  constructor(
+    private cookieServices: CookieService,
+    public settingService: SettingService
+  ) {}
+  menustatus: boolean = false;
   showdropdown: boolean = false;
-  public user :IUser ={
+  public user: IUser = {
     id: 0,
     userName: '',
     frist_Name: '',
@@ -32,7 +34,7 @@ export class NavbarComponent implements OnInit {
     isDelete: false,
     isActive: false,
     public_id: '',
-   }
+  };
   loggedInUser: any; // Declare a variable to store the logged-in user details
   logoData!: any;
   ngOnInit() {
@@ -41,23 +43,19 @@ export class NavbarComponent implements OnInit {
     if (this.loggedInUser && this.loggedInUser.fullUser) {
       this.user = this.loggedInUser.fullUser;
     }
-    this.settingService.GetByIDlogo(1).subscribe(data => {
-      console.log(data)
+    this.settingService.GetByIDlogo(1).subscribe((data) => {
+      console.log(data);
       this.logoData = data.isLogoUrl;
-
     });
-
   }
-  sidebarToggle(){
+  sidebarToggle() {
     // this.menustatus=!this.menustatus;
     // this.sidebarToggled.emit(this.menustatus);
   }
   dropdown() {
     if (this.showdropdown == false) {
       this.showdropdown = true;
-
-    }
-    else {
+    } else {
       this.showdropdown = false;
     }
   }

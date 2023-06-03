@@ -22,7 +22,7 @@
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="Message"></textarea>
             </div>
             <div class="col-12">
-              <button (click)="OnSubmit()"  type="submit" class="btn btn-primary" style="width: 65rem;">Submit</button>
+              <button (click)="OnSubmit()"  type="submit" class="btn btn-primary" style="width: 54rem;">Submit</button>
             </div>
           </form>
         </div>
@@ -31,4 +31,16 @@
   </div>
 </form>
 </div>
+</div>
+<div class="modal" [class.show]="isMessageSent">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body subtitle">
+        <p>Thank you for contacting us. You will be answered soon.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-send btn-primary" (click)="isMessageSent = false">OK</button>
+      </div>
+    </div>
+  </div>
 </div>

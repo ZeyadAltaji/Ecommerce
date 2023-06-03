@@ -5,14 +5,12 @@ import { Environment } from 'projects/authentication/src/app/Environments/Enviro
 @Component({
   selector: 'app-Sidebar',
   templateUrl: './Sidebar.component.html',
-  styleUrls: ['./Sidebar.component.css']
+  styleUrls: ['./Sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
+  constructor(private cookieServices: CookieService) {}
 
-  constructor(private cookieServices:CookieService){}
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
   logout() {
     // Clear the logged-in user information and redirect to the login page
     this.cookieServices.delete('loggedInUser');

@@ -5,5 +5,4 @@ export interface ICart {
   // customerId: number;
   // ItemCart_Id:number;
   Customer_Id: number;
-  Items: CartItem[];
-  }
+   }

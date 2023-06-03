@@ -23,4 +23,10 @@ GetAllMessages():Observable<IContactUs[]>{
 GetByIDMessages(id:string){
   return this.http.get<ContactUs>(`${this.baseUrl}ContactUs/Messages/${id}`.toString()).pipe()
 }
+GetByIdModal(id:number){
+  return this.http.get<ContactUs>(`${this.baseUrl}ContactUs/Messages/${id}`.toString()).pipe()
+}
+UpdateMessage(id: string, formData: FormData) {
+  return this.http.put(`${this.baseUrl}ContactUs/Messages/${id}`, formData);
+}
 }

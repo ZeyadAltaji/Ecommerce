@@ -24,6 +24,8 @@ export class BrandEditComponent implements OnInit {
   UserCreate:any;
   selectedImage!: File;
   loggedInUser: any;
+  IsActive: any;
+
   public user :IUser | undefined;
   @ViewChild('imageInput') imageInput?: ElementRef;
 
@@ -46,9 +48,11 @@ export class BrandEditComponent implements OnInit {
     this.brandsService.GetByIDBrands(this.brandId).subscribe({
       next: (response) => {
         this.Brand = response;
-        this.UrlImage = `assets/image/Brands/${this.Brand.public_id}`;
-        (this.UrlImage = `assets/image/Brands/${this.Brand.public_id}`);
+        this.UrlImage = `assets/image/Brands/${response.public_id}`;
+        (this.UrlImage = `assets/image/Brands/${response.public_id}`);
         this.brandName = this.EditBrandForm.controls['Name'].setValue(this.Brand.name);
+        this.IsActive = this.EditBrandForm.controls['isActive'].setValue(this.Brand.isActive == true);
+
        },
     });
   }
@@ -66,6 +70,10 @@ export class BrandEditComponent implements OnInit {
           let imageFile = this.imageInput?.nativeElement.files[0];
           fd.append('Image_BrandUrl', imageFile);
           fd.append('Name', this._NameBrand.value);
+          const activeValue = this._isActive.value || false;
+
+              // Store true or false in FormData based on the values
+              fd.append('isActive', activeValue ? 'true' : 'false');
           fd.append('id', id.toString());
           if (this.selectedImage) { // check if a new image is selected
             fd.append('Image_BrandUrl', this.selectedImage, this.selectedImage.name);
@@ -106,6 +114,8 @@ export class BrandEditComponent implements OnInit {
     this.EditBrandForm = this.fb.group({
       Name: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
       Image_BrandUrl: [null],
+      isActive: false
+
     });
   }
   get _NameBrand() {
@@ -114,6 +124,10 @@ export class BrandEditComponent implements OnInit {
   get _Nameiamge() {
     return this.EditBrandForm.controls['Nameiamge'] as FormGroup;
   }
+  get _isActive(){
+    return this.EditBrandForm.controls['isActive'] as FormControl;
+
+}
   MapBrands(UserUpdate:string) :void{
 
      this.formData.append('userUpdate', UserUpdate);

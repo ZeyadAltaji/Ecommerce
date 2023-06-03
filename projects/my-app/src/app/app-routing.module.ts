@@ -11,6 +11,7 @@ import { ViewAllProductsComponent } from './products/components/view-all-product
 import { PaymentPageComponent } from './Payment-page/Payment-page.component';
 import { OrderPageComponent } from './OrderPage/OrderPage.component';
 import { Contact_usComponent } from './home/components/contact_us/contact_us.component';
+import { ShopByComponent } from './products/components/ShopBy/ShopBy.component';
 
 const routes: Routes = [
       {
@@ -76,9 +77,19 @@ const routes: Routes = [
         component:OrderPageComponent
       },
       {
+        path: 'ShopBy/:type',
+        component: ShopByComponent
+      },
+      {
         path: '**', pathMatch: 'full',
         component: ErrorComponent
-      }
+      },
+
+      // {
+      //   path: 'ShopBy/:type/:id',
+      //    component: ShopByComponent
+      // },
+
 
 ];
 

@@ -155,6 +155,8 @@ export class ProductsEditComponent implements OnInit {
   }
   OnSubmit(){
     debugger
+         if (this.EditProductsForm.valid) {
+
     if (this.loggedInUser && this.loggedInUser.fullUser) {
       const username = this.loggedInUser.fullUser.userName;
       this.route.paramMap.subscribe({
@@ -208,6 +210,7 @@ export class ProductsEditComponent implements OnInit {
 
           }
         });
+      }
     }
     }
   get _SerialId() {

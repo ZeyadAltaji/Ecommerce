@@ -83,6 +83,8 @@ export class ProductsNewComponent implements OnInit {
   }
 
   OnSubmit(){
+    if (this.NewProductsForm.valid) {
+
     debugger
     if (this.loggedInUser && this.loggedInUser.fullUser) {
       const adminId = this.loggedInUser.fullUser.id; // Get the adminid from the logged-in user
@@ -97,6 +99,7 @@ export class ProductsNewComponent implements OnInit {
           console.log(error);
         }
       )
+    }
     }
   }
   AddNewProductsForm() {

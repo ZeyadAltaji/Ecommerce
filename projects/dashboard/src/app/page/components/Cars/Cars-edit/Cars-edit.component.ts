@@ -1,5 +1,5 @@
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Cars } from 'projects/dashboard/src/app/Classes/Cars';
@@ -56,7 +56,7 @@ export class CarsEditComponent implements OnInit {
 
            this.CarsName = this.EditCarsForm.controls['NameCar'].setValue(this.cars.name);
            this.Carsclass = this.EditCarsForm.controls['classCar'].setValue(this.cars.class);
-           this.CarsisActive = this.EditCarsForm.controls['isActive'].setValue(this.cars.isActive);
+            this.CarsisActive = this.EditCarsForm.controls['isActive'].setValue(this.cars.isActive == true);
            this.Carsproduction_Date = this.EditCarsForm.controls['ProductionDate'].setValue(this.cars.production_Date);
 
          },
@@ -75,7 +75,10 @@ export class CarsEditComponent implements OnInit {
               fd.append('Image_CarUrl', imageFile);
               fd.append('Name', this._NameCar.value);
               fd.append('Class', this.classCar.value);
-              fd.append('isActive', this._isActive.value);
+              const activeValue = this._isActive.value || false;
+
+              // Store true or false in FormData based on the values
+              fd.append('isActive', activeValue ? 'true' : 'false');
               fd.append('userUpdate', this.loggedInUser.fullUser.userName);
 
               if (this.ProductionDate.valid) {
@@ -142,7 +145,7 @@ export class CarsEditComponent implements OnInit {
       return this.EditCarsForm.controls['Image_CarUrl']as FormGroup;
     }
     get _isActive() {
-      return this.EditCarsForm.controls['isActive']as FormGroup;
+      return this.EditCarsForm.controls['isActive']as FormControl;
     }
     Mapcars():void{
       this.cars.name=this._NameCar.value;

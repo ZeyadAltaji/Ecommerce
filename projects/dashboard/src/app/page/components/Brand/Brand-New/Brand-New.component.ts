@@ -71,7 +71,8 @@ export class BrandNewComponent implements OnInit {
     AddNewBrandForm() {
       this.NewBrandForm = this.fb.group({
         NameBrand: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
-        Image: new FormControl(null)
+        Image: new FormControl(null),
+        isActive: false
 
       });
     }
@@ -81,7 +82,9 @@ export class BrandNewComponent implements OnInit {
     get iamgebr() {
       return this.NewBrandForm.controls['Image_BrandUrl'] as FormGroup;
     }
-
+    get _isActive() {
+      return this.NewBrandForm.controls['isActive']as FormGroup;
+    }
     MapBrands(adminId: number,UserCreate:string) {
       debugger
       this.formData = new FormData();
@@ -90,6 +93,7 @@ export class BrandNewComponent implements OnInit {
       this.formData.append('Image_BrandUrl', imageFile);
       this.formData.append('Admin_Id', adminId.toString());
       this.formData.append('UserCreate', UserCreate);
+      this.formData.append('isActive', this._isActive.value.toString());
 
     }
 

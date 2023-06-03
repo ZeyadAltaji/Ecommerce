@@ -32,6 +32,8 @@ export class EditEmployyesComponent implements OnInit {
   Role:any;
   selectedImage!: File;
   loggedInUser: any;
+  IsActive: any;
+
   public user :IUser | undefined;
 
   constructor(
@@ -53,6 +55,7 @@ export class EditEmployyesComponent implements OnInit {
     this.userId = this.route.snapshot.params['id']
     this.userService.GetByID(this.userId).subscribe({
       next:(response)=>{
+        debugger
         this.User=response;
         this.UrlImage = `assets/image/Users/${response.public_id}`;
         this.Frist_Name = this.EditEmployyesForm.controls['FirstName'].setValue(this.User.frist_Name);
@@ -63,11 +66,13 @@ export class EditEmployyesComponent implements OnInit {
         this.Phone2 = this.EditEmployyesForm.controls['Mobile2'].setValue(this.User.phone2);
         this.Address = this.EditEmployyesForm.controls['Address'].setValue(this.User.address);
          this.Role = this.EditEmployyesForm.controls['selectRole'].setValue(this.User.role);
+         this.IsActive = this.EditEmployyesForm.controls['isActive'].setValue(this.User.isActive == true);
 
        }
     });
   }
   OnSubmit(){
+
     if (this.loggedInUser && this.loggedInUser.fullUser) {
       const username = this.loggedInUser.fullUser.userName;
       this.route.paramMap.subscribe({
@@ -89,7 +94,11 @@ export class EditEmployyesComponent implements OnInit {
               fd.append('comfirmPassword', this._ComfirmPassword.value);
               fd.append('userUpdate', this.loggedInUser.fullUser.userName);
               fd.append('Role', this._selectRole.value);
-              fd.append('id', id.toString());
+              const activeValue = this._isActive.value || false;
+
+              // Store true or false in FormData based on the values
+              fd.append('isActive', activeValue ? 'true' : 'false');
+               fd.append('id', id.toString());
               if (this.selectedImage) { // check if a new image is selected
                 fd.append('Image_userUrl', this.selectedImage, this.selectedImage.name);
                   }
@@ -120,7 +129,7 @@ export class EditEmployyesComponent implements OnInit {
                       text: "The User has been updated.",
                       icon: "success",
                     });
-                    this.router.navigate(['/Employyes']);
+                    this.router.navigate(['/Users']);
                   }, ex => {
                     console.log(ex);
                   });
@@ -132,7 +141,7 @@ export class EditEmployyesComponent implements OnInit {
 
           }
         });
-    }
+   }
   }
   HandleFile(event:any){
 
@@ -150,6 +159,7 @@ export class EditEmployyesComponent implements OnInit {
       Password: [null, [Validators.required, Validators.minLength(2)]],
       ConfirmPassword: [null, Validators.required],
       image_userUrl :[null, Validators.required],
+      isActive: false
 
     },
     { Validators: this.passwordMatchingValidator }
@@ -211,4 +221,8 @@ export class EditEmployyesComponent implements OnInit {
   get photo(){
     return this.EditEmployyesForm.controls['image_userUrl']as FormGroup;
   }
+  get _isActive(){
+    return this.EditEmployyesForm.controls['isActive'] as FormControl;
+
+}
 }

@@ -95,8 +95,7 @@ export class NewSubProductsComponent implements OnInit {
    });
   }
   OnSubmit(){
-    debugger
-    if (this.NewProductsForm.valid) {
+     if (this.NewProductsForm.valid) {
 
     if (this.loggedInUser && this.loggedInUser.fullUser) {
       debugger

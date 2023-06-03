@@ -13,6 +13,7 @@ export class Contact_usComponent implements OnInit {
 
   contact_us!:FormGroup;
   Category=new ContactUs;
+  isMessageSent: boolean = false;
 
   constructor(
     @Inject(FormBuilder) private fb:FormBuilder
@@ -34,6 +35,9 @@ export class Contact_usComponent implements OnInit {
           debugger
           // Handle successful response
           console.log('Message added successfully:', response);
+          this.isMessageSent = true;
+          this.hideModalAfterDelay();
+
         },
         (error) => {
           // Handle error
@@ -41,6 +45,11 @@ export class Contact_usComponent implements OnInit {
         }
       );
 
+  }
+  hideModalAfterDelay() {
+    setTimeout(() => {
+      this.isMessageSent = false;
+    }, 10000); // 10000 milliseconds = 10 seconds
   }
   get FullName() {
     return this.contact_us.get('FullName') as FormGroup;

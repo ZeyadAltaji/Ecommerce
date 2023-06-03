@@ -1,17 +1,20 @@
-.products-edit{
+.products-edit {
   width: 202%;
 }
-hr{
+
+hr {
   width: 202%;
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: 0;
   border-top: 1px solid gray;
 }
-.margin{
+
+.margin {
   margin-top: 2rem;
 }
-.margin .location{
+
+.margin .location {
 
   background: var(--color-white);
   width: 100%;
@@ -21,46 +24,56 @@ hr{
   box-shadow: var(--box-shadow);
   transition: var(--transition);
 }
-.location:hover{
+
+.location:hover {
   box-shadow: none;
 }
-.location .newuser{
+
+.location .newuser {
   display: flex;
 }
-.info{
+
+.info {
   text-align: initial;
-  border-right:1px solid gray ;
+  border-right: 1px solid gray;
 }
-.right{
-  border-right:1px solid gray ;
+
+.right {
+  border-right: 1px solid gray;
 }
-.hr{
+
+.hr {
   width: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: 0;
   border-top: 1px solid gray;
 }
-.loc{
+
+.loc {
   display: flex;
   justify-content: space-around;
   width: 13%;
   align-items: center;
   transform: translateX(37rem);
 }
-.btn-cancel,.btn-save{
+
+.btn-cancel,
+.btn-save {
   border-radius: var(--card-border-radius);
-    border: 1px solid;
-     padding: 5px 10px;
-     background: transparent;
+  border: 1px solid;
+  padding: 5px 10px;
+  background: transparent;
 
 }
-.btn-cancel:hover{
+
+.btn-cancel:hover {
   background: var(--color-danger);
-  color:var(--color-white) ;
+  color: var(--color-white);
 }
-.btn-save:hover{
+
+.btn-save:hover {
   background: var(--color-success);
-  color:var(--color-white) ;
+  color: var(--color-white);
 
 }

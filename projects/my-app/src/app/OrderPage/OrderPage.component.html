@@ -8,12 +8,15 @@
             <div class="col-6 info">
               <div class="mb-3">
                 <label for="FullName" class="form-label">Full Name</label>
-                 <input type="text" class="form-control" id="FullName" aria-describedby="FullName" [value]="loggedInUser.fullUser.frist_Name + ' ' + loggedInUser.fullUser.last_Name" formControlName="FullName">
+                <input type="text" class="form-control" id="FullName" aria-describedby="FullName"
+                  [value]="loggedInUser.fullUser.frist_Name + ' ' + loggedInUser.fullUser.last_Name"
+                  formControlName="FullName">
 
               </div>
               <div class="mb-3">
                 <label for="Email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="Email" aria-describedby="Email" [value]=" user?.email" formControlName="Email">
+                <input type="email" class="form-control" id="Email" aria-describedby="Email" [value]=" user?.email"
+                  formControlName="Email">
               </div>
             </div>
             <div class="col-6 right">
@@ -27,35 +30,36 @@
               </div>
 
 
-          </div>
+            </div>
           </div>
         </div>
 
-      <div class="panel-footer">
-        <a routerLink='/' class="btn btn-back btn-light"> <i class="bx bx-chevron-left"></i> Continue shopping </a>
+        <div class="panel-footer">
+          <a routerLink='/' class="btn btn-back btn-light"> <i class="bx bx-chevron-left"></i> Continue shopping </a>
 
-            <button class="btn next-btn">Purchase Completed</button>
+          <button class="btn next-btn">Purchase Completed</button>
 
+        </div>
       </div>
+    </form>
   </div>
-</form>
-</div>
 </div>
 <!-- Success Modal -->
-<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="successModalLabel">Success</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+         <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+
       </div>
       <div class="modal-body">
-        Thank you for dealing with us.
+        <h3 class="title"> Thank you for dealing with us.
+        </h3>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" (click)="OK()">OK</button>
+
       </div>
     </div>
   </div>

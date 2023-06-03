@@ -5,130 +5,201 @@
 </section>
 <hr>
 <main class="products-edit">
- <div class="margin">
-  <div class="location">
-    <form (ngSubmit)="OnSubmit()" [formGroup]="EditProductsForm">
-    <div class="container text-center">
-      <div class="row">
-        <div class="col-6 info">
-            <div class="mb-3">
-              <label for="NumberProducts" class="form-label">Serial Number Products</label>
-              <input type="text" class="form-control" id="NumberProducts"  [value]="product.serial_Id" formControlName="Serial_Id"  aria-describedby="NumberProducts">
-            </div>
-            <div class="mb-3">
-              <label for="NameProducts" class="form-label">Name Products</label>
-              <input type="text" class="form-control"  [value]="product.title" id="NameProducts" formControlName="NameProducts">
-            </div>
-            <div class="mb-3">
-              <label for="TypeProducts" class="form-label">Price</label>
-              <input type="text" class="form-control" id="PriceProducts" [value]="product.price"  formControlName="PriceProducts">
-            </div>
-            <div class="mb-3">
-              <label for="Password" class="form-label">Quantity Have</label>
-              <input type="text" class="form-control" id="-Quantity" [value]="product.quantity" formControlName="Quantity">
-            </div>
-            <div class="mb-3">
-              <label for="primaryimages" class="form-label">Photo primary</label>
-              <input type="file" class="form-control" (change)="HandleFilePrimaryimages($event)" id="inputGroupFile03" formControlName="Primary_Image" aria-describedby="inputGroupFileAddon03" aria-label="Upload"  #PrimaryImage>
-            </div>
-            <div class="mb-3">
-              <div class="row">
-                <div class="col-md-6 offset-md-3">
-                  <div class="card" style="width: 18rem;">
-                    <img  src="{{[showPrimaryImage]}}" id="PrimaryImage" alt="Is Primary Image">
+  <div class="margin">
+    <div class="location">
+      <form (ngSubmit)="OnSubmit()" [formGroup]="EditProductsForm">
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-6 info">
+              <div class="mb-3">
+                <label for="NumberProducts" class="form-label">Serial Number Products</label>
+                <input type="text" class="form-control" id="NumberProducts" [value]="product.serial_Id"
+                  formControlName="Serial_Id" aria-describedby="NumberProducts">
+                <div
+                  *ngIf="EditProductsForm.controls['Serial_Id'].invalid && EditProductsForm.controls['Serial_Id'].touched"
+                  class="text-danger">
+                  Serial Number is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="NameProducts" class="form-label">Name Products</label>
+                <input type="text" class="form-control" [value]="product.title" id="NameProducts"
+                  formControlName="NameProducts">
+                <div
+                  *ngIf="EditProductsForm.controls['NameProducts'].invalid && EditProductsForm.controls['NameProducts'].touched"
+                  class="text-danger">
+                  Name Products is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="TypeProducts" class="form-label">Price</label>
+                <input type="text" class="form-control" id="PriceProducts" [value]="product.price"
+                  formControlName="PriceProducts">
+                <div
+                  *ngIf="EditProductsForm.controls['PriceProducts'].invalid && EditProductsForm.controls['PriceProducts'].touched"
+                  class="text-danger">
+                  Price Products is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="Password" class="form-label">Quantity Have</label>
+                <input type="text" class="form-control" id="-Quantity" [value]="product.quantity"
+                  formControlName="Quantity">
+                <div
+                  *ngIf="EditProductsForm.controls['Quantity'].invalid && EditProductsForm.controls['Quantity'].touched"
+                  class="text-danger">
+                  Quantity is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="primaryimages" class="form-label">Photo primary</label>
+                <input type="file" class="form-control" (change)="HandleFilePrimaryimages($event)" id="inputGroupFile03"
+                  formControlName="Primary_Image" aria-describedby="inputGroupFileAddon03" aria-label="Upload"
+                  #PrimaryImage>
+                <div
+                  *ngIf="EditProductsForm.controls['Primary_Image'].invalid && EditProductsForm.controls['Primary_Image'].touched"
+                  class="text-danger">
+                  Photo is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="row">
+                  <div class="col-md-6 offset-md-3">
+                    <div class="card" style="width: 18rem;">
+                      <img src="{{[showPrimaryImage]}}" id="PrimaryImage" alt="Is Primary Image">
+                    </div>
                   </div>
                 </div>
               </div>
-             </div>
 
-            <div class="mb-3">
-              <a class="btn btn-primary mb-2"
-               data-bs-parent="#parentDiv"
-               role="button" aria-expanded="false"
-               (click)="toggleInputs()"><i class="material-icons"
-               style="vertical-align: middle;padding: 1px 1px 3px;"
-                >more_horiz</i>More Options
-              </a>
-              <div [class.show]="showInputs">
-                <div *ngIf="showInputs" data-bs-parent="#parentDiv">
-                  <label for="New_price" class="form-label">New Price</label>
-                  <input type="text" class="form-control" id="PriceProducts" [value]="product.new_price" formControlName="newprice">
+              <div class="mb-3">
+                <a class="btn btn-primary mb-2" data-bs-parent="#parentDiv" role="button" aria-expanded="false"
+                  (click)="toggleInputs()"><i class="material-icons"
+                    style="vertical-align: middle;padding: 1px 1px 3px;">more_horiz</i>More Options
+                </a>
+                <div [class.show]="showInputs">
+
+                  <div *ngIf="showInputs" data-bs-parent="#parentDiv">
+                    <label for="Offer" class="form-label">Offers</label>
+                    <input type="text" class="form-control" id="offers" formControlName="Offer">
+                  </div>
+                  <div *ngIf="showInputs" data-bs-parent="#parentDiv">
+                    <label for="New_price" class="form-label">New Price</label>
+                    <input type="text" [value]="calculateNewPrice()" class="form-control" id="PriceProducts"
+                      formControlName="newprice">
+                  </div>
+                  <div class="form-check mt-2" *ngIf="showInputs">
+                    <input class="form-check-input" type="checkbox" formControlName="isActive" id="defaultCheck1"
+                      [checked]="IsActive">
+                    <label class="form-check-label" for="defaultCheck1">
+                      Active
+                    </label>
+                  </div>
+
+                  <div class="form-check mt-2 col-6" *ngIf="showInputs">
+                    <hr />
+                    <input class="form-check-input" type="checkbox" formControlName="isSpecialProduct"
+                      id="defaultCheck1" [checked]="isSpecialProduct">
+                    <label class="form-check-label" for="defaultCheck1">
+                      is Special Product
+                    </label>
+                  </div>
                 </div>
-                 <div  *ngIf="showInputs" data-bs-parent="#parentDiv">
-                  <label for="Offer" class="form-label">Offers</label>
-                  <input type="text" class="form-control" id="offers" [value]="product.offers" formControlName="Offer">
-                 </div>
-                 <div class="form-check mt-2" *ngIf="showInputs" >
-                  <input class="form-check-input" id="" [(ngModel)]="product.isActive" type="checkbox" formControlName="Active" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Active
-                  </label>
+
+              </div>
+            </div>
+            <div class="col-6 right">
+              <div class="mb-3">
+                <label class="form-label">Categorise</label>
+                <select #Category
+                  (change)="propertyView.category = Category.options[Category.options.selectedIndex].text"
+                  class="form-select" id="floatingSelect" formControlName="Categorise"
+                  aria-label="Floating label select example">
+                  <option selected>Select Type Category</option>
+                  <option *ngFor="let categorise of categoriseList" [value]="categorise.id"
+                    [selected]="categorise.id === category_Id">
+                    {{ categorise.name }}
+                  </option>
+                </select>
+                <div
+                  *ngIf="EditProductsForm.controls['Categorise'].invalid && EditProductsForm.controls['Categorise'].touched"
+                  class="text-danger">
+                  Category is required.
                 </div>
               </div>
 
+              <div class="mb-3">
+                <label class="form-label">Product</label>
+                <select #Products
+                  (change)="propertyView.Products = Products.options[Products.options.selectedIndex].text"
+                  class="form-select" id="floatingSelect" formControlName="Products"
+                  aria-label="Floating label select example">
+                  <option value="" disabled>Select Type Product</option>
+                  <option *ngFor="let product of ProductsList" [value]="product.id"
+                    [selected]="product.id === productId">
+                    {{ product.title }}
+                  </option>
+                </select>
+                <div
+                  *ngIf="EditProductsForm.controls['Products'].invalid && EditProductsForm.controls['Products'].touched"
+                  class="text-danger">
+                  Products is required.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Type Cars</label>
+                <select #Cars (change)="propertyView.cars = Cars.options[Cars.options.selectedIndex].text"
+                  class="form-select" id="floatingSelect" formControlName="Cars"
+                  aria-label="Floating label select example">
+                  <option selected>Select Type Cars</option>
+                  <option *ngFor="let car of CarsList" [value]="car.id" [selected]="car.id === car_Id">
+                    {{ car.name }}
+                  </option>
+                </select>
+                <div *ngIf="EditProductsForm.controls['Cars'].invalid && EditProductsForm.controls['Cars'].touched"
+                  class="text-danger">
+                  Type Cars is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Name Brands</label>
+                <select #Brands (change)="propertyView.brands = Brands.options[Brands.options.selectedIndex].text"
+                  class="form-select" id="floatingSelect" formControlName="Brands"
+                  aria-label="Floating label select example">
+                  <option selected>Select Type Brands</option>
+                  <option *ngFor="let brand of BrandList" [value]="brand.id" [selected]="brand.id === brands_Id">
+                    {{ brand.name }}
+                  </option>
+                </select>
+                <div *ngIf="EditProductsForm.controls['Brands'].invalid && EditProductsForm.controls['Brands'].touched"
+                  class="text-danger">
+                  Type Brands is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="Description" class="form-label">Description</label>
+                <textarea type="text" class="form-control" rows="6" [value]="product.description"
+                  formControlName="Description"></textarea>
+                <div
+                  *ngIf="EditProductsForm.controls['Description'].invalid && EditProductsForm.controls['Description'].touched"
+                  class="text-danger">
+                  Description is required.
+                </div>
+
+              </div>
+
             </div>
+          </div>
         </div>
-        <div class="col-6 right">
-          <div class="mb-3">
-            <label class="form-label">Categorise</label>
-            <select #Category (change)="propertyView.category=Category.options[Category.options.selectedIndex].text"   class="form-select" id="floatingSelect" formControlName="Categorise" aria-label="Floating label select example">
-              <option selected>Select Type Category</option>
-              <option *ngFor="let categorise of categoriseList" [value]="categorise.id" [selected]="categorise.id === category_Id">
-                {{categorise.name}}
-              </option>
-            </select>
-           </div>
-           <div class="mb-3">
-            <label class="form-label">Product</label>
-            <select #Products
-                    (change)="propertyView.Products = Products.options[Products.options.selectedIndex].text"
-                    class="form-select"
-                    id="floatingSelect"
-                    formControlName="Products"
-                    aria-label="Floating label select example">
-              <option value="" disabled>Select Type Product</option>
-              <option *ngFor="let product of ProductsList" [value]="product.id" [selected]="product.id === productId">
-                {{ product.title }}
-              </option>
-            </select>
+        <hr class="hr">
+        <div class="container text-center">
+          <div class="loc">
+            <button class="btn-save">save</button>
+            <button class="btn-cancel" [routerLink]="['/Prodcuts']">cancel</button>
           </div>
-
-           <div class="mb-3">
-            <label class="form-label">Type Cars</label>
-            <select #Cars (change)="propertyView.cars=Cars.options[Cars.options.selectedIndex].text"   class="form-select" id="floatingSelect" formControlName="Cars" aria-label="Floating label select example">
-              <option selected>Select Type Cars</option>
-              <option *ngFor="let car of CarsList" [value]="car.id" [selected]="car.id === car_Id">
-                {{car.name}}
-              </option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Name Brands</label>
-            <select #Brands (change)="propertyView.brands=Brands.options[Brands.options.selectedIndex].text" class="form-select" id="floatingSelect" formControlName="Brands" aria-label="Floating label select example">
-              <option selected>Select Type Brands</option>
-              <option *ngFor="let Brands of BrandList"  [value]="Brands.id" [selected]="Brands.id === brands_Id">
-                {{Brands.name}}
-              </option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="Description" class="form-label">Description</label>
-            <textarea type="text"
-            class="form-control"
-            rows="6" [value]="product.description" formControlName="Description"></textarea>
-          </div>
-
-      </div>
-      </div>
+        </div>
+      </form>
     </div>
-    <hr class="hr">
-    <div class="container text-center">
-    <div class="loc">
-      <button class="btn-save">save</button>
-      <button class="btn-cancel" [routerLink]="['/Prodcuts']">cancel</button>
-    </div>
-    </div>
-    </form>
   </div>
- </div>
 </main>

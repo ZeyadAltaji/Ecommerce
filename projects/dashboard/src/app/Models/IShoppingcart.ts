@@ -1,4 +1,4 @@
-export interface ISubProducts {
+export interface IShoppingcart {
   id: number;
   serial_Id: string;
   title: string;
@@ -25,4 +25,5 @@ export interface ISubProducts {
   isPrimaryImage: string;
 
   Primary_Image: string;
+  count:number;
 }

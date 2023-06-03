@@ -33,6 +33,7 @@ export class CategoryNewComponent implements OnInit {
     this.AddNewCategoriseForm();
   }
   OnSubmit() {
+    if (this.NewCategoryForm.valid) {
      if (this.loggedInUser && this.loggedInUser.fullUser) {
       const adminId = this.loggedInUser.fullUser.id; // Get the adminid from the logged-in user
       const username = this.loggedInUser.fullUser.userName; // Get the adminid from the logged-in user
@@ -48,6 +49,7 @@ export class CategoryNewComponent implements OnInit {
         }
       );
     }
+  }
   }
   AddNewCategoriseForm() {
     this.NewCategoryForm = this.fb.group({

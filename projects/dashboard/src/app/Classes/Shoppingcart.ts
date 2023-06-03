@@ -1,6 +1,6 @@
-import { ISubProducts } from '../Models/ISubProducts';
+import { IShoppingcart } from "../Models/IShoppingcart";
 
-export class SubProducts implements ISubProducts {
+export class Shoppingcart implements IShoppingcart{
   isSpecialProduct!: boolean;
   isPrimaryImage!: string;
   Primary_Image!: string;
@@ -25,4 +25,6 @@ export class SubProducts implements ISubProducts {
   cars!: string;
   productId!: number;
   Products!: string;
+  count!:number;
+
 }

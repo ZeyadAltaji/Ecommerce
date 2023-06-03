@@ -1,7 +1,8 @@
-.products-list{
+.products-list {
   width: 130%;
 }
-.top{
+
+.top {
   display: flex;
   align-items: center;
   position: relative;
@@ -9,29 +10,36 @@
   left: 19rem;
   margin-bottom: 2rem;
 }
-.top .btn-add{
+
+.top .btn-add {
   border-radius: 10px;
   border: 1px solid;
   display: inline-flex;
   padding: 5px 10px;
 }
-.top .btn-add span{
+
+.top .btn-add span {
   position: relative;
   display: inline-block;
   font-size: 16px;
   margin-left: 1rem;
 }
-.top .btn-add:hover{
+
+.top .btn-add:hover {
   background: var(--color-white);
-  color: var(--color-primary);}
-hr{
+  color: var(--color-primary);
+}
+
+hr {
   border-bottom: 1px solid gray;
   width: 130%;
-  }
-.list{
+}
+
+.list {
   margin-top: 2rem;
 }
-.list table{
+
+.list table {
   background: var(--color-white);
   width: 100%;
   border-radius: var(--card-border-radius);
@@ -40,7 +48,8 @@ hr{
   box-shadow: var(--box-shadow);
   transition: var(--transition);
 }
-.list table:hover{
+
+.list table:hover {
   box-shadow: none;
 
 }
@@ -51,43 +60,54 @@ hr{
   border-radius: 5rem;
   overflow-y: scroll;
 }
+
 .table .tbody::-webkit-scrollbar {
   width: 10px;
-  background-color:var(--color-light);
+  background-color: var(--color-light);
   border-radius: var(--border-radius-1);
 }
+
 .table .tbody::-webkit-scrollbar-thumb {
-  background-color:gray;
+  background-color: gray;
   border-radius: var(--border-radius-1);
 }
-.table .thead, .table .tbody tr {
+
+.table .thead,
+.table .tbody tr {
   display: table;
   width: 100%;
   table-layout: fixed;
 }
-.table .tbody td{
+
+.table .tbody td {
   height: 2.8rem;
   border-bottom: 1px solid var(--color-light);
   color: var(--color-dark-variant);
 }
-.table .tbody tr:last-child td{
+
+.table .tbody tr:last-child td {
   border: none;
 }
+
 .list a {
-  text-align: center; display: flex;
+  text-align: center;
+  display: flex;
   margin: 1rem auto;
   color: var(--color-primary);
   font-weight: 500;
   justify-content: center;
   align-items: center;
 }
-.table .tbody tr .action span:nth-child(1){
+
+.table .tbody tr .action span:nth-child(1) {
   color: var(--color-primary);
 }
-.table .tbody tr .action span:nth-child(2){
+
+.table .tbody tr .action span:nth-child(2) {
   color: var(--color-warning);
 }
-.table .tbody tr .action span:nth-child(3){
+
+.table .tbody tr .action span:nth-child(3) {
   color: var(--color-danger);
 
 }

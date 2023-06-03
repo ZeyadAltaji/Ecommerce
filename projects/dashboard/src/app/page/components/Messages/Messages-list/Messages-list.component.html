@@ -14,18 +14,20 @@
           <th>Email</th>
           <th>Subject</th>
           <th>Message</th>
+          <th>Message Status</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody class="tbody">
-        <tr *ngFor="let porducts of contactUsService.listContactUs">
-          <td>{{porducts.id}}</td>
-          <td>{{porducts.name}}</td>
-          <td>{{porducts.email}}</td>
-          <td>{{porducts.subject}}</td>
-          <td>{{porducts.message}}</td>
+        <tr *ngFor="let Message of contactUsService.listContactUs">
+          <td>{{Message.id}}</td>
+          <td>{{Message.name}}</td>
+          <td>{{Message.email}}</td>
+          <td>{{Message.subject}}</td>
+          <td>{{Message.message}}</td>
+          <td>{{ Message.show === false ? 'Message received' : 'Waiting' }}</td>
           <td class="primary action">
-            <span class="material-icons">info</span>
+            <span class="material-icons"  (click)="openModal(Message.id)">info</span>
            </td>
         </tr>
 
@@ -33,3 +35,40 @@
     </table>
   </div>
 </main>
+<!-- Modal -->
+<div class="modal fade" id="DataUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Info Message {{ selectedMessage?.subject }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-group list-group-flush">
+
+              <li class="list-group-item">
+                <h3>Name: {{ selectedMessage?.name }}</h3>
+              </li>
+              
+              <li class="list-group-item">
+                <h3>Email: {{ selectedMessage?.email }}</h3>
+              </li>
+              <li class="list-group-item">
+                <h3>Subject: {{ selectedMessage?.subject }}</h3>
+              </li>
+              <li class="list-group-item">
+                <h3>Message: {{ selectedMessage?.message }}</h3>
+              </li>
+              
+            </ul>
+          </div>
+         
+      </div>
+      <div class="modal-footer">
+        <button (click)="closeModal()" type="button" class="btn btn-secondary" dataUser-bs-dismiss="modal">Close</button>
+       </div>
+    </div>
+  </div>
+</div>

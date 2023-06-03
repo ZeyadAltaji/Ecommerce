@@ -14,18 +14,34 @@
             <div class="mb-3">
               <label for="NumberCar" class="form-label">Number Car</label>
               <input type="text" class="form-control" id="NumberCar" [value]="cars.id" aria-describedby="NumberCar" disabled >
+              <div *ngIf="EditCarsForm.controls['NameCar'].invalid && EditCarsForm.controls['NameCar'].touched"
+              class="text-danger">
+              Name Car is required.
+            </div>
             </div>
             <div class="mb-3">
               <label for="NameCar" class="form-label">Name Car</label>
               <input type="text" class="form-control" [value]="cars.name" id="NameCar" formControlName="NameCar">
+              <div *ngIf="EditCarsForm.controls['classCar'].invalid && EditCarsForm.controls['classCar'].touched"
+              class="text-danger">
+              Class Car is required.
+            </div>
             </div>
             <div class="mb-3">
               <label for="classCar" class="form-label">Class Car</label>
               <input type="text" class="form-control" [value]="cars.class" id="classCar" formControlName="classCar">
+              <div *ngIf="EditCarsForm.controls['classCar'].invalid && EditCarsForm.controls['classCar'].touched"
+              class="text-danger">
+              Class Car is required.
+            </div>
             </div>
             <div class="mb-3">
               <label for="TypeCar" class="form-label">Production Date</label>
               <input type="number" class="form-control" id="ProductionDate" formControlName="ProductionDate" min="1900" max="2099" step="1" placeholder="YYYY">
+              <div *ngIf="EditCarsForm.controls['ProductionDate'].invalid && EditCarsForm.controls['ProductionDate'].touched"
+              class="text-danger">
+              Production Date is required.
+            </div>
             </div>
 
 
@@ -34,6 +50,10 @@
           <div class="mb-3">
             <label for="Photo" class="form-label">Photo</label>
             <input type="file" class="form-control" (change)="HandleFile($event)" id="inputGroupFile03" formControlName="Image_CarUrl" #imageInput>
+            <div *ngIf="EditCarsForm.controls['Image_CarUrl'].invalid && EditCarsForm.controls['Image_CarUrl'].touched"
+              class="text-danger">
+              Image Car is required.
+            </div>
           </div>
           <div class="mb-3">
             <div class="row">
@@ -42,11 +62,13 @@
               </div>
             </div>
            </div>
-          <div class="form-check mt-2" *ngIf="showInputs" >
-            <input class="form-check-input" type="checkbox" formControlName="isActive" id="defaultCheck1">
+          <div class="form-check mt-2 col-6 " *ngIf="showInputs" >
+            <hr>
             <label class="form-check-label" for="defaultCheck1">
               Active
             </label>
+            <input class="form-check-input" type="checkbox" formControlName="isActive" id="defaultCheck1">
+
           </div>
 
       </div>
