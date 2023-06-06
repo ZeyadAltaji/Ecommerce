@@ -1,4 +1,10 @@
-import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -10,60 +16,66 @@ import { SweetAlertService } from 'projects/dashboard/src/app/services/SweetAler
 @Component({
   selector: 'app-Cars-New',
   templateUrl: './Cars-New.component.html',
-  styleUrls: ['./Cars-New.component.css']
+  styleUrls: ['./Cars-New.component.css'],
 })
 export class CarsNewComponent implements OnInit {
-  NewCarForm!:FormGroup;
-  car=new Cars;
-  showInputs=true;
+  NewCarForm!: FormGroup;
+  car = new Cars();
+  showInputs = true;
   formData: FormData = new FormData();
   loggedInUser: any;
-  public user :IUser | undefined;
+  public user: IUser | undefined;
   @ViewChild('imageInput') imageInput?: ElementRef;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private carService:CarService,
-    private sweetAlertService :SweetAlertService,
-    @Inject(CookieService) private cookieServices:CookieService
-    ) { }
+    private carService: CarService,
+    private sweetAlertService: SweetAlertService,
+    @Inject(CookieService) private cookieServices: CookieService
+  ) {}
   ngOnInit() {
     const userString = this.cookieServices.get('loggedInUser');
-      this.loggedInUser = userString ? JSON.parse(userString) : null;
-      if (this.loggedInUser && this.loggedInUser.fullUser) {
-        this.user = this.loggedInUser.fullUser;
-      }
+    this.loggedInUser = userString ? JSON.parse(userString) : null;
+    if (this.loggedInUser && this.loggedInUser.fullUser) {
+      this.user = this.loggedInUser.fullUser;
+    }
     this.AddNewCarsForm();
-
   }
-  OnSubmit(){
+  OnSubmit() {
     if (this.loggedInUser && this.loggedInUser.fullUser) {
       const adminId = this.loggedInUser.fullUser.id; // Get the adminid from the logged-in user
       const username = this.loggedInUser.fullUser.userName; // Get the adminid from the logged-in user
-      this.MapCars(adminId,username);// Pass the adminid to the MapCars method
-
-      this.carService.AddCars(this.formData).subscribe(
-        (data) => {
-          console.log(data)
-          this.sweetAlertService.success("Success", "Car added successfully.");
-          this.router.navigate(['/Cars']);
-        },(error)=>{
-          console.log(error);
-        }
-      )
+      this.MapCars(adminId, username); // Pass the adminid to the MapCars method
+      if (
+        this.NewCarForm.valid) {
+        this.carService.AddCars(this.formData).subscribe(
+          (data) => {
+            console.log(data);
+            this.sweetAlertService.success(
+              'Success',
+              'Car added successfully.'
+            );
+            this.router.navigate(['/Cars']);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      }
     }
   }
 
   AddNewCarsForm() {
-
-
     this.NewCarForm = this.fb.group({
-      NameCar: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
-      classCar: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
-      ProductionDate: [null, [Validators.required, Validators.min(1900), Validators.max(2099)]],
-      Image_CarUrl :[null, Validators.required],
-      isActive: false
+      NameCar: [null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      classCar: [null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      ProductionDate: [
+        null,
+        [Validators.required, Validators.min(1900), Validators.max(2099)],
+      ],
+      Image_CarUrl: [null, Validators.required],
+      isActive: false,
     });
   }
   get _NameCars() {
@@ -72,33 +84,32 @@ export class CarsNewComponent implements OnInit {
   get classCar() {
     return this.NewCarForm.controls['classCar'] as FormGroup;
   }
-  get ProductionDate(){
-    return this.NewCarForm.controls['ProductionDate']as FormGroup;
+  get ProductionDate() {
+    return this.NewCarForm.controls['ProductionDate'] as FormGroup;
   }
-  get photo(){
-    return this.NewCarForm.controls['Image_CarUrl']as FormGroup;
+  get photo() {
+    return this.NewCarForm.controls['Image_CarUrl'] as FormGroup;
   }
   get _isActive() {
-    return this.NewCarForm.controls['isActive']as FormGroup;
+    return this.NewCarForm.controls['isActive'] as FormGroup;
   }
-  MapCars(adminId: number,UserCreate:string) {
+  MapCars(adminId: number, UserCreate: string) {
     this.formData = new FormData();
-      this.formData.append('Name', this._NameCars.value);
-      let imageFile = this.imageInput?.nativeElement.files[0];
-      this.formData.append('Image_CarUrl', imageFile);
-      this.formData.append('Class', this.classCar.value);
+    this.formData.append('Name', this._NameCars.value);
+    let imageFile = this.imageInput?.nativeElement.files[0];
+    this.formData.append('Image_CarUrl', imageFile);
+    this.formData.append('Class', this.classCar.value);
     if (this.ProductionDate.valid) {
-      this.formData.append ('production_Date', this.ProductionDate.value);
+      this.formData.append('production_Date', this.ProductionDate.value);
     } else {
-      console.error("Production date is required.");
+      console.error('Production date is required.');
       return;
     }
     this.formData.append('Admin_Id', adminId.toString());
     this.formData.append('UserCreate', UserCreate);
     this.formData.append('isActive', this._isActive.value.toString());
-
-   }
-  HandleFile(event:any) {
+  }
+  HandleFile(event: any) {
     if (event.target.files !== null && event.target.files.length > 0) {
       const image_userUrl = event.target.files[0];
       const reader = new FileReader();
@@ -113,4 +124,3 @@ export class CarsNewComponent implements OnInit {
     }
   }
 }
-

@@ -9,10 +9,16 @@ import { UserForLogin } from 'projects/authentication/src/app/Models/User';
 import { AuthenticationService } from 'projects/authentication/src/app/services/authentication.service';
 import { CartItem } from 'projects/dashboard/src/app/Classes/CartItem';
 import { SubProducts } from 'projects/dashboard/src/app/Classes/SubProducts';
+import { IBrands } from 'projects/dashboard/src/app/Models/IBrands';
+import { ICars } from 'projects/dashboard/src/app/Models/ICars';
+import { ICategorise } from 'projects/dashboard/src/app/Models/ICategorise';
+import { IProducts } from 'projects/dashboard/src/app/Models/IProduct';
+import { ISubProducts } from 'projects/dashboard/src/app/Models/ISubProducts';
 import { IUser } from 'projects/dashboard/src/app/Models/IUser';
 import { CartItemService } from 'projects/dashboard/src/app/services/CartItem.service';
 import { SettingService } from 'projects/dashboard/src/app/services/Setting.service';
 import { environment } from 'projects/my-app/src/environments/environment.development';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -27,12 +33,15 @@ export class NavbarComponent implements OnInit {
   loggedInUser: any;
   loginForm!: FormGroup;
   showLoginForm = true;
-
   private cartItemsKey = 'cartItems';
   maxDisplayedProducts: number = 5;
-
   cartItems: any[] = [];
   products: any[] = [];
+  searchQuery = '';
+  showSearch = false;
+  searchResults$: Observable<
+    (ICategorise | IProducts | ISubProducts | IBrands | ICars)[]
+  > | undefined;
 
   public user: IUser = {
     id: 0,
@@ -61,7 +70,8 @@ export class NavbarComponent implements OnInit {
     private zone: NgZone,
     private cdr: ChangeDetectorRef,
     private cookieService: CookieService,
-    private cartService: CartItemService
+    private cartService: CartItemService,
+    private router: Router
   ) {
     this.cartItems = this.getCartItems();
   }
@@ -78,9 +88,9 @@ export class NavbarComponent implements OnInit {
     });
 
     // Update cart items and run change detection every second
-    // setInterval(() => {
+    setInterval(() => {
     this.fetchCartItems();
-    // }, 6000);
+    }, 6000);
     const userString = this.cookieServices.get('loggedInUser');
     this.loggedInUser = userString ? JSON.parse(userString) : null;
     if (this.loggedInUser && this.loggedInUser.fullUser) {
@@ -88,11 +98,11 @@ export class NavbarComponent implements OnInit {
       console.log(this.loggedInUser.fullUser);
     }
     this.showLoginForm = this.cookieService.get('showLoginForm') !== 'false'; // Retrieve showLoginForm value from cookie
+
   }
 
   fetchCartItems() {
-    debugger;
-    const user = this.cookieService.get('loggedInUser');
+     const user = this.cookieService.get('loggedInUser');
     this.loggedInUser = user ? JSON.parse(user) : null;
 
     const products = localStorage.getItem('products');
@@ -101,7 +111,6 @@ export class NavbarComponent implements OnInit {
     const cartIds = localStorage.getItem('cartId'); // Type assertion added here
     const customerId = this.loggedInUser.fullUser.id;
 
-    debugger;
 
     this.cartService
       .getCartItemsByCustomerCartId(customerId, Number(cartIds))
@@ -186,19 +195,19 @@ export class NavbarComponent implements OnInit {
           if (user) {
             //admin
             if (role === 1) {
-              window.location.href = Environment.AdminURL;
+              window.location.href = Environment.AdminURL
               // If login is successful, hide the login form
               this.showLoginForm = false;
             }
             //sler
-            if (role === 2) {
+            else if (role === 2) {
               window.location.href = Environment.AdminURL;
 
               // If login is successful, hide the login form
               this.showLoginForm = false;
             }
             //clinet
-            if (role === 3 && this.cartItems.length > 0) {
+            else if (role === 3 && this.cartItems.length > 0) {
               // Redirect to the shopping cart page
               window.location.href = Environment.ClinetURlShop;
               // If login is successful, hide the login form

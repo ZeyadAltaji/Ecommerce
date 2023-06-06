@@ -156,7 +156,7 @@ ngOnInit():void {
 }
     EditProductForm() {
       this.EditProductsForm = this.fb.group({
-        Serial_Id: [null, [Validators.required, Validators.pattern('[a-zA-Z0-9]{1,10}')]],
+        Serial_Id: [null, [Validators.required, Validators.pattern('[a-zA-Z]{3} [0-9]+')]],
         NameProducts: [null, [Validators.required, Validators.pattern('[a-zA-Z0-9]{1,10}')]],
         PriceProducts: [null, Validators.required],
 
@@ -195,12 +195,15 @@ ngOnInit():void {
               fd.append('Title', this._NameProducts.value);
               fd.append('Description', this._Description.value);
               fd.append('Price', this._PriceProducts.value);
+              const offersValue = this._offers.value != null ? this._offers.value : '';
 
-              fd.append('Offers', this._offers.value);
+              fd.append('Offers', offersValue);
               const price = parseFloat(this._PriceProducts.value);
               const offers = parseFloat(this._offers.value);
-              const newPrice = (price - (price * (offers / 100))).toFixed(2);
-              fd.append('New_price', newPrice.toString());
+              const validOffers = isNaN(offers) ? 0 : offers; // Set to 0 if offers is NaN
+
+              const newPrice = validOffers === 0 ? '' : (price - (price * (validOffers / 100))).toFixed(2);
+              this.formData.append('new_price', newPrice !== '' ? newPrice : '');
               // fd.append('New_price', this.new_priceProducts.value);
               fd.append('Quantity', this._Quantity.value);
               fd.append('Brands_Id', this._Brands.value);

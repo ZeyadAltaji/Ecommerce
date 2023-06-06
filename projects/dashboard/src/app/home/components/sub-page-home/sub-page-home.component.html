@@ -1,129 +1,108 @@
 <div class="right">
   <div class="header">
-    <h2>recent updates</h2>
+    <h2>Message Updates</h2>
   </div>
   <div class="recent-update">
     <div class="updates">
-      <div class="update">
-        <div class="profile-photo">
-          <img src="../../../../assets/user/zeyad.jpg" alt="">
-        </div>
+      <div class="update" *ngFor="let Message of contactUsService.listContactUs.slice(0,maxDisplayedMessage)">
         <div class="message">
-          <p><b>when door</b>Mee !!!! </p>
+          <h3><b>Full Name : </b>{{Message.name}}</h3>
           <small class="text-muted">
-            2 Minutes ago
+            Subject : {{Message.message}}
           </small>
         </div>
       </div>
-      <div class="update">
-        <div class="profile-photo">
-          <img src="../../../../assets/user/zeyad.jpg" alt="">
-        </div>
-        <div class="message">
-          <p><b>when door</b>Mee !!!! </p>
-          <small class="text-muted">
-            2 Minutes ago
-          </small>
-        </div>
-      </div>
-      <div class="update">
-        <div class="profile-photo">
-          <img src="../../../../assets/user/zeyad.jpg" alt="">
-        </div>
-        <div class="message">
-          <p><b>when door</b>Mee !!!! </p>
-          <small class="text-muted">
-            2 Minutes ago
-          </small>
-        </div>
-      </div>
-      <div class="update">
-        <div class="profile-photo">
-          <img src="../../../../assets/user/zeyad.jpg" alt="">
-        </div>
-        <div class="message">
-          <p><b>when door</b>Mee !!!! </p>
-          <small class="text-muted">
-            2 Minutes ago
-          </small>
-        </div>
-      </div>
-      <div class="update">
-        <div class="profile-photo">
-          <img src="../../../../assets/user/zeyad.jpg" alt="">
-        </div>
-        <div class="message">
-          <p><b>when door</b>Mee !!!! </p>
-          <small class="text-muted">
-            2 Minutes ago
-          </small>
-        </div>
+      <div *ngIf="contactUsService.listContactUs.length > maxDisplayedMessage">
+        <button class="btn-More" (click)="showMore()">Show More</button>
       </div>
     </div>
 
   </div>
   <div class="sales-analytics">
     <div class="header">
-      <h2>Best-Selling</h2>
-      <a href="#">more
-        <span class="material-icons">chevron_right</span>
-      </a>
+      <h2>General Statistics
+
+      </h2>
+
     </div>
     <div class="sales">
       <div class="sale">
-        <img src="../../../../assets/image/logo.png" alt="">
-        <h4>up</h4>
+        <h4>Order</h4>
         <div>
-          <p>1402</p>
-          <small class="text-muted">part </small>
+          <small class="text-muted">All Orders </small>
+          <p>{{allorder}}</p>
         </div>
         <div>
           <div class="amount">
-            <h4>$20.255</h4>
-            <small class="success">+45%</small>
+            <h5 class="text-muted">Oders waiting</h5>
+            <h4>{{ unansweredCount }}</h4>
           </div>
         </div>
       </div>
       <div class="sale">
-        <img src="../../../../assets/image/logo.png" alt="">
-        <h4>up</h4>
+        <h4>No. Seller</h4>
         <div>
-          <p>1402</p>
-          <small class="text-muted">part </small>
+          <small class="text-muted">All Seller </small>
+
+          <p>{{allseller}}</p>
         </div>
         <div>
           <div class="amount">
-            <h4>$20.255</h4>
-            <small class="success">+45%</small>
+            <h5 class="text-muted">Seller is Active</h5>
+            <h4>{{ allsellerisActive }}</h4>
           </div>
         </div>
       </div>
       <div class="sale">
-        <img src="../../../../assets/image/logo.png" alt="">
-        <h4>up</h4>
+        <h4>No. Customers</h4>
         <div>
-          <p>1402</p>
-          <small class="text-muted">part </small>
+          <small class="text-muted">All Customers </small>
+
+          <p>{{allCustomer}}</p>
         </div>
         <div>
           <div class="amount">
-            <h4>$20.255</h4>
-            <small class="success">+45%</small>
+            <h5 class="text-muted">Customers is Active</h5>
+            <h4>{{ allcustomeActive }}</h4>
           </div>
         </div>
       </div>
       <div class="sale">
-        <img src="../../../../assets/image/logo.png" alt="">
-        <h4>up</h4>
+        <h4>No. delivery</h4>
         <div>
-          <p>1402</p>
-          <small class="text-muted">part </small>
+          <small class="text-muted">All delivery </small>
+
+          <p>{{alldelivery}}</p>
         </div>
         <div>
           <div class="amount">
-            <h4>$20.255</h4>
-            <small class="success">+45%</small>
+            <h5 class="text-muted">delivery is Active</h5>
+            <h4>{{ alldeliveryActive }}</h4>
           </div>
+        </div>
+      </div>
+      <div class="sale">
+        <h4>No. Brands</h4>
+
+        <div>
+          <div class="amount">
+            <h5 class="text-muted">All Brands</h5>
+            <h4>{{ allBrands }}</h4>
+          </div>
+        </div>
+        <div>
+
+        </div>
+      </div>
+      <div class="sale">
+        <h4>No. Produts</h4>
+        <div class="amount">
+          <h5 class="text-muted">All Produts</h5>
+          <h4>{{ allprouduts }}</h4>
+
+        </div>
+        <div>
+
         </div>
       </div>
     </div>

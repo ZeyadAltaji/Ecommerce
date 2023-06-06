@@ -2,243 +2,220 @@
 <main class="main-brand">
   <div class="section-header">
     <h2 id="section-title"> FEATURED BRANDS</h2>
-   <span class="line"></span>
-   <div>
-    <div class="owl-brand">
-      <owl-carousel-o [options]="brand">
-        <ng-template carouselSlide *ngFor="let x of Data; let i = index">
-          <div class="item">
-            <a href="View-All-Products/brand/{{[x.id]}}"> <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}" alt="{{[x.public_id]}}"></a>
-          </div>
-        </ng-template>
-        <!-- <ng-template carouselSlide  *ngFor="let x of line1; let i = index">
-          <div class="item">
-            <a > <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}" alt="{{[x.public_id]}}"></a>
-          </div>
-        </ng-template> -->
-        <!-- <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/1.webp" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/2.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/3.webp" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/4.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/5.webp" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/6.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/13.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/8.webp" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/9.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/10.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/10.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/11.webp" alt=""></div></ng-template> -->
-      </owl-carousel-o>
-    </div>
-    <div class="owl-brand">
-      <owl-carousel-o [options]="brand">
-        <!-- <ng-template carouselSlide  *ngFor="let x of line2; let i = index">
-          <div class="item">
-            <a > <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}" alt="{{[x.public_id]}}"></a>
-          </div>
-        </ng-template> -->
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/14.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/15.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/16.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/17.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/18.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/19.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/20.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/21.webp" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/22.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/23.webp" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/24.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/25.avif" alt=""></div></ng-template>
+    <span class="line"></span>
+    <div>
+      <div class="owl-brand">
+        <owl-carousel-o [options]="brand">
 
-      </owl-carousel-o>
-    </div>
-    <div class="owl-brand">
-      <owl-carousel-o [options]="brand">
-        <!-- <ng-template carouselSlide  *ngFor="let x of line3; let i = index">
-          <div class="item">
-            <a > <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}" alt="{{[x.public_id]}}"></a>
-          </div>
-        </ng-template> -->
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/26.webp" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/27.webp" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/28.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/29.webp" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/30.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/32.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/34.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/35.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/36.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/37.avif" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/38.webp" alt=""></div></ng-template>
-        <ng-template carouselSlide><div class="item"><img class="image-brand" src="../../../../assets/brand/39.avif" alt=""></div></ng-template>
+          <ng-template carouselSlide *ngFor="let x of line1; let i = index">
+            <div class="item">
+              <a href="View-All-Products/brand/{{[x.id]}}"> <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}"
+                  alt="{{[x.public_id]}}"></a>
+            </div>
+          </ng-template>
 
-      </owl-carousel-o>
+        </owl-carousel-o>
+      </div>
+      <div class="owl-brand">
+        <owl-carousel-o [options]="brand">
+          <ng-template carouselSlide *ngFor="let x of line2; let i = index">
+            <div class="item">
+              <a href="View-All-Products/brand/{{[x.id]}}"> <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}"
+                  alt="{{[x.public_id]}}"></a>
+            </div>
+          </ng-template>
+
+
+        </owl-carousel-o>
+      </div>
+      <div class="owl-brand">
+        <owl-carousel-o [options]="brand">
+          <ng-template carouselSlide *ngFor="let x of line3; let i = index">
+            <div class="item">
+              <a href="View-All-Products/brand/{{[x.id]}}"> <img class="image-brand" src="http://localhost:4203/assets/image/Brands/{{[x.public_id]}}"
+                  alt="{{[x.public_id]}}"></a>
+            </div>
+          </ng-template>
+
+
+        </owl-carousel-o>
+      </div>
     </div>
-    </div>
-</div>
+  </div>
 </main>
 
 
 
 <div class="wrapper">
   <div class="section-header">
-      <h2 id="section-title">External Parts</h2>
-      <span class="line"></span>
+    <h2 id="section-title">External Parts</h2>
+    <span class="line"></span>
   </div>
-   <div class="container-fluid">
-    <div class="container-xxl main" >
-      <owl-carousel-o [options]="ExternalParts">
-        <ng-template carouselSlide>
-          <div>
-            <div class="contents animation-text slide-content">
-              <h1>{{DataExternal.title}}</h1>
-              <p>{{[DataExternal.description]}}</p>
-              <a  class="btn-go" [routerLink]="['/View-All-Products/External/',DataExternal.id]">{{[DataExternal.button]}}
-                <i class="bx icon-add bx-cart-add"></i>
-              </a>
-
-            </div>
-            <img class="owl-img" *ngIf="DataExternal.imageURl" src="http://localhost:4203/assets/image/SubSlider/{{DataExternal.imageURl}}" >
-            </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div>
-            <div class="contents animation-text slide-content">
-              <h1>{{DataExternal.title}}</h1>
-              <p>{{[DataExternal.description]}}</p>
-              <a  class="btn-go" [routerLink]="['/View-All-Products/External/',DataExternal.id]">{{[DataExternal.button]}}
-                <i class="bx icon-add bx-cart-add"></i>
-              </a>
-
-            </div>
-            <img class="owl-img" *ngIf="DataExternal.imageURl" src="http://localhost:4203/assets/image/SubSlider/{{DataExternal.imageURl}}" >
-            </div>
-        </ng-template>
-       </owl-carousel-o>
-  </div>
-   </div>
-</div>
-
-
-<div class="wrapper">
-  <div class="section-header">
-      <h2 id="section-title">Interior car parts</h2>
-      <span class="line"></span>
-  </div>
-   <div class="container-fluid">
-    <div class="container-xxl main" >
-      <owl-carousel-o [options]="ExternalParts">
-        <ng-template carouselSlide>
-          <div>
-            <div class="contents animation-text slide-content">
-              <h1>{{[DataIndoor.title]}}</h1>
-              <p>{{[DataIndoor.description]}}</p>
-              <a  class="btn-go" [routerLink]="['/View-All-Products/Indoor/',DataIndoor.id]">{{[DataIndoor.button]}}
-                <i class="bx icon-add bx-cart-add"></i>
-
-              </a>
-
-            </div>
-            <img class="owl-img" *ngIf="DataExternal.imageURl" src="http://localhost:4203/assets/image/SubSlider/{{DataIndoor.imageURl}}" >
-          </div>
-        </ng-template>
-
-        <ng-template carouselSlide>
-          <div>
-            <div class="contents animation-text slide-content">
-              <h1>{{[DataIndoor.title]}}</h1>
-              <p>{{[DataIndoor.description]}}</p>
-              <a  class="btn-go" [routerLink]="['/View-All-Products/Indoor/',DataIndoor.id]">{{[DataIndoor.button]}}
-                <i class="bx icon-add bx-cart-add"></i>
-
-              </a>
-            </div>
-            <img class="owl-img" *ngIf="DataExternal.imageURl1" src="http://localhost:4203/assets/image/SubSlider/{{DataIndoor.imageURl}}" >
-
-          </div>
-        </ng-template>
-
-       </owl-carousel-o>
-  </div>
-   </div>
-</div>
-
-<div class="wrapper">
-  <div class="section-header">
-      <h2 id="section-title">Cutting Spatials</h2>
-      <span class="line"></span>
-  </div>
-   <div class="container-fluid">
-    <div class="container-xxl main" >
-      <owl-carousel-o [options]="ExternalParts">
-        <ng-template carouselSlide>
-          <div>
-            <div class="contents animation-text slide-content">
-              <h1>{{[DataMechanical.title]}}</h1>
-              <p>{{[DataMechanical.description]}}</p>
-              <a  class="btn-go" [routerLink]="['/View-All-Products/Mechanical/',DataMechanical.id]">{{[DataMechanical.button]}}
-                <i class="bx icon-add bx-cart-add"></i>
-
-              </a>
-
-            </div>
-            <img class="owl-img" *ngIf="DataExternal.imageURl" src="http://localhost:4203/assets/image/SubSlider/{{DataMechanical.imageURl}}" >
-
-          </div>
-        </ng-template>
-
-        <ng-template carouselSlide>
-          <div>
-            <div class="contents animation-text slide-content">
-              <h1>{{[DataMechanical.title]}}</h1>
-              <p>{{[DataMechanical.description]}}</p>
-              <a  class="btn-go" [routerLink]="['/View-All-Products/Mechanical/',DataMechanical.id]">{{[DataMechanical.button]}}
-                <i class="bx icon-add bx-cart-add"></i>
-
-              </a>
-
-            </div>
-            <img class="owl-img" *ngIf="DataExternal.imageURl" src="http://localhost:4203/assets/image/SubSlider/{{DataMechanical.imageURl1}}" >
-
-          </div>
-        </ng-template>
-       </owl-carousel-o>
-  </div>
-   </div>
-</div>
-
-<div class="wrapper">
-  <div class="section-header">
-      <h2 id="section-title">Spatials Offer</h2>
-      <span class="line"></span>
-  </div>
-   <div class="container-fluid">
+  <div class="container-fluid">
     <div class="container-xxl main">
-         <owl-carousel-o [options]="SpatialsOffer">
-          <ng-template carouselSlide *ngFor="let porducts of productsService.listProducts">
-            <div class="col">
-              <div class="card effect-1 mb-3" style="max-width: 540px;">
-                <span class="notify-badge badge-primary"></span>
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="http://localhost:4203/assets/image/SubProduct/{{porducts.isPrimaryImage}}" class="img-fluid rounded-start" alt="...">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">{{ porducts.title }}</h5>
-                      <p class="card-text">{{ porducts.description }}</p>
-                       <div class="text-end">
-                        <a href="/Products/Products-Detail/{{porducts.id}}" class="btn btn-danger ">See Details</a>
+      <owl-carousel-o [options]="ExternalParts">
+        <ng-template carouselSlide>
+          <div>
+            <div class="contents animation-text slide-content">
+              <h1>{{DataExternal.title}}</h1>
+              <p>{{[DataExternal.description]}}</p>
+              <a class="btn-go"
+                [routerLink]="['/View-All-Products/External/',DataExternal.id]">{{[DataExternal.button]}}
+                <i class="bx icon-add bx-cart-add"></i>
+              </a>
 
-                      </div>
+            </div>
+            <img class="owl-img" *ngIf="DataExternal.imageURl"
+              src="http://localhost:4203/assets/image/SubSlider/{{DataExternal.imageURl}}">
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div>
+            <div class="contents animation-text slide-content">
+              <h1>{{DataExternal.title}}</h1>
+              <p>{{[DataExternal.description]}}</p>
+              <a class="btn-go"
+                [routerLink]="['/View-All-Products/External/',DataExternal.id]">{{[DataExternal.button]}}
+                <i class="bx icon-add bx-cart-add"></i>
+              </a>
+
+            </div>
+            <img class="owl-img image-edit" *ngIf="DataExternal.imageURl1"
+              src="http://localhost:4203/assets/image/SubSlider/{{DataExternal.imageURl1}}">
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+  </div>
+</div>
+
+
+<div class="wrapper">
+  <div class="section-header">
+    <h2 id="section-title">Interior car parts</h2>
+    <span class="line"></span>
+  </div>
+  <div class="container-fluid">
+    <div class="container-xxl main">
+      <owl-carousel-o [options]="ExternalParts">
+        <ng-template carouselSlide>
+          <div>
+            <div class="contents animation-text slide-content">
+              <h1>{{[DataIndoor.title]}}</h1>
+              <p>{{[DataIndoor.description]}}</p>
+              <a class="btn-go" [routerLink]="['/View-All-Products/Indoor/',DataIndoor.id]">{{[DataIndoor.button]}}
+                <i class="bx icon-add bx-cart-add"></i>
+
+              </a>
+
+            </div>
+            <img class="owl-img image-edit" *ngIf="DataExternal.imageURl"
+              src="http://localhost:4203/assets/image/SubSlider/{{DataIndoor.imageURl}}">
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div>
+            <div class="contents animation-text slide-content">
+              <h1>{{[DataIndoor.title]}}</h1>
+              <p>{{[DataIndoor.description]}}</p>
+              <a class="btn-go" [routerLink]="['/View-All-Products/Indoor/',DataIndoor.id]">{{[DataIndoor.button]}}
+                <i class="bx icon-add bx-cart-add"></i>
+
+              </a>
+            </div>
+            <img class="owl-img image-edit1" *ngIf="DataExternal.imageURl1"
+              src="http://localhost:4203/assets/image/SubSlider/{{DataIndoor.imageURl1}}">
+
+          </div>
+        </ng-template>
+
+      </owl-carousel-o>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="section-header">
+    <h2 id="section-title">Mechanical parts</h2>
+    <span class="line"></span>
+  </div>
+  <div class="container-fluid">
+    <div class="container-xxl main">
+      <owl-carousel-o [options]="ExternalParts">
+        <ng-template carouselSlide>
+          <div>
+            <div class="contents animation-text slide-content">
+              <h1>{{[DataMechanical.title]}}</h1>
+              <p>{{[DataMechanical.description]}}</p>
+              <a class="btn-go"
+                [routerLink]="['/View-All-Products/Mechanical/',DataMechanical.id]">{{[DataMechanical.button]}}
+                <i class="bx icon-add bx-cart-add"></i>
+
+              </a>
+
+            </div>
+            <img class="owl-img" *ngIf="DataExternal.imageURl"
+              src="http://localhost:4203/assets/image/SubSlider/{{DataMechanical.imageURl}}">
+
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div>
+            <div class="contents animation-text slide-content">
+              <h1>{{[DataMechanical.title]}}</h1>
+              <p>{{[DataMechanical.description]}}</p>
+              <a class="btn-go"
+                [routerLink]="['/View-All-Products/Mechanical/',DataMechanical.id]">{{[DataMechanical.button]}}
+                <i class="bx icon-add bx-cart-add"></i>
+
+              </a>
+
+            </div>
+            <img class="owl-img" *ngIf="DataExternal.imageURl"
+              src="http://localhost:4203/assets/image/SubSlider/{{DataMechanical.imageURl1}}">
+
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="section-header">
+    <h2 id="section-title">Spatials Offer</h2>
+    <span class="line"></span>
+  </div>
+  <div class="container-fluid">
+    <div class="container-xxl main">
+      <owl-carousel-o [options]="SpatialsOffer">
+        <ng-template carouselSlide *ngFor="let porducts of productsService.listProducts">
+          <div class="col">
+            <div class="card effect-1 mb-3" style="max-width: 540px;">
+              <span class="notify-badge badge-primary"></span>
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="http://localhost:4203/assets/image/SubProduct/{{porducts.isPrimaryImage}}"
+                    class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ porducts.title }}</h5>
+                    <p class="card-text">{{ porducts.description }}</p>
+                    <div class="text-end">
+                      <a href="/Products/Products-Detail/{{porducts.id}}" class="btn btn-danger ">See Details</a>
+
                     </div>
                   </div>
-
                 </div>
+
               </div>
             </div>
-          </ng-template>
-          <!-- <ng-template carouselSlide>
+          </div>
+        </ng-template>
+        <!-- <ng-template carouselSlide>
             <div class="col">
               <div class="card effect-1 mb-3" style="max-width: 540px;">
                    <span class="notify-badge badge-primary"></span>
@@ -290,18 +267,18 @@
               </div>
             </div>
           </ng-template> -->
-          </owl-carousel-o>
+      </owl-carousel-o>
 
-
-        </div>
-      </div>
 
     </div>
+  </div>
+
+</div>
 
 
 <main class="main-brand">
   <div class="section-header">
-      <h2 id="section-title"> SHOP BY VEHICLE</h2>
+    <h2 id="section-title"> SHOP BY VEHICLE</h2>
     <span class="line"></span>
     <div>
       <div class="owl-brand">
@@ -343,7 +320,3 @@
     </div>
   </div>
 </main>
-
-
-
-

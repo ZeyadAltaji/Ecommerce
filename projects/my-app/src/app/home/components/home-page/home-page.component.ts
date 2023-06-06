@@ -62,7 +62,7 @@ export class HomePageComponent implements OnInit {
     });
     this.siderSubService.GetByIdnumber(2).subscribe((result) => {
       this.DataExternal = result;
-      console.log(result);
+      console.log('ss',result);
     });
     this.siderSubService.GetByIdnumber(3).subscribe((result) => {
       this.DataMechanical = result;
@@ -109,11 +109,11 @@ export class HomePageComponent implements OnInit {
     return dueDate.toDateString(); // Format the date as a string
   }
   ExternalParts: OwlOptions = {
-    loop: true,
+    loop: false,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 7000,
     smartSpeed: 1500,
     autoplayHoverPause: true,

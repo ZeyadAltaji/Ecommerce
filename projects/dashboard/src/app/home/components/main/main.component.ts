@@ -16,6 +16,7 @@ import { CartItemService } from '../../../services/CartItem.service';
 export class MainComponent implements OnInit {
   @ViewChild('doubleLineCanvas') doubleLineCanvas: ElementRef | undefined;
   doubleLineChart: any;
+  currentDate!: string;
 
   constructor(public contactUsService: CartItemService) {}
 
@@ -30,12 +31,19 @@ export class MainComponent implements OnInit {
         console.log(error);
       }
     );
+    this.setCurrentDate();
   }
 
   ngAfterViewInit(): void {
     this.doubleLineChartMethod();
   }
-
+  setCurrentDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = ('0' + (today.getMonth() + 1)).slice(-2);
+    const day = ('0' + today.getDate()).slice(-2);
+    this.currentDate = `${year}-${month}-${day}`;
+  }
   doubleLineChartMethod(): void {
     this.doubleLineChart = new Chart(
       this.doubleLineCanvas?.nativeElement.getContext('2d'),

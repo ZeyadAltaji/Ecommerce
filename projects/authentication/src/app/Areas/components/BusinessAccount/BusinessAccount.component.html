@@ -12,6 +12,8 @@
               <small
                 *ngIf="BusinessAccountForm.controls['UserName'].dirty && BusinessAccountForm.hasError('required','UserName')"
                 class="text-danger massgeRequred mb-3" style="font-size: 700;">User Name is required</small>
+                <small *ngIf="BusinessAccountForm.controls['UserName'].valid && usernameExists" class="text-danger message-text massgeRequred mb-3" style="font-size: 700;">The User name is already taken.</small>
+
 
             </div>
             <div class="input-box">
@@ -21,6 +23,8 @@
               <small
                 *ngIf="BusinessAccountForm.controls['Email'].dirty && BusinessAccountForm.hasError('required','Email')"
                 class="text-danger massgeRequred mb-3" style="font-size: 700;"> Email is required</small>
+                <small *ngIf="BusinessAccountForm.controls['Email'].valid && emailExists" class="text-danger message-text massgeRequred mb-3" style="font-size: 700;">The Email is already taken.</small>
+
 
             </div>
             <div class="input-box">
@@ -28,7 +32,7 @@
               <input formControlName="Password" type="password" placeholder="Enter your password" required>
               <small
                 *ngIf="BusinessAccountForm.controls['Password'].dirty && BusinessAccountForm.hasError('required','Password')"
-                class="text-danger massgeRequred" style="font-size: 700;">Password is required</small>
+                class="text-danger message-text massgeRequred" style="font-size: 700;">Password is required</small>
 
             </div>
             <div class="input-box">
@@ -37,7 +41,7 @@
                 required>
               <small
                 *ngIf="BusinessAccountForm.controls['ComfirmPassword'].dirty && BusinessAccountForm.hasError('required','passwordConfirm')"
-                class="text-danger massgeRequred" style="font-size: 700;">Comfirm Password is required</small>
+                class="text-danger message-text massgeRequred" style="font-size: 700;">Comfirm Password is required</small>
               <small
                 *ngIf="BusinessAccountForm.controls['ComfirmPassword'].value !== BusinessAccountForm.controls['Password'].value && BusinessAccountForm.controls['ComfirmPassword'].touched"
                 class="mb-1 text-danger">
@@ -47,7 +51,7 @@
             <div class="button input-box">
               <input type="submit" value="Register">
             </div>
-            <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
+            <div class="text sign-up-text">Already have an account? <label for="flip" [routerLink]="['/Login']">Login now</label></div>
           </div>
         </form>
       </div>

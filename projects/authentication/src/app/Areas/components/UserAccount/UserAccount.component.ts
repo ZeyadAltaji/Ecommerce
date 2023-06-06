@@ -11,6 +11,8 @@ import { AuthenticationService } from '../../../services/authentication.service'
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { Component, Inject, OnInit } from '@angular/core';
+import { first } from 'rxjs';
+import { IUser } from 'projects/dashboard/src/app/Models/IUser';
 
 @Component({
   selector: 'app-UserAccount',
@@ -23,7 +25,8 @@ export class UserAccountComponent implements OnInit {
   userSubmitted!: boolean;
   private cartItemsKey = 'cartItems';
   cartItems: any[] = [];
-
+  usernameExists = false;
+  emailExists = false;
   constructor(
     private fb: FormBuilder,
     private authService: AuthenticationService,
@@ -77,15 +80,44 @@ export class UserAccountComponent implements OnInit {
 
   onRegister(RegisterForm: FormGroup) {
     debugger
-    this.userSubmitted = true;
-       this.authService.RegisterUser(this.userData()).subscribe(
-        (data) => {
-          this.onReset();
-        },
-        (error) => {
-          console.log(error);
+    if (this.RegisterForm.valid) {
+      const newUser: UserForRegister = this.userData();
+      this.authService.GetAllUser().pipe(first()).subscribe(
+        (users: IUser[]) => {
+          debugger
+
+          const usernameExists = users.some(user => user.userName === newUser.UserName);
+          const emailExists = users.some(user => user.email === newUser.Email);
+          if (usernameExists) {
+            debugger
+
+            this.usernameExists=true;
+             // Display an error message to the user or perform any other required action
+          }
+
+          if (emailExists) {
+            debugger
+
+            this.emailExists=true;
+             // Display an error message to the user or perform any other required action
+          }
+          if (!usernameExists && !emailExists) {
+            debugger
+
+            this.authService.RegisterUser(newUser).subscribe(
+              (data) => {
+                this.onReset();
+                this.router.navigate(['/Login']);
+
+              },
+              (error) => {
+                console.log(error);
+              }
+            );
+          }
         }
-      );
+      )
+    }
    }
   onReset() {
     this.RegisterForm.reset();

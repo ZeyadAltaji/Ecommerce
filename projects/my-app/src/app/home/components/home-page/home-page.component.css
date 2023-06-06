@@ -54,6 +54,24 @@ image-rendering: high-quality;
 object-fit: cover;
 border-radius: 5px;
 }
+.image-edit{
+  width: 100%;
+  height: auto;
+  max-width: 1288px;
+  max-height: 420px;
+  image-rendering: high-quality;
+  object-fit: fill;
+  border-radius: 5px;
+}
+.image-edit1{
+  width: 100%;
+  height: auto;
+  max-width: 1288px;
+  max-height: 420px;
+  image-rendering: high-quality;
+  object-fit: fill;
+  border-radius: 5px;
+}
 .owl-stage-outer{
   border-radius: 5px;
 }

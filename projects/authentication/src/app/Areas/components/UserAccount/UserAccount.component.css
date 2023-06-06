@@ -164,6 +164,9 @@
     background: none;
     color: red;
 }
+.message-text{
+
+}
 .form-v4-content .form-detail .form-row label.error::after {
     content: "\f343";
     font-family: "LineAwesome";
@@ -180,7 +183,7 @@
     font-weight: 900;
 }
 .form-v4-content .form-detail .input-text {
-	margin-bottom: 27px;
+	margin-bottom: 7px;
 }
 .form-v4-content .form-detail input {
 	width: 100%;
@@ -275,7 +278,22 @@
 .form-v4-content .form-detail .form-row-last input {
 	padding: 12.5px;
 }
+.info ul li{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+ .info ul li .infotext{
+  font-size: 23px;
+  font-weight: 500;
 
+
+}
+  .info ul li .bx{
+  font-size: 25px;
+  padding-bottom: 7px;
+  padding-right: 11px;
+}
 /* Responsive */
 @media screen and (max-width: 991px) {
 	.form-v4-content {

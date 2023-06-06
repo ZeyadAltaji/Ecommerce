@@ -1,6 +1,6 @@
 import { Inject } from '@angular/core';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { data } from 'jquery';
 import { CookieService } from 'ngx-cookie-service';
@@ -83,6 +83,7 @@ export class ProductsNewComponent implements OnInit {
   }
 
   OnSubmit(){
+    debugger
     if (this.NewProductsForm.valid) {
 
     debugger
@@ -104,7 +105,7 @@ export class ProductsNewComponent implements OnInit {
   }
   AddNewProductsForm() {
     this.NewProductsForm = this.fb.group({
-      NameProducts: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
+      NameProducts: [null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       Categorise: [null,Validators.required],
       Cars: [null, Validators.required],
       Brands: [null, Validators.required],
@@ -132,7 +133,7 @@ export class ProductsNewComponent implements OnInit {
 
 
   get _isActive() {
-    return this.NewProductsForm.controls['isActive']as FormGroup;
+    return this.NewProductsForm.controls['isActive']as FormControl;
   }
   get _Primary_Image(){
     return this.NewProductsForm.controls['Primary_Image']as FormGroup;
@@ -158,6 +159,8 @@ export class ProductsNewComponent implements OnInit {
     this.formData.append('ForeignImage2', Foreign_Image2);
     this.formData.append('Admin_Id', adminId.toString());
     this.formData.append('UserCreate', UserCreate);
+    this.formData.append('isActive', this._isActive.value.toString());
+
   }
   toggleInputs() {
     this.showInputs = !this.showInputs;

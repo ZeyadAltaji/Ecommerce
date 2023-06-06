@@ -73,9 +73,7 @@
 }
 
 .recent-update .updates .update {
-  display: grid;
-  grid-template-columns: 2.6rem auto;
-  gap: 1rem;
+   gap: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -85,7 +83,14 @@
   border-radius: 50%;
   overflow: hidden;
 }
-
+.btn-More{
+  padding: 5px;
+  border-radius: 5px;
+  position: relative;
+  justify-content: center;
+  display: flex;
+  margin: 5px;
+}
 /* sales-analytics */
 .sales-analytics .sales {
   background: var(--color-white);

@@ -33,5 +33,4 @@ export class CarService {
   GetByIdModal(id:number){
     return this.http.get<Cars>(`${this.baseUrl}Car/Cars/${id}`.toString()).pipe()
   }
-
 }

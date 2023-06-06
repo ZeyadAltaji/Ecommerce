@@ -76,6 +76,11 @@ input, textarea {
     font-size: 14px;
     letter-spacing: 1px;
 }
+input[type="checkbox"] {
+      border: 1px solid lightgrey !important;
+     border-radius: 2px !important;
+      color: #2C3E50 !important;
+   }
 
 input:focus, textarea:focus {
     -moz-box-shadow: none !important;
@@ -92,15 +97,13 @@ button:focus {
     outline-width: 0;
 }
 .form-checkbox {
-  display: inline-block;
-  vertical-align: middle;
-  width: 6rem;
+    width: 3rem;
 
 }
 
 .checkbox-text {
   display: inline-block;
-  margin-left: 10px;
+  margin-left: -17px;
   vertical-align: middle;
   width: 17rem;
 

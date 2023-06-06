@@ -60,6 +60,7 @@ export class BrandEditComponent implements OnInit {
 
     if (this.loggedInUser && this.loggedInUser.fullUser) {
       const username = this.loggedInUser.fullUser.userName;
+      if (this.EditBrandForm.valid) {
       this.route.paramMap.subscribe({
 
       next:(params)=>{
@@ -107,12 +108,14 @@ export class BrandEditComponent implements OnInit {
           });
         }
       }
+
     });
+  }
     }
   }
   EditBrandsForm() {
     this.EditBrandForm = this.fb.group({
-      Name: [null, [Validators.required, Validators.pattern('[a-zA-Z]{1,10}')]],
+      Name: [null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       Image_BrandUrl: [null],
       isActive: false
 

@@ -82,7 +82,7 @@
 
   <!--End Users -->
   <form action="" class="search-bar-container" [class.active]="showsearch">
-    <input type="search" id="search-bar" placeholder="search here...">
+    <input type="search" id="search-bar" placeholder="search here..." [(ngModel)]="searchQuery" >
     <label for="search-bar" class="fas fa-search"></label>
   </form>
 </header>

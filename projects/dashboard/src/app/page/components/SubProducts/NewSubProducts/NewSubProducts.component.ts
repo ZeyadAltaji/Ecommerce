@@ -116,8 +116,8 @@ export class NewSubProductsComponent implements OnInit {
   }
   AddNewProductsForm() {
     this.NewProductsForm = this.fb.group({
-      Serial_Id: [null, [Validators.required, Validators.pattern('[a-zA-Z0-9]{1,10}')]],
-      NameProducts: [null, [Validators.required, Validators.pattern('[a-zA-Z0-9]{1,10}')]],
+      Serial_Id: [null, [Validators.required, Validators.pattern('[a-zA-Z]{3} [0-9]+')]],
+      NameProducts: [null, [Validators.required]],
       PriceProducts: [null, Validators.required],
       Categorise: [null,Validators.required],
       Cars: [null, Validators.required],
@@ -183,7 +183,7 @@ export class NewSubProductsComponent implements OnInit {
     this.formData.append('Serial_Id', this._SerialId.value);
     this.formData.append('Title', this._NameProducts.value);
     this.formData.append('Description', this._Description.value);
-    this.formData.append('Price', this._PriceProducts.value);
+    this.formData.append('Price', this._PriceProducts.value.toString());
 
     const offersValue = this._offers.value != null ? this._offers.value : '';
   this.formData.append('Offers', offersValue);
@@ -191,9 +191,20 @@ export class NewSubProductsComponent implements OnInit {
   // Calculate the new price based on the offers value
   const price = parseFloat(this._PriceProducts.value);
   const offers = parseFloat(this._offers.value);
-  const newPrice = (price - (price * (offers / 100))).toFixed(2);
-  this.formData.append('new_price', newPrice);
-    this.formData.append('Brands_Id', this._Brands.value);
+  const validOffers = isNaN(offers) ? 0 : offers; // Set to 0 if offers is NaN
+
+  // const newPrice = (price - (price * (offers / 100))).toFixed(2);
+  const newPrice = validOffers === 0 ? '' : (price - (price * (validOffers / 100))).toFixed(2);
+
+
+
+
+
+  // this.formData.append('new_price', isNaN(newPrice) ? '' : newPrice);
+
+
+  this.formData.append('new_price', newPrice !== '' ? newPrice : '');
+  this.formData.append('Brands_Id', this._Brands.value);
     this.formData.append('Car_Id', this._Cars.value);
     this.formData.append('productId', this.products.value);
     this.formData.append('Category_Id', this._Categorise.value);
