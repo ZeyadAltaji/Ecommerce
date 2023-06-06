@@ -164,4 +164,7 @@ export class SingleProducteSelftComponent implements OnInit {
     const storedItems = this.cookieService.get('cartItems');
     return storedItems ? JSON.parse(storedItems) : [];
   }
+  GoToShooping(){
+
+  }
 }

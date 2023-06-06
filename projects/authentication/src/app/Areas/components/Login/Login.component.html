@@ -43,6 +43,9 @@
                     <div  *ngIf="loginError" class="alert alert-danger text-center m-5 messageError" role="alert">
                       <p>Incorrect username or password.</p>
                     </div>
+                    <div *ngIf="user?.isDelete" class="alert alert-danger text-center m-5 messageError" role="alert">
+                      <p>Your account has been deleted.</p>
+                    </div>
                     <div class="row px-3 mb-4 mt-3">
                       <a routerLink="['/Rest_Password']" class="ml-auto mb-0 text-sm">Forgot Password?</a>
 
