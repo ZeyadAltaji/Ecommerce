@@ -16,9 +16,9 @@ export class SidebarComponent implements OnInit {
 isDropdownOpen = false;
 unansweredCount: number = 0;
     ngOnInit() {
-      // interval(1000).subscribe(() => {
+      interval(1000).subscribe(() => {
       this.getUnansweredMessageCount();
-    // });
+    });
     }
 
 
