@@ -202,7 +202,7 @@ export class NavbarComponent implements OnInit {
             }
             //sler
             else if (role === 2) {
-              window.location.href = Environment.AdminURL;
+              window.location.href = Environment.SellerURl;
 
               // If login is successful, hide the login form
               this.showLoginForm = false;
@@ -261,7 +261,7 @@ export class NavbarComponent implements OnInit {
       this.showcart = false;
     }
   }
-  
+
   myuser() {
     if (this.showUser == false) {
       this.showUser = true;
