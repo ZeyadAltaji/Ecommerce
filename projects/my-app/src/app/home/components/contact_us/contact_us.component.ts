@@ -26,28 +26,30 @@ export class Contact_usComponent implements OnInit {
   }
   OnSubmit() {
        debugger
-       const formData = new FormData();
-       formData.append('Name', this.FullName.value);
-       formData.append('Email', this._Email.value);
-       formData.append('Subject', this.Subject.value);
-       formData.append('Message', this.Message.value);
+      if(this.contact_us.valid){
+        const formData = new FormData();
+        formData.append('Name', this.FullName.value);
+        formData.append('Email', this._Email.value);
+        formData.append('Subject', this.Subject.value);
+        formData.append('Message', this.Message.value);
 
-       this.contactUsService.AddMessages(formData).subscribe(
-        (response) => {
-          debugger
-          this.isMessageSent = true;
-          this.hideModalAfterDelay();
+        this.contactUsService.AddMessages(formData).subscribe(
+         (response) => {
+           debugger
+           this.isMessageSent = true;
+           this.hideModalAfterDelay();
 
-          // Handle successful response
-          console.log('Message added successfully:', response);
+           // Handle successful response
+           console.log('Message added successfully:', response);
 
 
-        },
-        (error) => {
-          // Handle error
-          console.error('Error adding message:', error);
-        }
-      );
+         },
+         (error) => {
+           // Handle error
+           console.error('Error adding message:', error);
+         }
+       );
+      }
 
   }
   hideModalAfterDelay() {

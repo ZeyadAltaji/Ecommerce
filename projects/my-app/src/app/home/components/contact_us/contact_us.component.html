@@ -7,23 +7,31 @@
             <div class="col-md-6">
               <label for="inputEmail4" class="form-label">Full Name</label>
               <input type="text" class="form-control" id="inputEmail4" formControlName="FullName">
+              <small *ngIf="contact_us.get('FullName')?.dirty && contact_us.get('FullName')?.hasError('required')" class="text-danger massgeRequred mb-3" style="font-size: 700;">FullName is required</small>
+
             </div>
             <div class="col-md-6">
               <label for="Email" class="form-label">Email</label>
               <input type="Email" class="form-control" id="Email"  formControlName="Email">
+              <small *ngIf="contact_us.get('Email')?.dirty && contact_us.get('Email')?.hasError('required')" class="text-danger massgeRequred mb-3" style="font-size: 700;">Email is required</small>
+
             </div>
             <div class="col-12">
               <label for="Subject" class="form-label">Subject</label>
               <input type="text" class="form-control" id="Subject"  formControlName="Subject">
+              <small *ngIf="contact_us.get('Subject')?.dirty && contact_us.get('Subject')?.hasError('required')" class="text-danger massgeRequred mb-3" style="font-size: 700;">Subject is required</small>
+
             </div>
             <div class="col-12">
               <label for="exampleFormControlTextarea1" class="form-label">Message</label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="Message"></textarea>
+              <small *ngIf="contact_us.get('Message')?.dirty && contact_us.get('Message')?.hasError('required')" class="text-danger massgeRequred mb-3" style="font-size: 700;">Message is required</small>
+
             </div>
             <div class="col-12">
-              <button  class="btn btn-primary" style="width: 54rem;">Submit</button>
+              <button  class="btn btn-primary" style="width: 100%;max-width: 100%; font-size: 17px;background: rgb(167, 29, 29);">Submit</button>
             </div>
-          </form >
+          </form>
         </div>
 
 
