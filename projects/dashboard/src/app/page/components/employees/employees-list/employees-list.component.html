@@ -77,7 +77,8 @@
               </li>
               <li class="list-group-item">
                 <h3>Role: {{
-                  selectedEmployee?.role === 1 ? 'Manager' : selectedEmployee?.role === 2 ? 'Seller' : selectedEmployee?.role === 3 ? 'Customer' : 'Unknown'
+
+                  selectedEmployee?.role === 1 ? 'Manager' : selectedEmployee?.role === 2 ? 'Seller' : selectedEmployee?.role === 3 ? 'Customer' : selectedEmployee?.role === 4 ? 'Delivery' : 'Unknown'
                 }}</h3>
               </li>
             </ul>
