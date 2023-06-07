@@ -24,7 +24,28 @@
     transition: 0.5s linear;
 
   }
-
+  .btn-go1{
+    display: inline-flex;
+    height: 38px;
+    padding: 0;
+    background: rgb(169, 13, 13);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0.5;
+    text-decoration: none;
+    color: white;
+    padding: 7px 25px;
+  }
+  .btn-go1:hover{
+    background: rgb(167, 29, 29);
+    opacity: 1;
+    text-decoration: none;
+    color: white;
+    }
   .top-header .Logo{
   display: flex; align-items: center; width: 110px; height: 3rem;
   }

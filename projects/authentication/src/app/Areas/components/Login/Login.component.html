@@ -43,7 +43,7 @@
                     <div  *ngIf="loginError" class="alert alert-danger text-center m-5 messageError" role="alert">
                       <p>Incorrect username or password.</p>
                     </div>
-                    <div *ngIf="user?.isDelete" class="alert alert-danger text-center m-5 messageError" role="alert">
+                    <div *ngIf="IsDelete!=true" class="alert alert-danger text-center m-5 messageError" role="alert">
                       <p>Your account has been deleted.</p>
                     </div>
                     <div class="row px-3 mb-4 mt-3">

@@ -20,9 +20,7 @@
       </div>
       <div class="drop-down" [class.active-dropdown]="showdropdown">
         <div class="list-group">
-          <a [routerLink]="['My-profile']" class="list-group-item list-group-item-action" [routerLinkActive]="'active'" aria-current="true">
-            My Profile
-          </a>
+
            <a   class="list-group-item list-group-item-action" (click)="logout()" [routerLinkActive]="'active'">Log Out</a>
          </div>
       </div>

@@ -91,6 +91,7 @@ export class NavbarComponent implements OnInit {
     setInterval(() => {
     this.fetchCartItems();
     }, 6000);
+
     const userString = this.cookieServices.get('loggedInUser');
     this.loggedInUser = userString ? JSON.parse(userString) : null;
     if (this.loggedInUser && this.loggedInUser.fullUser) {
@@ -260,6 +261,7 @@ export class NavbarComponent implements OnInit {
       this.showcart = false;
     }
   }
+  
   myuser() {
     if (this.showUser == false) {
       this.showUser = true;
@@ -269,6 +271,7 @@ export class NavbarComponent implements OnInit {
       this.showUser = false;
     }
   }
+
   mymenu() {
     if (this.showsearch == false) {
       this.showsearch = true;

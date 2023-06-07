@@ -6,6 +6,6 @@ export const Environment=
     ClinetURlShop:'http://localhost:4201/shoppingCartPage',
     ClinetURlHome:'http://localhost:4201/',
     SellerURl:'http://localhost:4204/Prodcuts',
-    DeliveryURl:'http://localhost:4205/',
+    DeliveryURl:'http://localhost:4206/',
     AuthURl:'http://localhost:4202/Login'
   }

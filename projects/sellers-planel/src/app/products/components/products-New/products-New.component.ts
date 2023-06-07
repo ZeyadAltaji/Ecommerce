@@ -112,7 +112,8 @@ export class ProductsNewComponent implements OnInit {
   }
   AddNewProductsForm() {
     this.NewProductsForm = this.fb.group({
-      Serial_Id: [null, [Validators.required, Validators.pattern('[a-zA-Z]{3} [0-9]+')]],
+      Serial_Id: [null],
+
 
       NameProducts: [
         null,

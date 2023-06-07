@@ -77,8 +77,8 @@
       <a routerLink='/' class="btn btn-back btn-light"> <i class="bx bx-chevron-left"></i> Continue shopping </a>
 
       <div class="d-grid gap-2">
-        <button routerLink="shoppingCartPage/Order" class="btn next-btn" [disabled]="checkoutForm.invalid">Continue Purchase</button>
-        <a href="shoppingCartPage/Order" class="btn next-btn" style="padding-top: 13px;">cash on delivery</a>
+        <button (click)="goto()" class="btn next-btn" [disabled]="checkoutForm.invalid">Continue Purchase</button>
+         <a href="shoppingCartPage/Order" class="btn next-btn" style="padding-top: 13px;">cash on delivery</a>
       </div>
 
     </div>

@@ -1,6 +1,7 @@
 import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ContactUs } from 'projects/dashboard/src/app/Classes/ContactUs';
 import { ContactUsService } from 'projects/dashboard/src/app/services/ContactUs.service';
 
@@ -17,7 +18,8 @@ export class Contact_usComponent implements OnInit {
 
   constructor(
     @Inject(FormBuilder) private fb:FormBuilder
-  ,private contactUsService:ContactUsService) { }
+  ,private contactUsService:ContactUsService,
+  private router:Router) { }
 
   ngOnInit() {
     this.AddNewMessages();
@@ -33,10 +35,12 @@ export class Contact_usComponent implements OnInit {
        this.contactUsService.AddMessages(formData).subscribe(
         (response) => {
           debugger
-          // Handle successful response
-          console.log('Message added successfully:', response);
           this.isMessageSent = true;
           this.hideModalAfterDelay();
+
+          // Handle successful response
+          console.log('Message added successfully:', response);
+
 
         },
         (error) => {
@@ -52,16 +56,16 @@ export class Contact_usComponent implements OnInit {
     }, 10000); // 10000 milliseconds = 10 seconds
   }
   get FullName() {
-    return this.contact_us.get('FullName') as FormGroup;
+    return this.contact_us.get('FullName') as FormControl;
   }
   get _Email() {
-    return this.contact_us.get('Email') as FormGroup;
+    return this.contact_us.get('Email') as FormControl;
   }
   get Subject() {
-    return this.contact_us.get('Subject') as FormGroup;
+    return this.contact_us.get('Subject') as FormControl;
   }
   get Message() {
-    return this.contact_us.get('Message') as FormGroup;
+    return this.contact_us.get('Message') as FormControl;
   }
   MapCategorise():void{
     this.Category.name=this.FullName.value;
@@ -79,5 +83,8 @@ export class Contact_usComponent implements OnInit {
 
     })
   }
+  gotohome(){
+    this.router.navigate(['/']);
 
+  }
 }

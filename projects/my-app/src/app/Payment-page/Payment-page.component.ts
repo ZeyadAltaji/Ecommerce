@@ -1,6 +1,7 @@
 import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -14,7 +15,8 @@ export class PaymentPageComponent implements OnInit {
 
   constructor(
     @Inject(CookieService) private cookieServices: CookieService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router:Router
   ) {
     this.checkoutForm = this.formBuilder.group({
       cardholder: ['', Validators.required],
@@ -40,5 +42,9 @@ export class PaymentPageComponent implements OnInit {
 
   isPaymentInfoIncomplete(): boolean {
     return !this.cardholder || !this.cardNumber || !this.date || !this.cvv;
+  }
+  goto(){
+    this.router.navigate(['/shoppingCartPage/Order']);
+
   }
 }

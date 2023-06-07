@@ -32,9 +32,9 @@
     <div class="box" *ngFor="let item of cartItems.slice(0, maxDisplayedProducts)">
       <img src="http://localhost:4203/assets/image/SubProduct/{{item.isPrimaryImage}}" alt="{{ item.title }}">
       <div class="text">
-        <h3>title:{{ item.title }}</h3>
-        <span>Price:{{ item.price }}$</span>
-        <span>Quantity:{{ item.quantity }}</span>
+        <h3>title : {{ item.title }}</h3>
+        <span>Price : {{ item.price }}$</span>
+        <span>Quantity : {{ item.quantity }}</span>
 
       </div>
       <i class="bx bxs-trash-alt" (click)="deleteCartItem(item.id)"></i>
@@ -50,16 +50,16 @@
       <button class="btn-More" (click)="showMore()">Show More</button>
     </div>
 
-    <h2 *ngIf="calculateTotal() > 0">Total: {{ calculateTotal() }}</h2>
+    <h2 *ngIf="calculateTotal() > 0">Total : {{ calculateTotal() }}</h2>
     <a [routerLink]="['/shoppingCartPage']" class="btn-Chechout" *ngIf="cartItems.length > 0">Checkout</a>
   </div>
 
   <!-- users -->
-  <div class="user" [class.activeuser]="showUser">
+  <div class="user" [class.activeuser]="showUser" >
     <div *ngIf="showLoginForm">
       <h2>login Now</h2>
       <form class="Fromslogin" (ngSubmit)="onLogin(loginForm)" [formGroup]="loginForm">
-        <input type="text" placeholder="Your UserName...." formControlName="UserName">
+        <input type="text" placeholder="Your UserName Or Email..." formControlName="UserName">
         <small *ngIf="loginForm.controls['UserName'].dirty && loginForm.hasError('required','UserName')"
           class="text-danger massgeRequred">Email is required</small>
         <input type="password" name="" id="" placeholder="Enter Password!" formControlName="password">
@@ -71,9 +71,17 @@
       </form>
     </div>
     <div>
-      <div *ngIf="loggedInUser && loggedInUser.fullUser">
-        <p>Welcome, {{ loggedInUser.fullUser.frist_Name }} {{ loggedInUser.fullUser.last_Name }}</p>
-        <button (click)="logout()">Logout</button>
+      <!-- <p></p>
+        <button >Logout</button> -->
+      <div class="card   text-center" style="width: 28rem; background: transparent;" *ngIf="loggedInUser && loggedInUser.fullUser">
+        <div class="card-header" style="
+          border: none;
+          background: transparent;
+      ">Welcome, {{ loggedInUser.fullUser.frist_Name }} {{ loggedInUser.fullUser.last_Name }}</div>
+        <div class="card-body">
+          <h5 class="card-title">Light card title</h5>
+          <a (click)="logout()" class="btn btn-go1">Logout</a>
+        </div>
 
       </div>
 
@@ -82,7 +90,7 @@
 
   <!--End Users -->
   <form action="" class="search-bar-container" [class.active]="showsearch">
-    <input type="search" id="search-bar" placeholder="search here..." [(ngModel)]="searchQuery" >
+    <input type="search" id="search-bar" placeholder="search here..." [(ngModel)]="searchQuery">
     <label for="search-bar" class="fas fa-search"></label>
   </form>
 </header>

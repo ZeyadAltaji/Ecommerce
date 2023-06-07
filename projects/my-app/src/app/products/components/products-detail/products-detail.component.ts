@@ -57,8 +57,7 @@ export class ProductsDetailComponent implements OnInit {
     return 0; // Return a default value if subProducts is not defined
   }
   calculateItemPrice(): number {
-    debugger;
-    this.totalPrice = this.subProducts.new_price
+     this.totalPrice = this.subProducts.new_price
       ? this.subProducts.new_price * this.count
       : this.subProducts.price * this.count;
     // Update totalPrice if needed
@@ -66,8 +65,8 @@ export class ProductsDetailComponent implements OnInit {
     return this.totalPrice;
   }
   addToCart(product: any) {
-    debugger;
-    const cartIds = this.cookieService.get('cartId');
+
+    const cartIds = localStorage.getItem('cartId');
     if (cartIds) {
       if (this.isProductInCart(product)) {
         console.log('Product is already in the cart.');

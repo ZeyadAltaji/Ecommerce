@@ -109,11 +109,11 @@ export class HomePageComponent implements OnInit {
     return dueDate.toDateString(); // Format the date as a string
   }
   ExternalParts: OwlOptions = {
-    loop: false,
+    loop: true,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 7000,
     smartSpeed: 1500,
     autoplayHoverPause: true,

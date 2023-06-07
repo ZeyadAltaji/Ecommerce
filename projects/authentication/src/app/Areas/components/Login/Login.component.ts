@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   logoData!: any;
   cartItems: any[] = [];
   loginError: boolean = false;
-
+  IsDelete:boolean=true;
   static cookieServiceee: CookieService; // declare the static property
 
   constructor(
@@ -47,6 +47,8 @@ export class LoginComponent implements OnInit {
       console.log(data);
       this.logoData = data.isLogoUrl;
     });
+    const cartId = localStorage.getItem('cartItems');
+
   }
 
   static GetAppURL(RoleName: number) {
@@ -66,35 +68,41 @@ export class LoginComponent implements OnInit {
       debugger;
       this.authService.AuthenticationLogin(this.loginForm.value).subscribe({
         next: (response: UserForLogin) => {
+          debugger
           console.log(response);
           const user = response;
           const role = user.fullUser.role;
+          const isDelete = user.fullUser.isDelete;
+
           if (user) {
             debugger;
 
-            if (role === 1) {
-              window.location.href = Environment.AdminURL
-            }
-            //sler
-            else if (role === 2) {
-              window.location.href = Environment.SellerURl;
-            }
-            //clinet
-            else if (role === 3 && this.cartItems.length > 0) {
-              // Redirect to the shopping cart page
-              window.location.href = Environment.ClinetURlShop;
-            } else if (role === 3) {
-              // Redirect to the home page
-              window.location.href = Environment.ClinetURlHome;
+            if (isDelete === true) {
+              this.IsDelete = false;
+            }else{
+              if (role === 1) {
+                window.location.href = Environment.AdminURL
+              }
+              //sler
+              else if (role === 2) {
+                window.location.href = Environment.SellerURl;
+              }
+              //clinet
+              else if (role === 3 && this.cartItems.length > 0) {
+                // Redirect to the shopping cart page
+                window.location.href = Environment.ClinetURlShop;
+              } else if (role === 3) {
+                // Redirect to the home page
+                window.location.href = Environment.ClinetURlHome;
 
 
-              // Close the previous page
-            } else if (role === 4) {
-              window.location.href = Environment.DeliveryURl;
+                // Close the previous page
+              } else if (role === 4) {
+                window.location.href = Environment.DeliveryURl;
+              }
             }
-            // const GetAppURL = LoginComponent.GetAppURL(user.fullUser.role);
-            // Redirect to the appropriate URL based on the role
-            // window.location.href = GetAppURL;
+
+
             this.cookieServices.set('loggedInUser', JSON.stringify(user));
           }
         },

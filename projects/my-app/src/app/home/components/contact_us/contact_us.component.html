@@ -1,10 +1,9 @@
 <div class="container p-5">
   <div class="checkout-panel">
-    <form   [formGroup]="contact_us">
-      <div class="panel-body">
+       <div class="panel-body">
         <h2 class="title">CONTACT US</h2>
         <div class="container text-center">
-          <form class="Form-cou row g-3">
+          <form class="Form-cou row g-3"  (ngSubmit)="OnSubmit()" [formGroup]="contact_us">
             <div class="col-md-6">
               <label for="inputEmail4" class="form-label">Full Name</label>
               <input type="text" class="form-control" id="inputEmail4" formControlName="FullName">
@@ -22,16 +21,16 @@
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="Message"></textarea>
             </div>
             <div class="col-12">
-              <button (click)="OnSubmit()"  type="submit" class="btn btn-primary" style="width: 54rem;">Submit</button>
+              <button  class="btn btn-primary" style="width: 54rem;">Submit</button>
             </div>
-          </form>
+          </form >
         </div>
 
 
   </div>
-</form>
+ </div>
 </div>
-</div>
+
 <div class="modal" [class.show]="isMessageSent">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -39,7 +38,7 @@
         <p>Thank you for contacting us. You will be answered soon.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn-send btn-primary" (click)="isMessageSent = false">OK</button>
+        <button type="button" class="btn-send btn-primary" (click)="gotohome()">OK</button>
       </div>
     </div>
   </div>
